@@ -6,7 +6,7 @@
     <version>0.0.1</version>
   </parent>
   <groupId>fr.lelouet.jswaggermaker</groupId>
-  <artifactId>SwaggerCompiler</artifactId>
-  <name>SwaggerCompiler</name>
-  <description>compiles the swaggers</description>
+  <artifactId>Examples</artifactId>
+  <name>Examples</name>
+  <description>meta module of example projects</description>
 </project>
