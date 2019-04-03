@@ -68,6 +68,11 @@
 				<artifactId>javafx-fxml</artifactId>
 				<version>${openjfx-version}</version>
 			</dependency>
+			<dependency>
+				<groupId>fr.lelouet.jswaggermaker.compiler</groupId>
+				<artifactId>Client</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<groupId>fr.lelouet</groupId>

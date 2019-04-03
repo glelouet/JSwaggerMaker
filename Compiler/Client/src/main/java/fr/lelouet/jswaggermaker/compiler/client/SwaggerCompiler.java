@@ -1,8 +1,6 @@
 package fr.lelouet.jswaggermaker.compiler.client;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Map;
@@ -15,6 +13,7 @@ import com.helger.jcodemodel.JCodeModel;
 import com.helger.jcodemodel.writer.JCMWriter;
 
 import fr.lelouet.jswaggermaker.compiler.client.FetchTranslation.OpType;
+import fr.lelouet.jswaggermaker.compiler.client.cache.ActiveCacheTranslator;
 import io.swagger.models.ArrayModel;
 import io.swagger.models.Model;
 import io.swagger.models.Operation;
@@ -30,77 +29,24 @@ public class SwaggerCompiler {
 
 	private static final Logger logger = LoggerFactory.getLogger(SwaggerCompiler.class);
 
-	public static class Options {
-
-		public static final String SWAGGERURLPREFIX = "url=";
-
-		public String swaggerURL;
-
-		public static final String OUTDIRPREFIX = "folder=";
-
-		public String outDir = "compiled/";
-
-		public static final String CLEARFOLDERPREFIX = "clear=";
-
-		public Boolean clearFolder = true;
-
-		public static final String LOADPREFIX = "load=";
-
-		public Options(String... args) {
-			if (args != null) {
-				for (String arg : args) {
-					load(arg);
-				}
-			}
-		}
-
-		private void load(String arg) {
-			if (arg.startsWith(SWAGGERURLPREFIX)) {
-				swaggerURL = arg.substring(SWAGGERURLPREFIX.length());
-			} else if (arg.startsWith(OUTDIRPREFIX)) {
-				outDir = arg.substring(OUTDIRPREFIX.length());
-			} else if (arg.startsWith(CLEARFOLDERPREFIX)) {
-				clearFolder = Boolean.parseBoolean(arg.substring(CLEARFOLDERPREFIX.length()));
-			} else if (arg.startsWith(LOADPREFIX)) {
-				loadFile(arg.substring(LOADPREFIX.length()));
-			} else {
-				System.err.println("can't parse argument " + arg);
-			}
-		}
-
-		private void loadFile(String fileName) {
-			try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-				br.lines().forEachOrdered(this::load);
-			} catch (IOException e) {
-				throw new UnsupportedOperationException("catch this", e);
-			}
-		}
-	}
-
-	public Options options = new Options();
-
 	/**
 	 *
 	 * @param args
-	 *          { base url , destination folder } .base url is typically the
-	 *          swagger URL without the swagger.json at the end.
+	 *          a list of args that are translated as the compiler options.
+	 * @see CompilerOptions for the list of arguments
 	 * @throws IOException
 	 * @throws JClassAlreadyExistsException
 	 */
 	public static void main(String... args) throws IOException, JClassAlreadyExistsException {
 		long startTime = System.currentTimeMillis();
-		logger.info("compiling esi with params " + Arrays.asList(args));
+		logger.info("compiling swagger with params " + Arrays.asList(args));
 		SwaggerCompiler c = new SwaggerCompiler(args);
 		JCodeModel cm = c.compile();
 		c.export(cm);
-		logger.info("compiled esi in " + (System.currentTimeMillis() - startTime) / 1000 + "s");
+		logger.info("compiled swagger in " + (System.currentTimeMillis() - startTime) / 1000 + "s");
 	}
 
-	public SwaggerCompiler(String... args) {
-		options = new Options(args);
-	}
-
-	protected static void delDir(File delete) {
+	public static void delDir(File delete) {
 		if (delete.exists()) {
 			if (delete.isDirectory()) {
 				for (File child : delete.listFiles()) {
@@ -111,15 +57,39 @@ public class SwaggerCompiler {
 		}
 	}
 
+	public CompilerOptions options;
+
+	public SwaggerCompiler(String... args) {
+		options = new CompilerOptions(args);
+	}
+
+	CacheTranslator cachemaker;
+
 	public JCodeModel compile() throws JClassAlreadyExistsException {
 		Swagger swagger = fetchSwagger();
+		JCodeModel cm = new JCodeModel();
+		if (swagger == null) {
+			return null;
+		}
+
 		String baseURL = swagger.getSchemes().get(0).toValue()
 				+ "://"
 				+ swagger.getHost()
 				+ (swagger.getBasePath() == null ? "" : swagger.getBasePath());
 
-		JCodeModel cm = new JCodeModel();
-		ClassBridge cltrans = makeClassBridge(cm, swagger);
+		ClassBridge cltrans = new ClassBridge(cm, swagger, options);
+
+		cachemaker = null;
+		if (options.cache != null) {
+			switch (options.cache) {
+			case "active":
+				cachemaker = new ActiveCacheTranslator(cm, cltrans, options);
+				break;
+			case "lazy": break;
+			default :
+				logger.warn("can't create cache for option [ "+options.cache+" ] , no cache made");
+			}
+		}
 
 		swagger.getPaths().entrySet().forEach(e -> {
 			String resource = e.getKey();
@@ -142,6 +112,9 @@ public class SwaggerCompiler {
 	protected void apptyToPath(Operation op, OpType optype, String url, ClassBridge cltrans) {
 		FetchTranslation f = new FetchTranslation(op, optype, url, cltrans);
 		f.apply();
+		if (cachemaker != null) {
+			cachemaker.apply(f);
+		}
 	}
 
 	public void export(JCodeModel cm) throws IOException {
@@ -152,11 +125,6 @@ public class SwaggerCompiler {
 		dir.mkdirs();
 		new JCMWriter(cm).build(dir);
 
-	}
-
-	/** Override to change the way to generate a classBridge */
-	protected ClassBridge makeClassBridge(JCodeModel cm, Swagger swagger) {
-		return new ClassBridge(cm, swagger);
 	}
 
 	public static Response getResponse(Operation operation) {

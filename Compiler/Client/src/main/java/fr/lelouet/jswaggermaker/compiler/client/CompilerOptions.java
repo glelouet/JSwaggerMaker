@@ -28,6 +28,10 @@ public class CompilerOptions {
 		}
 	}
 
+	public static final String CACHEPREFIX = "cache=";
+
+	public String cache = null;
+
 	private void load(String arg) {
 		if (arg.startsWith(SWAGGERURLPREFIX)) {
 			swaggerURL = arg.substring(SWAGGERURLPREFIX.length());
@@ -35,6 +39,8 @@ public class CompilerOptions {
 			outDir = arg.substring(OUTDIRPREFIX.length());
 		} else if (arg.startsWith(CLEARFOLDERPREFIX)) {
 			clearFolder = Boolean.parseBoolean(arg.substring(CLEARFOLDERPREFIX.length()));
+		} else if (arg.startsWith(CACHEPREFIX)) {
+			cache = arg.substring(CACHEPREFIX.length());
 		} else if (arg.startsWith(LOADPREFIX)) {
 			loadFile(arg.substring(LOADPREFIX.length()));
 		} else {

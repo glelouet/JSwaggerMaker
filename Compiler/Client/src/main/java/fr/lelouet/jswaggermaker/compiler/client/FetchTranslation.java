@@ -11,16 +11,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.helger.jcodemodel.AbstractJType;
+import com.helger.jcodemodel.IJExpression;
 import com.helger.jcodemodel.JArray;
+import com.helger.jcodemodel.JBlock;
 import com.helger.jcodemodel.JCodeModel;
 import com.helger.jcodemodel.JExpr;
 import com.helger.jcodemodel.JFieldVar;
 import com.helger.jcodemodel.JMethod;
 import com.helger.jcodemodel.JMod;
 import com.helger.jcodemodel.JPrimitiveType;
+import com.helger.jcodemodel.JSynchronizedBlock;
 import com.helger.jcodemodel.JVar;
 
 import fr.lelouet.jswaggermaker.client.common.interfaces.Requested;
+import fr.lelouet.syncbarker.LockWatchDog;
 import io.swagger.models.ArrayModel;
 import io.swagger.models.Model;
 import io.swagger.models.ModelImpl;
@@ -157,20 +161,17 @@ public class FetchTranslation {
 						"content");
 				content.init(JExpr._new(cm.ref(HashMap.class).narrowEmpty()));
 				for (JVar p : bodyparameters) {
-					fetchMeth.body().directStatement("content.put(\"" + p.name() + "\", " + p.name() + ");");
+					fetchMeth.body().add(content.invoke("put").arg(p.name()).arg(p));
 				}
 			}
 			fetchMeth.body()
-			._return(JExpr.invoke("requestPut").arg(url).arg(propsParam)
-					.arg(content == null ? JExpr._null() : content));
+			._return(JExpr.invoke("requestPut").arg(url).arg(propsParam).arg(content == null ? JExpr._null() : content));
 			break;
 		case get:
-			fetchMeth.body()
-			._return(
-					JExpr.direct("requestGet(url, " + propsParamName + "," + resourceType.binaryName() + ".class)"));
+			fetchMeth.body()._return(JExpr.invoke("requestGet").arg(url).arg(propsParam).arg(JExpr.dotClass(resourceType)));
 			break;
 		case delete:
-			fetchMeth.body()._return(JExpr.direct("requestDel(url, " + propsParamName + ")"));
+			fetchMeth.body()._return(JExpr.invoke("requestDel").arg(url).arg(propsParam));
 			break;
 		default:
 			throw new UnsupportedOperationException("unsupported type " + optype + " for path " + path);
@@ -296,65 +297,59 @@ public class FetchTranslation {
 	 */
 	protected void extractFetchParameters() {
 		for (Parameter p : operation.getParameters()) {
-			switch (p.getName()) {
-			// we skip following parameters
-			case "token":
-			case "user_agent":
-			case "X-User-Agent":
-			case "datasource":
-			case "If-None-Match":
-			case "Accept-Language":
-			case "language":
-				// case "page":
+			if (ignoreparameter(p)) {
+				continue;
+			}
+			String in = p.getIn();
+			AbstractJType pt;
+			JVar param;
+			switch (in) {
+			case "path":
+				fetchMeth.javadoc().addParam(p.getName()).add(p.getDescription());
+				PathParameter pp = (PathParameter) p;
+				pt = bridge.getExistingClass(pp.getType(), pp.getName(), pp.getFormat(), pp.getEnum());
+				if (!pp.getRequired() && pt.isPrimitive()) {
+					pt = pt.boxify();
+				}
+				param = fetchMeth.param(pt, pp.getName());
+				pathparameters.add(param);
+				allParams.add(param);
 				break;
-			default:
-				String in = p.getIn();
-				AbstractJType pt;
-				JVar param;
-				switch (in) {
-				case "path":
+			case "query":
+				fetchMeth.javadoc().addParam(p.getName()).add(p.getDescription());
+				QueryParameter qp = (QueryParameter) p;
+				param = fetchMeth.param(bridge.getExistingClass(qp), qp.getName());
+				queryparameters.add(param);
+				allParams.add(param);
+				break;
+			case "body":
+				BodyParameter bp = (BodyParameter) p;
+				Model schema = bp.getSchema();
+				if (schema instanceof ArrayModel) {
 					fetchMeth.javadoc().addParam(p.getName()).add(p.getDescription());
-					PathParameter pp = (PathParameter) p;
-					pt = bridge.getExistingClass(pp.getType(), pp.getName(), pp.getFormat(), pp.getEnum());
-					if (!pp.getRequired() && pt.isPrimitive()) {
-						pt = pt.boxify();
-					}
-					param = fetchMeth.param(pt, pp.getName());
-					pathparameters.add(param);
+					pt = bridge.getExistingClass((ArrayModel) schema);
+					param = fetchMeth.param(pt, bp.getName());
+					bodyparameters.add(param);
 					allParams.add(param);
-					break;
-				case "query":
-					fetchMeth.javadoc().addParam(p.getName()).add(p.getDescription());
-					QueryParameter qp = (QueryParameter) p;
-					param = fetchMeth.param(bridge.getExistingClass(qp), qp.getName());
-					queryparameters.add(param);
-					allParams.add(param);
-					break;
-				case "body":
-					BodyParameter bp = (BodyParameter) p;
-					Model schema = bp.getSchema();
-					if (schema instanceof ArrayModel) {
-						fetchMeth.javadoc().addParam(p.getName()).add(p.getDescription());
-						pt = bridge.getExistingClass((ArrayModel) schema);
-						param = fetchMeth.param(pt, bp.getName());
+				} else {
+					for (Entry<String, Property> e : schema.getProperties().entrySet()) {
+						fetchMeth.javadoc().addParam(e.getKey()).add(e.getValue().getDescription());
+						AbstractJType type = bridge.translateToClass(e.getValue(), bridge.structurePackage, e.getKey());
+						param = fetchMeth.param(type, e.getKey());
 						bodyparameters.add(param);
 						allParams.add(param);
-					} else {
-						for (Entry<String, Property> e : schema.getProperties().entrySet()) {
-							fetchMeth.javadoc().addParam(e.getKey()).add(e.getValue().getDescription());
-							AbstractJType type = bridge.translateToClass(e.getValue(), bridge.structurePackage, e.getKey());
-							param = fetchMeth.param(type, e.getKey());
-							bodyparameters.add(param);
-							allParams.add(param);
-						}
 					}
-					break;
-				default:
-					logger.error("no matching type " + p.getIn() + " for parameter " + p.getName() + " in operation "
-							+ operation.getOperationId());
 				}
+				break;
+			default:
+				logger.error("no matching type " + p.getIn() + " for parameter " + p.getName() + " in operation "
+						+ operation.getOperationId());
 			}
 		}
+	}
+
+	protected boolean ignoreparameter(Parameter p) {
+		return false;
 	}
 
 	protected void addPathJavadoc() {
@@ -362,18 +357,49 @@ public class FetchTranslation {
 		fetchMeth.javadoc().add(("\n<p>\n" + ("" + operation.getDescription()).replaceAll("---", "<br />") + "\n</p>")
 				.replaceAll("\n\n", "\n").replaceAll("<br />\n<", "<").replaceAll("\n<br />\n", "<br />\n"));
 		if (!requiredRoles.isEmpty()) {
-			if (!requiredRoles.isEmpty()) {
-				JFieldVar rolesfield = (connected ? bridge.swaggerCOClass : bridge.swaggerDCClass).field(
-						JMod.PUBLIC | JMod.STATIC | JMod.FINAL, cm.ref(String.class).array(),
-						(operation.getOperationId() + "_roles").toUpperCase());
-				JArray array = JExpr.newArray(cm.ref(String.class));
-				for (String role : requiredRoles) {
-					array.add(JExpr.lit(role));
-				}
-				rolesfield.init(array);
-				rolesfield.javadoc().add("the roles required for {@link #" + fetchMeth.name() + " this method}");
-				fetchMeth.javadoc().add("\n<p>\nrequire the roles specified {@link #" + rolesfield.name() + " here}\n</p>");
+			JFieldVar rolesfield = (connected ? bridge.swaggerCOClass : bridge.swaggerDCClass).field(
+					JMod.PUBLIC | JMod.STATIC | JMod.FINAL, cm.ref(String.class).array(),
+					(operation.getOperationId() + "_roles").toUpperCase());
+			JArray array = JExpr.newArray(cm.ref(String.class));
+			for (String role : requiredRoles) {
+				array.add(JExpr.lit(role));
 			}
+			rolesfield.init(array);
+			rolesfield.javadoc().add("the roles required for {@link #" + fetchMeth.name() + " this method}");
+			fetchMeth.javadoc().add("\n<p>\nrequire the roles specified {@link #" + rolesfield.name() + " here}\n</p>");
 		}
 	}
+	////
+	// tooling
+	////
+
+	/**
+	 * create the following block : ret=getter; if(ret==null) synchronized(lock)
+	 * {ret=getter; if(ret==null){BLOCK}}
+	 *
+	 * @return the block to assign value. in this block ret is null and we need to
+	 *         create it.
+	 */
+	public JBlock createTestNullCase(JBlock outBlock, JVar ret, IJExpression getter, JVar lock) {
+		ret.init(getter);
+		return sync(outBlock._if(ret.eqNull())._then(), lock).body().add(JExpr.assign(ret, getter))._if(ret.eqNull())
+				._then();
+	}
+
+	/**
+	 * create a synchronized(expr) surounded by a call to barker.tak(expr) and a
+	 * call to barker.rel(expr)
+	 *
+	 * @param parent
+	 * @param expr
+	 * @return
+	 */
+	public JSynchronizedBlock sync(JBlock parent, IJExpression expr) {
+		parent.add(JExpr.invoke(cm.ref(LockWatchDog.class).staticRef("BARKER"), "tak").arg(expr));
+		JSynchronizedBlock ret = parent.synchronizedBlock(expr);
+		ret.body().add(JExpr.invoke(cm.ref(LockWatchDog.class).staticRef("BARKER"), "hld").arg(expr));
+		parent.add(JExpr.invoke(cm.ref(LockWatchDog.class).staticRef("BARKER"), "rel").arg(expr));
+		return ret;
+	}
+
 }
