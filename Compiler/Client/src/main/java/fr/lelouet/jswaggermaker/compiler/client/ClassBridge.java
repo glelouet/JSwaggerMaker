@@ -107,8 +107,8 @@ public class ClassBridge {
 
 		// first pass to fetch all the responses
 		for (Path path : swagger.getPaths().values()) {
-			addResponseType(ESICompiler.getResponse(path.getGet()));
-			addResponseType(ESICompiler.getResponse(path.getPost()));
+			addResponseType(SwaggerCompiler.getResponse(path.getGet()));
+			addResponseType(SwaggerCompiler.getResponse(path.getPost()));
 		}
 		// then we merge all response types that have same structure.
 		// this makes a map of renames
@@ -142,7 +142,7 @@ public class ClassBridge {
 		propertiesType = cm.ref(Map.class).narrow(cm.ref(String.class), cm.ref(String.class));
 	}
 
-	protected String rootPackage = ESICompiler.class.getPackage().getName() + ".compiled";
+	protected String rootPackage = SwaggerCompiler.class.getPackage().getName() + ".compiled";
 
 	////
 	// response merging. Some responses have same structure, we merge them in a
@@ -177,7 +177,7 @@ public class ClassBridge {
 	}
 
 	protected void registerPropertyType(String name, Property prop) {
-		ObjectProperty op = ESICompiler.getPropertyObject(prop);
+		ObjectProperty op = SwaggerCompiler.getPropertyObject(prop);
 		if (op != null) {
 			for (Property subprop : op.getProperties().values()) {
 				if (subprop != null) {
@@ -358,8 +358,16 @@ public class ClassBridge {
 		}
 	}
 
+	/** java keywords we can't use as a name */
+	public static final Set<String> keywords = Collections.unmodifiableSet(new HashSet<>(
+			Arrays.asList("abstract", "assert", "boolean", "break", "byte", "case", "catch", "char", "class", "const",
+					"continue", "default", "do", "double", "else", "extends", "false", "final", "finally", "float", "for", "goto",
+					"if", "implements", "import", "instanceof", "int", "interface", "long", "native", "new", "null", "package",
+					"private", "protected", "public", "return", "short", "static", "strictfp", "super", "switch", "synchronized",
+					"this", "throw", "throws", "transient", "true", "try", "void", "volatile", "while")));
+
 	public static String sanitizeEnumName(String s) {
-		if (CacheTranslator.keywords.contains(s)) {
+		if (keywords.contains(s)) {
 			return "_" + s;
 		}
 		String ret = s.replaceAll("[- #]", "_");

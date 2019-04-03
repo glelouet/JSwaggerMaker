@@ -25,6 +25,7 @@ import io.swagger.models.ArrayModel;
 import io.swagger.models.Model;
 import io.swagger.models.ModelImpl;
 import io.swagger.models.Operation;
+import io.swagger.models.Path;
 import io.swagger.models.Response;
 import io.swagger.models.parameters.BodyParameter;
 import io.swagger.models.parameters.Parameter;
@@ -33,9 +34,9 @@ import io.swagger.models.parameters.QueryParameter;
 import io.swagger.models.properties.Property;
 import io.swagger.models.utils.PropertyModelConverter;
 
-public class FetchTranslator {
+public class FetchTranslation {
 
-	private static final Logger logger = LoggerFactory.getLogger(FetchTranslator.class);
+	private static final Logger logger = LoggerFactory.getLogger(FetchTranslation.class);
 
 	/**
 	 * how to handle the result of the fetch method in the cache method :
@@ -43,24 +44,49 @@ public class FetchTranslator {
 	 * list, and map puts the results in a map , with the key being specified by
 	 * {@link #cacheRetUniqueField}
 	 */
-	protected static enum RETURNTYPE {
+	public static enum RETURNTYPE {
 		NONE, OBJECT, LIST, MAP
 	}
 
-	protected final Operation operation;
-	protected final OpType optype;
-	protected final String path;
-	protected final ClassBridge bridge;
+	public final Operation operation;
+	public final OpType optype;
+	public final String path;
+	public final ClassBridge bridge;
 
-	protected final JCodeModel cm;
+	public final JCodeModel cm;
 
 	public static enum OpType {
-		get, post, put, delete;
+		get {
+			@Override
+			public Operation getOp(Path path) {
+				return path.getGet();
+			}
+		},
+		post {
+			@Override
+			public Operation getOp(Path path) {
+				return path.getPost();
+			}
+		},
+		put {
+			@Override
+			public Operation getOp(Path path) {
+				return path.getPut();
+			}
+		},
+		delete {
+			@Override
+			public Operation getOp(Path path) {
+				return path.getDelete();
+			}
+		};
+
+		public abstract Operation getOp(Path path);
 	};
 
-	protected String propsParamName = "properties";
+	public String propsParamName = "properties";
 
-	public FetchTranslator(Operation operation, OpType optype, String path, ClassBridge bridge) {
+	public FetchTranslation(Operation operation, OpType optype, String path, ClassBridge bridge) {
 		this.operation = operation;
 		this.optype = optype;
 		this.path = path;
@@ -76,7 +102,7 @@ public class FetchTranslator {
 	 * produces an array, this is the item type of the array, eg int[] will
 	 * resolve to int.
 	 */
-	protected AbstractJType resourceFlatType;
+	public AbstractJType resourceFlatType;
 
 	/**
 	 * type we convert the resource into. typically the exact translation of the
@@ -85,7 +111,7 @@ public class FetchTranslator {
 	protected AbstractJType resourceType;
 
 	/** the structure of the resource we fetch : none, map, list, object */
-	protected RETURNTYPE resourceStructure;
+	public RETURNTYPE resourceStructure;
 
 	/**
 	 * return type of the fetch method. if resourcestructure is object, then it
@@ -94,15 +120,15 @@ public class FetchTranslator {
 	 */
 	protected AbstractJType fetchRetType;
 
-	protected JMethod fetchMeth;
+	public JMethod fetchMeth;
 
-	protected List<String> requiredRoles;
+	public List<String> requiredRoles;
 
 	public void apply() {
 		if (operation == null) {
 			return;
 		}
-		response = ESICompiler.getResponse(operation);
+		response = SwaggerCompiler.getResponse(operation);
 		if (response == null) {
 			logger.error("can't find response for path " + path + " " + optype);
 			return;
@@ -234,7 +260,7 @@ public class FetchTranslator {
 	}
 
 	/** true iff the path requires connection */
-	boolean connected;
+	public boolean connected;
 
 	protected void findConnected() {
 		connected = operation.getParameters().stream().filter(p -> p.getName().equals("token")).findAny().isPresent();
@@ -259,7 +285,7 @@ public class FetchTranslator {
 	 */
 	private List<JVar> bodyparameters = new ArrayList<>();
 
-	List<JVar> allParams = new ArrayList<>();
+	public List<JVar> allParams = new ArrayList<>();
 
 	/** argument of the fetch method for the header handler */
 	JVar propsParam;

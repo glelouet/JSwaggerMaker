@@ -1,6 +1,8 @@
 package fr.lelouet.jswaggermaker.compiler.client;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Map;
@@ -12,7 +14,7 @@ import com.helger.jcodemodel.JClassAlreadyExistsException;
 import com.helger.jcodemodel.JCodeModel;
 import com.helger.jcodemodel.writer.JCMWriter;
 
-import fr.lelouet.jswaggermaker.compiler.client.FetchTranslator.OpType;
+import fr.lelouet.jswaggermaker.compiler.client.FetchTranslation.OpType;
 import io.swagger.models.ArrayModel;
 import io.swagger.models.Model;
 import io.swagger.models.Operation;
@@ -24,9 +26,58 @@ import io.swagger.models.properties.ObjectProperty;
 import io.swagger.models.properties.Property;
 import io.swagger.parser.SwaggerParser;
 
-public class ESICompiler {
+public class SwaggerCompiler {
 
-	private static final Logger logger = LoggerFactory.getLogger(ESICompiler.class);
+	private static final Logger logger = LoggerFactory.getLogger(SwaggerCompiler.class);
+
+	public static class Options {
+
+		public static final String SWAGGERURLPREFIX = "url=";
+
+		public String swaggerURL;
+
+		public static final String OUTDIRPREFIX = "folder=";
+
+		public String outDir = "compiled/";
+
+		public static final String CLEARFOLDERPREFIX = "clear=";
+
+		public Boolean clearFolder = true;
+
+		public static final String LOADPREFIX = "load=";
+
+		public Options(String... args) {
+			if (args != null) {
+				for (String arg : args) {
+					load(arg);
+				}
+			}
+		}
+
+		private void load(String arg) {
+			if (arg.startsWith(SWAGGERURLPREFIX)) {
+				swaggerURL = arg.substring(SWAGGERURLPREFIX.length());
+			} else if (arg.startsWith(OUTDIRPREFIX)) {
+				outDir = arg.substring(OUTDIRPREFIX.length());
+			} else if (arg.startsWith(CLEARFOLDERPREFIX)) {
+				clearFolder = Boolean.parseBoolean(arg.substring(CLEARFOLDERPREFIX.length()));
+			} else if (arg.startsWith(LOADPREFIX)) {
+				loadFile(arg.substring(LOADPREFIX.length()));
+			} else {
+				System.err.println("can't parse argument " + arg);
+			}
+		}
+
+		private void loadFile(String fileName) {
+			try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+				br.lines().forEachOrdered(this::load);
+			} catch (IOException e) {
+				throw new UnsupportedOperationException("catch this", e);
+			}
+		}
+	}
+
+	public Options options = new Options();
 
 	/**
 	 *
@@ -39,14 +90,14 @@ public class ESICompiler {
 	public static void main(String... args) throws IOException, JClassAlreadyExistsException {
 		long startTime = System.currentTimeMillis();
 		logger.info("compiling esi with params " + Arrays.asList(args));
-		ESICompiler c = new ESICompiler();
-		c.setSwaggerURL(args[0]);
+		SwaggerCompiler c = new SwaggerCompiler(args);
 		JCodeModel cm = c.compile();
-		File dir = new File(args[1]);
-		delDir(dir);
-		dir.mkdirs();
-		new JCMWriter(cm).build(dir);
+		c.export(cm);
 		logger.info("compiled esi in " + (System.currentTimeMillis() - startTime) / 1000 + "s");
+	}
+
+	public SwaggerCompiler(String... args) {
+		options = new Options(args);
 	}
 
 	protected static void delDir(File delete) {
@@ -60,14 +111,8 @@ public class ESICompiler {
 		}
 	}
 
-	protected String swaggerURL;
-
-	public void setSwaggerURL(String url) {
-		swaggerURL = url;
-	}
-
 	public JCodeModel compile() throws JClassAlreadyExistsException {
-		Swagger swagger = new SwaggerParser().read(swaggerURL);
+		Swagger swagger = fetchSwagger();
 		String baseURL = swagger.getSchemes().get(0).toValue()
 				+ "://"
 				+ swagger.getHost()
@@ -80,14 +125,33 @@ public class ESICompiler {
 			String resource = e.getKey();
 			Path p = e.getValue();
 
-			FetchTranslator f = new FetchTranslator(p.getGet(), OpType.get, baseURL + resource, cltrans);
-			f.apply();
-			new CacheTranslator(f).apply();
-			new FetchTranslator(p.getPut(), OpType.put, baseURL + resource, cltrans).apply();
-			new FetchTranslator(p.getDelete(), OpType.delete, baseURL + resource, cltrans).apply();
-			new FetchTranslator(p.getPost(), OpType.post, baseURL + resource, cltrans).apply();
+			for (OpType optype : OpType.values()) {
+				apptyToPath(optype.getOp(p), optype, baseURL + resource, cltrans);
+			}
 		});
 		return cm;
+	}
+
+	protected Swagger fetchSwagger() {
+		if (options.swaggerURL != null) {
+			return new SwaggerParser().read(options.swaggerURL);
+		}
+		return null;
+	}
+
+	protected void apptyToPath(Operation op, OpType optype, String url, ClassBridge cltrans) {
+		FetchTranslation f = new FetchTranslation(op, optype, url, cltrans);
+		f.apply();
+	}
+
+	public void export(JCodeModel cm) throws IOException {
+		File dir = new File(options.outDir);
+		if (options.clearFolder) {
+			delDir(dir);
+		}
+		dir.mkdirs();
+		new JCMWriter(cm).build(dir);
+
 	}
 
 	/** Override to change the way to generate a classBridge */

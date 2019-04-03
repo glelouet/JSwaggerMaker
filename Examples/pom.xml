@@ -9,4 +9,8 @@
   <artifactId>Examples</artifactId>
   <name>Examples</name>
   <description>meta module of example projects</description>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>ExampleLoad</module>
+  </modules>
 </project>
