@@ -37,6 +37,7 @@ import io.swagger.models.ArrayModel;
 import io.swagger.models.Model;
 import io.swagger.models.ModelImpl;
 import io.swagger.models.Path;
+import io.swagger.models.RefModel;
 import io.swagger.models.Response;
 import io.swagger.models.Swagger;
 import io.swagger.models.parameters.QueryParameter;
@@ -48,6 +49,7 @@ import io.swagger.models.properties.IntegerProperty;
 import io.swagger.models.properties.LongProperty;
 import io.swagger.models.properties.ObjectProperty;
 import io.swagger.models.properties.Property;
+import io.swagger.models.properties.RefProperty;
 import io.swagger.models.properties.StringProperty;
 
 /**
@@ -62,13 +64,16 @@ public class ClassBridge {
 	public final Swagger swagger;
 	public final CompilerOptions options;
 
+	public String rootPackage;
 	public JPackage responsePackage = null;
+	public JPackage definitionsPackage = null;
 	public JPackage structurePackage = null;
 	public JPackage keyPackage = null;
 	public JPackage connectedPackage = null;
 	public JPackage disconnectedPackage = null;
 
 	protected String responsesPackageName = "responses";
+	protected String definitionsPackageName = "definitions";
 	protected String structuresPackageName = "structures";
 	protected String keysPackageName = "keys";
 	protected String connectedPackageName = "connected";
@@ -87,6 +92,7 @@ public class ClassBridge {
 		this.cm = cm;
 		this.swagger = swagger;
 		this.options = options;
+		rootPackage = SwaggerCompiler.class.getPackage().getName() + ".compiled";
 
 		try {
 			swaggerItf = (AbstractJClass) cm._ref(ITransfer.class);
@@ -107,6 +113,7 @@ public class ClassBridge {
 		createSwaggerCalls();
 
 		responsePackage = cm._package(rootPackage + "." + responsesPackageName);
+		definitionsPackage = cm._package(rootPackage + "." + definitionsPackageName);
 		structurePackage = cm._package(rootPackage + "." + structuresPackageName);
 		keyPackage = cm._package(rootPackage + "." + keysPackageName);
 		connectedPackage = cm._package(rootPackage + "." + connectedPackageName);
@@ -115,7 +122,7 @@ public class ClassBridge {
 		// create the classes in the definitions
 
 		for (Entry<String, Model> def : swagger.getDefinitions().entrySet()) {
-
+			addDefinition(def.getKey(), def.getValue());
 		}
 
 		// first pass to fetch all the responses
@@ -126,6 +133,27 @@ public class ClassBridge {
 		// then we merge all response types that have same structure.
 		// this makes a map of renames
 		mergeResponseTypes();
+	}
+
+	private HashMap<String, AbstractJType> definitions = new HashMap<>();
+
+	private void addDefinition(String name, Model m) {
+		if(m.getClass()==ArrayModel.class) {
+			definitions.put(name, translateToClass(((ArrayModel) m).getItems(), definitionsPackage, name));
+		} else if (m.getClass() == ModelImpl.class) {
+			ModelImpl mi = (ModelImpl) m;
+			if (mi.getAdditionalProperties() != null) {
+				throw new UnsupportedOperationException("handle here");
+			} else if (mi.getProperties() != null) {
+				// object description
+				// TODO
+				// registerOPType(m.getTitle(), mi.getProperties());
+			} else {
+				throw new UnsupportedOperationException("handle here");
+			}
+		} else {
+			throw new UnsupportedOperationException("can't add definition for name "+name+" and model class "+m.getClass());
+		}
 	}
 
 	protected void createSwaggerCalls() {
@@ -140,8 +168,6 @@ public class ClassBridge {
 		}
 		scopesField.init(scopesinit);
 	}
-
-	public String rootPackage = SwaggerCompiler.class.getPackage().getName() + ".compiled";
 
 	////
 	// response merging. Some responses have same structure, we merge them in a
@@ -170,6 +196,8 @@ public class ClassBridge {
 		} else if (m.getClass() == ArrayModel.class) {
 			ArrayModel am = (ArrayModel) m;
 			registerPropertyType(am.getItems().getTitle(), am.getItems());
+		} else if (m.getClass() == RefModel.class) {
+			// do nothing : response ref are created by the bridge
 		} else {
 			throw new UnsupportedOperationException("can't load model class " + m.getClass());
 		}
@@ -288,6 +316,8 @@ public class ClassBridge {
 			return translateToClass((ObjectProperty) p, pck, name);
 		case ArrayProperty.TYPE:
 			return translateToClass((ArrayProperty) p, pck, name);
+		case RefProperty.TYPE:
+			return definitions.get(((RefProperty) p).get$ref());
 		default:
 			throw new UnsupportedOperationException("case not handled " + p.getType());
 		}
