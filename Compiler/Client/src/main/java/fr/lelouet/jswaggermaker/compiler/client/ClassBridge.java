@@ -36,9 +36,7 @@ import fr.lelouet.jswaggermaker.client.common.interfaces.ITransfer;
 import io.swagger.models.ArrayModel;
 import io.swagger.models.Model;
 import io.swagger.models.ModelImpl;
-import io.swagger.models.Path;
 import io.swagger.models.RefModel;
-import io.swagger.models.Response;
 import io.swagger.models.Swagger;
 import io.swagger.models.parameters.QueryParameter;
 import io.swagger.models.properties.ArrayProperty;
@@ -51,6 +49,7 @@ import io.swagger.models.properties.ObjectProperty;
 import io.swagger.models.properties.Property;
 import io.swagger.models.properties.RefProperty;
 import io.swagger.models.properties.StringProperty;
+import io.swagger.models.utils.PropertyModelConverter;
 
 /**
  * bridge between a {@link Swagger} and the classes we create in a
@@ -119,41 +118,14 @@ public class ClassBridge {
 		connectedPackage = cm._package(rootPackage + "." + connectedPackageName);
 		disconnectedPackage = cm._package(rootPackage + "." + disconnectedPackageName);
 
-		// create the classes in the definitions
-
-		for (Entry<String, Model> def : swagger.getDefinitions().entrySet()) {
-			addDefinition(def.getKey(), def.getValue());
-		}
-
-		// first pass to fetch all the responses
-		for (Path path : swagger.getPaths().values()) {
-			addResponseType(SwaggerCompiler.getResponse(path.getGet()));
-			addResponseType(SwaggerCompiler.getResponse(path.getPost()));
-		}
-		// then we merge all response types that have same structure.
-		// this makes a map of renames
-		mergeResponseTypes();
-	}
-
-	private HashMap<String, AbstractJType> definitions = new HashMap<>();
-
-	private void addDefinition(String name, Model m) {
-		if(m.getClass()==ArrayModel.class) {
-			definitions.put(name, translateToClass(((ArrayModel) m).getItems(), definitionsPackage, name));
-		} else if (m.getClass() == ModelImpl.class) {
-			ModelImpl mi = (ModelImpl) m;
-			if (mi.getAdditionalProperties() != null) {
-				throw new UnsupportedOperationException("handle here");
-			} else if (mi.getProperties() != null) {
-				// object description
-				// TODO
-				// registerOPType(m.getTitle(), mi.getProperties());
-			} else {
-				throw new UnsupportedOperationException("handle here");
-			}
-		} else {
-			throw new UnsupportedOperationException("can't add definition for name "+name+" and model class "+m.getClass());
-		}
+		// // first pass to fetch all the responses
+		// for (Path path : swagger.getPaths().values()) {
+		// addResponseType(SwaggerCompiler.getResponse(path.getGet()));
+		// addResponseType(SwaggerCompiler.getResponse(path.getPost()));
+		// }
+		// // then we merge all response types that have same structure.
+		// // this makes a map of renames
+		// mergeResponseTypes();
 	}
 
 	protected void createSwaggerCalls() {
@@ -174,57 +146,61 @@ public class ClassBridge {
 	// first pass
 	////
 
-	protected HashMap<Map<String, String>, Set<String>> responseStructures = new HashMap<>();
-
-	protected void addResponseType(Response r) {
-		if (r == null || r.getResponseSchema() == null) {
-			return;
-		}
-		Model m = r.getResponseSchema();
-		// according to the type of response we have
-		if (m.getClass() == ModelImpl.class) {
-			ModelImpl mi = (ModelImpl) m;
-			if (mi.getAdditionalProperties() != null) {
-				// map string > additionalproperties
-				registerPropertyType(m.getTitle(), mi.getAdditionalProperties());
-			} else if (mi.getProperties() != null) {
-				// object description
-				registerOPType(m.getTitle(), mi.getProperties());
-			} else {
-				// format represents the type. simple types are already added.
-			}
-		} else if (m.getClass() == ArrayModel.class) {
-			ArrayModel am = (ArrayModel) m;
-			registerPropertyType(am.getItems().getTitle(), am.getItems());
-		} else if (m.getClass() == RefModel.class) {
-			// do nothing : response ref are created by the bridge
-		} else {
-			throw new UnsupportedOperationException("can't load model class " + m.getClass());
-		}
-	}
-
-	protected void registerPropertyType(String name, Property prop) {
-		ObjectProperty op = SwaggerCompiler.getPropertyObject(prop);
-		if (op != null) {
-			for (Property subprop : op.getProperties().values()) {
-				if (subprop != null) {
-					registerPropertyType(subprop.getTitle(), subprop);
-				}
-			}
-			registerOPType(name, op.getProperties());
-		}
-	}
-
-	protected void registerOPType(String name, Map<String, Property> structure) {
-		Map<String, String> classDef = structure.entrySet().stream()
-				.collect(Collectors.toMap(Entry::getKey, e -> propertyTypeExtended(e.getValue())));
-		Set<String> set = responseStructures.get(classDef);
-		if (set == null) {
-			set = new HashSet<>();
-			responseStructures.put(classDef, set);
-		}
-		set.add(name);
-	}
+	// protected HashMap<Map<String, String>, Set<String>> responseStructures =
+	// new HashMap<>();
+	//
+	// protected void addResponseType(Response r) {
+	// if (r == null || r.getResponseSchema() == null) {
+	// return;
+	// }
+	// Model m = r.getResponseSchema();
+	// // according to the type of response we have
+	// if (m.getClass() == ModelImpl.class) {
+	// ModelImpl mi = (ModelImpl) m;
+	// if (mi.getAdditionalProperties() != null) {
+	// // map string > additionalproperties
+	// registerPropertyType(m.getTitle(), mi.getAdditionalProperties());
+	// } else if (mi.getProperties() != null) {
+	// // object description
+	// registerOPType(m.getTitle(), mi.getProperties());
+	// } else {
+	// // format represents the type. simple types are already added.
+	// }
+	// } else if (m.getClass() == ArrayModel.class) {
+	// ArrayModel am = (ArrayModel) m;
+	// registerPropertyType(am.getItems().getTitle(), am.getItems());
+	// } else if (m.getClass() == RefModel.class) {
+	// // do nothing : response ref are created by the bridge
+	// } else {
+	// throw new UnsupportedOperationException("can't load model class " +
+	// m.getClass());
+	// }
+	// }
+	//
+	// protected void registerPropertyType(String name, Property prop) {
+	// ObjectProperty op = SwaggerCompiler.getPropertyObject(prop);
+	// if (op != null) {
+	// for (Property subprop : op.getProperties().values()) {
+	// if (subprop != null) {
+	// registerPropertyType(subprop.getTitle(), subprop);
+	// }
+	// }
+	// registerOPType(name, op.getProperties());
+	// }
+	// }
+	//
+	// protected void registerOPType(String name, Map<String, Property> structure)
+	// {
+	// Map<String, String> classDef = structure.entrySet().stream()
+	// .collect(Collectors.toMap(Entry::getKey, e ->
+	// propertyTypeExtended(e.getValue())));
+	// Set<String> set = responseStructures.get(classDef);
+	// if (set == null) {
+	// set = new HashSet<>();
+	// responseStructures.put(classDef, set);
+	// }
+	// set.add(name);
+	// }
 
 	protected static String propertyTypeExtended(Property structure) {
 		String ret = structure.getType();// + (structure.getFormat() != null ? "(" +
@@ -241,15 +217,16 @@ public class ClassBridge {
 	}
 
 	protected HashMap<String, String> structureRenames = new HashMap<>();
-
-	protected void mergeResponseTypes() {
-		for (Entry<Map<String, String>, Set<String>> e : responseStructures.entrySet()) {
-			String newName = mergeClassesNames(e.getKey(), e.getValue());
-			for (String oldName : e.getValue()) {
-				structureRenames.put(oldName, newName);
-			}
-		}
-	}
+	//
+	// protected void mergeResponseTypes() {
+	// for (Entry<Map<String, String>, Set<String>> e :
+	// responseStructures.entrySet()) {
+	// String newName = mergeClassesNames(e.getKey(), e.getValue());
+	// for (String oldName : e.getValue()) {
+	// structureRenames.put(oldName, newName);
+	// }
+	// }
+	// }
 
 	/**
 	 * try find a common name for several classes that have same structure.
@@ -312,18 +289,18 @@ public class ClassBridge {
 		}
 		switch (p.getType()) {
 		case ObjectProperty.TYPE:
-			// TODO check if mapproperty
 			return translateToClass((ObjectProperty) p, pck, name);
 		case ArrayProperty.TYPE:
 			return translateToClass((ArrayProperty) p, pck, name);
 		case RefProperty.TYPE:
-			return definitions.get(((RefProperty) p).get$ref());
+			return translateDefToClass(((RefProperty) p).getSimpleRef());
 		default:
 			throw new UnsupportedOperationException("case not handled " + p.getType());
 		}
 	}
 
 	public AbstractJType getExistingClass(String type, String name, String format, List<String> enums) {
+		System.err.println("get existing class type=" + type + " name=" + name + " format=" + format + " enums=" + enums);
 		switch (type) {
 		case IntegerProperty.TYPE:
 			if (format == null) {
@@ -360,6 +337,7 @@ public class ClassBridge {
 	}
 
 	protected AbstractJType getStringEnum(String name, List<String> enums) {
+		System.err.println("create string enum " + name + " values " + enums);
 		JDefinedClass ret = null;
 		try {
 			ret = structurePackage._enum(JMod.PUBLIC, name);
@@ -434,6 +412,7 @@ public class ClassBridge {
 	protected HashMap<Map<String, String>, JDefinedClass> createdClasses = new HashMap<>();
 
 	protected JDefinedClass translateToClass(ObjectProperty p, JPackage pck, String name) {
+		System.err.println("translate to class " + name + " objectproperty=" + p);
 		Map<String, String> classDef = p.getProperties().entrySet().stream()
 				.collect(Collectors.toMap(Entry::getKey, e -> propertyTypeExtended(e.getValue())));
 		JDefinedClass createdClass = createdClasses.get(classDef);
@@ -444,8 +423,12 @@ public class ClassBridge {
 			JDefinedClass cl = pck._class(name.replaceAll("_ok", ""));
 			for (Entry<String, Property> e : p.getProperties().entrySet()) {
 				Property prop = e.getValue();
+				String structName = structureRenames.getOrDefault(prop.getTitle(), prop.getTitle());
+				if (structName == null) {
+					structName=e.getKey().toUpperCase();
+				}
 				JFieldVar field = cl.field(JMod.PUBLIC,
-						translateToClass(prop, pck, structureRenames.getOrDefault(prop.getTitle(), prop.getTitle())), e.getKey());
+						translateToClass(prop, pck, structName), e.getKey());
 				field.javadoc().add(prop.getDescription());
 			}
 			createEquals(cl);
@@ -457,8 +440,66 @@ public class ClassBridge {
 		}
 	}
 
-	public void createEquals(JDefinedClass cl) {
+	protected AbstractJClass translateToClass(ArrayProperty p, JPackage pck, String name) {
+		AbstractJType arraCl = translateToClass(p.getItems(), pck, name);
+		return arraCl.array();
+	}
 
+	/** cache of existing definitions */
+	private HashMap<String, AbstractJType> definitions = new HashMap<>();
+
+	protected AbstractJType translateDefToClass(String defName) {
+		AbstractJType ret = definitions.get(defName);
+		if (ret == null) {
+			synchronized (definitions) {
+				ret = definitions.get(defName);
+				if (ret == null) {
+					Model m = swagger.getDefinitions().get(defName);
+					if (m == null) {
+						throw new UnsupportedOperationException(
+								"got no model for definition " + defName + " existing are " + swagger.getDefinitions().keySet());
+					}
+					ret = translateToClass(m, definitionsPackage, defName);
+					definitions.put(defName, ret);
+				}
+			}
+		}
+		return ret;
+	}
+
+	public AbstractJType translateToClass(Model m, JPackage pck, String name) {
+		if (m == null) {
+			return cm.VOID;
+		} else if (m.getClass() == ArrayModel.class) {
+			Property s = ((ArrayModel) m).getItems();
+			return translateToClass(s, pck, s.getTitle()).boxify().array();
+		} else if (m.getClass() == ModelImpl.class) {
+			ModelImpl mi = (ModelImpl) m;
+			return translateToClass(mi, pck, name);
+		} else if (m.getClass() == RefModel.class) {
+			return translateToClass((RefModel) m, pck, name);
+		} else {
+			throw new UnsupportedOperationException("can't translate model class " + m.getClass());
+		}
+	}
+
+	protected AbstractJType translateToClass(ModelImpl mi, JPackage pck, String name) {
+		System.err.println("translating ModelImpl to class " + name);
+		if (mi.getAdditionalProperties() != null) {
+			Property s = mi.getAdditionalProperties();
+			AbstractJType resourceFlatType = translateToClass(s, pck, s.getTitle());
+			return cm.ref(Map.class).narrow(cm.ref(String.class), resourceFlatType.boxify());
+		} else {
+			Property s = new PropertyModelConverter().modelToProperty(mi);
+			return translateToClass(s, pck, name);
+		}
+	}
+
+	protected AbstractJType translateToClass(RefModel rf, JPackage pck, String name) {
+		return translateDefToClass(rf.getSimpleRef());
+	}
+
+	public void createEquals(JDefinedClass cl) {
 		JMethod eqmeth = cl.method(JMod.PUBLIC, cm.BOOLEAN, "equals");
 		JVar eqOther = eqmeth.param(cm.ref(Object.class), "other");
 		eqmeth.annotate(Override.class);
@@ -513,11 +554,6 @@ public class ClassBridge {
 		hashmeth.body()._return(ret);
 	}
 
-	protected AbstractJClass translateToClass(ArrayProperty p, JPackage pck, String name) {
-		AbstractJType arraCl = translateToClass(p.getItems(), pck, name);
-		return arraCl.array();
-	}
-
 	/**
 	 * translate a property into a response class.
 	 *
@@ -529,9 +565,6 @@ public class ClassBridge {
 			return cm.VOID;
 		} else {
 			String className = structureRenames.getOrDefault(s.getTitle(), s.getTitle());
-			if (className == null) {
-				System.err.println("null name for " + s + " with title " + s.getTitle());
-			}
 			return translateToClass(s, responsePackage, className);
 		}
 	}

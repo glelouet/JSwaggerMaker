@@ -30,13 +30,13 @@ import io.swagger.models.Model;
 import io.swagger.models.ModelImpl;
 import io.swagger.models.Operation;
 import io.swagger.models.Path;
+import io.swagger.models.RefModel;
 import io.swagger.models.Response;
 import io.swagger.models.parameters.BodyParameter;
 import io.swagger.models.parameters.Parameter;
 import io.swagger.models.parameters.PathParameter;
 import io.swagger.models.parameters.QueryParameter;
 import io.swagger.models.properties.Property;
-import io.swagger.models.utils.PropertyModelConverter;
 
 public class FetchTranslation {
 
@@ -236,27 +236,21 @@ public class FetchTranslation {
 			resourceStructure = RETURNTYPE.NONE;
 			resourceType = resourceFlatType = cm.VOID;
 			fetchRetType = cm.ref(Requested.class).narrow(resourceType);
-		} else if (m.getClass() == ArrayModel.class) {
-			ArrayModel am = (ArrayModel) m;
-			resourceStructure = RETURNTYPE.LIST;
-			resourceFlatType = bridge.getReponseClass(am.getItems());
-			resourceType = resourceFlatType.boxify().array();
-			fetchRetType = cm.ref(Requested.class).narrow(resourceType);
-		} else if (m.getClass() == ModelImpl.class) {
-			ModelImpl mi = (ModelImpl) m;
-			if (mi.getAdditionalProperties() != null) {
+		} else {
+			resourceType = bridge.translateToClass(m, bridge.responsePackage, m.getTitle());
+			if (resourceType.isArray()) {
+				resourceStructure = RETURNTYPE.LIST;
+				resourceFlatType = resourceType.elementType();
+				fetchRetType = cm.ref(Requested.class).narrow(resourceType);
+			} else if (m.getClass() == ModelImpl.class && ((ModelImpl) m).getAdditionalProperties() != null) {
 				resourceStructure = RETURNTYPE.MAP;
-				resourceFlatType = bridge.getReponseClass(mi.getAdditionalProperties());
-				resourceType = cm.ref(Map.class).narrow(cm.ref(String.class), resourceFlatType.boxify());
+				resourceFlatType = bridge.getReponseClass(((ModelImpl) m).getAdditionalProperties());
 				fetchRetType = cm.ref(Requested.class).narrow(resourceType);
 			} else {
 				resourceStructure = RETURNTYPE.OBJECT;
-				resourceType = resourceFlatType = bridge
-						.getReponseClass(new PropertyModelConverter().modelToProperty(response.getResponseSchema()));
+				resourceFlatType = resourceType;
 				fetchRetType = cm.ref(Requested.class).narrow(resourceType);
 			}
-		} else {
-			logger.warn("can't apply to path class " + m.getClass());
 		}
 	}
 
@@ -325,9 +319,16 @@ public class FetchTranslation {
 			case "body":
 				BodyParameter bp = (BodyParameter) p;
 				Model schema = bp.getSchema();
+				System.err.println("body parameter " + bp.getName() + " model " + schema);
 				if (schema instanceof ArrayModel) {
 					fetchMeth.javadoc().addParam(p.getName()).add(p.getDescription());
 					pt = bridge.getExistingClass((ArrayModel) schema);
+					param = fetchMeth.param(pt, bp.getName());
+					bodyparameters.add(param);
+					allParams.add(param);
+				} else if (schema instanceof RefModel) {
+					fetchMeth.javadoc().addParam(p.getName()).add(p.getDescription());
+					pt = bridge.translateDefToClass(((RefModel) schema).getSimpleRef());
 					param = fetchMeth.param(pt, bp.getName());
 					bodyparameters.add(param);
 					allParams.add(param);
