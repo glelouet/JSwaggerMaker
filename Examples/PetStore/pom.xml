@@ -38,7 +38,8 @@
 				<configuration>
 					<mainClass>fr.lelouet.jswaggermaker.compiler.client.SwaggerCompiler</mainClass>
 					<arguments>
-						<argument>load=options.txt</argument>
+						<argument>url=https://petstore.swagger.io/v2/swagger.json</argument>
+						<argument>folder=src/generated/java/</argument> 
 					</arguments>
 				</configuration>
 			</plugin>

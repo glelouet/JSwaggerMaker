@@ -18,7 +18,7 @@ import com.helger.jcodemodel.JMod;
 import com.helger.jcodemodel.JTypeVar;
 import com.helger.jcodemodel.JVar;
 
-import fr.lelouet.jswaggermaker.client.common.interfaces.ISwaggerCacheHelper;
+import fr.lelouet.jswaggermaker.client.common.interfaces.cache.ICacheHelper;
 import fr.lelouet.jswaggermaker.compiler.client.CacheTranslator;
 import fr.lelouet.jswaggermaker.compiler.client.ClassBridge;
 import fr.lelouet.jswaggermaker.compiler.client.CompilerOptions;
@@ -48,7 +48,7 @@ public class ActiveCacheTranslator implements CacheTranslator {
 
 	public void createCacheMethods() throws JClassAlreadyExistsException {
 
-		cacheItf = cm.ref(ISwaggerCacheHelper.class);
+		cacheItf = cm.ref(ICacheHelper.class);
 		cacheCOClass = cm._class(JMod.PUBLIC | JMod.ABSTRACT, cb.rootPackage + "." + cacheCOName, EClassType.CLASS)
 				._implements(cacheItf);
 		cacheDCClass = cm._class(JMod.PUBLIC | JMod.ABSTRACT, cb.rootPackage + "." + cacheDCName, EClassType.CLASS)

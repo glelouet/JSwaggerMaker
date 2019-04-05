@@ -65,10 +65,22 @@ public interface ITransfer {
 		return request(url, "GET", properties, null, expectedClass);
 	}
 
+	/** request a GET URL into a map */
+	public default <T> Requested<Map<String, T>> requestGetMap(String url, Map<String, String> properties,
+			Class<T> expectedClass) {
+		return requestMap(url, "GET", properties, null, expectedClass);
+	}
+
 	/** request a POST URL */
 	public default <T> Requested<T> requestPost(String url, Map<String, String> properties, Map<String, Object> transmit,
 			Class<T> expectedClass) {
 		return request(url, "POST", properties, transmit, expectedClass);
+	}
+
+	/** request a POST URL into a map */
+	public default <T> Requested<Map<String, T>> requestPostMap(String url, Map<String, String> properties,
+			Map<String, Object> transmit, Class<T> expectedClass) {
+		return requestMap(url, "POST", properties, transmit, expectedClass);
 	}
 
 	/** request a PUT URL */
@@ -88,5 +100,14 @@ public interface ITransfer {
 	 */
 	public <T> Requested<List<T>> requestGetPages(BiFunction<Integer, Map<String, String>, Requested<T[]>> resourceAccess,
 			Map<String, String> parameters);
+
+	/**
+	 * flatten an object (serialize) to be passed in an url.
+	 *
+	 * @param o
+	 *          the object to serialize
+	 * @return the serialization of the object.
+	 */
+	public String flatten(Object o);
 
 }

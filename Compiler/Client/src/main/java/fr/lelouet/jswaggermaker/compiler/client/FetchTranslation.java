@@ -148,8 +148,14 @@ public class FetchTranslation {
 					fetchMeth.body().directStatement("content.put(\"" + p.name() + "\", " + p.name() + ");");
 				}
 			}
-			possibleRet = JExpr.invoke("requestPost").arg(url).arg(propsParam).arg(content == null ? JExpr._null() : content)
-					.arg(JExpr.dotClass(resourceType.boxify()));
+			if (resourceStructure == RETURNTYPE.MAP) {
+				possibleRet = JExpr.invoke("requestPostMap").arg(url).arg(propsParam)
+						.arg(content == null ? JExpr._null() : content).arg(JExpr.dotClass(resourceFlatType.boxify()));
+			} else {
+				possibleRet = JExpr.invoke( "requestPost").arg(url)
+						.arg(propsParam).arg(content == null ? JExpr._null() : content)
+						.arg(JExpr.dotClass(resourceType.boxify()));
+			}
 			break;
 		case put:
 			content = null;
@@ -164,8 +170,13 @@ public class FetchTranslation {
 			possibleRet = JExpr.invoke("requestPut").arg(url).arg(propsParam).arg(content == null ? JExpr._null() : content);
 			break;
 		case get:
-			System.err.println("maked possible ret for " + path + " with resourcetype " + resourceType);
-			possibleRet = JExpr.invoke("requestGet").arg(url).arg(propsParam).arg(JExpr.dotClass(resourceType.boxify()));
+			if (resourceStructure == RETURNTYPE.MAP) {
+				possibleRet = JExpr.invoke("requestGetMap").arg(url).arg(propsParam)
+						.arg(JExpr.dotClass(resourceFlatType.boxify()));
+			} else {
+				possibleRet = JExpr.invoke("requestGet").arg(url)
+						.arg(propsParam).arg(JExpr.dotClass(resourceType.boxify()));
+			}
 			break;
 		case delete:
 			possibleRet = JExpr.invoke("requestDel").arg(url).arg(propsParam);

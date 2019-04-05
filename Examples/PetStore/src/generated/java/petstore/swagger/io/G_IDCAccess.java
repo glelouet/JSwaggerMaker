@@ -136,7 +136,7 @@ interface G_IDCAccess
      */
     public default Requested<Map<String, Integer>> getInventory(Map<String, String> properties) {
         String url = ("https://petstore.swagger.io/v2/store/inventory");
-        return requestGet(url, properties, Map.class);
+        return requestGetMap(url, properties, Integer.class);
     }
 
     /**

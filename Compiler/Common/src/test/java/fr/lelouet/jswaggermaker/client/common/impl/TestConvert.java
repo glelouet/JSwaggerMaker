@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -17,6 +18,7 @@ public class TestConvert {
 		TypeReference<HashMap<String, String>> typeRef = new TypeReference<>() {
 		};
 		Map<String, String> map = new ObjectMapper().readValue(jsonInput, typeRef);
+		Assert.assertEquals(map.get("key"), "value");
 	}
 
 }

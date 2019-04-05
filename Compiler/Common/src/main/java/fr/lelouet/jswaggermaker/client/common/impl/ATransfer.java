@@ -35,9 +35,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
-import fr.lelouet.jswaggermaker.client.common.interfaces.ISwaggerCacheHelper.Pausable;
 import fr.lelouet.jswaggermaker.client.common.interfaces.ITransfer;
 import fr.lelouet.jswaggermaker.client.common.interfaces.Requested;
+import fr.lelouet.jswaggermaker.client.common.interfaces.cache.Pausable;
 import javafx.beans.InvalidationListener;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableBooleanValue;
@@ -219,14 +219,8 @@ public abstract class ATransfer implements ITransfer {
 		return ret;
 	}
 
-	/**
-	 * flatten an object (serialize) to be passed in an url.
-	 *
-	 * @param o
-	 *          the object to serialize
-	 * @return the serialization of the object.
-	 */
-	protected String flatten(Object o) {
+	@Override
+	public String flatten(Object o) {
 		if (o == null) {
 			return null;
 		}
@@ -396,8 +390,8 @@ public abstract class ATransfer implements ITransfer {
 		protected void logState() {
 			logger.debug("state of executable " + loggingName + " : " + (stop ? "stopped" : "started") + "|"
 					+ (paused ? "paused" : "running") + "|" + (scheduled ? "scheduled" : "unscheduled")
-					// , new Exception()
-					);
+			// , new Exception()
+			);
 		}
 
 		private int count_shortdelay = 0;

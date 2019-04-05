@@ -9,7 +9,7 @@ import fr.lelouet.jswaggermaker.compiler.client.SwaggerCompiler;
 public class CompilePetStore {
 
 	public static void main(String[] args) throws IOException, JClassAlreadyExistsException {
-		SwaggerCompiler.main("load=options.txt");
+		SwaggerCompiler.main("url=https://petstore.swagger.io/v2/swagger.json", "folder=src/generated/java/");
 	}
 
 }
