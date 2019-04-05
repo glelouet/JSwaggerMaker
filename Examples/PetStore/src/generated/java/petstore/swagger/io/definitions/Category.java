@@ -1,4 +1,4 @@
-package fr.lelouet.jswaggermaker.compiler.client.compiled.definitions;
+package petstore.swagger.io.definitions;
 
 public class Category {
     public long id;

@@ -17,6 +17,7 @@ import com.helger.jcodemodel.JBlock;
 import com.helger.jcodemodel.JCodeModel;
 import com.helger.jcodemodel.JExpr;
 import com.helger.jcodemodel.JFieldVar;
+import com.helger.jcodemodel.JInvocation;
 import com.helger.jcodemodel.JMethod;
 import com.helger.jcodemodel.JMod;
 import com.helger.jcodemodel.JPrimitiveType;
@@ -133,13 +134,9 @@ public class FetchTranslation {
 			return;
 		}
 		response = SwaggerCompiler.getResponse(operation);
-		if (response == null) {
-			logger.error("can't find response for path " + path + " " + optype);
-			return;
-		}
 		makeFetchMethInit();
 		addPathJavadoc();
-
+		JInvocation possibleRet;
 		switch (optype) {
 		case post:
 			JVar content = null;
@@ -151,8 +148,8 @@ public class FetchTranslation {
 					fetchMeth.body().directStatement("content.put(\"" + p.name() + "\", " + p.name() + ");");
 				}
 			}
-			fetchMeth.body()._return(JExpr.invoke("requestPost").arg(url).arg(propsParam)
-					.arg(content == null ? JExpr._null() : content).arg(JExpr.dotClass(resourceType.boxify())));
+			possibleRet = JExpr.invoke("requestPost").arg(url).arg(propsParam).arg(content == null ? JExpr._null() : content)
+					.arg(JExpr.dotClass(resourceType.boxify()));
 			break;
 		case put:
 			content = null;
@@ -164,17 +161,23 @@ public class FetchTranslation {
 					fetchMeth.body().add(content.invoke("put").arg(p.name()).arg(p));
 				}
 			}
-			fetchMeth.body()
-			._return(JExpr.invoke("requestPut").arg(url).arg(propsParam).arg(content == null ? JExpr._null() : content));
+			possibleRet = JExpr.invoke("requestPut").arg(url).arg(propsParam).arg(content == null ? JExpr._null() : content);
 			break;
 		case get:
-			fetchMeth.body()._return(JExpr.invoke("requestGet").arg(url).arg(propsParam).arg(JExpr.dotClass(resourceType)));
+			System.err.println("maked possible ret for " + path + " with resourcetype " + resourceType);
+			possibleRet = JExpr.invoke("requestGet").arg(url).arg(propsParam).arg(JExpr.dotClass(resourceType.boxify()));
 			break;
 		case delete:
-			fetchMeth.body()._return(JExpr.invoke("requestDel").arg(url).arg(propsParam));
+			possibleRet = JExpr.invoke("requestDel").arg(url).arg(propsParam);
 			break;
 		default:
 			throw new UnsupportedOperationException("unsupported type " + optype + " for path " + path);
+		}
+
+		if (fetchRetType != cm.VOID) {
+			fetchMeth.body()._return(possibleRet);
+		} else {
+			fetchMeth.body().add(possibleRet);
 		}
 	}
 
@@ -231,11 +234,11 @@ public class FetchTranslation {
 	 * get the existing fetch type for this response
 	 */
 	protected void makeFetchRetType() {
-		Model m = response.getResponseSchema();
+		Model m = response == null ? null : response.getResponseSchema();
 		if (m == null) {
 			resourceStructure = RETURNTYPE.NONE;
 			resourceType = resourceFlatType = cm.VOID;
-			fetchRetType = cm.ref(Requested.class).narrow(resourceType);
+			fetchRetType = cm.VOID;
 		} else {
 			resourceType = bridge.translateToClass(m, bridge.responsePackage, m.getTitle());
 			if (resourceType.isArray()) {
@@ -252,6 +255,9 @@ public class FetchTranslation {
 				fetchRetType = cm.ref(Requested.class).narrow(resourceType);
 			}
 		}
+		// System.err.println(
+		// "path " + path + " flat=" + resourceFlatType + " type=" + fetchRetType +
+		// " structure=" + resourceStructure);
 	}
 
 	/** true iff the path requires connection */
@@ -319,7 +325,8 @@ public class FetchTranslation {
 			case "body":
 				BodyParameter bp = (BodyParameter) p;
 				Model schema = bp.getSchema();
-				System.err.println("body parameter " + bp.getName() + " model " + schema);
+				// System.err.println("body parameter " + bp.getName() + " model " +
+				// schema);
 				if (schema instanceof ArrayModel) {
 					fetchMeth.javadoc().addParam(p.getName()).add(p.getDescription());
 					pt = bridge.getExistingClass((ArrayModel) schema);

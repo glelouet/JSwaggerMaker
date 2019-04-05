@@ -1,4 +1,4 @@
-package fr.lelouet.jswaggermaker.compiler.client.compiled;
+package petstore.swagger.io;
 
 import fr.lelouet.jswaggermaker.client.common.interfaces.ITransfer;
 
@@ -6,7 +6,7 @@ import fr.lelouet.jswaggermaker.client.common.interfaces.ITransfer;
 /**
  * interface to access the ESI with a connected account.<br />This typically gives access to the character information, corporation, etc.
  */
-public interface G_ICOAccess
+interface G_ICOAccess
     extends ITransfer
 {
     public static final String[] SCOPES = new String[] {"write:pets", "read:pets"};

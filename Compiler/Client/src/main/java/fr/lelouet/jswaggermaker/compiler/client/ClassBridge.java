@@ -63,7 +63,7 @@ public class ClassBridge {
 	public final Swagger swagger;
 	public final CompilerOptions options;
 
-	public String rootPackage;
+	public JPackage rootPackage;
 	public JPackage responsePackage = null;
 	public JPackage definitionsPackage = null;
 	public JPackage structurePackage = null;
@@ -91,16 +91,20 @@ public class ClassBridge {
 		this.cm = cm;
 		this.swagger = swagger;
 		this.options = options;
-		rootPackage = SwaggerCompiler.class.getPackage().getName() + ".compiled";
+		if (options.pckg != null) {
+			rootPackage = cm._package(options.pckg);
+		} else {
+			rootPackage = cm._package(swagger.getHost());
+		}
 
 		try {
 			swaggerItf = (AbstractJClass) cm._ref(ITransfer.class);
 
-			swaggerDCClass = cm._class(rootPackage + "." + "G_IDCAccess", EClassType.INTERFACE)._extends(swaggerItf);
+			swaggerDCClass = rootPackage._class(0, "G_IDCAccess", EClassType.INTERFACE)._extends(swaggerItf);
 			swaggerDCClass.javadoc().add("interface to access the ESI without an account.<br />"
 					+ "This gives access to static data, eg items, markets, etc.");
 
-			swaggerCOClass = cm._class(rootPackage + "." + "G_ICOAccess", EClassType.INTERFACE)._extends(swaggerItf);
+			swaggerCOClass = rootPackage._class(0, "G_ICOAccess", EClassType.INTERFACE)._extends(swaggerItf);
 			swaggerCOClass.javadoc().add("interface to access the ESI with a connected account.<br />"
 					+ "This typically gives access to the character information, corporation, etc.");
 
@@ -111,12 +115,12 @@ public class ClassBridge {
 		propertiesType = cm.ref(Map.class).narrow(cm.ref(String.class), cm.ref(String.class));
 		createSwaggerCalls();
 
-		responsePackage = cm._package(rootPackage + "." + responsesPackageName);
-		definitionsPackage = cm._package(rootPackage + "." + definitionsPackageName);
-		structurePackage = cm._package(rootPackage + "." + structuresPackageName);
-		keyPackage = cm._package(rootPackage + "." + keysPackageName);
-		connectedPackage = cm._package(rootPackage + "." + connectedPackageName);
-		disconnectedPackage = cm._package(rootPackage + "." + disconnectedPackageName);
+		responsePackage = rootPackage.subPackage(responsesPackageName);
+		definitionsPackage = rootPackage.subPackage(definitionsPackageName);
+		structurePackage = rootPackage.subPackage(structuresPackageName);
+		keyPackage = rootPackage.subPackage(keysPackageName);
+		connectedPackage = rootPackage.subPackage(connectedPackageName);
+		disconnectedPackage = rootPackage.subPackage(disconnectedPackageName);
 
 		// // first pass to fetch all the responses
 		// for (Path path : swagger.getPaths().values()) {
@@ -300,7 +304,8 @@ public class ClassBridge {
 	}
 
 	public AbstractJType getExistingClass(String type, String name, String format, List<String> enums) {
-		System.err.println("get existing class type=" + type + " name=" + name + " format=" + format + " enums=" + enums);
+		// System.err.println("get existing class type=" + type + " name=" + name +
+		// " format=" + format + " enums=" + enums);
 		switch (type) {
 		case IntegerProperty.TYPE:
 			if (format == null) {
@@ -337,7 +342,7 @@ public class ClassBridge {
 	}
 
 	protected AbstractJType getStringEnum(String name, List<String> enums) {
-		System.err.println("create string enum " + name + " values " + enums);
+		// System.err.println("create string enum " + name + " values " + enums);
 		JDefinedClass ret = null;
 		try {
 			ret = structurePackage._enum(JMod.PUBLIC, name);
@@ -412,7 +417,8 @@ public class ClassBridge {
 	protected HashMap<Map<String, String>, JDefinedClass> createdClasses = new HashMap<>();
 
 	protected JDefinedClass translateToClass(ObjectProperty p, JPackage pck, String name) {
-		System.err.println("translate to class " + name + " objectproperty=" + p);
+		// System.err.println("translate to class " + name + " objectproperty=" +
+		// p);
 		Map<String, String> classDef = p.getProperties().entrySet().stream()
 				.collect(Collectors.toMap(Entry::getKey, e -> propertyTypeExtended(e.getValue())));
 		JDefinedClass createdClass = createdClasses.get(classDef);
@@ -484,7 +490,7 @@ public class ClassBridge {
 	}
 
 	protected AbstractJType translateToClass(ModelImpl mi, JPackage pck, String name) {
-		System.err.println("translating ModelImpl to class " + name);
+		// System.err.println(" translating ModelImpl to class " + name);
 		if (mi.getAdditionalProperties() != null) {
 			Property s = mi.getAdditionalProperties();
 			AbstractJType resourceFlatType = translateToClass(s, pck, s.getTitle());

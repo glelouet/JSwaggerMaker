@@ -1,4 +1,4 @@
-package fr.lelouet.jswaggermaker.compiler.client.compiled.structures;
+package petstore.swagger.io.structures;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

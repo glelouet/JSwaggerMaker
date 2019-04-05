@@ -1,6 +1,6 @@
-package fr.lelouet.jswaggermaker.compiler.client.compiled.definitions;
+package petstore.swagger.io.definitions;
 
-import fr.lelouet.jswaggermaker.compiler.client.compiled.structures.STATUS;
+import petstore.swagger.io.structures.STATUS;
 
 public class Pet {
     public long id;

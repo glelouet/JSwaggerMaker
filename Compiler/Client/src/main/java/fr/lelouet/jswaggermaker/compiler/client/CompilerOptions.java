@@ -28,21 +28,27 @@ public class CompilerOptions {
 		}
 	}
 
+	public static final String PACKAGEPREFIX = "package=";
+
+	public String pckg = null;
+
 	public static final String CACHEPREFIX = "cache=";
 
 	public String cache = null;
 
 	private void load(String arg) {
-		if (arg.startsWith(SWAGGERURLPREFIX)) {
-			swaggerURL = arg.substring(SWAGGERURLPREFIX.length());
-		} else if (arg.startsWith(OUTDIRPREFIX)) {
-			outDir = arg.substring(OUTDIRPREFIX.length());
+		if (arg.startsWith(CACHEPREFIX)) {
+			cache = arg.substring(CACHEPREFIX.length());
 		} else if (arg.startsWith(CLEARFOLDERPREFIX)) {
 			clearFolder = Boolean.parseBoolean(arg.substring(CLEARFOLDERPREFIX.length()));
-		} else if (arg.startsWith(CACHEPREFIX)) {
-			cache = arg.substring(CACHEPREFIX.length());
 		} else if (arg.startsWith(LOADPREFIX)) {
 			loadFile(arg.substring(LOADPREFIX.length()));
+		} else if (arg.startsWith(OUTDIRPREFIX)) {
+			outDir = arg.substring(OUTDIRPREFIX.length());
+		} else if (arg.startsWith(PACKAGEPREFIX)) {
+			pckg = arg.substring(PACKAGEPREFIX.length());
+		} else if (arg.startsWith(SWAGGERURLPREFIX)) {
+			swaggerURL = arg.substring(SWAGGERURLPREFIX.length());
 		} else {
 			System.err.println("can't parse argument " + arg);
 		}
