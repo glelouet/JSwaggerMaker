@@ -1,4 +1,4 @@
-package fr.lelouet.jswaggermaker.client.common.impl;
+package fr.lelouet.jswaggermaker.client.common.impl.cache;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,6 +18,7 @@ import java.util.stream.Stream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import fr.lelouet.jswaggermaker.client.common.impl.RequestedImpl;
 import fr.lelouet.jswaggermaker.client.common.interfaces.Requested;
 import fr.lelouet.jswaggermaker.client.common.interfaces.cache.Pausable;
 import javafx.beans.InvalidationListener;
@@ -25,9 +26,9 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableBooleanValue;
 import javafx.collections.ObservableSet;
 
-public abstract class CacheFetcher {
+public abstract class ACacheFetcher {
 
-	private static final Logger logger = LoggerFactory.getLogger(CacheFetcher.class);
+	private static final Logger logger = LoggerFactory.getLogger(ACacheFetcher.class);
 
 	public static final String IFNONEMATCH = "If-None-Match";
 	public static final String ETAG = "Etag";
