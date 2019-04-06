@@ -17,7 +17,6 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.helger.jcodemodel.AbstractJClass;
 import com.helger.jcodemodel.AbstractJType;
-import com.helger.jcodemodel.EClassType;
 import com.helger.jcodemodel.IJExpression;
 import com.helger.jcodemodel.JArray;
 import com.helger.jcodemodel.JClassAlreadyExistsException;
@@ -32,12 +31,14 @@ import com.helger.jcodemodel.JMod;
 import com.helger.jcodemodel.JPackage;
 import com.helger.jcodemodel.JVar;
 
-import fr.lelouet.jswaggermaker.client.common.interfaces.ITransfer;
+import fr.lelouet.jswaggermaker.client.common.impl.ATransfer;
+import fr.lelouet.jswaggermaker.client.common.impl.securities.Disconnected;
 import io.swagger.models.ArrayModel;
 import io.swagger.models.Model;
 import io.swagger.models.ModelImpl;
 import io.swagger.models.RefModel;
 import io.swagger.models.Swagger;
+import io.swagger.models.auth.SecuritySchemeDefinition;
 import io.swagger.models.parameters.QueryParameter;
 import io.swagger.models.properties.ArrayProperty;
 import io.swagger.models.properties.BooleanProperty;
@@ -77,9 +78,6 @@ public class ClassBridge {
 	protected String keysPackageName = "keys";
 	protected String connectedPackageName = "connected";
 	protected String disconnectedPackageName = "disconnected";
-	protected AbstractJClass swaggerItf;
-	public JDefinedClass swaggerCOClass;
-	public JDefinedClass swaggerDCClass;
 
 	private AbstractJClass propertiesType;
 
@@ -97,23 +95,7 @@ public class ClassBridge {
 			rootPackage = cm._package(swagger.getHost());
 		}
 
-		try {
-			swaggerItf = (AbstractJClass) cm._ref(ITransfer.class);
-
-			swaggerDCClass = rootPackage._class(0, "G_IDCAccess", EClassType.INTERFACE)._extends(swaggerItf);
-			swaggerDCClass.javadoc().add("interface to access the ESI without an account.<br />"
-					+ "This gives access to static data, eg items, markets, etc.");
-
-			swaggerCOClass = rootPackage._class(0, "G_ICOAccess", EClassType.INTERFACE)._extends(swaggerItf);
-			swaggerCOClass.javadoc().add("interface to access the ESI with a connected account.<br />"
-					+ "This typically gives access to the character information, corporation, etc.");
-
-		} catch (JClassAlreadyExistsException e) {
-			throw new UnsupportedOperationException("catch this", e);
-		}
-
 		propertiesType = cm.ref(Map.class).narrow(cm.ref(String.class), cm.ref(String.class));
-		createSwaggerCalls();
 
 		responsePackage = rootPackage.subPackage(responsesPackageName);
 		definitionsPackage = rootPackage.subPackage(definitionsPackageName);
@@ -121,116 +103,86 @@ public class ClassBridge {
 		keyPackage = rootPackage.subPackage(keysPackageName);
 		connectedPackage = rootPackage.subPackage(connectedPackageName);
 		disconnectedPackage = rootPackage.subPackage(disconnectedPackageName);
-
-		// // first pass to fetch all the responses
-		// for (Path path : swagger.getPaths().values()) {
-		// addResponseType(SwaggerCompiler.getResponse(path.getGet()));
-		// addResponseType(SwaggerCompiler.getResponse(path.getPost()));
-		// }
-		// // then we merge all response types that have same structure.
-		// // this makes a map of renames
-		// mergeResponseTypes();
 	}
 
-	protected void createSwaggerCalls() {
-		Set<String> allScopes = swagger.getPaths().values().stream().flatMap(p -> p.getOperations().stream())
-				.filter(ope -> ope.getSecurity() != null).flatMap(ope -> ope.getSecurity().stream())
-				.flatMap(m -> m.values().stream()).flatMap(l -> l.stream()).collect(Collectors.toSet());
-		JFieldVar scopesField = swaggerCOClass.field(JMod.PUBLIC | JMod.STATIC | JMod.FINAL, cm.ref(String[].class),
-				"SCOPES");
-		JArray scopesinit = JExpr.newArray(cm.ref(String.class));
-		for (String scope : allScopes) {
-			scopesinit.add(JExpr.lit(scope));
-		}
-		scopesField.init(scopesinit);
-	}
+	private JDefinedClass swaggerDCClass;
 
-	////
-	// response merging. Some responses have same structure, we merge them in a
-	// first pass
-	////
+	private HashMap<String, JDefinedClass> singleSecurityClasses = new HashMap<>();
 
-	// protected HashMap<Map<String, String>, Set<String>> responseStructures =
-	// new HashMap<>();
-	//
-	// protected void addResponseType(Response r) {
-	// if (r == null || r.getResponseSchema() == null) {
-	// return;
-	// }
-	// Model m = r.getResponseSchema();
-	// // according to the type of response we have
-	// if (m.getClass() == ModelImpl.class) {
-	// ModelImpl mi = (ModelImpl) m;
-	// if (mi.getAdditionalProperties() != null) {
-	// // map string > additionalproperties
-	// registerPropertyType(m.getTitle(), mi.getAdditionalProperties());
-	// } else if (mi.getProperties() != null) {
-	// // object description
-	// registerOPType(m.getTitle(), mi.getProperties());
-	// } else {
-	// // format represents the type. simple types are already added.
-	// }
-	// } else if (m.getClass() == ArrayModel.class) {
-	// ArrayModel am = (ArrayModel) m;
-	// registerPropertyType(am.getItems().getTitle(), am.getItems());
-	// } else if (m.getClass() == RefModel.class) {
-	// // do nothing : response ref are created by the bridge
-	// } else {
-	// throw new UnsupportedOperationException("can't load model class " +
-	// m.getClass());
-	// }
-	// }
-	//
-	// protected void registerPropertyType(String name, Property prop) {
-	// ObjectProperty op = SwaggerCompiler.getPropertyObject(prop);
-	// if (op != null) {
-	// for (Property subprop : op.getProperties().values()) {
-	// if (subprop != null) {
-	// registerPropertyType(subprop.getTitle(), subprop);
-	// }
-	// }
-	// registerOPType(name, op.getProperties());
-	// }
-	// }
-	//
-	// protected void registerOPType(String name, Map<String, Property> structure)
-	// {
-	// Map<String, String> classDef = structure.entrySet().stream()
-	// .collect(Collectors.toMap(Entry::getKey, e ->
-	// propertyTypeExtended(e.getValue())));
-	// Set<String> set = responseStructures.get(classDef);
-	// if (set == null) {
-	// set = new HashSet<>();
-	// responseStructures.put(classDef, set);
-	// }
-	// set.add(name);
-	// }
-
-	protected static String propertyTypeExtended(Property structure) {
-		String ret = structure.getType();// + (structure.getFormat() != null ? "(" +
-		// structure.getFormat() + ")" : "");
-		if (structure instanceof StringProperty) {
-			List<String> enums = ((StringProperty) structure).getEnum();
-			if (enums != null) {
-				enums = new ArrayList<>(enums);
-				Collections.sort(enums);
-				ret += enums;
+	public JDefinedClass getFetcherClass(Map<String, List<String>> security) {
+		if (security == null || security.isEmpty()) {
+			if (swaggerDCClass == null) {
+				synchronized (this) {
+					if (swaggerDCClass == null) {
+						try {
+							swaggerDCClass = rootPackage._class(0, "NoConnection")
+									._extends((AbstractJClass) cm._ref(Disconnected.class));
+							swaggerDCClass.javadoc().add("access the swagger with no connection.");
+						} catch (JClassAlreadyExistsException e) {
+							throw new UnsupportedOperationException("catch this", e);
+						}
+					}
+				}
 			}
+			return swaggerDCClass;
+		} else {
+			if (security.size() == 1) {
+				Entry<String, List<String>> secEntry = security.entrySet().iterator().next();
+				String secName = secEntry.getKey();
+				JDefinedClass ret = singleSecurityClasses.get(secName);
+				if (ret == null) {
+					synchronized (singleSecurityClasses) {
+						ret = singleSecurityClasses.get(secName);
+						if (ret == null) {
+							ret = makeClassForSecurity(secName);
+							singleSecurityClasses.put(secName, ret);
+						}
+					}
+				}
+				return ret;
+			}
+			throw new UnsupportedOperationException("can't create security class for " + security);
 		}
-		return ret;
+	}
+
+	protected JDefinedClass makeClassForSecurity(String secName) {
+		SecuritySchemeDefinition def = swagger.getSecurityDefinitions().get(secName);
+		if (def == null) {
+			throw new UnsupportedOperationException("can't find security definition for " + secName + " , existing are "
+					+ swagger.getSecurityDefinitions().keySet());
+		}
+		AbstractJClass parent = null;
+		switch (def.getType().toLowerCase()) {
+		case "oauth2":
+			parent = (AbstractJClass) cm._ref(ATransfer.class);
+			break;
+		case "apikey":
+			parent = (AbstractJClass) cm._ref(ATransfer.class);
+			break;
+		default:
+			throw new UnsupportedOperationException("can't create class for security type " + def.getType());
+		}
+		try {
+			JDefinedClass ret = rootPackage._class(0, secName)._extends(parent);
+			ret.javadoc().add("access the swagger with connection " + def.getType() + ".");
+			Set<String> allScopes = swagger.getPaths().values().stream().flatMap(p -> p.getOperations().stream())
+					.filter(ope -> ope.getSecurity() != null && !ope.getSecurity().isEmpty())
+					.flatMap(ope -> ope.getSecurity().stream()).map(secs -> secs.get(secName)).filter(sec -> sec != null)
+					.flatMap(l -> l.stream())
+					.collect(Collectors.toSet());
+			JFieldVar scopesField = ret.field(JMod.PUBLIC | JMod.STATIC | JMod.FINAL, cm.ref(String[].class), "SCOPES");
+			JArray scopesinit = JExpr.newArray(cm.ref(String.class));
+			for (String scope : allScopes) {
+				scopesinit.add(JExpr.lit(scope));
+			}
+			scopesField.init(scopesinit);
+			return ret;
+		} catch (JClassAlreadyExistsException e) {
+			throw new UnsupportedOperationException("catch this", e);
+		}
 	}
 
 	protected HashMap<String, String> structureRenames = new HashMap<>();
-	//
-	// protected void mergeResponseTypes() {
-	// for (Entry<Map<String, String>, Set<String>> e :
-	// responseStructures.entrySet()) {
-	// String newName = mergeClassesNames(e.getKey(), e.getValue());
-	// for (String oldName : e.getValue()) {
-	// structureRenames.put(oldName, newName);
-	// }
-	// }
-	// }
 
 	/**
 	 * try find a common name for several classes that have same structure.
@@ -431,10 +383,9 @@ public class ClassBridge {
 				Property prop = e.getValue();
 				String structName = structureRenames.getOrDefault(prop.getTitle(), prop.getTitle());
 				if (structName == null) {
-					structName=e.getKey().toUpperCase();
+					structName = e.getKey().toUpperCase();
 				}
-				JFieldVar field = cl.field(JMod.PUBLIC,
-						translateToClass(prop, pck, structName), e.getKey());
+				JFieldVar field = cl.field(JMod.PUBLIC, translateToClass(prop, pck, structName), e.getKey());
 				field.javadoc().add(prop.getDescription());
 			}
 			createEquals(cl);
@@ -444,6 +395,20 @@ public class ClassBridge {
 		} catch (JClassAlreadyExistsException e) {
 			throw new UnsupportedOperationException("catch this", e);
 		}
+	}
+
+	public static String propertyTypeExtended(Property structure) {
+		String ret = structure.getType();// + (structure.getFormat() != null ? "(" +
+		// structure.getFormat() + ")" : "");
+		if (structure instanceof StringProperty) {
+			List<String> enums = ((StringProperty) structure).getEnum();
+			if (enums != null) {
+				enums = new ArrayList<>(enums);
+				Collections.sort(enums);
+				ret += enums;
+			}
+		}
+		return ret;
 	}
 
 	protected AbstractJClass translateToClass(ArrayProperty p, JPackage pck, String name) {

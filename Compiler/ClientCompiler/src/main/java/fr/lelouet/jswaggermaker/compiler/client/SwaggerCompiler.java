@@ -3,6 +3,7 @@ package fr.lelouet.jswaggermaker.compiler.client;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -14,6 +15,7 @@ import com.helger.jcodemodel.writer.JCMWriter;
 
 import fr.lelouet.jswaggermaker.compiler.client.FetchTranslation.OpType;
 import fr.lelouet.jswaggermaker.compiler.client.cache.ActiveCacheTranslator;
+import fr.lelouet.jswaggermaker.compiler.client.cache.CacheTranslator;
 import io.swagger.models.ArrayModel;
 import io.swagger.models.Model;
 import io.swagger.models.Operation;
@@ -94,9 +96,18 @@ public class SwaggerCompiler {
 		swagger.getPaths().entrySet().forEach(e -> {
 			String resource = e.getKey();
 			Path p = e.getValue();
-
 			for (OpType optype : OpType.values()) {
-				apptyToPath(optype.getOp(p), optype, baseURL + resource, cltrans);
+				Operation op = optype.getOp(p);
+				if (op == null) {
+					continue;
+				}
+				if (op.getSecurity() == null || op.getSecurity().isEmpty()) {
+					apptyToPath(op, optype, baseURL + resource, cltrans, null);
+				} else {
+					for (Map<String, List<String>> sec : op.getSecurity()) {
+						apptyToPath(op, optype, baseURL + resource, cltrans, sec);
+					}
+				}
 			}
 		});
 		return cm;
@@ -109,8 +120,9 @@ public class SwaggerCompiler {
 		return null;
 	}
 
-	protected void apptyToPath(Operation op, OpType optype, String url, ClassBridge cltrans) {
-		FetchTranslation f = new FetchTranslation(op, optype, url, cltrans);
+	protected void apptyToPath(Operation op, OpType optype, String url, ClassBridge cltrans,
+			Map<String, List<String>> security) {
+		FetchTranslation f = new FetchTranslation(op, optype, url, cltrans, security);
 		f.apply();
 		if (cachemaker != null) {
 			cachemaker.apply(f);

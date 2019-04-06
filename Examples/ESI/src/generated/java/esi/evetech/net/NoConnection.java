@@ -59,15 +59,15 @@ import esi.evetech.net.responses.get_universe_types_type_id;
 import esi.evetech.net.responses.get_wars_war_id;
 import esi.evetech.net.responses.post_characters_affiliation_200;
 import esi.evetech.net.responses.post_universe_names_200;
-import fr.lelouet.jswaggermaker.client.common.interfaces.ITransfer;
+import fr.lelouet.jswaggermaker.client.common.impl.ATransfer;
 import fr.lelouet.jswaggermaker.client.common.interfaces.Requested;
 
 
 /**
- * interface to access the ESI without an account.<br />This gives access to static data, eg items, markets, etc.
+ * access the swagger with no connection.
  */
-interface G_IDCAccess
-    extends ITransfer
+class NoConnection
+    extends ATransfer
 {
 
     /**
@@ -80,7 +80,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<Integer[]> get_alliances(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<Integer[]> get_alliances(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/alliances/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, Integer[].class);
     }
@@ -97,7 +97,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<Integer[]> get_alliances_corporations(int alliance_id, esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<Integer[]> get_alliances_corporations(int alliance_id, esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/alliances/{alliance_id}/corporations/".replace("{alliance_id}", ""+alliance_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, Integer[].class);
     }
@@ -114,7 +114,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<get_alliances_alliance_id_icons> get_alliances_icons(int alliance_id, esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<get_alliances_alliance_id_icons> get_alliances_icons(int alliance_id, esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/alliances/{alliance_id}/icons/".replace("{alliance_id}", ""+alliance_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_alliances_alliance_id_icons.class);
     }
@@ -131,7 +131,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<post_characters_affiliation_200 []> post_affiliation(int[] characters, esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<post_characters_affiliation_200 []> post_affiliation(int[] characters, esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/characters/affiliation/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         Map<String, Object> content = new HashMap<>();
         content.put("characters", characters);
@@ -150,7 +150,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<get_characters_character_id_corporationhistory_200 []> get_characters_corporationhistory(int character_id, esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<get_characters_character_id_corporationhistory_200 []> get_characters_corporationhistory(int character_id, esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/corporationhistory/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_characters_character_id_corporationhistory_200 [].class);
     }
@@ -169,7 +169,7 @@ interface G_IDCAccess
      * @param page
      *     Which page of results to return
      */
-    public default Requested<get_contracts_public_bids_contract_id_200 []> get_contracts_public_bids(int contract_id,
+    public Requested<get_contracts_public_bids_contract_id_200 []> get_contracts_public_bids(int contract_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         Map<String, String> properties) {
@@ -191,7 +191,7 @@ interface G_IDCAccess
      * @param page
      *     Which page of results to return
      */
-    public default Requested<get_contracts_public_items_contract_id_200 []> get_contracts_public_items(int contract_id,
+    public Requested<get_contracts_public_items_contract_id_200 []> get_contracts_public_items(int contract_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         Map<String, String> properties) {
@@ -213,7 +213,7 @@ interface G_IDCAccess
      * @param region_id
      *     An EVE region id
      */
-    public default Requested<get_contracts_public_region_id_200 []> get_contracts_public(esi.evetech.net.structures.datasource datasource,
+    public Requested<get_contracts_public_region_id_200 []> get_contracts_public(esi.evetech.net.structures.datasource datasource,
         Integer page,
         int region_id,
         Map<String, String> properties) {
@@ -231,7 +231,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<Integer[]> get_corporations_npccorps(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<Integer[]> get_corporations_npccorps(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/corporations/npccorps/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, Integer[].class);
     }
@@ -248,7 +248,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<get_corporations_corporation_id_icons> get_corporations_icons(int corporation_id, esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<get_corporations_corporation_id_icons> get_corporations_icons(int corporation_id, esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/icons/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_corporations_corporation_id_icons.class);
     }
@@ -263,7 +263,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<Integer[]> get_dogma_attributes(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<Integer[]> get_dogma_attributes(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/dogma/attributes/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, Integer[].class);
     }
@@ -280,7 +280,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<get_dogma_attributes_attribute_id> get_dogma_attributes(int attribute_id, esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<get_dogma_attributes_attribute_id> get_dogma_attributes(int attribute_id, esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/dogma/attributes/{attribute_id}/".replace("{attribute_id}", ""+attribute_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_dogma_attributes_attribute_id.class);
     }
@@ -299,7 +299,7 @@ interface G_IDCAccess
      * @param type_id
      *     type_id integer
      */
-    public default Requested<get_dogma_dynamic_items_type_id_item_id> get_dogma_dynamic_items(esi.evetech.net.structures.datasource datasource,
+    public Requested<get_dogma_dynamic_items_type_id_item_id> get_dogma_dynamic_items(esi.evetech.net.structures.datasource datasource,
         long item_id,
         int type_id,
         Map<String, String> properties) {
@@ -317,7 +317,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<Integer[]> get_dogma_effects(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<Integer[]> get_dogma_effects(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/dogma/effects/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, Integer[].class);
     }
@@ -332,7 +332,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<esi.evetech.net.responses.get_fw_leaderboards> get_fw_leaderboards(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<esi.evetech.net.responses.get_fw_leaderboards> get_fw_leaderboards(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/fw/leaderboards/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, esi.evetech.net.responses.get_fw_leaderboards.class);
     }
@@ -347,7 +347,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<esi.evetech.net.responses.get_fw_leaderboards> get_fw_leaderboards_characters(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<esi.evetech.net.responses.get_fw_leaderboards> get_fw_leaderboards_characters(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/fw/leaderboards/characters/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, esi.evetech.net.responses.get_fw_leaderboards.class);
     }
@@ -362,7 +362,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<esi.evetech.net.responses.get_fw_leaderboards> get_fw_leaderboards_corporations(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<esi.evetech.net.responses.get_fw_leaderboards> get_fw_leaderboards_corporations(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/fw/leaderboards/corporations/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, esi.evetech.net.responses.get_fw_leaderboards.class);
     }
@@ -377,7 +377,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<get_fw_stats_200 []> get_fw_stats(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<get_fw_stats_200 []> get_fw_stats(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/fw/stats/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_fw_stats_200 [].class);
     }
@@ -392,7 +392,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<get_fw_wars_200 []> get_fw_wars(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<get_fw_wars_200 []> get_fw_wars(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/fw/wars/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_fw_wars_200 [].class);
     }
@@ -407,7 +407,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<get_incursions_200 []> get_incursions(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<get_incursions_200 []> get_incursions(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/incursions/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_incursions_200 [].class);
     }
@@ -422,7 +422,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<get_industry_facilities_200 []> get_industry_facilities(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<get_industry_facilities_200 []> get_industry_facilities(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/industry/facilities/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_industry_facilities_200 [].class);
     }
@@ -437,7 +437,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<get_industry_systems_200 []> get_industry_systems(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<get_industry_systems_200 []> get_industry_systems(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/industry/systems/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_industry_systems_200 [].class);
     }
@@ -454,7 +454,7 @@ interface G_IDCAccess
      * @param language
      *     Language to use in the response, takes precedence over Accept-Language
      */
-    public default Requested<get_insurance_prices_200 []> get_insurance_prices(esi.evetech.net.structures.datasource datasource, esi.evetech.net.structures.language language, Map<String, String> properties) {
+    public Requested<get_insurance_prices_200 []> get_insurance_prices(esi.evetech.net.structures.datasource datasource, esi.evetech.net.structures.language language, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/insurance/prices/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(language==null?"":"&language="+flatten(language)));
         return requestGet(url, properties, get_insurance_prices_200 [].class);
     }
@@ -473,7 +473,7 @@ interface G_IDCAccess
      * @param killmail_id
      *     The killmail ID to be queried
      */
-    public default Requested<get_killmails_killmail_id_killmail_hash> get_killmails(esi.evetech.net.structures.datasource datasource,
+    public Requested<get_killmails_killmail_id_killmail_hash> get_killmails(esi.evetech.net.structures.datasource datasource,
         String killmail_hash,
         int killmail_id,
         Map<String, String> properties) {
@@ -493,7 +493,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<get_loyalty_stores_corporation_id_offers_200 []> get_loyalty_stores_offers(int corporation_id, esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<get_loyalty_stores_corporation_id_offers_200 []> get_loyalty_stores_offers(int corporation_id, esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/loyalty/stores/{corporation_id}/offers/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_loyalty_stores_corporation_id_offers_200 [].class);
     }
@@ -508,7 +508,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<Integer[]> get_markets_groups(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<Integer[]> get_markets_groups(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/markets/groups/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, Integer[].class);
     }
@@ -527,7 +527,7 @@ interface G_IDCAccess
      * @param market_group_id
      *     An Eve item group ID
      */
-    public default Requested<get_markets_groups_market_group_id> get_markets_groups(esi.evetech.net.structures.datasource datasource,
+    public Requested<get_markets_groups_market_group_id> get_markets_groups(esi.evetech.net.structures.datasource datasource,
         esi.evetech.net.structures.language language,
         int market_group_id,
         Map<String, String> properties) {
@@ -545,7 +545,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<get_markets_prices_200 []> get_markets_prices(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<get_markets_prices_200 []> get_markets_prices(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/markets/prices/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_markets_prices_200 [].class);
     }
@@ -564,7 +564,7 @@ interface G_IDCAccess
      * @param type_id
      *     Return statistics for this type
      */
-    public default Requested<get_markets_region_id_history_200 []> get_markets_history(esi.evetech.net.structures.datasource datasource,
+    public Requested<get_markets_region_id_history_200 []> get_markets_history(esi.evetech.net.structures.datasource datasource,
         int region_id,
         int type_id,
         Map<String, String> properties) {
@@ -590,7 +590,7 @@ interface G_IDCAccess
      * @param type_id
      *     Return orders only for this type
      */
-    public default Requested<get_markets_region_id_orders_200 []> get_markets_orders(esi.evetech.net.structures.datasource datasource,
+    public Requested<get_markets_region_id_orders_200 []> get_markets_orders(esi.evetech.net.structures.datasource datasource,
         esi.evetech.net.structures.order_type order_type,
         Integer page,
         int region_id,
@@ -614,7 +614,7 @@ interface G_IDCAccess
      * @param region_id
      *     Return statistics in this region
      */
-    public default Requested<Integer[]> get_markets_types(esi.evetech.net.structures.datasource datasource,
+    public Requested<Integer[]> get_markets_types(esi.evetech.net.structures.datasource datasource,
         Integer page,
         int region_id,
         Map<String, String> properties) {
@@ -632,7 +632,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<Integer[]> get_opportunities_groups(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<Integer[]> get_opportunities_groups(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/opportunities/groups/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, Integer[].class);
     }
@@ -651,7 +651,7 @@ interface G_IDCAccess
      * @param language
      *     Language to use in the response, takes precedence over Accept-Language
      */
-    public default Requested<get_opportunities_groups_group_id> get_opportunities_groups(esi.evetech.net.structures.datasource datasource,
+    public Requested<get_opportunities_groups_group_id> get_opportunities_groups(esi.evetech.net.structures.datasource datasource,
         int group_id,
         esi.evetech.net.structures.language language,
         Map<String, String> properties) {
@@ -669,7 +669,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<Integer[]> get_opportunities_tasks(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<Integer[]> get_opportunities_tasks(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/opportunities/tasks/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, Integer[].class);
     }
@@ -686,7 +686,7 @@ interface G_IDCAccess
      * @param task_id
      *     ID of an opportunities task
      */
-    public default Requested<get_opportunities_tasks_task_id> get_opportunities_tasks(esi.evetech.net.structures.datasource datasource, int task_id, Map<String, String> properties) {
+    public Requested<get_opportunities_tasks_task_id> get_opportunities_tasks(esi.evetech.net.structures.datasource datasource, int task_id, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/opportunities/tasks/{task_id}/".replace("{task_id}", ""+task_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_opportunities_tasks_task_id.class);
     }
@@ -711,7 +711,7 @@ interface G_IDCAccess
      * @param origin
      *     origin solar system ID
      */
-    public default Requested<Integer[]> get_route(int[] avoid,
+    public Requested<Integer[]> get_route(int[] avoid,
         int[][] connections,
         esi.evetech.net.structures.datasource datasource,
         int destination,
@@ -732,7 +732,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<get_sovereignty_campaigns_200 []> get_sovereignty_campaigns(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<get_sovereignty_campaigns_200 []> get_sovereignty_campaigns(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/sovereignty/campaigns/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_sovereignty_campaigns_200 [].class);
     }
@@ -747,7 +747,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<get_sovereignty_map_200 []> get_sovereignty_map(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<get_sovereignty_map_200 []> get_sovereignty_map(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/sovereignty/map/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_sovereignty_map_200 [].class);
     }
@@ -762,7 +762,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<get_sovereignty_structures_200 []> get_sovereignty_structures(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<get_sovereignty_structures_200 []> get_sovereignty_structures(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/sovereignty/structures/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_sovereignty_structures_200 [].class);
     }
@@ -777,7 +777,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<esi.evetech.net.responses.get_status> get_status(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<esi.evetech.net.responses.get_status> get_status(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/status/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, esi.evetech.net.responses.get_status.class);
     }
@@ -794,7 +794,7 @@ interface G_IDCAccess
      * @param language
      *     Language to use in the response, takes precedence over Accept-Language
      */
-    public default Requested<get_universe_ancestries_200 []> get_universe_ancestries(esi.evetech.net.structures.datasource datasource, esi.evetech.net.structures.language language, Map<String, String> properties) {
+    public Requested<get_universe_ancestries_200 []> get_universe_ancestries(esi.evetech.net.structures.datasource datasource, esi.evetech.net.structures.language language, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/universe/ancestries/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(language==null?"":"&language="+flatten(language)));
         return requestGet(url, properties, get_universe_ancestries_200 [].class);
     }
@@ -811,7 +811,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<get_universe_asteroid_belts_asteroid_belt_id> get_universe_asteroid_belts(int asteroid_belt_id, esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<get_universe_asteroid_belts_asteroid_belt_id> get_universe_asteroid_belts(int asteroid_belt_id, esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/universe/asteroid_belts/{asteroid_belt_id}/".replace("{asteroid_belt_id}", ""+asteroid_belt_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_universe_asteroid_belts_asteroid_belt_id.class);
     }
@@ -828,7 +828,7 @@ interface G_IDCAccess
      * @param language
      *     Language to use in the response, takes precedence over Accept-Language
      */
-    public default Requested<get_universe_bloodlines_200 []> get_universe_bloodlines(esi.evetech.net.structures.datasource datasource, esi.evetech.net.structures.language language, Map<String, String> properties) {
+    public Requested<get_universe_bloodlines_200 []> get_universe_bloodlines(esi.evetech.net.structures.datasource datasource, esi.evetech.net.structures.language language, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/universe/bloodlines/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(language==null?"":"&language="+flatten(language)));
         return requestGet(url, properties, get_universe_bloodlines_200 [].class);
     }
@@ -843,7 +843,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<Integer[]> get_universe_categories(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<Integer[]> get_universe_categories(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/universe/categories/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, Integer[].class);
     }
@@ -862,7 +862,7 @@ interface G_IDCAccess
      * @param language
      *     Language to use in the response, takes precedence over Accept-Language
      */
-    public default Requested<get_universe_categories_category_id> get_universe_categories(int category_id,
+    public Requested<get_universe_categories_category_id> get_universe_categories(int category_id,
         esi.evetech.net.structures.datasource datasource,
         esi.evetech.net.structures.language language,
         Map<String, String> properties) {
@@ -880,7 +880,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<Integer[]> get_universe_constellations(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<Integer[]> get_universe_constellations(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/universe/constellations/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, Integer[].class);
     }
@@ -899,7 +899,7 @@ interface G_IDCAccess
      * @param language
      *     Language to use in the response, takes precedence over Accept-Language
      */
-    public default Requested<get_universe_constellations_constellation_id> get_universe_constellations(int constellation_id,
+    public Requested<get_universe_constellations_constellation_id> get_universe_constellations(int constellation_id,
         esi.evetech.net.structures.datasource datasource,
         esi.evetech.net.structures.language language,
         Map<String, String> properties) {
@@ -917,7 +917,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<Integer[]> get_universe_graphics(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<Integer[]> get_universe_graphics(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/universe/graphics/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, Integer[].class);
     }
@@ -934,7 +934,7 @@ interface G_IDCAccess
      * @param graphic_id
      *     graphic_id integer
      */
-    public default Requested<get_universe_graphics_graphic_id> get_universe_graphics(esi.evetech.net.structures.datasource datasource, int graphic_id, Map<String, String> properties) {
+    public Requested<get_universe_graphics_graphic_id> get_universe_graphics(esi.evetech.net.structures.datasource datasource, int graphic_id, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/universe/graphics/{graphic_id}/".replace("{graphic_id}", ""+graphic_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_universe_graphics_graphic_id.class);
     }
@@ -951,7 +951,7 @@ interface G_IDCAccess
      * @param page
      *     Which page of results to return
      */
-    public default Requested<Integer[]> get_universe_groups(esi.evetech.net.structures.datasource datasource, Integer page, Map<String, String> properties) {
+    public Requested<Integer[]> get_universe_groups(esi.evetech.net.structures.datasource datasource, Integer page, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/universe/groups/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page)));
         return requestGet(url, properties, Integer[].class);
     }
@@ -970,7 +970,7 @@ interface G_IDCAccess
      * @param language
      *     Language to use in the response, takes precedence over Accept-Language
      */
-    public default Requested<get_universe_groups_group_id> get_universe_groups(esi.evetech.net.structures.datasource datasource,
+    public Requested<get_universe_groups_group_id> get_universe_groups(esi.evetech.net.structures.datasource datasource,
         int group_id,
         esi.evetech.net.structures.language language,
         Map<String, String> properties) {
@@ -991,7 +991,7 @@ interface G_IDCAccess
      * @param names
      *     The names to resolve
      */
-    public default Requested<esi.evetech.net.responses.post_universe_ids> post_universe_ids(esi.evetech.net.structures.datasource datasource,
+    public Requested<esi.evetech.net.responses.post_universe_ids> post_universe_ids(esi.evetech.net.structures.datasource datasource,
         esi.evetech.net.structures.language language,
         String[] names,
         Map<String, String> properties) {
@@ -1013,7 +1013,7 @@ interface G_IDCAccess
      * @param moon_id
      *     moon_id integer
      */
-    public default Requested<get_universe_moons_moon_id> get_universe_moons(esi.evetech.net.structures.datasource datasource, int moon_id, Map<String, String> properties) {
+    public Requested<get_universe_moons_moon_id> get_universe_moons(esi.evetech.net.structures.datasource datasource, int moon_id, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/universe/moons/{moon_id}/".replace("{moon_id}", ""+moon_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_universe_moons_moon_id.class);
     }
@@ -1030,7 +1030,7 @@ interface G_IDCAccess
      * @param planet_id
      *     planet_id integer
      */
-    public default Requested<get_universe_planets_planet_id> get_universe_planets(esi.evetech.net.structures.datasource datasource, int planet_id, Map<String, String> properties) {
+    public Requested<get_universe_planets_planet_id> get_universe_planets(esi.evetech.net.structures.datasource datasource, int planet_id, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/universe/planets/{planet_id}/".replace("{planet_id}", ""+planet_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_universe_planets_planet_id.class);
     }
@@ -1047,7 +1047,7 @@ interface G_IDCAccess
      * @param language
      *     Language to use in the response, takes precedence over Accept-Language
      */
-    public default Requested<get_universe_races_200 []> get_universe_races(esi.evetech.net.structures.datasource datasource, esi.evetech.net.structures.language language, Map<String, String> properties) {
+    public Requested<get_universe_races_200 []> get_universe_races(esi.evetech.net.structures.datasource datasource, esi.evetech.net.structures.language language, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/universe/races/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(language==null?"":"&language="+flatten(language)));
         return requestGet(url, properties, get_universe_races_200 [].class);
     }
@@ -1062,7 +1062,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<Integer[]> get_universe_regions(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<Integer[]> get_universe_regions(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/universe/regions/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, Integer[].class);
     }
@@ -1081,7 +1081,7 @@ interface G_IDCAccess
      * @param region_id
      *     region_id integer
      */
-    public default Requested<get_universe_regions_region_id> get_universe_regions(esi.evetech.net.structures.datasource datasource,
+    public Requested<get_universe_regions_region_id> get_universe_regions(esi.evetech.net.structures.datasource datasource,
         esi.evetech.net.structures.language language,
         int region_id,
         Map<String, String> properties) {
@@ -1101,7 +1101,7 @@ interface G_IDCAccess
      * @param schematic_id
      *     A PI schematic ID
      */
-    public default Requested<get_universe_schematics_schematic_id> get_universe_schematics(esi.evetech.net.structures.datasource datasource, int schematic_id, Map<String, String> properties) {
+    public Requested<get_universe_schematics_schematic_id> get_universe_schematics(esi.evetech.net.structures.datasource datasource, int schematic_id, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/universe/schematics/{schematic_id}/".replace("{schematic_id}", ""+schematic_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_universe_schematics_schematic_id.class);
     }
@@ -1118,7 +1118,7 @@ interface G_IDCAccess
      * @param stargate_id
      *     stargate_id integer
      */
-    public default Requested<get_universe_stargates_stargate_id> get_universe_stargates(esi.evetech.net.structures.datasource datasource, int stargate_id, Map<String, String> properties) {
+    public Requested<get_universe_stargates_stargate_id> get_universe_stargates(esi.evetech.net.structures.datasource datasource, int stargate_id, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/universe/stargates/{stargate_id}/".replace("{stargate_id}", ""+stargate_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_universe_stargates_stargate_id.class);
     }
@@ -1135,7 +1135,7 @@ interface G_IDCAccess
      * @param star_id
      *     star_id integer
      */
-    public default Requested<get_universe_stars_star_id> get_universe_stars(esi.evetech.net.structures.datasource datasource, int star_id, Map<String, String> properties) {
+    public Requested<get_universe_stars_star_id> get_universe_stars(esi.evetech.net.structures.datasource datasource, int star_id, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/universe/stars/{star_id}/".replace("{star_id}", ""+star_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_universe_stars_star_id.class);
     }
@@ -1152,7 +1152,7 @@ interface G_IDCAccess
      * @param filter
      *     Only list public structures that have this service online
      */
-    public default Requested<Long[]> get_universe_structures(esi.evetech.net.structures.datasource datasource, esi.evetech.net.structures.filter filter, Map<String, String> properties) {
+    public Requested<Long[]> get_universe_structures(esi.evetech.net.structures.datasource datasource, esi.evetech.net.structures.filter filter, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/universe/structures/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(filter==null?"":"&filter="+flatten(filter)));
         return requestGet(url, properties, Long[].class);
     }
@@ -1167,7 +1167,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<get_universe_system_jumps_200 []> get_universe_system_jumps(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<get_universe_system_jumps_200 []> get_universe_system_jumps(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/universe/system_jumps/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_universe_system_jumps_200 [].class);
     }
@@ -1182,7 +1182,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<Integer[]> get_universe_systems(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<Integer[]> get_universe_systems(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/universe/systems/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, Integer[].class);
     }
@@ -1199,7 +1199,7 @@ interface G_IDCAccess
      * @param page
      *     Which page of results to return
      */
-    public default Requested<Integer[]> get_universe_types(esi.evetech.net.structures.datasource datasource, Integer page, Map<String, String> properties) {
+    public Requested<Integer[]> get_universe_types(esi.evetech.net.structures.datasource datasource, Integer page, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/universe/types/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page)));
         return requestGet(url, properties, Integer[].class);
     }
@@ -1216,7 +1216,7 @@ interface G_IDCAccess
      * @param max_war_id
      *     Only return wars with ID smaller than this
      */
-    public default Requested<Integer[]> get_wars(esi.evetech.net.structures.datasource datasource, Integer max_war_id, Map<String, String> properties) {
+    public Requested<Integer[]> get_wars(esi.evetech.net.structures.datasource datasource, Integer max_war_id, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/wars/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(max_war_id==null?"":"&max_war_id="+flatten(max_war_id)));
         return requestGet(url, properties, Integer[].class);
     }
@@ -1233,7 +1233,7 @@ interface G_IDCAccess
      * @param war_id
      *     ID for a war
      */
-    public default Requested<get_wars_war_id> get_wars(esi.evetech.net.structures.datasource datasource, int war_id, Map<String, String> properties) {
+    public Requested<get_wars_war_id> get_wars(esi.evetech.net.structures.datasource datasource, int war_id, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v1/wars/{war_id}/".replace("{war_id}", ""+war_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_wars_war_id.class);
     }
@@ -1252,7 +1252,7 @@ interface G_IDCAccess
      * @param war_id
      *     A valid war ID
      */
-    public default Requested<get_characters_character_id_killmails_recent_200 []> get_wars_killmails(esi.evetech.net.structures.datasource datasource,
+    public Requested<get_characters_character_id_killmails_recent_200 []> get_wars_killmails(esi.evetech.net.structures.datasource datasource,
         Integer page,
         int war_id,
         Map<String, String> properties) {
@@ -1272,7 +1272,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<get_characters_character_id_portrait> get_characters_portrait(int character_id, esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<get_characters_character_id_portrait> get_characters_portrait(int character_id, esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v2/characters/{character_id}/portrait/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_characters_character_id_portrait.class);
     }
@@ -1289,7 +1289,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<get_corporations_corporation_id_alliancehistory_200 []> get_corporations_alliancehistory(int corporation_id, esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<get_corporations_corporation_id_alliancehistory_200 []> get_corporations_alliancehistory(int corporation_id, esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v2/corporations/{corporation_id}/alliancehistory/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_corporations_corporation_id_alliancehistory_200 [].class);
     }
@@ -1306,7 +1306,7 @@ interface G_IDCAccess
      * @param effect_id
      *     A dogma effect ID
      */
-    public default Requested<get_dogma_effects_effect_id> get_dogma_effects(esi.evetech.net.structures.datasource datasource, int effect_id, Map<String, String> properties) {
+    public Requested<get_dogma_effects_effect_id> get_dogma_effects(esi.evetech.net.structures.datasource datasource, int effect_id, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v2/dogma/effects/{effect_id}/".replace("{effect_id}", ""+effect_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_dogma_effects_effect_id.class);
     }
@@ -1321,7 +1321,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<get_fw_systems_200 []> get_fw_systems(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<get_fw_systems_200 []> get_fw_systems(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v2/fw/systems/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_fw_systems_200 [].class);
     }
@@ -1344,7 +1344,7 @@ interface G_IDCAccess
      * @param strict
      *     Whether the search should be a strict match
      */
-    public default Requested<get_search> get(String[] categories,
+    public Requested<get_search> get(String[] categories,
         esi.evetech.net.structures.datasource datasource,
         esi.evetech.net.structures.language language,
         String search,
@@ -1366,7 +1366,7 @@ interface G_IDCAccess
      * @param language
      *     Language to use in the response, takes precedence over Accept-Language
      */
-    public default Requested<get_universe_factions_200 []> get_universe_factions(esi.evetech.net.structures.datasource datasource, esi.evetech.net.structures.language language, Map<String, String> properties) {
+    public Requested<get_universe_factions_200 []> get_universe_factions(esi.evetech.net.structures.datasource datasource, esi.evetech.net.structures.language language, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v2/universe/factions/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(language==null?"":"&language="+flatten(language)));
         return requestGet(url, properties, get_universe_factions_200 [].class);
     }
@@ -1383,7 +1383,7 @@ interface G_IDCAccess
      * @param station_id
      *     station_id integer
      */
-    public default Requested<get_universe_stations_station_id> get_universe_stations(esi.evetech.net.structures.datasource datasource, int station_id, Map<String, String> properties) {
+    public Requested<get_universe_stations_station_id> get_universe_stations(esi.evetech.net.structures.datasource datasource, int station_id, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v2/universe/stations/{station_id}/".replace("{station_id}", ""+station_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_universe_stations_station_id.class);
     }
@@ -1398,7 +1398,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<get_universe_system_kills_200 []> get_universe_system_kills(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<get_universe_system_kills_200 []> get_universe_system_kills(esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v2/universe/system_kills/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_universe_system_kills_200 [].class);
     }
@@ -1415,7 +1415,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<get_alliances_alliance_id> get_alliances(int alliance_id, esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<get_alliances_alliance_id> get_alliances(int alliance_id, esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v3/alliances/{alliance_id}/".replace("{alliance_id}", ""+alliance_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_alliances_alliance_id.class);
     }
@@ -1431,7 +1431,7 @@ interface G_IDCAccess
      * @param ids
      *     The ids to resolve
      */
-    public default Requested<post_universe_names_200 []> post_universe_names(esi.evetech.net.structures.datasource datasource, int[] ids, Map<String, String> properties) {
+    public Requested<post_universe_names_200 []> post_universe_names(esi.evetech.net.structures.datasource datasource, int[] ids, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v3/universe/names/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         Map<String, Object> content = new HashMap<>();
         content.put("ids", ids);
@@ -1452,7 +1452,7 @@ interface G_IDCAccess
      * @param type_id
      *     An Eve item type ID
      */
-    public default Requested<get_universe_types_type_id> get_universe_types(esi.evetech.net.structures.datasource datasource,
+    public Requested<get_universe_types_type_id> get_universe_types(esi.evetech.net.structures.datasource datasource,
         esi.evetech.net.structures.language language,
         int type_id,
         Map<String, String> properties) {
@@ -1472,7 +1472,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<get_characters_character_id> get_characters(int character_id, esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<get_characters_character_id> get_characters(int character_id, esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v4/characters/{character_id}/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_characters_character_id.class);
     }
@@ -1489,7 +1489,7 @@ interface G_IDCAccess
      * @param datasource
      *     The server name you would like data from
      */
-    public default Requested<get_corporations_corporation_id> get_corporations(int corporation_id, esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
+    public Requested<get_corporations_corporation_id> get_corporations(int corporation_id, esi.evetech.net.structures.datasource datasource, Map<String, String> properties) {
         String url = ("https://esi.evetech.net/v4/corporations/{corporation_id}/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
         return requestGet(url, properties, get_corporations_corporation_id.class);
     }
@@ -1508,7 +1508,7 @@ interface G_IDCAccess
      * @param system_id
      *     system_id integer
      */
-    public default Requested<get_universe_systems_system_id> get_universe_systems(esi.evetech.net.structures.datasource datasource,
+    public Requested<get_universe_systems_system_id> get_universe_systems(esi.evetech.net.structures.datasource datasource,
         esi.evetech.net.structures.language language,
         int system_id,
         Map<String, String> properties) {

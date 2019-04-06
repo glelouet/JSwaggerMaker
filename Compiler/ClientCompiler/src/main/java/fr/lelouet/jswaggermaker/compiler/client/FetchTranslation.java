@@ -15,6 +15,7 @@ import com.helger.jcodemodel.IJExpression;
 import com.helger.jcodemodel.JArray;
 import com.helger.jcodemodel.JBlock;
 import com.helger.jcodemodel.JCodeModel;
+import com.helger.jcodemodel.JDefinedClass;
 import com.helger.jcodemodel.JExpr;
 import com.helger.jcodemodel.JFieldVar;
 import com.helger.jcodemodel.JInvocation;
@@ -57,8 +58,10 @@ public class FetchTranslation {
 	public final OpType optype;
 	public final String path;
 	public final ClassBridge bridge;
+	public final Map<String, List<String>> security;
 
 	public final JCodeModel cm;
+	public final JDefinedClass fetcherClass;
 
 	public static enum OpType {
 		get {
@@ -91,13 +94,15 @@ public class FetchTranslation {
 
 	public String propsParamName = "properties";
 
-	public FetchTranslation(Operation operation, OpType optype, String path, ClassBridge bridge) {
+	public FetchTranslation(Operation operation, OpType optype, String path, ClassBridge bridge,
+			Map<String, List<String>> security) {
 		this.operation = operation;
 		this.optype = optype;
 		this.path = path;
 		this.bridge = bridge;
+		this.security = security;
 		cm = bridge.cm;
-
+		fetcherClass = bridge.getFetcherClass(security);
 	}
 
 	protected Response response;
@@ -209,7 +214,7 @@ public class FetchTranslation {
 		makeFetchRetType();
 		findConnected();
 		// create the method
-		fetchMeth = (connected ? bridge.swaggerCOClass : bridge.swaggerDCClass).method(JMod.PUBLIC | JMod.DEFAULT,
+		fetchMeth = fetcherClass.method(JMod.PUBLIC,
 				fetchRetType, fetchMethName);
 		// add the parameters
 		extractFetchParameters();
@@ -376,7 +381,7 @@ public class FetchTranslation {
 		fetchMeth.javadoc().add(("\n<p>\n" + ("" + operation.getDescription()).replaceAll("---", "<br />") + "\n</p>")
 				.replaceAll("\n\n", "\n").replaceAll("<br />\n<", "<").replaceAll("\n<br />\n", "<br />\n"));
 		if (!requiredRoles.isEmpty()) {
-			JFieldVar rolesfield = (connected ? bridge.swaggerCOClass : bridge.swaggerDCClass).field(
+			JFieldVar rolesfield = fetcherClass.field(
 					JMod.PUBLIC | JMod.STATIC | JMod.FINAL, cm.ref(String.class).array(),
 					(operation.getOperationId() + "_roles").toUpperCase());
 			JArray array = JExpr.newArray(cm.ref(String.class));

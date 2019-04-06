@@ -15,11 +15,9 @@ import com.helger.jcodemodel.JExpr;
 import com.helger.jcodemodel.JFieldVar;
 import com.helger.jcodemodel.JMethod;
 import com.helger.jcodemodel.JMod;
-import com.helger.jcodemodel.JTypeVar;
 import com.helger.jcodemodel.JVar;
 
 import fr.lelouet.jswaggermaker.client.common.interfaces.cache.ICacheHelper;
-import fr.lelouet.jswaggermaker.compiler.client.CacheTranslator;
 import fr.lelouet.jswaggermaker.compiler.client.ClassBridge;
 import fr.lelouet.jswaggermaker.compiler.client.CompilerOptions;
 import fr.lelouet.jswaggermaker.compiler.client.FetchTranslation;
@@ -57,19 +55,22 @@ public class ActiveCacheTranslator implements CacheTranslator {
 		// we need to add generics to allow the cache to be built on a more specific
 		// class, ie to bring more functions to be called.
 
-		JTypeVar cacheCOParam = cacheCOClass.generify("T", cb.swaggerCOClass);
-		JFieldVar cacheParent = cacheCOClass.field(JMod.PUBLIC | JMod.FINAL, cacheCOParam, "swagger");
-		// add a constructor with swagger param
-		JMethod cachecons = cacheCOClass.constructor(JMod.PUBLIC);
-		JVar swag = cachecons.param(cacheCOParam, "swag");
-		cachecons.body().assign(cacheParent, swag);
-
-		JTypeVar cacheDCParam = cacheDCClass.generify("T", cb.swaggerDCClass);
-		cacheParent = cacheDCClass.field(JMod.PUBLIC | JMod.FINAL, cacheDCParam, "swagger");
-		// add a constructor with swagger param
-		cachecons = cacheDCClass.constructor(JMod.PUBLIC);
-		swag = cachecons.param(cacheDCParam, "swag");
-		cachecons.body().assign(cacheParent, swag);
+		//		JTypeVar cacheCOParam = cacheCOClass.generify("T", cb.swaggerCOClass);
+		// JFieldVar cacheParent = cacheCOClass.field(JMod.PUBLIC | JMod.FINAL,
+		// cacheCOParam, "swagger");
+		// // add a constructor with swagger param
+		// JMethod cachecons = cacheCOClass.constructor(JMod.PUBLIC);
+		// JVar swag = cachecons.param(cacheCOParam, "swag");
+		// cachecons.body().assign(cacheParent, swag);
+		//
+		// JTypeVar cacheDCParam = cacheDCClass.generify("T",
+		// cb.getFetcherClass(null));
+		// cacheParent = cacheDCClass.field(JMod.PUBLIC | JMod.FINAL, cacheDCParam,
+		// "swagger");
+		// // add a constructor with swagger param
+		// cachecons = cacheDCClass.constructor(JMod.PUBLIC);
+		// swag = cachecons.param(cacheDCParam, "swag");
+		// cachecons.body().assign(cacheParent, swag);
 
 	}
 

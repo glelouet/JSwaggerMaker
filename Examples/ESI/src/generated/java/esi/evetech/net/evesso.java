@@ -90,15 +90,15 @@ import esi.evetech.net.responses.post_characters_character_id_assets_names_200;
 import esi.evetech.net.responses.post_characters_character_id_fittings_created;
 import esi.evetech.net.responses.post_fleets_fleet_id_wings_created;
 import esi.evetech.net.responses.post_fleets_fleet_id_wings_wing_id_squads_created;
-import fr.lelouet.jswaggermaker.client.common.interfaces.ITransfer;
+import fr.lelouet.jswaggermaker.client.common.impl.ATransfer;
 import fr.lelouet.jswaggermaker.client.common.interfaces.Requested;
 
 
 /**
- * interface to access the ESI with a connected account.<br />This typically gives access to the character information, corporation, etc.
+ * access the swagger with connection oauth2.
  */
-interface G_ICOAccess
-    extends ITransfer
+class evesso
+    extends ATransfer
 {
     public static final String[] SCOPES = new String[] {"esi-characters.write_contacts.v1", "esi-skills.read_skills.v1", "esi-characters.read_fatigue.v1", "esi-corporations.read_divisions.v1", "esi-corporations.read_corporation_membership.v1", "esi-bookmarks.read_character_bookmarks.v1", "esi-assets.read_corporation_assets.v1", "esi-fittings.read_fittings.v1", "esi-contracts.read_corporation_contracts.v1", "esi-fleets.write_fleet.v1", "esi-ui.write_waypoint.v1", "esi-industry.read_character_jobs.v1", "esi-bookmarks.read_corporation_bookmarks.v1", "esi-industry.read_character_mining.v1", "esi-clones.read_clones.v1", "esi-characters.read_agents_research.v1", "esi-calendar.respond_calendar_events.v1", "esi-location.read_online.v1", "esi-mail.read_mail.v1", "esi-characterstats.read.v1", "esi-search.search_structures.v1", "esi-corporations.read_contacts.v1", "esi-corporations.read_container_logs.v1", "esi-characters.read_contacts.v1", "esi-fittings.write_fittings.v1", "esi-markets.structure_markets.v1", "esi-wallet.read_corporation_wallets.v1", "esi-characters.read_corporation_roles.v1", "esi-wallet.read_character_wallet.v1", "esi-assets.read_assets.v1", "esi-killmails.read_killmails.v1", "esi-characters.read_medals.v1", "esi-location.read_ship_type.v1", "esi-skills.read_skillqueue.v1", "esi-contracts.read_character_contracts.v1", "esi-mail.send_mail.v1", "esi-alliances.read_contacts.v1", "esi-location.read_location.v1", "esi-ui.open_window.v1", "esi-fleets.read_fleet.v1", "esi-industry.read_corporation_mining.v1", "esi-corporations.read_blueprints.v1", "esi-calendar.read_calendar_events.v1", "esi-markets.read_character_orders.v1", "esi-markets.read_corporation_orders.v1", "esi-characters.read_notifications.v1", "esi-characters.read_standings.v1", "esi-characters.read_opportunities.v1", "esi-corporations.read_standings.v1", "esi-industry.read_corporation_jobs.v1", "esi-characters.read_fw_stats.v1", "esi-corporations.read_titles.v1", "esi-universe.read_structures.v1", "esi-corporations.track_members.v1", "esi-corporations.read_fw_stats.v1", "esi-characters.read_loyalty.v1", "esi-mail.organize_mail.v1", "esi-corporations.read_structures.v1", "esi-corporations.read_starbases.v1", "esi-clones.read_implants.v1", "esi-killmails.read_corporation_killmails.v1", "esi-corporations.read_medals.v1", "esi-planets.manage_planets.v1", "esi-characters.read_titles.v1", "esi-corporations.read_facilities.v1", "esi-planets.read_customs_offices.v1", "esi-characters.read_blueprints.v1"};
     /**
@@ -228,7 +228,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_alliances_alliance_id_contacts_labels_200 []> get_alliances_contacts_labels(int alliance_id,
+    public Requested<get_alliances_alliance_id_contacts_labels_200 []> get_alliances_contacts_labels(int alliance_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -250,7 +250,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_agents_research_200 []> get_characters_agents_research(int character_id,
+    public Requested<get_characters_character_id_agents_research_200 []> get_characters_agents_research(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -273,7 +273,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<post_characters_character_id_assets_names_200 []> post_characters_assets_names(int character_id,
+    public Requested<post_characters_character_id_assets_names_200 []> post_characters_assets_names(int character_id,
         esi.evetech.net.structures.datasource datasource,
         long[] item_ids,
         String token,
@@ -298,7 +298,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_attributes> get_characters_attributes(int character_id,
+    public Requested<get_characters_character_id_attributes> get_characters_attributes(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -322,7 +322,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_calendar_200 []> get_characters_calendar(int character_id,
+    public Requested<get_characters_character_id_calendar_200 []> get_characters_calendar(int character_id,
         esi.evetech.net.structures.datasource datasource,
         Integer from_event,
         String token,
@@ -347,7 +347,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_calendar_event_id_attendees_200 []> get_characters_calendar_attendees(int character_id,
+    public Requested<get_characters_character_id_calendar_event_id_attendees_200 []> get_characters_calendar_attendees(int character_id,
         esi.evetech.net.structures.datasource datasource,
         int event_id,
         String token,
@@ -370,7 +370,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_alliances_alliance_id_contacts_labels_200 []> get_characters_contacts_labels(int character_id,
+    public Requested<get_alliances_alliance_id_contacts_labels_200 []> get_characters_contacts_labels(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -394,7 +394,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_contracts_200 []> get_characters_contracts(int character_id,
+    public Requested<get_characters_character_id_contracts_200 []> get_characters_contracts(int character_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -419,7 +419,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_contracts_contract_id_bids_200 []> get_characters_contracts_bids(int character_id,
+    public Requested<get_characters_character_id_contracts_contract_id_bids_200 []> get_characters_contracts_bids(int character_id,
         int contract_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
@@ -444,7 +444,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_contracts_contract_id_items_200 []> get_characters_contracts_items(int character_id,
+    public Requested<get_characters_character_id_contracts_contract_id_items_200 []> get_characters_contracts_items(int character_id,
         int contract_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
@@ -467,7 +467,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_fatigue> get_characters_fatigue(int character_id,
+    public Requested<get_characters_character_id_fatigue> get_characters_fatigue(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -490,7 +490,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default void delete_characters_fittings(int character_id,
+    public void delete_characters_fittings(int character_id,
         esi.evetech.net.structures.datasource datasource,
         int fitting_id,
         String token,
@@ -513,7 +513,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_fleet> get_characters_fleet(int character_id,
+    public Requested<get_characters_character_id_fleet> get_characters_fleet(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -535,7 +535,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_fw_stats> get_characters_fw_stats(int character_id,
+    public Requested<get_characters_character_id_fw_stats> get_characters_fw_stats(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -557,7 +557,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<Integer[]> get_characters_implants(int character_id,
+    public Requested<Integer[]> get_characters_implants(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -581,7 +581,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_industry_jobs_200 []> get_characters_industry_jobs(int character_id,
+    public Requested<get_characters_character_id_industry_jobs_200 []> get_characters_industry_jobs(int character_id,
         esi.evetech.net.structures.datasource datasource,
         Boolean include_completed,
         String token,
@@ -606,7 +606,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_killmails_recent_200 []> get_characters_killmails_recent(int character_id,
+    public Requested<get_characters_character_id_killmails_recent_200 []> get_characters_killmails_recent(int character_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -629,7 +629,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_location> get_characters_location(int character_id,
+    public Requested<get_characters_character_id_location> get_characters_location(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -651,7 +651,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_loyalty_points_200 []> get_characters_loyalty_points(int character_id,
+    public Requested<get_characters_character_id_loyalty_points_200 []> get_characters_loyalty_points(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -677,7 +677,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_mail_200 []> get_characters_mail(int character_id,
+    public Requested<get_characters_character_id_mail_200 []> get_characters_mail(int character_id,
         esi.evetech.net.structures.datasource datasource,
         int[] labels,
         Integer last_mail_id,
@@ -708,7 +708,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<Integer> post_characters(int character_id,
+    public Requested<Integer> post_characters(int character_id,
         esi.evetech.net.structures.datasource datasource,
         long approved_cost,
         String body,
@@ -740,7 +740,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default void delete_characters_mail_labels(int character_id,
+    public void delete_characters_mail_labels(int character_id,
         esi.evetech.net.structures.datasource datasource,
         int label_id,
         String token,
@@ -763,7 +763,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_mail_lists_200 []> get_characters_mail_lists(int character_id,
+    public Requested<get_characters_character_id_mail_lists_200 []> get_characters_mail_lists(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -787,7 +787,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_mail_mail_id> get_characters_mail(int character_id,
+    public Requested<get_characters_character_id_mail_mail_id> get_characters_mail(int character_id,
         esi.evetech.net.structures.datasource datasource,
         int mail_id,
         String token,
@@ -815,7 +815,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default void put_characters_mail(int character_id,
+    public void put_characters_mail(int character_id,
         int[] labels,
         boolean read,
         esi.evetech.net.structures.datasource datasource,
@@ -844,7 +844,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default void delete_characters_mail(int character_id,
+    public void delete_characters_mail(int character_id,
         esi.evetech.net.structures.datasource datasource,
         int mail_id,
         String token,
@@ -867,7 +867,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_medals_200 []> get_characters_medals(int character_id,
+    public Requested<get_characters_character_id_medals_200 []> get_characters_medals(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -891,7 +891,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_mining_200 []> get_characters_mining(int character_id,
+    public Requested<get_characters_character_id_mining_200 []> get_characters_mining(int character_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -914,7 +914,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_notifications_contacts_200 []> get_characters_notifications_contacts(int character_id,
+    public Requested<get_characters_character_id_notifications_contacts_200 []> get_characters_notifications_contacts(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -936,7 +936,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_opportunities_200 []> get_characters_opportunities(int character_id,
+    public Requested<get_characters_character_id_opportunities_200 []> get_characters_opportunities(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -960,7 +960,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_orders_history_200 []> get_characters_orders_history(int character_id,
+    public Requested<get_characters_character_id_orders_history_200 []> get_characters_orders_history(int character_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -983,7 +983,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_planets_200 []> get_characters_planets(int character_id,
+    public Requested<get_characters_character_id_planets_200 []> get_characters_planets(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -1005,7 +1005,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_ship> get_characters_ship(int character_id,
+    public Requested<get_characters_character_id_ship> get_characters_ship(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -1027,7 +1027,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_standings_200 []> get_characters_standings(int character_id,
+    public Requested<get_characters_character_id_standings_200 []> get_characters_standings(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -1049,7 +1049,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_titles_200 []> get_characters_titles(int character_id,
+    public Requested<get_characters_character_id_titles_200 []> get_characters_titles(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -1071,7 +1071,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<Double> get_characters_wallet(int character_id,
+    public Requested<Double> get_characters_wallet(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -1095,7 +1095,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_wallet_transactions_200 []> get_characters_wallet_transactions(int character_id,
+    public Requested<get_characters_character_id_wallet_transactions_200 []> get_characters_wallet_transactions(int character_id,
         esi.evetech.net.structures.datasource datasource,
         Long from_id,
         String token,
@@ -1124,7 +1124,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporation_corporation_id_mining_extractions_200 []> get_corporation_mining_extractions(int corporation_id,
+    public Requested<get_corporation_corporation_id_mining_extractions_200 []> get_corporation_mining_extractions(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -1153,7 +1153,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporation_corporation_id_mining_observers_200 []> get_corporation_mining_observers(int corporation_id,
+    public Requested<get_corporation_corporation_id_mining_observers_200 []> get_corporation_mining_observers(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -1184,7 +1184,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporation_corporation_id_mining_observers_observer_id_200 []> get_corporation_mining_observers(int corporation_id,
+    public Requested<get_corporation_corporation_id_mining_observers_observer_id_200 []> get_corporation_mining_observers(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         long observer_id,
         Integer page,
@@ -1213,7 +1213,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<post_characters_character_id_assets_names_200 []> post_corporations_assets_names(int corporation_id,
+    public Requested<post_characters_character_id_assets_names_200 []> post_corporations_assets_names(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         long[] item_ids,
         String token,
@@ -1240,7 +1240,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_bookmarks_200 []> get_corporations_bookmarks(int corporation_id,
+    public Requested<get_corporations_corporation_id_bookmarks_200 []> get_corporations_bookmarks(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -1265,7 +1265,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_bookmarks_folders_200 []> get_corporations_bookmarks_folders(int corporation_id,
+    public Requested<get_corporations_corporation_id_bookmarks_folders_200 []> get_corporations_bookmarks_folders(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -1288,7 +1288,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_alliances_alliance_id_contacts_labels_200 []> get_corporations_contacts_labels(int corporation_id,
+    public Requested<get_alliances_alliance_id_contacts_labels_200 []> get_corporations_contacts_labels(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -1312,7 +1312,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_contracts_200 []> get_corporations_contracts(int corporation_id,
+    public Requested<get_characters_character_id_contracts_200 []> get_corporations_contracts(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -1339,7 +1339,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_contracts_contract_id_bids_200 []> get_corporations_contracts_bids(int contract_id,
+    public Requested<get_characters_character_id_contracts_contract_id_bids_200 []> get_corporations_contracts_bids(int contract_id,
         int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
@@ -1365,7 +1365,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_contracts_contract_id_items_200 []> get_corporations_contracts_items(int contract_id,
+    public Requested<get_characters_character_id_contracts_contract_id_items_200 []> get_corporations_contracts_items(int contract_id,
         int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
@@ -1394,7 +1394,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_customs_offices_200 []> get_corporations_customs_offices(int corporation_id,
+    public Requested<get_corporations_corporation_id_customs_offices_200 []> get_corporations_customs_offices(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -1421,7 +1421,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_divisions> get_corporations_divisions(int corporation_id,
+    public Requested<get_corporations_corporation_id_divisions> get_corporations_divisions(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -1447,7 +1447,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_facilities_200 []> get_corporations_facilities(int corporation_id,
+    public Requested<get_corporations_corporation_id_facilities_200 []> get_corporations_facilities(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -1469,7 +1469,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_fw_stats> get_corporations_fw_stats(int corporation_id,
+    public Requested<get_corporations_corporation_id_fw_stats> get_corporations_fw_stats(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -1499,7 +1499,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_industry_jobs_200 []> get_corporations_industry_jobs(int corporation_id,
+    public Requested<get_corporations_corporation_id_industry_jobs_200 []> get_corporations_industry_jobs(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         Boolean include_completed,
         Integer page,
@@ -1529,7 +1529,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_killmails_recent_200 []> get_corporations_killmails_recent(int corporation_id,
+    public Requested<get_characters_character_id_killmails_recent_200 []> get_corporations_killmails_recent(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -1554,7 +1554,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_medals_200 []> get_corporations_medals(int corporation_id,
+    public Requested<get_corporations_corporation_id_medals_200 []> get_corporations_medals(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -1583,7 +1583,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_medals_issued_200 []> get_corporations_medals_issued(int corporation_id,
+    public Requested<get_corporations_corporation_id_medals_issued_200 []> get_corporations_medals_issued(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -1610,7 +1610,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<Integer> get_corporations_members_limit(int corporation_id,
+    public Requested<Integer> get_corporations_members_limit(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -1636,7 +1636,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_members_titles_200 []> get_corporations_members_titles(int corporation_id,
+    public Requested<get_corporations_corporation_id_members_titles_200 []> get_corporations_members_titles(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -1662,7 +1662,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_membertracking_200 []> get_corporations_membertracking(int corporation_id,
+    public Requested<get_corporations_corporation_id_membertracking_200 []> get_corporations_membertracking(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -1684,7 +1684,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_roles_200 []> get_corporations_roles(int corporation_id,
+    public Requested<get_corporations_corporation_id_roles_200 []> get_corporations_roles(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -1712,7 +1712,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_roles_history_200 []> get_corporations_roles_history(int corporation_id,
+    public Requested<get_corporations_corporation_id_roles_history_200 []> get_corporations_roles_history(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -1741,7 +1741,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_shareholders_200 []> get_corporations_shareholders(int corporation_id,
+    public Requested<get_corporations_corporation_id_shareholders_200 []> get_corporations_shareholders(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -1766,7 +1766,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_standings_200 []> get_corporations_standings(int corporation_id,
+    public Requested<get_characters_character_id_standings_200 []> get_corporations_standings(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -1795,7 +1795,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_starbases_200 []> get_corporations_starbases(int corporation_id,
+    public Requested<get_corporations_corporation_id_starbases_200 []> get_corporations_starbases(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -1826,7 +1826,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_starbases_starbase_id> get_corporations_starbases(int corporation_id,
+    public Requested<get_corporations_corporation_id_starbases_starbase_id> get_corporations_starbases(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         long starbase_id,
         int system_id,
@@ -1854,7 +1854,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_titles_200 []> get_corporations_titles(int corporation_id,
+    public Requested<get_corporations_corporation_id_titles_200 []> get_corporations_titles(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -1880,7 +1880,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_wallets_200 []> get_corporations_wallets(int corporation_id,
+    public Requested<get_corporations_corporation_id_wallets_200 []> get_corporations_wallets(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -1910,7 +1910,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_wallets_division_transactions_200 []> get_corporations_wallets_transactions(int corporation_id,
+    public Requested<get_corporations_corporation_id_wallets_division_transactions_200 []> get_corporations_wallets_transactions(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         int division,
         Long from_id,
@@ -1934,7 +1934,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_fleets_fleet_id> get_fleets(esi.evetech.net.structures.datasource datasource,
+    public Requested<get_fleets_fleet_id> get_fleets(esi.evetech.net.structures.datasource datasource,
         long fleet_id,
         String token,
         Map<String, String> properties) {
@@ -1959,7 +1959,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default void put_fleets(esi.evetech.net.structures.datasource datasource,
+    public void put_fleets(esi.evetech.net.structures.datasource datasource,
         long fleet_id,
         boolean is_free_move,
         String motd,
@@ -1988,7 +1988,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_fleets_fleet_id_members_200 []> get_fleets_members(esi.evetech.net.structures.datasource datasource,
+    public Requested<get_fleets_fleet_id_members_200 []> get_fleets_members(esi.evetech.net.structures.datasource datasource,
         long fleet_id,
         esi.evetech.net.structures.language language,
         String token,
@@ -2018,7 +2018,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default void post_fleets_members(esi.evetech.net.structures.datasource datasource,
+    public void post_fleets_members(esi.evetech.net.structures.datasource datasource,
         long fleet_id,
         int character_id,
         esi.evetech.net.structures.role role,
@@ -2056,7 +2056,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default void put_fleets_members(esi.evetech.net.structures.datasource datasource,
+    public void put_fleets_members(esi.evetech.net.structures.datasource datasource,
         long fleet_id,
         int member_id,
         esi.evetech.net.structures.role role,
@@ -2087,7 +2087,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default void delete_fleets_members(esi.evetech.net.structures.datasource datasource,
+    public void delete_fleets_members(esi.evetech.net.structures.datasource datasource,
         long fleet_id,
         int member_id,
         String token,
@@ -2113,7 +2113,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default void put_fleets_squads(esi.evetech.net.structures.datasource datasource,
+    public void put_fleets_squads(esi.evetech.net.structures.datasource datasource,
         long fleet_id,
         String name,
         long squad_id,
@@ -2140,7 +2140,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default void delete_fleets_squads(esi.evetech.net.structures.datasource datasource,
+    public void delete_fleets_squads(esi.evetech.net.structures.datasource datasource,
         long fleet_id,
         long squad_id,
         String token,
@@ -2165,7 +2165,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_fleets_fleet_id_wings_200 []> get_fleets_wings(esi.evetech.net.structures.datasource datasource,
+    public Requested<get_fleets_fleet_id_wings_200 []> get_fleets_wings(esi.evetech.net.structures.datasource datasource,
         long fleet_id,
         esi.evetech.net.structures.language language,
         String token,
@@ -2187,7 +2187,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<post_fleets_fleet_id_wings_created> post_fleets_wings(esi.evetech.net.structures.datasource datasource,
+    public Requested<post_fleets_fleet_id_wings_created> post_fleets_wings(esi.evetech.net.structures.datasource datasource,
         long fleet_id,
         String token,
         Map<String, String> properties) {
@@ -2212,7 +2212,7 @@ interface G_ICOAccess
      * @param wing_id
      *     The wing to rename
      */
-    public default void put_fleets_wings(esi.evetech.net.structures.datasource datasource,
+    public void put_fleets_wings(esi.evetech.net.structures.datasource datasource,
         long fleet_id,
         String name,
         String token,
@@ -2239,7 +2239,7 @@ interface G_ICOAccess
      * @param wing_id
      *     The wing to delete
      */
-    public default void delete_fleets_wings(esi.evetech.net.structures.datasource datasource,
+    public void delete_fleets_wings(esi.evetech.net.structures.datasource datasource,
         long fleet_id,
         String token,
         long wing_id,
@@ -2263,7 +2263,7 @@ interface G_ICOAccess
      * @param wing_id
      *     The wing_id to create squad in
      */
-    public default Requested<post_fleets_fleet_id_wings_wing_id_squads_created> post_fleets_wings_squads(esi.evetech.net.structures.datasource datasource,
+    public Requested<post_fleets_fleet_id_wings_wing_id_squads_created> post_fleets_wings_squads(esi.evetech.net.structures.datasource datasource,
         long fleet_id,
         String token,
         long wing_id,
@@ -2288,7 +2288,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_markets_structures_structure_id_200 []> get_markets_structures(esi.evetech.net.structures.datasource datasource,
+    public Requested<get_markets_structures_structure_id_200 []> get_markets_structures(esi.evetech.net.structures.datasource datasource,
         Integer page,
         long structure_id,
         String token,
@@ -2310,7 +2310,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default void post_ui_openwindow_contract(int contract_id,
+    public void post_ui_openwindow_contract(int contract_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -2331,7 +2331,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default void post_ui_openwindow_information(esi.evetech.net.structures.datasource datasource,
+    public void post_ui_openwindow_information(esi.evetech.net.structures.datasource datasource,
         int target_id,
         String token,
         Map<String, String> properties) {
@@ -2352,7 +2352,7 @@ interface G_ICOAccess
      * @param type_id
      *     The item type to open in market window
      */
-    public default void post_ui_openwindow_marketdetails(esi.evetech.net.structures.datasource datasource,
+    public void post_ui_openwindow_marketdetails(esi.evetech.net.structures.datasource datasource,
         String token,
         int type_id,
         Map<String, String> properties) {
@@ -2381,7 +2381,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default void post_ui_openwindow_newmail(esi.evetech.net.structures.datasource datasource,
+    public void post_ui_openwindow_newmail(esi.evetech.net.structures.datasource datasource,
         String body,
         int[] recipients,
         String subject,
@@ -2415,7 +2415,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_alliances_alliance_id_contacts_200 []> get_alliances_contacts(int alliance_id,
+    public Requested<get_alliances_alliance_id_contacts_200 []> get_alliances_contacts(int alliance_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -2439,7 +2439,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<post_characters_character_id_assets_locations_200 []> post_characters_assets_locations(int character_id,
+    public Requested<post_characters_character_id_assets_locations_200 []> post_characters_assets_locations(int character_id,
         esi.evetech.net.structures.datasource datasource,
         long[] item_ids,
         String token,
@@ -2466,7 +2466,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_blueprints_200 []> get_characters_blueprints(int character_id,
+    public Requested<get_characters_character_id_blueprints_200 []> get_characters_blueprints(int character_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -2491,7 +2491,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_bookmarks_200 []> get_characters_bookmarks(int character_id,
+    public Requested<get_corporations_corporation_id_bookmarks_200 []> get_characters_bookmarks(int character_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -2516,7 +2516,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_bookmarks_folders_200 []> get_characters_bookmarks_folders(int character_id,
+    public Requested<get_characters_character_id_bookmarks_folders_200 []> get_characters_bookmarks_folders(int character_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -2541,7 +2541,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_contacts_200 []> get_characters_contacts(int character_id,
+    public Requested<get_characters_character_id_contacts_200 []> get_characters_contacts(int character_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -2571,7 +2571,7 @@ interface G_ICOAccess
      * @param watched
      *     Whether the contact should be watched, note this is only effective on characters
      */
-    public default Requested<Integer[]> post_characters_contacts(int character_id,
+    public Requested<Integer[]> post_characters_contacts(int character_id,
         int[] contact_ids,
         esi.evetech.net.structures.datasource datasource,
         long[] label_ids,
@@ -2606,7 +2606,7 @@ interface G_ICOAccess
      * @param watched
      *     Whether the contact should be watched, note this is only effective on characters
      */
-    public default void put_characters_contacts(int character_id,
+    public void put_characters_contacts(int character_id,
         int[] contact_ids,
         esi.evetech.net.structures.datasource datasource,
         long[] label_ids,
@@ -2635,7 +2635,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default void delete_characters_contacts(int character_id,
+    public void delete_characters_contacts(int character_id,
         int[] contact_ids,
         esi.evetech.net.structures.datasource datasource,
         String token,
@@ -2658,7 +2658,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_fittings_200 []> get_characters_fittings(int character_id,
+    public Requested<get_characters_character_id_fittings_200 []> get_characters_fittings(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -2687,7 +2687,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<post_characters_character_id_fittings_created> post_characters_s(int character_id,
+    public Requested<post_characters_character_id_fittings_created> post_characters_s(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String description,
         get_characters_character_id_fittings_items[] items,
@@ -2721,7 +2721,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<Integer> post_characters_mail_s(int character_id,
+    public Requested<Integer> post_characters_mail_s(int character_id,
         esi.evetech.net.structures.datasource datasource,
         esi.evetech.net.structures.color color,
         String name,
@@ -2748,7 +2748,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_online> get_characters_online(int character_id,
+    public Requested<get_characters_character_id_online> get_characters_online(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -2770,7 +2770,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_orders_200 []> get_characters_orders(int character_id,
+    public Requested<get_characters_character_id_orders_200 []> get_characters_orders(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -2792,7 +2792,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_roles> get_characters_roles(int character_id,
+    public Requested<get_characters_character_id_roles> get_characters_roles(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -2814,7 +2814,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_skillqueue_200 []> get_characters_skillqueue(int character_id,
+    public Requested<get_characters_character_id_skillqueue_200 []> get_characters_skillqueue(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -2836,7 +2836,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_stats_200 []> get_characters_stats(int character_id,
+    public Requested<get_characters_character_id_stats_200 []> get_characters_stats(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -2863,7 +2863,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<post_characters_character_id_assets_locations_200 []> post_corporations_assets_locations(int corporation_id,
+    public Requested<post_characters_character_id_assets_locations_200 []> post_corporations_assets_locations(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         long[] item_ids,
         String token,
@@ -2894,7 +2894,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_blueprints_200 []> get_corporations_blueprints(int corporation_id,
+    public Requested<get_corporations_corporation_id_blueprints_200 []> get_corporations_blueprints(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -2919,7 +2919,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_contacts_200 []> get_corporations_contacts(int corporation_id,
+    public Requested<get_corporations_corporation_id_contacts_200 []> get_corporations_contacts(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -2948,7 +2948,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_containers_logs_200 []> get_corporations_containers_logs(int corporation_id,
+    public Requested<get_corporations_corporation_id_containers_logs_200 []> get_corporations_containers_logs(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -2977,7 +2977,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_orders_history_200 []> get_corporations_orders_history(int corporation_id,
+    public Requested<get_corporations_corporation_id_orders_history_200 []> get_corporations_orders_history(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -3003,7 +3003,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default void post_ui_autopilot_waypoint(boolean add_to_beginning,
+    public void post_ui_autopilot_waypoint(boolean add_to_beginning,
         boolean clear_other_waypoints,
         esi.evetech.net.structures.datasource datasource,
         long destination_id,
@@ -3027,7 +3027,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_universe_structures_structure_id> get_universe_structures(esi.evetech.net.structures.datasource datasource,
+    public Requested<get_universe_structures_structure_id> get_universe_structures(esi.evetech.net.structures.datasource datasource,
         long structure_id,
         String token,
         Map<String, String> properties) {
@@ -3051,7 +3051,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_assets_200 []> get_characters_assets(int character_id,
+    public Requested<get_characters_character_id_assets_200 []> get_characters_assets(int character_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -3076,7 +3076,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_calendar_event_id> get_characters_calendar(int character_id,
+    public Requested<get_characters_character_id_calendar_event_id> get_characters_calendar(int character_id,
         esi.evetech.net.structures.datasource datasource,
         int event_id,
         String token,
@@ -3102,7 +3102,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default void put_characters_calendar(int character_id,
+    public void put_characters_calendar(int character_id,
         esi.evetech.net.structures.datasource datasource,
         int event_id,
         esi.evetech.net.structures.response response,
@@ -3128,7 +3128,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_clones> get_characters_clones(int character_id,
+    public Requested<get_characters_character_id_clones> get_characters_clones(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -3150,7 +3150,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_mail_labels> get_characters_mail_labels(int character_id,
+    public Requested<get_characters_character_id_mail_labels> get_characters_mail_labels(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -3174,7 +3174,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_planets_planet_id> get_characters_planets(int character_id,
+    public Requested<get_characters_character_id_planets_planet_id> get_characters_planets(int character_id,
         esi.evetech.net.structures.datasource datasource,
         int planet_id,
         String token,
@@ -3205,7 +3205,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_search> get_characters(String[] categories,
+    public Requested<get_characters_character_id_search> get_characters(String[] categories,
         int character_id,
         esi.evetech.net.structures.datasource datasource,
         esi.evetech.net.structures.language language,
@@ -3237,7 +3237,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_assets_200 []> get_corporations_assets(int corporation_id,
+    public Requested<get_corporations_corporation_id_assets_200 []> get_corporations_assets(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -3260,7 +3260,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<Integer[]> get_corporations_members(int corporation_id,
+    public Requested<Integer[]> get_corporations_members(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -3288,7 +3288,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_orders_200 []> get_corporations_orders(int corporation_id,
+    public Requested<get_corporations_corporation_id_orders_200 []> get_corporations_orders(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
@@ -3319,7 +3319,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_structures_200 []> get_corporations_structures(int corporation_id,
+    public Requested<get_corporations_corporation_id_structures_200 []> get_corporations_structures(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         esi.evetech.net.structures.language language,
         Integer page,
@@ -3344,7 +3344,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<Float> post__cspa(int character_id,
+    public Requested<Float> post__cspa(int character_id,
         int[] characters,
         esi.evetech.net.structures.datasource datasource,
         String token,
@@ -3369,7 +3369,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_notifications_200 []> get_characters_notifications(int character_id,
+    public Requested<get_characters_character_id_notifications_200 []> get_characters_notifications(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -3391,7 +3391,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_characters_character_id_skills> get_characters_skills(int character_id,
+    public Requested<get_characters_character_id_skills> get_characters_skills(int character_id,
         esi.evetech.net.structures.datasource datasource,
         String token,
         Map<String, String> properties) {
@@ -3421,7 +3421,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_wallets_division_journal_200 []> get_corporations_wallets_journal(int corporation_id,
+    public Requested<get_corporations_corporation_id_wallets_division_journal_200 []> get_corporations_wallets_journal(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         int division,
         Integer page,
@@ -3449,7 +3449,7 @@ interface G_ICOAccess
      * @param token
      *     Access token to use if unable to set a header
      */
-    public default Requested<get_corporations_corporation_id_wallets_division_journal_200 []> get_characters_wallet_journal(int character_id,
+    public Requested<get_corporations_corporation_id_wallets_division_journal_200 []> get_characters_wallet_journal(int character_id,
         esi.evetech.net.structures.datasource datasource,
         Integer page,
         String token,
