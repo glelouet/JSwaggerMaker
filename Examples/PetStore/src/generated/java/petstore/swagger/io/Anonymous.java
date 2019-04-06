@@ -2,17 +2,17 @@ package petstore.swagger.io;
 
 import java.util.HashMap;
 import java.util.Map;
-import fr.lelouet.jswaggermaker.client.common.impl.ATransfer;
+import fr.lelouet.jswaggermaker.client.common.impl.securities.Disconnected;
 import fr.lelouet.jswaggermaker.client.common.interfaces.Requested;
 import petstore.swagger.io.definitions.Order;
 import petstore.swagger.io.definitions.User;
 
 
 /**
- * access the swagger with no connection.
+ * access petstore.swagger.io with no authorization.
  */
-class NoConnection
-    extends ATransfer
+public class Anonymous
+    extends Disconnected
 {
 
     /**

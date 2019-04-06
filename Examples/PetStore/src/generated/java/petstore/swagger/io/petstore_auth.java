@@ -2,19 +2,23 @@ package petstore.swagger.io;
 
 import java.util.HashMap;
 import java.util.Map;
-import fr.lelouet.jswaggermaker.client.common.impl.ATransfer;
+import fr.lelouet.jswaggermaker.client.common.impl.securities.Oauth2;
 import fr.lelouet.jswaggermaker.client.common.interfaces.Requested;
 import petstore.swagger.io.definitions.ApiResponse;
 import petstore.swagger.io.definitions.Pet;
 
 
 /**
- * access the swagger with connection oauth2.
+ * access petstore.swagger.io with authorization type oauth2.
  */
-class petstore_auth
-    extends ATransfer
+public class petstore_auth
+    extends Oauth2
 {
     public static final String[] SCOPES = new String[] {"write:pets", "read:pets"};
+
+    public petstore_auth(String refreshToken, String basicAuth) {
+        super(refreshToken, basicAuth, "https://petstore.swagger.io/oauth/authorize");
+    }
 
     /**
      * Add a new pet to the store

@@ -7,9 +7,9 @@ import petstore.swagger.io.definitions.Pet;
 
 
 /**
- * access the swagger with connection apiKey.
+ * access petstore.swagger.io with authorization type apiKey.
  */
-class api_key
+public class api_key
     extends ATransfer
 {
     public static final String[] SCOPES = new String[] { };

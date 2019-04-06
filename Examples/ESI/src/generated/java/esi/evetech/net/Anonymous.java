@@ -59,15 +59,15 @@ import esi.evetech.net.responses.get_universe_types_type_id;
 import esi.evetech.net.responses.get_wars_war_id;
 import esi.evetech.net.responses.post_characters_affiliation_200;
 import esi.evetech.net.responses.post_universe_names_200;
-import fr.lelouet.jswaggermaker.client.common.impl.ATransfer;
+import fr.lelouet.jswaggermaker.client.common.impl.securities.Disconnected;
 import fr.lelouet.jswaggermaker.client.common.interfaces.Requested;
 
 
 /**
- * access the swagger with no connection.
+ * access esi.evetech.net with no authorization.
  */
-class NoConnection
-    extends ATransfer
+public class Anonymous
+    extends Disconnected
 {
 
     /**

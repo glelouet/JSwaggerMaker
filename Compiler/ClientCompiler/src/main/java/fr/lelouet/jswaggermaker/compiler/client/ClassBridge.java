@@ -1,5 +1,7 @@
 package fr.lelouet.jswaggermaker.compiler.client;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -26,6 +28,7 @@ import com.helger.jcodemodel.JEnumConstant;
 import com.helger.jcodemodel.JExpr;
 import com.helger.jcodemodel.JFieldRef;
 import com.helger.jcodemodel.JFieldVar;
+import com.helger.jcodemodel.JInvocation;
 import com.helger.jcodemodel.JMethod;
 import com.helger.jcodemodel.JMod;
 import com.helger.jcodemodel.JPackage;
@@ -33,11 +36,13 @@ import com.helger.jcodemodel.JVar;
 
 import fr.lelouet.jswaggermaker.client.common.impl.ATransfer;
 import fr.lelouet.jswaggermaker.client.common.impl.securities.Disconnected;
+import fr.lelouet.jswaggermaker.client.common.impl.securities.Oauth2;
 import io.swagger.models.ArrayModel;
 import io.swagger.models.Model;
 import io.swagger.models.ModelImpl;
 import io.swagger.models.RefModel;
 import io.swagger.models.Swagger;
+import io.swagger.models.auth.OAuth2Definition;
 import io.swagger.models.auth.SecuritySchemeDefinition;
 import io.swagger.models.parameters.QueryParameter;
 import io.swagger.models.properties.ArrayProperty;
@@ -115,9 +120,8 @@ public class ClassBridge {
 				synchronized (this) {
 					if (swaggerDCClass == null) {
 						try {
-							swaggerDCClass = rootPackage._class(0, "NoConnection")
-									._extends((AbstractJClass) cm._ref(Disconnected.class));
-							swaggerDCClass.javadoc().add("access the swagger with no connection.");
+							swaggerDCClass = rootPackage._class("Anonymous")._extends((AbstractJClass) cm._ref(Disconnected.class));
+							swaggerDCClass.javadoc().add("access " + swagger.getHost() + " with no authorization.");
 						} catch (JClassAlreadyExistsException e) {
 							throw new UnsupportedOperationException("catch this", e);
 						}
@@ -146,30 +150,63 @@ public class ClassBridge {
 	}
 
 	protected JDefinedClass makeClassForSecurity(String secName) {
-		SecuritySchemeDefinition def = swagger.getSecurityDefinitions().get(secName);
-		if (def == null) {
+		SecuritySchemeDefinition secDef = swagger.getSecurityDefinitions().get(secName);
+		if (secDef == null) {
 			throw new UnsupportedOperationException("can't find security definition for " + secName + " , existing are "
 					+ swagger.getSecurityDefinitions().keySet());
 		}
+		/** the parent we inherit from */
 		AbstractJClass parent = null;
-		switch (def.getType().toLowerCase()) {
+		/** the super constructor to call */
+		Constructor<? extends ATransfer> parentCons = null;
+		/** possible replacements for the parameters of the parent constructor */
+		IJExpression[] parentConsValueReplace = null;
+		String[] parentConsNameReplace = null;
+		switch (secDef.getType().toLowerCase()) {
 		case "oauth2":
-			parent = (AbstractJClass) cm._ref(ATransfer.class);
+			parent = (AbstractJClass) cm._ref(Oauth2.class);
+			try {
+				parentCons = Oauth2.class.getConstructor(String.class, String.class, String.class);
+				parentConsNameReplace = new String[] { "refreshToken", "basicAuth", null };
+			} catch (NoSuchMethodException | SecurityException e1) {
+				throw new UnsupportedOperationException("catch this", e1);
+			}
+			OAuth2Definition oauthDef = (OAuth2Definition) secDef;
+			parentConsValueReplace = new IJExpression[] { null, null, JExpr.lit(oauthDef.getAuthorizationUrl()) };
 			break;
 		case "apikey":
 			parent = (AbstractJClass) cm._ref(ATransfer.class);
 			break;
 		default:
-			throw new UnsupportedOperationException("can't create class for security type " + def.getType());
+			throw new UnsupportedOperationException("can't create class for security type " + secDef.getType());
 		}
 		try {
-			JDefinedClass ret = rootPackage._class(0, secName)._extends(parent);
-			ret.javadoc().add("access the swagger with connection " + def.getType() + ".");
+			JDefinedClass ret = rootPackage._class(secName)._extends(parent);
+			ret.javadoc().add("access " + swagger.getHost() + " with authorization type " + secDef.getType() + ".");
+			// if the parent class has a constructor to call, we create the same
+			// constructor
+			if (parentCons != null) {
+				JMethod cons = ret.constructor(JMod.PUBLIC);
+				JInvocation consbody = JInvocation._super();
+				for (int i = 0; i < parentCons.getParameterCount(); i++) {
+					if (parentConsValueReplace != null && i < parentConsValueReplace.length
+							&& parentConsValueReplace[i] != null) {
+						consbody.arg(parentConsValueReplace[i]);
+					} else {
+						Parameter p = parentCons.getParameters()[i];
+						String name = p.getName();
+						if (parentConsNameReplace != null && i < parentConsNameReplace.length && parentConsNameReplace[i] != null) {
+							name= parentConsNameReplace[i];
+						}
+						consbody.arg(cons.param(p.getType(), name));
+					}
+				}
+				cons.body().add(consbody);
+			}
 			Set<String> allScopes = swagger.getPaths().values().stream().flatMap(p -> p.getOperations().stream())
 					.filter(ope -> ope.getSecurity() != null && !ope.getSecurity().isEmpty())
 					.flatMap(ope -> ope.getSecurity().stream()).map(secs -> secs.get(secName)).filter(sec -> sec != null)
-					.flatMap(l -> l.stream())
-					.collect(Collectors.toSet());
+					.flatMap(l -> l.stream()).collect(Collectors.toSet());
 			JFieldVar scopesField = ret.field(JMod.PUBLIC | JMod.STATIC | JMod.FINAL, cm.ref(String[].class), "SCOPES");
 			JArray scopesinit = JExpr.newArray(cm.ref(String.class));
 			for (String scope : allScopes) {
@@ -181,8 +218,6 @@ public class ClassBridge {
 			throw new UnsupportedOperationException("catch this", e);
 		}
 	}
-
-	protected HashMap<String, String> structureRenames = new HashMap<>();
 
 	/**
 	 * try find a common name for several classes that have same structure.
@@ -381,7 +416,7 @@ public class ClassBridge {
 			JDefinedClass cl = pck._class(name.replaceAll("_ok", ""));
 			for (Entry<String, Property> e : p.getProperties().entrySet()) {
 				Property prop = e.getValue();
-				String structName = structureRenames.getOrDefault(prop.getTitle(), prop.getTitle());
+				String structName = prop.getTitle();
 				if (structName == null) {
 					structName = e.getKey().toUpperCase();
 				}
@@ -535,8 +570,7 @@ public class ClassBridge {
 		if (s == null) {
 			return cm.VOID;
 		} else {
-			String className = structureRenames.getOrDefault(s.getTitle(), s.getTitle());
-			return translateToClass(s, responsePackage, className);
+			return translateToClass(s, responsePackage, s.getTitle());
 		}
 	}
 }
