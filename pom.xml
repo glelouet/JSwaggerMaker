@@ -70,7 +70,7 @@
 			</dependency>
 			<dependency>
 				<groupId>fr.lelouet.jswaggermaker.compiler</groupId>
-				<artifactId>Client</artifactId>
+				<artifactId>ClientCompiler</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
