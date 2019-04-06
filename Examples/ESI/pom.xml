@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>fr.lelouet.jswaggermaker</groupId>
+    <artifactId>Examples</artifactId>
+    <version>0.0.1</version>
+  </parent>
+  <artifactId>ESI</artifactId>
+  <groupId>fr.lelouet.jswaggermaker.examples</groupId>
+	<dependencies>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<optional>true</optional>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.2.1</version>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<mainClass>fr.lelouet.jswaggermaker.compiler.client.SwaggerCompiler</mainClass>
+					<arguments>
+						<argument>url=https://esi.evetech.net/_latest/swagger.json</argument>
+						<argument>folder=${project.basedir}/src/generated/java/</argument> 
+					</arguments>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

@@ -11,10 +11,6 @@
 	<groupId>fr.lelouet.jswaggermaker.examples</groupId>
 	<dependencies>
 		<dependency>
-			<groupId>fr.lelouet.jswaggermaker.compiler</groupId>
-			<artifactId>Client</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 			<optional>true</optional>
@@ -39,7 +35,7 @@
 					<mainClass>fr.lelouet.jswaggermaker.compiler.client.SwaggerCompiler</mainClass>
 					<arguments>
 						<argument>url=https://petstore.swagger.io/v2/swagger.json</argument>
-						<argument>folder=src/generated/java/</argument> 
+						<argument>folder=${project.basedir}/src/generated/java/</argument> 
 					</arguments>
 				</configuration>
 			</plugin>
