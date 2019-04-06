@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
@@ -40,41 +41,7 @@ public abstract class ATransfer implements ITransfer {
 			Map<String, Object> transmit, Class<T> expectedClass) {
 		try {
 			HttpsURLConnection con = makeConnection(url, method, properties, transmit);
-			Map<String, List<String>> headers = con.getHeaderFields();
-			int responseCode = con.getResponseCode();
-			switch (responseCode) {
-			// 2xx ok
-			case HttpsURLConnection.HTTP_OK:
-			case HttpsURLConnection.HTTP_CREATED:
-			case HttpsURLConnection.HTTP_ACCEPTED:
-			case HttpsURLConnection.HTTP_NOT_AUTHORITATIVE:
-			case HttpsURLConnection.HTTP_NO_CONTENT:
-			case HttpsURLConnection.HTTP_RESET:
-			case HttpsURLConnection.HTTP_PARTIAL:
-				String ret = new BufferedReader(new InputStreamReader(con.getInputStream())).readLine();
-				return new RequestedImpl<>(url, responseCode, null, convert(ret, expectedClass), headers);
-				// 304 not modified
-			case HttpsURLConnection.HTTP_NOT_MODIFIED:
-				return new RequestedImpl<>(url, responseCode, null, null, headers);
-				// 4xx client error
-			case HttpsURLConnection.HTTP_BAD_REQUEST:
-			case HttpsURLConnection.HTTP_UNAUTHORIZED:
-			case HttpsURLConnection.HTTP_PAYMENT_REQUIRED:
-			case HttpsURLConnection.HTTP_FORBIDDEN:
-			case HttpsURLConnection.HTTP_NOT_FOUND:
-			case HttpsURLConnection.HTTP_BAD_METHOD:
-				// 5xx server error
-			case HttpsURLConnection.HTTP_INTERNAL_ERROR:
-			case HttpsURLConnection.HTTP_BAD_GATEWAY:
-			case HttpsURLConnection.HTTP_UNAVAILABLE:
-			case HttpsURLConnection.HTTP_GATEWAY_TIMEOUT:
-			default:
-				StringBuilder sb = new StringBuilder("[" + method + ":" + responseCode + "]" + url + " data=" + transmit + " ");
-				if (con.getErrorStream() != null) {
-					new BufferedReader(new InputStreamReader(con.getErrorStream())).lines().forEach(sb::append);
-				}
-				return new RequestedImpl<>(url, responseCode, sb.toString(), null, headers);
-			}
+			return convertConnnectionResult(con, s -> convert(s, expectedClass));
 		} catch (Exception e) {
 			return new RequestedImpl<>(url, HttpsURLConnection.HTTP_UNAVAILABLE, e.getMessage(), null, new HashMap<>());
 		}
@@ -104,11 +71,55 @@ public abstract class ATransfer implements ITransfer {
 		return con;
 	}
 
+	protected <T> RequestedImpl<T> convertConnnectionResult(HttpsURLConnection con, Function<String, T> converter)
+			throws IOException {
+		Map<String, List<String>> headers = con.getHeaderFields();
+		int responseCode = con.getResponseCode();
+		switch (responseCode) {
+		// 2xx ok
+		case HttpsURLConnection.HTTP_OK:
+		case HttpsURLConnection.HTTP_CREATED:
+		case HttpsURLConnection.HTTP_ACCEPTED:
+		case HttpsURLConnection.HTTP_NOT_AUTHORITATIVE:
+		case HttpsURLConnection.HTTP_NO_CONTENT:
+		case HttpsURLConnection.HTTP_RESET:
+		case HttpsURLConnection.HTTP_PARTIAL:
+			String ret = new BufferedReader(new InputStreamReader(con.getInputStream())).readLine();
+			return new RequestedImpl<>(con.getURL().toString(), responseCode, null, converter.apply(ret), headers);
+		// 304 not modified
+		case HttpsURLConnection.HTTP_NOT_MODIFIED:
+			return new RequestedImpl<>(con.getURL().toString(), responseCode, null, null, headers);
+		// 4xx client error
+		case HttpsURLConnection.HTTP_BAD_REQUEST:
+		case HttpsURLConnection.HTTP_UNAUTHORIZED:
+		case HttpsURLConnection.HTTP_PAYMENT_REQUIRED:
+		case HttpsURLConnection.HTTP_FORBIDDEN:
+		case HttpsURLConnection.HTTP_NOT_FOUND:
+		case HttpsURLConnection.HTTP_BAD_METHOD:
+			// 5xx server error
+		case HttpsURLConnection.HTTP_INTERNAL_ERROR:
+		case HttpsURLConnection.HTTP_BAD_GATEWAY:
+		case HttpsURLConnection.HTTP_UNAVAILABLE:
+		case HttpsURLConnection.HTTP_GATEWAY_TIMEOUT:
+		default:
+			StringBuilder sb = new StringBuilder(
+					"[" + con.getRequestMethod() + ":" + responseCode + "]" + con.getURL().toString() + " ");
+			if (con.getErrorStream() != null) {
+				new BufferedReader(new InputStreamReader(con.getErrorStream())).lines().forEach(sb::append);
+			}
+			return new RequestedImpl<>(con.getURL().toString(), responseCode, sb.toString(), null, headers);
+		}
+	}
+
 	@Override
 	public <T> Requested<Map<String, T>> requestMap(String url, String method, Map<String, String> properties,
 			Map<String, Object> transmit, Class<T> expectedClass) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			HttpsURLConnection con = makeConnection(url, method, properties, transmit);
+			return convertConnnectionResult(con, s -> convertMap(s, expectedClass));
+		} catch (Exception e) {
+			return new RequestedImpl<>(url, HttpsURLConnection.HTTP_UNAVAILABLE, e.getMessage(), null, new HashMap<>());
+		}
 	}
 
 	////
