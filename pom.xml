@@ -131,7 +131,8 @@
 					<execution>
 						<id>attach-sources</id>
 						<goals>
-							<goal>jar</goal>
+							<!-- -no-fork prevents from compiling twice -->
+							<goal>jar-no-fork</goal>
 						</goals>
 					</execution>
 				</executions>
