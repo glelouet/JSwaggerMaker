@@ -103,7 +103,9 @@ public class petstore_auth
     public void deletePet(String api_key, long petId) {
         String url = ("https://petstore.swagger.io/v2/pet/{petId}".replace("{petId}", ""+petId));
         HashMap<String, String> headerProperties = new HashMap<String, String>();
-        headerProperties.put("api_key", api_key.toString());
+        if (api_key!= null) {
+            headerProperties.put("api_key", (""+ api_key));
+        }
         requestDel(url, headerProperties);
     }
 
