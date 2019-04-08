@@ -28,11 +28,11 @@ public class petstore_auth
      * @param body
      *     Pet object that needs to be added to the store
      */
-    public void addPet(Pet body, Map<String, String> properties) {
+    public void addPet(Pet body) {
         String url = ("https://petstore.swagger.io/v2/pet");
         Map<String, Object> content = new HashMap<>();
         content.put("body", body);
-        requestPost(url, properties, content, Void.class);
+        requestPost(url, null, content, Void.class);
     }
 
     /**
@@ -43,11 +43,11 @@ public class petstore_auth
      * @param body
      *     Pet object that needs to be added to the store
      */
-    public void updatePet(Pet body, Map<String, String> properties) {
+    public void updatePet(Pet body) {
         String url = ("https://petstore.swagger.io/v2/pet");
         Map<String, Object> content = new HashMap<>();
         content.put("body", body);
-        requestPut(url, properties, content);
+        requestPut(url, null, content);
     }
 
     /**
@@ -59,9 +59,9 @@ public class petstore_auth
      * @param status
      *     Status values that need to be considered for filter
      */
-    public Requested<Pet[]> findPetsByStatus(String[] status, Map<String, String> properties) {
+    public Requested<Pet[]> findPetsByStatus(String[] status) {
         String url = ("https://petstore.swagger.io/v2/pet/findByStatus"+"?"+(status==null?"":"&status="+flatten(status)));
-        return requestGet(url, properties, Pet[].class);
+        return requestGet(url, null, Pet[].class);
     }
 
     /**
@@ -73,9 +73,9 @@ public class petstore_auth
      * @param tags
      *     Tags to filter by
      */
-    public Requested<Pet[]> findPetsByTags(String[] tags, Map<String, String> properties) {
+    public Requested<Pet[]> findPetsByTags(String[] tags) {
         String url = ("https://petstore.swagger.io/v2/pet/findByTags"+"?"+(tags==null?"":"&tags="+flatten(tags)));
-        return requestGet(url, properties, Pet[].class);
+        return requestGet(url, null, Pet[].class);
     }
 
     /**
@@ -86,9 +86,9 @@ public class petstore_auth
      * @param petId
      *     ID of pet that needs to be updated
      */
-    public void updatePetWithForm(long petId, Map<String, String> properties) {
+    public void updatePetWithForm(long petId) {
         String url = ("https://petstore.swagger.io/v2/pet/{petId}".replace("{petId}", ""+petId));
-        requestPost(url, properties, null, Void.class);
+        requestPost(url, null, null, Void.class);
     }
 
     /**
@@ -96,12 +96,15 @@ public class petstore_auth
      * <p>
      * </p>
      * 
+     * @param api_key
      * @param petId
      *     Pet id to delete
      */
-    public void deletePet(long petId, Map<String, String> properties) {
+    public void deletePet(String api_key, long petId) {
         String url = ("https://petstore.swagger.io/v2/pet/{petId}".replace("{petId}", ""+petId));
-        requestDel(url, properties);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("api_key", api_key.toString());
+        requestDel(url, headerProperties);
     }
 
     /**
@@ -112,8 +115,8 @@ public class petstore_auth
      * @param petId
      *     ID of pet to update
      */
-    public Requested<ApiResponse> uploadFile(long petId, Map<String, String> properties) {
+    public Requested<ApiResponse> uploadFile(long petId) {
         String url = ("https://petstore.swagger.io/v2/pet/{petId}/uploadImage".replace("{petId}", ""+petId));
-        return requestPost(url, properties, null, ApiResponse.class);
+        return requestPost(url, null, null, ApiResponse.class);
     }
 }

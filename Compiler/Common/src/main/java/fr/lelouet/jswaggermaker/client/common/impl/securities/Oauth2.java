@@ -40,8 +40,9 @@ public class Oauth2 extends ATransfer {
 	}
 
 	@Override
-	protected void addConnection(Map<String, String> props) {
+	protected String addConnection(String url, Map<String, String> props, Map<String, Object> transmit) {
 		props.put("Authorization", "Bearer " + getAccessToken());
+		return url;
 	}
 
 	@Override

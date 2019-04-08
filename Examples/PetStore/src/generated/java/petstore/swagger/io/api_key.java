@@ -1,8 +1,9 @@
 package petstore.swagger.io;
 
 import java.util.Map;
-import fr.lelouet.jswaggermaker.client.common.impl.ATransfer;
+import fr.lelouet.jswaggermaker.client.common.impl.securities.APIKey;
 import fr.lelouet.jswaggermaker.client.common.interfaces.Requested;
+import io.swagger.models.auth.In;
 import petstore.swagger.io.definitions.Pet;
 
 
@@ -10,9 +11,13 @@ import petstore.swagger.io.definitions.Pet;
  * access petstore.swagger.io with authorization type apiKey.
  */
 public class api_key
-    extends ATransfer
+    extends APIKey
 {
     public static final String[] SCOPES = new String[] { };
+
+    public api_key(String key) {
+        super(key, "api_key", In.HEADER);
+    }
 
     /**
      * Find pet by ID
@@ -23,9 +28,9 @@ public class api_key
      * @param petId
      *     ID of pet to return
      */
-    public Requested<Pet> getPetById(long petId, Map<String, String> properties) {
+    public Requested<Pet> getPetById(long petId) {
         String url = ("https://petstore.swagger.io/v2/pet/{petId}".replace("{petId}", ""+petId));
-        return requestGet(url, properties, Pet.class);
+        return requestGet(url, null, Pet.class);
     }
 
     /**
@@ -34,8 +39,8 @@ public class api_key
      * Returns a map of status codes to quantities
      * </p>
      */
-    public Requested<Map<String, Integer>> getInventory(Map<String, String> properties) {
+    public Requested<Map<String, Integer>> getInventory() {
         String url = ("https://petstore.swagger.io/v2/store/inventory");
-        return requestGetMap(url, properties, Integer.class);
+        return requestGetMap(url, null, Integer.class);
     }
 }

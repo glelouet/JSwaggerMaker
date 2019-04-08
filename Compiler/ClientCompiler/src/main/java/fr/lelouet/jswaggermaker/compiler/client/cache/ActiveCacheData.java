@@ -77,7 +77,8 @@ public class ActiveCacheData {
 		// create the correct names, method
 
 		cacheFieldName = operation.getOperationId().split("_")[1];
-		cacheGroup = translator.getCacheGroupClass(cacheFieldName, translation.connected);
+		// TODO use correct authorization
+		cacheGroup = translator.getCacheGroupClass(cacheFieldName, true);
 
 		String cacheMethName = operation.getOperationId().replaceAll("^get_", "").replaceAll("^" + cacheFieldName + "_",
 				"");

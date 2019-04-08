@@ -229,15 +229,19 @@ public class evesso
      *     An EVE alliance ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_alliances_alliance_id_contacts_labels_200 []> get_alliances_contacts_labels(int alliance_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/alliances/{alliance_id}/contacts/labels/".replace("{alliance_id}", ""+alliance_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_alliances_alliance_id_contacts_labels_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_alliances_alliance_id_contacts_labels_200 [].class);
     }
 
     /**
@@ -251,15 +255,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_agents_research_200 []> get_characters_agents_research(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/agents_research/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_agents_research_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_agents_research_200 [].class);
     }
 
     /**
@@ -280,12 +288,11 @@ public class evesso
     public Requested<post_characters_character_id_assets_names_200 []> post_characters_assets_names(int character_id,
         esi.evetech.net.structures.datasource datasource,
         long[] item_ids,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/assets/names/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
         Map<String, Object> content = new HashMap<>();
         content.put("item_ids", item_ids);
-        return requestPost(url, properties, content, post_characters_character_id_assets_names_200 [].class);
+        return requestPost(url, null, content, post_characters_character_id_assets_names_200 [].class);
     }
 
     /**
@@ -299,15 +306,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_attributes> get_characters_attributes(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/attributes/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_attributes.class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_attributes.class);
     }
 
     /**
@@ -323,16 +334,20 @@ public class evesso
      *     The server name you would like data from
      * @param from_event
      *     The event ID to retrieve events from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_calendar_200 []> get_characters_calendar(int character_id,
         esi.evetech.net.structures.datasource datasource,
         Integer from_event,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/calendar/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(from_event==null?"":"&from_event="+flatten(from_event))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_calendar_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_calendar_200 [].class);
     }
 
     /**
@@ -348,16 +363,20 @@ public class evesso
      *     The server name you would like data from
      * @param event_id
      *     The id of the event requested
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_calendar_event_id_attendees_200 []> get_characters_calendar_attendees(int character_id,
         esi.evetech.net.structures.datasource datasource,
         int event_id,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/calendar/{event_id}/attendees/".replace("{character_id}", ""+character_id).replace("{event_id}", ""+event_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_calendar_event_id_attendees_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_calendar_event_id_attendees_200 [].class);
     }
 
     /**
@@ -371,15 +390,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_alliances_alliance_id_contacts_labels_200 []> get_characters_contacts_labels(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/contacts/labels/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_alliances_alliance_id_contacts_labels_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_alliances_alliance_id_contacts_labels_200 [].class);
     }
 
     /**
@@ -393,6 +416,8 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -400,11 +425,13 @@ public class evesso
      */
     public Requested<get_characters_character_id_contracts_200 []> get_characters_contracts(int character_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/contracts/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_contracts_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_contracts_200 [].class);
     }
 
     /**
@@ -420,16 +447,20 @@ public class evesso
      *     ID of a contract
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_contracts_contract_id_bids_200 []> get_characters_contracts_bids(int character_id,
         int contract_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/contracts/{contract_id}/bids/".replace("{character_id}", ""+character_id).replace("{contract_id}", ""+contract_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_contracts_contract_id_bids_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_contracts_contract_id_bids_200 [].class);
     }
 
     /**
@@ -445,16 +476,20 @@ public class evesso
      *     ID of a contract
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_contracts_contract_id_items_200 []> get_characters_contracts_items(int character_id,
         int contract_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/contracts/{contract_id}/items/".replace("{character_id}", ""+character_id).replace("{contract_id}", ""+contract_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_contracts_contract_id_items_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_contracts_contract_id_items_200 [].class);
     }
 
     /**
@@ -468,15 +503,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_fatigue> get_characters_fatigue(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/fatigue/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_fatigue.class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_fatigue.class);
     }
 
     /**
@@ -497,10 +536,9 @@ public class evesso
     public void delete_characters_fittings(int character_id,
         esi.evetech.net.structures.datasource datasource,
         int fitting_id,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/fittings/{fitting_id}/".replace("{character_id}", ""+character_id).replace("{fitting_id}", ""+fitting_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        requestDel(url, properties);
+        requestDel(url, null);
     }
 
     /**
@@ -514,15 +552,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_fleet> get_characters_fleet(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/fleet/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_fleet.class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_fleet.class);
     }
 
     /**
@@ -536,15 +578,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_fw_stats> get_characters_fw_stats(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/fw/stats/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_fw_stats.class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_fw_stats.class);
     }
 
     /**
@@ -558,15 +604,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<Integer[]> get_characters_implants(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/implants/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, Integer[].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, Integer[].class);
     }
 
     /**
@@ -580,6 +630,8 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param include_completed
      *     Whether to retrieve completed character industry jobs. Only includes jobs from the past 90 days
      * @param token
@@ -587,11 +639,13 @@ public class evesso
      */
     public Requested<get_characters_character_id_industry_jobs_200 []> get_characters_industry_jobs(int character_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Boolean include_completed,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/industry/jobs/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(include_completed==null?"":"&include_completed="+flatten(include_completed))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_industry_jobs_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_industry_jobs_200 [].class);
     }
 
     /**
@@ -605,6 +659,8 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -612,11 +668,13 @@ public class evesso
      */
     public Requested<get_characters_character_id_killmails_recent_200 []> get_characters_killmails_recent(int character_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/killmails/recent/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_killmails_recent_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_killmails_recent_200 [].class);
     }
 
     /**
@@ -630,15 +688,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_location> get_characters_location(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/location/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_location.class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_location.class);
     }
 
     /**
@@ -652,15 +714,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_loyalty_points_200 []> get_characters_loyalty_points(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/loyalty/points/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_loyalty_points_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_loyalty_points_200 [].class);
     }
 
     /**
@@ -674,6 +740,8 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param labels
      *     Fetch only mails that match one or more of the given labels
      * @param last_mail_id
@@ -683,12 +751,14 @@ public class evesso
      */
     public Requested<get_characters_character_id_mail_200 []> get_characters_mail(int character_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         int[] labels,
         Integer last_mail_id,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/mail/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(labels==null?"":"&labels="+flatten(labels))+(last_mail_id==null?"":"&last_mail_id="+flatten(last_mail_id))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_mail_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_mail_200 [].class);
     }
 
     /**
@@ -718,15 +788,14 @@ public class evesso
         String body,
         get_characters_character_id_mail_recipients[] recipients,
         String subject,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/mail/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
         Map<String, Object> content = new HashMap<>();
         content.put("approved_cost", approved_cost);
         content.put("body", body);
         content.put("recipients", recipients);
         content.put("subject", subject);
-        return requestPost(url, properties, content, Integer.class);
+        return requestPost(url, null, content, Integer.class);
     }
 
     /**
@@ -747,10 +816,9 @@ public class evesso
     public void delete_characters_mail_labels(int character_id,
         esi.evetech.net.structures.datasource datasource,
         int label_id,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/mail/labels/{label_id}/".replace("{character_id}", ""+character_id).replace("{label_id}", ""+label_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        requestDel(url, properties);
+        requestDel(url, null);
     }
 
     /**
@@ -764,15 +832,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_mail_lists_200 []> get_characters_mail_lists(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/mail/lists/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_mail_lists_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_mail_lists_200 [].class);
     }
 
     /**
@@ -786,6 +858,8 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param mail_id
      *     An EVE mail ID
      * @param token
@@ -793,11 +867,13 @@ public class evesso
      */
     public Requested<get_characters_character_id_mail_mail_id> get_characters_mail(int character_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         int mail_id,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/mail/{mail_id}/".replace("{character_id}", ""+character_id).replace("{mail_id}", ""+mail_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_mail_mail_id.class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_mail_mail_id.class);
     }
 
     /**
@@ -824,13 +900,12 @@ public class evesso
         boolean read,
         esi.evetech.net.structures.datasource datasource,
         int mail_id,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/mail/{mail_id}/".replace("{character_id}", ""+character_id).replace("{mail_id}", ""+mail_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
         Map<String, Object> content = new HashMap<>();
         content.put("labels", labels);
         content.put("read", read);
-        requestPut(url, properties, content);
+        requestPut(url, null, content);
     }
 
     /**
@@ -851,10 +926,9 @@ public class evesso
     public void delete_characters_mail(int character_id,
         esi.evetech.net.structures.datasource datasource,
         int mail_id,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/mail/{mail_id}/".replace("{character_id}", ""+character_id).replace("{mail_id}", ""+mail_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        requestDel(url, properties);
+        requestDel(url, null);
     }
 
     /**
@@ -868,15 +942,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_medals_200 []> get_characters_medals(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/medals/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_medals_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_medals_200 [].class);
     }
 
     /**
@@ -890,6 +968,8 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -897,11 +977,13 @@ public class evesso
      */
     public Requested<get_characters_character_id_mining_200 []> get_characters_mining(int character_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/mining/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_mining_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_mining_200 [].class);
     }
 
     /**
@@ -915,15 +997,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_notifications_contacts_200 []> get_characters_notifications_contacts(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/notifications/contacts/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_notifications_contacts_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_notifications_contacts_200 [].class);
     }
 
     /**
@@ -937,15 +1023,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_opportunities_200 []> get_characters_opportunities(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/opportunities/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_opportunities_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_opportunities_200 [].class);
     }
 
     /**
@@ -959,6 +1049,8 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -966,11 +1058,13 @@ public class evesso
      */
     public Requested<get_characters_character_id_orders_history_200 []> get_characters_orders_history(int character_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/orders/history/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_orders_history_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_orders_history_200 [].class);
     }
 
     /**
@@ -984,15 +1078,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_planets_200 []> get_characters_planets(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/planets/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_planets_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_planets_200 [].class);
     }
 
     /**
@@ -1006,15 +1104,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_ship> get_characters_ship(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/ship/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_ship.class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_ship.class);
     }
 
     /**
@@ -1028,15 +1130,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_standings_200 []> get_characters_standings(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/standings/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_standings_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_standings_200 [].class);
     }
 
     /**
@@ -1050,15 +1156,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_titles_200 []> get_characters_titles(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/titles/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_titles_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_titles_200 [].class);
     }
 
     /**
@@ -1072,15 +1182,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<Double> get_characters_wallet(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/wallet/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, Double.class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, Double.class);
     }
 
     /**
@@ -1096,16 +1210,20 @@ public class evesso
      *     The server name you would like data from
      * @param from_id
      *     Only show transactions happened before the one referenced by this id
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_wallet_transactions_200 []> get_characters_wallet_transactions(int character_id,
         esi.evetech.net.structures.datasource datasource,
         Long from_id,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/characters/{character_id}/wallet/transactions/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(from_id==null?"":"&from_id="+flatten(from_id))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_wallet_transactions_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_wallet_transactions_200 [].class);
     }
 
     /**
@@ -1123,6 +1241,8 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -1130,11 +1250,13 @@ public class evesso
      */
     public Requested<get_corporation_corporation_id_mining_extractions_200 []> get_corporation_mining_extractions(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporation/{corporation_id}/mining/extractions/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporation_corporation_id_mining_extractions_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporation_corporation_id_mining_extractions_200 [].class);
     }
 
     /**
@@ -1152,6 +1274,8 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -1159,11 +1283,13 @@ public class evesso
      */
     public Requested<get_corporation_corporation_id_mining_observers_200 []> get_corporation_mining_observers(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporation/{corporation_id}/mining/observers/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporation_corporation_id_mining_observers_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporation_corporation_id_mining_observers_200 [].class);
     }
 
     /**
@@ -1181,6 +1307,8 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param observer_id
      *     A mining observer id
      * @param page
@@ -1190,12 +1318,14 @@ public class evesso
      */
     public Requested<get_corporation_corporation_id_mining_observers_observer_id_200 []> get_corporation_mining_observers(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         long observer_id,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporation/{corporation_id}/mining/observers/{observer_id}/".replace("{corporation_id}", ""+corporation_id).replace("{observer_id}", ""+observer_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporation_corporation_id_mining_observers_observer_id_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporation_corporation_id_mining_observers_observer_id_200 [].class);
     }
 
     /**
@@ -1220,12 +1350,11 @@ public class evesso
     public Requested<post_characters_character_id_assets_names_200 []> post_corporations_assets_names(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         long[] item_ids,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/assets/names/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
         Map<String, Object> content = new HashMap<>();
         content.put("item_ids", item_ids);
-        return requestPost(url, properties, content, post_characters_character_id_assets_names_200 [].class);
+        return requestPost(url, null, content, post_characters_character_id_assets_names_200 [].class);
     }
 
     /**
@@ -1239,6 +1368,8 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -1246,11 +1377,13 @@ public class evesso
      */
     public Requested<get_corporations_corporation_id_bookmarks_200 []> get_corporations_bookmarks(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/bookmarks/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_bookmarks_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_bookmarks_200 [].class);
     }
 
     /**
@@ -1264,6 +1397,8 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -1271,11 +1406,13 @@ public class evesso
      */
     public Requested<get_corporations_corporation_id_bookmarks_folders_200 []> get_corporations_bookmarks_folders(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/bookmarks/folders/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_bookmarks_folders_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_bookmarks_folders_200 [].class);
     }
 
     /**
@@ -1289,15 +1426,19 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_alliances_alliance_id_contacts_labels_200 []> get_corporations_contacts_labels(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/contacts/labels/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_alliances_alliance_id_contacts_labels_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_alliances_alliance_id_contacts_labels_200 [].class);
     }
 
     /**
@@ -1311,6 +1452,8 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -1318,11 +1461,13 @@ public class evesso
      */
     public Requested<get_characters_character_id_contracts_200 []> get_corporations_contracts(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/contracts/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_contracts_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_contracts_200 [].class);
     }
 
     /**
@@ -1338,6 +1483,8 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -1346,11 +1493,13 @@ public class evesso
     public Requested<get_characters_character_id_contracts_contract_id_bids_200 []> get_corporations_contracts_bids(int contract_id,
         int corporation_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/contracts/{contract_id}/bids/".replace("{contract_id}", ""+contract_id).replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_contracts_contract_id_bids_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_contracts_contract_id_bids_200 [].class);
     }
 
     /**
@@ -1366,16 +1515,20 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_contracts_contract_id_items_200 []> get_corporations_contracts_items(int contract_id,
         int corporation_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/contracts/{contract_id}/items/".replace("{contract_id}", ""+contract_id).replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_contracts_contract_id_items_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_contracts_contract_id_items_200 [].class);
     }
 
     /**
@@ -1393,6 +1546,8 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -1400,11 +1555,13 @@ public class evesso
      */
     public Requested<get_corporations_corporation_id_customs_offices_200 []> get_corporations_customs_offices(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/customs_offices/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_customs_offices_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_customs_offices_200 [].class);
     }
 
     /**
@@ -1422,15 +1579,19 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_corporations_corporation_id_divisions> get_corporations_divisions(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/divisions/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_divisions.class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_divisions.class);
     }
 
     /**
@@ -1448,15 +1609,19 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_corporations_corporation_id_facilities_200 []> get_corporations_facilities(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/facilities/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_facilities_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_facilities_200 [].class);
     }
 
     /**
@@ -1470,15 +1635,19 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_corporations_corporation_id_fw_stats> get_corporations_fw_stats(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/fw/stats/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_fw_stats.class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_fw_stats.class);
     }
 
     /**
@@ -1496,6 +1665,8 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param include_completed
      *     Whether to retrieve completed corporation industry jobs. Only includes jobs from the past 90 days
      * @param page
@@ -1505,12 +1676,14 @@ public class evesso
      */
     public Requested<get_corporations_corporation_id_industry_jobs_200 []> get_corporations_industry_jobs(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Boolean include_completed,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/industry/jobs/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(include_completed==null?"":"&include_completed="+flatten(include_completed))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_industry_jobs_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_industry_jobs_200 [].class);
     }
 
     /**
@@ -1528,6 +1701,8 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -1535,11 +1710,13 @@ public class evesso
      */
     public Requested<get_characters_character_id_killmails_recent_200 []> get_corporations_killmails_recent(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/killmails/recent/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_killmails_recent_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_killmails_recent_200 [].class);
     }
 
     /**
@@ -1553,6 +1730,8 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -1560,11 +1739,13 @@ public class evesso
      */
     public Requested<get_corporations_corporation_id_medals_200 []> get_corporations_medals(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/medals/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_medals_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_medals_200 [].class);
     }
 
     /**
@@ -1582,6 +1763,8 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -1589,11 +1772,13 @@ public class evesso
      */
     public Requested<get_corporations_corporation_id_medals_issued_200 []> get_corporations_medals_issued(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/medals/issued/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_medals_issued_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_medals_issued_200 [].class);
     }
 
     /**
@@ -1611,15 +1796,19 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<Integer> get_corporations_members_limit(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/members/limit/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, Integer.class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, Integer.class);
     }
 
     /**
@@ -1637,15 +1826,19 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_corporations_corporation_id_members_titles_200 []> get_corporations_members_titles(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/members/titles/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_members_titles_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_members_titles_200 [].class);
     }
 
     /**
@@ -1663,15 +1856,19 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_corporations_corporation_id_membertracking_200 []> get_corporations_membertracking(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/membertracking/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_membertracking_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_membertracking_200 [].class);
     }
 
     /**
@@ -1685,15 +1882,19 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_corporations_corporation_id_roles_200 []> get_corporations_roles(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/roles/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_roles_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_roles_200 [].class);
     }
 
     /**
@@ -1711,6 +1912,8 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -1718,11 +1921,13 @@ public class evesso
      */
     public Requested<get_corporations_corporation_id_roles_history_200 []> get_corporations_roles_history(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/roles/history/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_roles_history_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_roles_history_200 [].class);
     }
 
     /**
@@ -1740,6 +1945,8 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -1747,11 +1954,13 @@ public class evesso
      */
     public Requested<get_corporations_corporation_id_shareholders_200 []> get_corporations_shareholders(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/shareholders/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_shareholders_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_shareholders_200 [].class);
     }
 
     /**
@@ -1765,6 +1974,8 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -1772,11 +1983,13 @@ public class evesso
      */
     public Requested<get_characters_character_id_standings_200 []> get_corporations_standings(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/standings/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_standings_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_standings_200 [].class);
     }
 
     /**
@@ -1794,6 +2007,8 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -1801,11 +2016,13 @@ public class evesso
      */
     public Requested<get_corporations_corporation_id_starbases_200 []> get_corporations_starbases(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/starbases/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_starbases_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_starbases_200 [].class);
     }
 
     /**
@@ -1823,6 +2040,8 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param starbase_id
      *     An EVE starbase (POS) ID
      * @param system_id
@@ -1832,12 +2051,14 @@ public class evesso
      */
     public Requested<get_corporations_corporation_id_starbases_starbase_id> get_corporations_starbases(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         long starbase_id,
         int system_id,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/starbases/{starbase_id}/".replace("{corporation_id}", ""+corporation_id).replace("{starbase_id}", ""+starbase_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+"&system_id="+flatten(system_id)+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_starbases_starbase_id.class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_starbases_starbase_id.class);
     }
 
     /**
@@ -1855,15 +2076,19 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_corporations_corporation_id_titles_200 []> get_corporations_titles(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/titles/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_titles_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_titles_200 [].class);
     }
 
     /**
@@ -1881,15 +2106,19 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_corporations_corporation_id_wallets_200 []> get_corporations_wallets(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/wallets/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_wallets_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_wallets_200 [].class);
     }
 
     /**
@@ -1911,6 +2140,8 @@ public class evesso
      *     Wallet key of the division to fetch journals from
      * @param from_id
      *     Only show journal entries happened before the transaction referenced by this id
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
@@ -1918,10 +2149,12 @@ public class evesso
         esi.evetech.net.structures.datasource datasource,
         int division,
         Long from_id,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/wallets/{division}/transactions/".replace("{corporation_id}", ""+corporation_id).replace("{division}", ""+division)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(from_id==null?"":"&from_id="+flatten(from_id))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_wallets_division_transactions_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_wallets_division_transactions_200 [].class);
     }
 
     /**
@@ -1935,15 +2168,19 @@ public class evesso
      *     The server name you would like data from
      * @param fleet_id
      *     ID for a fleet
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_fleets_fleet_id> get_fleets(esi.evetech.net.structures.datasource datasource,
         long fleet_id,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v1/fleets/{fleet_id}/".replace("{fleet_id}", ""+fleet_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_fleets_fleet_id.class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_fleets_fleet_id.class);
     }
 
     /**
@@ -1967,13 +2204,12 @@ public class evesso
         long fleet_id,
         boolean is_free_move,
         String motd,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/fleets/{fleet_id}/".replace("{fleet_id}", ""+fleet_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
         Map<String, Object> content = new HashMap<>();
         content.put("is_free_move", is_free_move);
         content.put("motd", motd);
-        requestPut(url, properties, content);
+        requestPut(url, null, content);
     }
 
     /**
@@ -1983,22 +2219,30 @@ public class evesso
      * This route is cached for up to 5 seconds
      * </p>
      * 
+     * @param Accept-Language
+     *     Language to use in the response
      * @param datasource
      *     The server name you would like data from
      * @param fleet_id
      *     ID for a fleet
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param language
      *     Language to use in the response, takes precedence over Accept-Language
      * @param token
      *     Access token to use if unable to set a header
      */
-    public Requested<get_fleets_fleet_id_members_200 []> get_fleets_members(esi.evetech.net.structures.datasource datasource,
+    public Requested<get_fleets_fleet_id_members_200 []> get_fleets_members(esi.evetech.net.structures.Accept_Language Accept_Language,
+        esi.evetech.net.structures.datasource datasource,
         long fleet_id,
+        String If_None_Match,
         esi.evetech.net.structures.language language,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/fleets/{fleet_id}/members/".replace("{fleet_id}", ""+fleet_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(language==null?"":"&language="+flatten(language))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_fleets_fleet_id_members_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        headerProperties.put("Accept-Language", Accept_Language.toString());
+        return requestGet(url, headerProperties, get_fleets_fleet_id_members_200 [].class);
     }
 
     /**
@@ -2028,15 +2272,14 @@ public class evesso
         esi.evetech.net.structures.role role,
         long squad_id,
         long wing_id,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/fleets/{fleet_id}/members/".replace("{fleet_id}", ""+fleet_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
         Map<String, Object> content = new HashMap<>();
         content.put("character_id", character_id);
         content.put("role", role);
         content.put("squad_id", squad_id);
         content.put("wing_id", wing_id);
-        requestPost(url, properties, content, Void.class);
+        requestPost(url, null, content, Void.class);
     }
 
     /**
@@ -2066,14 +2309,13 @@ public class evesso
         esi.evetech.net.structures.role role,
         long squad_id,
         long wing_id,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/fleets/{fleet_id}/members/{member_id}/".replace("{fleet_id}", ""+fleet_id).replace("{member_id}", ""+member_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
         Map<String, Object> content = new HashMap<>();
         content.put("role", role);
         content.put("squad_id", squad_id);
         content.put("wing_id", wing_id);
-        requestPut(url, properties, content);
+        requestPut(url, null, content);
     }
 
     /**
@@ -2094,10 +2336,9 @@ public class evesso
     public void delete_fleets_members(esi.evetech.net.structures.datasource datasource,
         long fleet_id,
         int member_id,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/fleets/{fleet_id}/members/{member_id}/".replace("{fleet_id}", ""+fleet_id).replace("{member_id}", ""+member_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        requestDel(url, properties);
+        requestDel(url, null);
     }
 
     /**
@@ -2121,12 +2362,11 @@ public class evesso
         long fleet_id,
         String name,
         long squad_id,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/fleets/{fleet_id}/squads/{squad_id}/".replace("{fleet_id}", ""+fleet_id).replace("{squad_id}", ""+squad_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
         Map<String, Object> content = new HashMap<>();
         content.put("name", name);
-        requestPut(url, properties, content);
+        requestPut(url, null, content);
     }
 
     /**
@@ -2147,10 +2387,9 @@ public class evesso
     public void delete_fleets_squads(esi.evetech.net.structures.datasource datasource,
         long fleet_id,
         long squad_id,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/fleets/{fleet_id}/squads/{squad_id}/".replace("{fleet_id}", ""+fleet_id).replace("{squad_id}", ""+squad_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        requestDel(url, properties);
+        requestDel(url, null);
     }
 
     /**
@@ -2160,22 +2399,30 @@ public class evesso
      * This route is cached for up to 5 seconds
      * </p>
      * 
+     * @param Accept-Language
+     *     Language to use in the response
      * @param datasource
      *     The server name you would like data from
      * @param fleet_id
      *     ID for a fleet
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param language
      *     Language to use in the response, takes precedence over Accept-Language
      * @param token
      *     Access token to use if unable to set a header
      */
-    public Requested<get_fleets_fleet_id_wings_200 []> get_fleets_wings(esi.evetech.net.structures.datasource datasource,
+    public Requested<get_fleets_fleet_id_wings_200 []> get_fleets_wings(esi.evetech.net.structures.Accept_Language Accept_Language,
+        esi.evetech.net.structures.datasource datasource,
         long fleet_id,
+        String If_None_Match,
         esi.evetech.net.structures.language language,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/fleets/{fleet_id}/wings/".replace("{fleet_id}", ""+fleet_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(language==null?"":"&language="+flatten(language))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_fleets_fleet_id_wings_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        headerProperties.put("Accept-Language", Accept_Language.toString());
+        return requestGet(url, headerProperties, get_fleets_fleet_id_wings_200 [].class);
     }
 
     /**
@@ -2191,12 +2438,9 @@ public class evesso
      * @param token
      *     Access token to use if unable to set a header
      */
-    public Requested<post_fleets_fleet_id_wings_created> post_fleets_wings(esi.evetech.net.structures.datasource datasource,
-        long fleet_id,
-        String token,
-        Map<String, String> properties) {
+    public Requested<post_fleets_fleet_id_wings_created> post_fleets_wings(esi.evetech.net.structures.datasource datasource, long fleet_id, String token) {
         String url = ("https://esi.evetech.net/v1/fleets/{fleet_id}/wings/".replace("{fleet_id}", ""+fleet_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestPost(url, properties, null, post_fleets_fleet_id_wings_created.class);
+        return requestPost(url, null, null, post_fleets_fleet_id_wings_created.class);
     }
 
     /**
@@ -2220,12 +2464,11 @@ public class evesso
         long fleet_id,
         String name,
         String token,
-        long wing_id,
-        Map<String, String> properties) {
+        long wing_id) {
         String url = ("https://esi.evetech.net/v1/fleets/{fleet_id}/wings/{wing_id}/".replace("{fleet_id}", ""+fleet_id).replace("{wing_id}", ""+wing_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
         Map<String, Object> content = new HashMap<>();
         content.put("name", name);
-        requestPut(url, properties, content);
+        requestPut(url, null, content);
     }
 
     /**
@@ -2246,10 +2489,9 @@ public class evesso
     public void delete_fleets_wings(esi.evetech.net.structures.datasource datasource,
         long fleet_id,
         String token,
-        long wing_id,
-        Map<String, String> properties) {
+        long wing_id) {
         String url = ("https://esi.evetech.net/v1/fleets/{fleet_id}/wings/{wing_id}/".replace("{fleet_id}", ""+fleet_id).replace("{wing_id}", ""+wing_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        requestDel(url, properties);
+        requestDel(url, null);
     }
 
     /**
@@ -2270,10 +2512,9 @@ public class evesso
     public Requested<post_fleets_fleet_id_wings_wing_id_squads_created> post_fleets_wings_squads(esi.evetech.net.structures.datasource datasource,
         long fleet_id,
         String token,
-        long wing_id,
-        Map<String, String> properties) {
+        long wing_id) {
         String url = ("https://esi.evetech.net/v1/fleets/{fleet_id}/wings/{wing_id}/squads/".replace("{fleet_id}", ""+fleet_id).replace("{wing_id}", ""+wing_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestPost(url, properties, null, post_fleets_fleet_id_wings_wing_id_squads_created.class);
+        return requestPost(url, null, null, post_fleets_fleet_id_wings_wing_id_squads_created.class);
     }
 
     /**
@@ -2285,6 +2526,8 @@ public class evesso
      * 
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param structure_id
@@ -2293,12 +2536,14 @@ public class evesso
      *     Access token to use if unable to set a header
      */
     public Requested<get_markets_structures_structure_id_200 []> get_markets_structures(esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
         long structure_id,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/markets/structures/{structure_id}/".replace("{structure_id}", ""+structure_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_markets_structures_structure_id_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_markets_structures_structure_id_200 [].class);
     }
 
     /**
@@ -2314,12 +2559,9 @@ public class evesso
      * @param token
      *     Access token to use if unable to set a header
      */
-    public void post_ui_openwindow_contract(int contract_id,
-        esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+    public void post_ui_openwindow_contract(int contract_id, esi.evetech.net.structures.datasource datasource, String token) {
         String url = ("https://esi.evetech.net/v1/ui/openwindow/contract/"+"?"+"&contract_id="+flatten(contract_id)+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        requestPost(url, properties, null, Void.class);
+        requestPost(url, null, null, Void.class);
     }
 
     /**
@@ -2335,12 +2577,9 @@ public class evesso
      * @param token
      *     Access token to use if unable to set a header
      */
-    public void post_ui_openwindow_information(esi.evetech.net.structures.datasource datasource,
-        int target_id,
-        String token,
-        Map<String, String> properties) {
+    public void post_ui_openwindow_information(esi.evetech.net.structures.datasource datasource, int target_id, String token) {
         String url = ("https://esi.evetech.net/v1/ui/openwindow/information/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+"&target_id="+flatten(target_id)+(token==null?"":"&token="+flatten(token)));
-        requestPost(url, properties, null, Void.class);
+        requestPost(url, null, null, Void.class);
     }
 
     /**
@@ -2356,12 +2595,9 @@ public class evesso
      * @param type_id
      *     The item type to open in market window
      */
-    public void post_ui_openwindow_marketdetails(esi.evetech.net.structures.datasource datasource,
-        String token,
-        int type_id,
-        Map<String, String> properties) {
+    public void post_ui_openwindow_marketdetails(esi.evetech.net.structures.datasource datasource, String token, int type_id) {
         String url = ("https://esi.evetech.net/v1/ui/openwindow/marketdetails/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token))+"&type_id="+flatten(type_id));
-        requestPost(url, properties, null, Void.class);
+        requestPost(url, null, null, Void.class);
     }
 
     /**
@@ -2391,8 +2627,7 @@ public class evesso
         String subject,
         int to_corp_or_alliance_id,
         int to_mailing_list_id,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v1/ui/openwindow/newmail/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
         Map<String, Object> content = new HashMap<>();
         content.put("body", body);
@@ -2400,7 +2635,7 @@ public class evesso
         content.put("subject", subject);
         content.put("to_corp_or_alliance_id", to_corp_or_alliance_id);
         content.put("to_mailing_list_id", to_mailing_list_id);
-        requestPost(url, properties, content, Void.class);
+        requestPost(url, null, content, Void.class);
     }
 
     /**
@@ -2414,6 +2649,8 @@ public class evesso
      *     An EVE alliance ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -2421,11 +2658,13 @@ public class evesso
      */
     public Requested<get_alliances_alliance_id_contacts_200 []> get_alliances_contacts(int alliance_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v2/alliances/{alliance_id}/contacts/".replace("{alliance_id}", ""+alliance_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_alliances_alliance_id_contacts_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_alliances_alliance_id_contacts_200 [].class);
     }
 
     /**
@@ -2446,12 +2685,11 @@ public class evesso
     public Requested<post_characters_character_id_assets_locations_200 []> post_characters_assets_locations(int character_id,
         esi.evetech.net.structures.datasource datasource,
         long[] item_ids,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v2/characters/{character_id}/assets/locations/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
         Map<String, Object> content = new HashMap<>();
         content.put("item_ids", item_ids);
-        return requestPost(url, properties, content, post_characters_character_id_assets_locations_200 [].class);
+        return requestPost(url, null, content, post_characters_character_id_assets_locations_200 [].class);
     }
 
     /**
@@ -2465,6 +2703,8 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -2472,11 +2712,13 @@ public class evesso
      */
     public Requested<get_characters_character_id_blueprints_200 []> get_characters_blueprints(int character_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v2/characters/{character_id}/blueprints/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_blueprints_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_blueprints_200 [].class);
     }
 
     /**
@@ -2490,6 +2732,8 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -2497,11 +2741,13 @@ public class evesso
      */
     public Requested<get_corporations_corporation_id_bookmarks_200 []> get_characters_bookmarks(int character_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v2/characters/{character_id}/bookmarks/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_bookmarks_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_bookmarks_200 [].class);
     }
 
     /**
@@ -2515,6 +2761,8 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -2522,11 +2770,13 @@ public class evesso
      */
     public Requested<get_characters_character_id_bookmarks_folders_200 []> get_characters_bookmarks_folders(int character_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v2/characters/{character_id}/bookmarks/folders/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_bookmarks_folders_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_bookmarks_folders_200 [].class);
     }
 
     /**
@@ -2540,6 +2790,8 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -2547,11 +2799,13 @@ public class evesso
      */
     public Requested<get_characters_character_id_contacts_200 []> get_characters_contacts(int character_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v2/characters/{character_id}/contacts/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_contacts_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_contacts_200 [].class);
     }
 
     /**
@@ -2581,12 +2835,11 @@ public class evesso
         long[] label_ids,
         float standing,
         String token,
-        Boolean watched,
-        Map<String, String> properties) {
+        Boolean watched) {
         String url = ("https://esi.evetech.net/v2/characters/{character_id}/contacts/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(label_ids==null?"":"&label_ids="+flatten(label_ids))+"&standing="+flatten(standing)+(token==null?"":"&token="+flatten(token))+(watched==null?"":"&watched="+flatten(watched)));
         Map<String, Object> content = new HashMap<>();
         content.put("contact_ids", contact_ids);
-        return requestPost(url, properties, content, Integer[].class);
+        return requestPost(url, null, content, Integer[].class);
     }
 
     /**
@@ -2616,12 +2869,11 @@ public class evesso
         long[] label_ids,
         float standing,
         String token,
-        Boolean watched,
-        Map<String, String> properties) {
+        Boolean watched) {
         String url = ("https://esi.evetech.net/v2/characters/{character_id}/contacts/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(label_ids==null?"":"&label_ids="+flatten(label_ids))+"&standing="+flatten(standing)+(token==null?"":"&token="+flatten(token))+(watched==null?"":"&watched="+flatten(watched)));
         Map<String, Object> content = new HashMap<>();
         content.put("contact_ids", contact_ids);
-        requestPut(url, properties, content);
+        requestPut(url, null, content);
     }
 
     /**
@@ -2642,10 +2894,9 @@ public class evesso
     public void delete_characters_contacts(int character_id,
         int[] contact_ids,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v2/characters/{character_id}/contacts/".replace("{character_id}", ""+character_id)+"?"+(contact_ids==null?"":"&contact_ids="+flatten(contact_ids))+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        requestDel(url, properties);
+        requestDel(url, null);
     }
 
     /**
@@ -2659,15 +2910,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_fittings_200 []> get_characters_fittings(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v2/characters/{character_id}/fittings/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_fittings_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_fittings_200 [].class);
     }
 
     /**
@@ -2697,15 +2952,14 @@ public class evesso
         get_characters_character_id_fittings_items[] items,
         String name,
         int ship_type_id,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v2/characters/{character_id}/fittings/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
         Map<String, Object> content = new HashMap<>();
         content.put("description", description);
         content.put("items", items);
         content.put("name", name);
         content.put("ship_type_id", ship_type_id);
-        return requestPost(url, properties, content, post_characters_character_id_fittings_created.class);
+        return requestPost(url, null, content, post_characters_character_id_fittings_created.class);
     }
 
     /**
@@ -2729,13 +2983,12 @@ public class evesso
         esi.evetech.net.structures.datasource datasource,
         esi.evetech.net.structures.color color,
         String name,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v2/characters/{character_id}/mail/labels/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
         Map<String, Object> content = new HashMap<>();
         content.put("color", color);
         content.put("name", name);
-        return requestPost(url, properties, content, Integer.class);
+        return requestPost(url, null, content, Integer.class);
     }
 
     /**
@@ -2749,15 +3002,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_online> get_characters_online(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v2/characters/{character_id}/online/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_online.class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_online.class);
     }
 
     /**
@@ -2771,15 +3028,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_orders_200 []> get_characters_orders(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v2/characters/{character_id}/orders/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_orders_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_orders_200 [].class);
     }
 
     /**
@@ -2793,15 +3054,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_roles> get_characters_roles(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v2/characters/{character_id}/roles/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_roles.class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_roles.class);
     }
 
     /**
@@ -2815,15 +3080,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_skillqueue_200 []> get_characters_skillqueue(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v2/characters/{character_id}/skillqueue/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_skillqueue_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_skillqueue_200 [].class);
     }
 
     /**
@@ -2837,15 +3106,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_stats_200 []> get_characters_stats(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v2/characters/{character_id}/stats/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_stats_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_stats_200 [].class);
     }
 
     /**
@@ -2870,12 +3143,11 @@ public class evesso
     public Requested<post_characters_character_id_assets_locations_200 []> post_corporations_assets_locations(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         long[] item_ids,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v2/corporations/{corporation_id}/assets/locations/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
         Map<String, Object> content = new HashMap<>();
         content.put("item_ids", item_ids);
-        return requestPost(url, properties, content, post_characters_character_id_assets_locations_200 [].class);
+        return requestPost(url, null, content, post_characters_character_id_assets_locations_200 [].class);
     }
 
     /**
@@ -2893,6 +3165,8 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -2900,11 +3174,13 @@ public class evesso
      */
     public Requested<get_corporations_corporation_id_blueprints_200 []> get_corporations_blueprints(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v2/corporations/{corporation_id}/blueprints/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_blueprints_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_blueprints_200 [].class);
     }
 
     /**
@@ -2918,6 +3194,8 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -2925,11 +3203,13 @@ public class evesso
      */
     public Requested<get_corporations_corporation_id_contacts_200 []> get_corporations_contacts(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v2/corporations/{corporation_id}/contacts/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_contacts_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_contacts_200 [].class);
     }
 
     /**
@@ -2947,6 +3227,8 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -2954,11 +3236,13 @@ public class evesso
      */
     public Requested<get_corporations_corporation_id_containers_logs_200 []> get_corporations_containers_logs(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v2/corporations/{corporation_id}/containers/logs/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_containers_logs_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_containers_logs_200 [].class);
     }
 
     /**
@@ -2976,6 +3260,8 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -2983,11 +3269,13 @@ public class evesso
      */
     public Requested<get_corporations_corporation_id_orders_history_200 []> get_corporations_orders_history(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v2/corporations/{corporation_id}/orders/history/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_orders_history_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_orders_history_200 [].class);
     }
 
     /**
@@ -3011,10 +3299,9 @@ public class evesso
         boolean clear_other_waypoints,
         esi.evetech.net.structures.datasource datasource,
         long destination_id,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v2/ui/autopilot/waypoint/"+"?"+"&add_to_beginning="+flatten(add_to_beginning)+"&clear_other_waypoints="+flatten(clear_other_waypoints)+(datasource==null?"":"&datasource="+flatten(datasource))+"&destination_id="+flatten(destination_id)+(token==null?"":"&token="+flatten(token)));
-        requestPost(url, properties, null, Void.class);
+        requestPost(url, null, null, Void.class);
     }
 
     /**
@@ -3026,17 +3313,21 @@ public class evesso
      * 
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param structure_id
      *     An Eve structure ID
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_universe_structures_structure_id> get_universe_structures(esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         long structure_id,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v2/universe/structures/{structure_id}/".replace("{structure_id}", ""+structure_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_universe_structures_structure_id.class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_universe_structures_structure_id.class);
     }
 
     /**
@@ -3050,6 +3341,8 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -3057,11 +3350,13 @@ public class evesso
      */
     public Requested<get_characters_character_id_assets_200 []> get_characters_assets(int character_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v3/characters/{character_id}/assets/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_assets_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_assets_200 [].class);
     }
 
     /**
@@ -3077,16 +3372,20 @@ public class evesso
      *     The server name you would like data from
      * @param event_id
      *     The id of the event requested
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_calendar_event_id> get_characters_calendar(int character_id,
         esi.evetech.net.structures.datasource datasource,
         int event_id,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v3/characters/{character_id}/calendar/{event_id}/".replace("{character_id}", ""+character_id).replace("{event_id}", ""+event_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_calendar_event_id.class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_calendar_event_id.class);
     }
 
     /**
@@ -3110,12 +3409,11 @@ public class evesso
         esi.evetech.net.structures.datasource datasource,
         int event_id,
         esi.evetech.net.structures.response response,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v3/characters/{character_id}/calendar/{event_id}/".replace("{character_id}", ""+character_id).replace("{event_id}", ""+event_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
         Map<String, Object> content = new HashMap<>();
         content.put("response", response);
-        requestPut(url, properties, content);
+        requestPut(url, null, content);
     }
 
     /**
@@ -3129,15 +3427,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_clones> get_characters_clones(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v3/characters/{character_id}/clones/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_clones.class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_clones.class);
     }
 
     /**
@@ -3151,15 +3453,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_mail_labels> get_characters_mail_labels(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v3/characters/{character_id}/mail/labels/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_mail_labels.class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_mail_labels.class);
     }
 
     /**
@@ -3173,6 +3479,8 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param planet_id
      *     Planet id of the target planet
      * @param token
@@ -3180,11 +3488,13 @@ public class evesso
      */
     public Requested<get_characters_character_id_planets_planet_id> get_characters_planets(int character_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         int planet_id,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v3/characters/{character_id}/planets/{planet_id}/".replace("{character_id}", ""+character_id).replace("{planet_id}", ""+planet_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_planets_planet_id.class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_planets_planet_id.class);
     }
 
     /**
@@ -3194,12 +3504,16 @@ public class evesso
      * This route is cached for up to 3600 seconds
      * </p>
      * 
+     * @param Accept-Language
+     *     Language to use in the response
      * @param categories
      *     Type of entities to search for
      * @param character_id
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param language
      *     Language to use in the response, takes precedence over Accept-Language
      * @param search
@@ -3209,16 +3523,20 @@ public class evesso
      * @param token
      *     Access token to use if unable to set a header
      */
-    public Requested<get_characters_character_id_search> get_characters(String[] categories,
+    public Requested<get_characters_character_id_search> get_characters(esi.evetech.net.structures.Accept_Language Accept_Language,
+        String[] categories,
         int character_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         esi.evetech.net.structures.language language,
         String search,
         Boolean strict,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v3/characters/{character_id}/search/".replace("{character_id}", ""+character_id)+"?"+(categories==null?"":"&categories="+flatten(categories))+(datasource==null?"":"&datasource="+flatten(datasource))+(language==null?"":"&language="+flatten(language))+(search==null?"":"&search="+flatten(search))+(strict==null?"":"&strict="+flatten(strict))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_search.class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        headerProperties.put("Accept-Language", Accept_Language.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_search.class);
     }
 
     /**
@@ -3236,6 +3554,8 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -3243,11 +3563,13 @@ public class evesso
      */
     public Requested<get_corporations_corporation_id_assets_200 []> get_corporations_assets(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v3/corporations/{corporation_id}/assets/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_assets_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_assets_200 [].class);
     }
 
     /**
@@ -3261,15 +3583,19 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<Integer[]> get_corporations_members(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v3/corporations/{corporation_id}/members/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, Integer[].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, Integer[].class);
     }
 
     /**
@@ -3287,6 +3613,8 @@ public class evesso
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -3294,11 +3622,13 @@ public class evesso
      */
     public Requested<get_corporations_corporation_id_orders_200 []> get_corporations_orders(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v3/corporations/{corporation_id}/orders/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_orders_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_orders_200 [].class);
     }
 
     /**
@@ -3312,10 +3642,14 @@ public class evesso
      * require the roles specified {@link #GET_CORPORATIONS_CORPORATION_ID_STRUCTURES_ROLES here}
      * </p>
      * 
+     * @param Accept-Language
+     *     Language to use in the response
      * @param corporation_id
      *     An EVE corporation ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param language
      *     Language to use in the response, takes precedence over Accept-Language
      * @param page
@@ -3323,14 +3657,18 @@ public class evesso
      * @param token
      *     Access token to use if unable to set a header
      */
-    public Requested<get_corporations_corporation_id_structures_200 []> get_corporations_structures(int corporation_id,
+    public Requested<get_corporations_corporation_id_structures_200 []> get_corporations_structures(esi.evetech.net.structures.Accept_Language Accept_Language,
+        int corporation_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         esi.evetech.net.structures.language language,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v3/corporations/{corporation_id}/structures/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(language==null?"":"&language="+flatten(language))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_structures_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        headerProperties.put("Accept-Language", Accept_Language.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_structures_200 [].class);
     }
 
     /**
@@ -3351,12 +3689,11 @@ public class evesso
     public Requested<Float> post__cspa(int character_id,
         int[] characters,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v4/characters/{character_id}/cspa/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
         Map<String, Object> content = new HashMap<>();
         content.put("characters", characters);
-        return requestPost(url, properties, content, Float.class);
+        return requestPost(url, null, content, Float.class);
     }
 
     /**
@@ -3370,15 +3707,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_notifications_200 []> get_characters_notifications(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v4/characters/{character_id}/notifications/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_notifications_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_notifications_200 [].class);
     }
 
     /**
@@ -3392,15 +3733,19 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param token
      *     Access token to use if unable to set a header
      */
     public Requested<get_characters_character_id_skills> get_characters_skills(int character_id,
         esi.evetech.net.structures.datasource datasource,
-        String token,
-        Map<String, String> properties) {
+        String If_None_Match,
+        String token) {
         String url = ("https://esi.evetech.net/v4/characters/{character_id}/skills/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_characters_character_id_skills.class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_characters_character_id_skills.class);
     }
 
     /**
@@ -3420,6 +3765,8 @@ public class evesso
      *     The server name you would like data from
      * @param division
      *     Wallet key of the division to fetch journals from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -3428,11 +3775,13 @@ public class evesso
     public Requested<get_corporations_corporation_id_wallets_division_journal_200 []> get_corporations_wallets_journal(int corporation_id,
         esi.evetech.net.structures.datasource datasource,
         int division,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v4/corporations/{corporation_id}/wallets/{division}/journal/".replace("{corporation_id}", ""+corporation_id).replace("{division}", ""+division)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_wallets_division_journal_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_wallets_division_journal_200 [].class);
     }
 
     /**
@@ -3448,6 +3797,8 @@ public class evesso
      *     An EVE character ID
      * @param datasource
      *     The server name you would like data from
+     * @param If-None-Match
+     *     ETag from a previous request. A 304 will be returned if this matches the current ETag
      * @param page
      *     Which page of results to return
      * @param token
@@ -3455,10 +3806,12 @@ public class evesso
      */
     public Requested<get_corporations_corporation_id_wallets_division_journal_200 []> get_characters_wallet_journal(int character_id,
         esi.evetech.net.structures.datasource datasource,
+        String If_None_Match,
         Integer page,
-        String token,
-        Map<String, String> properties) {
+        String token) {
         String url = ("https://esi.evetech.net/v5/characters/{character_id}/wallet/journal/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
-        return requestGet(url, properties, get_corporations_corporation_id_wallets_division_journal_200 [].class);
+        HashMap<String, String> headerProperties = new HashMap<String, String>();
+        headerProperties.put("If-None-Match", If_None_Match.toString());
+        return requestGet(url, headerProperties, get_corporations_corporation_id_wallets_division_journal_200 [].class);
     }
 }

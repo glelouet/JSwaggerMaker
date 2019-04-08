@@ -47,17 +47,17 @@ public abstract class ATransfer implements ITransfer {
 		}
 	}
 
-	protected HttpsURLConnection makeConnection(String url, String method, Map<String, String> properties,
+	protected HttpsURLConnection makeConnection(String url, String method, Map<String, String> header,
 			Map<String, Object> transmit) throws IOException {
-		if (properties == null) {
-			properties = new HashMap<>();
+		if (header == null) {
+			header = new HashMap<>();
 		}
-		addConnection(properties);
+		url = addConnection(url, header, transmit);
 		URL target = new URL(url);
 		HttpsURLConnection con = (HttpsURLConnection) target.openConnection();
 		con.setRequestMethod(method);
 		con.setConnectTimeout(2000);
-		for (Entry<String, String> e : properties.entrySet()) {
+		for (Entry<String, String> e : header.entrySet()) {
 			con.setRequestProperty(e.getKey(), e.getValue());
 		}
 		if (transmit != null && !transmit.isEmpty()) {
@@ -86,10 +86,10 @@ public abstract class ATransfer implements ITransfer {
 		case HttpsURLConnection.HTTP_PARTIAL:
 			String ret = new BufferedReader(new InputStreamReader(con.getInputStream())).readLine();
 			return new RequestedImpl<>(con.getURL().toString(), responseCode, null, converter.apply(ret), headers);
-		// 304 not modified
+			// 304 not modified
 		case HttpsURLConnection.HTTP_NOT_MODIFIED:
 			return new RequestedImpl<>(con.getURL().toString(), responseCode, null, null, headers);
-		// 4xx client error
+			// 4xx client error
 		case HttpsURLConnection.HTTP_BAD_REQUEST:
 		case HttpsURLConnection.HTTP_UNAUTHORIZED:
 		case HttpsURLConnection.HTTP_PAYMENT_REQUIRED:
@@ -244,7 +244,8 @@ public abstract class ATransfer implements ITransfer {
 	}
 
 	/** add connection information for the server */
-	protected void addConnection(Map<String, String> props) {
+	protected String addConnection(String url, Map<String, String> header, Map<String, Object> transmit) {
+		return url;
 	}
 
 }

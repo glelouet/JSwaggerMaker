@@ -35,6 +35,7 @@ import com.helger.jcodemodel.JPackage;
 import com.helger.jcodemodel.JVar;
 
 import fr.lelouet.jswaggermaker.client.common.impl.ATransfer;
+import fr.lelouet.jswaggermaker.client.common.impl.securities.APIKey;
 import fr.lelouet.jswaggermaker.client.common.impl.securities.Disconnected;
 import fr.lelouet.jswaggermaker.client.common.impl.securities.Oauth2;
 import io.swagger.models.ArrayModel;
@@ -42,8 +43,11 @@ import io.swagger.models.Model;
 import io.swagger.models.ModelImpl;
 import io.swagger.models.RefModel;
 import io.swagger.models.Swagger;
+import io.swagger.models.auth.ApiKeyAuthDefinition;
+import io.swagger.models.auth.In;
 import io.swagger.models.auth.OAuth2Definition;
 import io.swagger.models.auth.SecuritySchemeDefinition;
+import io.swagger.models.parameters.HeaderParameter;
 import io.swagger.models.parameters.QueryParameter;
 import io.swagger.models.properties.ArrayProperty;
 import io.swagger.models.properties.BooleanProperty;
@@ -100,7 +104,7 @@ public class ClassBridge {
 			rootPackage = cm._package(swagger.getHost());
 		}
 
-		propertiesType = cm.ref(Map.class).narrow(cm.ref(String.class), cm.ref(String.class));
+		propertiesType = cm.ref(HashMap.class).narrow(cm.ref(String.class), cm.ref(String.class));
 
 		responsePackage = rootPackage.subPackage(responsesPackageName);
 		definitionsPackage = rootPackage.subPackage(definitionsPackageName);
@@ -175,7 +179,16 @@ public class ClassBridge {
 			parentConsValueReplace = new IJExpression[] { null, null, JExpr.lit(oauthDef.getAuthorizationUrl()) };
 			break;
 		case "apikey":
-			parent = (AbstractJClass) cm._ref(ATransfer.class);
+			parent = (AbstractJClass) cm._ref(APIKey.class);
+			try {
+				parentCons = APIKey.class.getConstructor(String.class, String.class, In.class);
+				parentConsNameReplace = new String[] { "key" };
+			} catch (NoSuchMethodException | SecurityException e1) {
+				throw new UnsupportedOperationException("catch this", e1);
+			}
+			ApiKeyAuthDefinition apikDef = (ApiKeyAuthDefinition) secDef;
+			parentConsValueReplace = new IJExpression[] { null, JExpr.lit(apikDef.getName()),
+					JExpr.enumConstantRef(cm.ref(In.class), apikDef.getIn().name()) };
 			break;
 		default:
 			throw new UnsupportedOperationException("can't create class for security type " + secDef.getType());
@@ -332,6 +345,7 @@ public class ClassBridge {
 		// System.err.println("create string enum " + name + " values " + enums);
 		JDefinedClass ret = null;
 		try {
+			name = sanitizeVarName(name);
 			ret = structurePackage._enum(JMod.PUBLIC, name);
 			JFieldVar toStringf = ret.field(JMod.PUBLIC | JMod.FINAL, cm.ref(String.class), "toString");
 			JMethod constr = ret.constructor(0);
@@ -341,7 +355,7 @@ public class ClassBridge {
 			toStringm.body()._return(toStringf);
 			toStringm.annotate(Override.class);
 			for (String s : enums) {
-				JEnumConstant enumcst = ret.enumConstant(sanitizeEnumName(s)).arg(JExpr.lit(s));
+				JEnumConstant enumcst = ret.enumConstant(sanitizeVarName(s)).arg(JExpr.lit(s));
 				enumcst.annotate(JsonProperty.class).param("value", s);
 			}
 			// logger.info("created enum " + name + " with values " + enums);
@@ -365,7 +379,7 @@ public class ClassBridge {
 					"private", "protected", "public", "return", "short", "static", "strictfp", "super", "switch", "synchronized",
 					"this", "throw", "throws", "transient", "true", "try", "void", "volatile", "while")));
 
-	public static String sanitizeEnumName(String s) {
+	public static String sanitizeVarName(String s) {
 		if (keywords.contains(s)) {
 			return "_" + s;
 		}
@@ -387,6 +401,22 @@ public class ClassBridge {
 			AbstractJType type = getExistingClass(pp.getType(), pp.getName(), pp.getFormat(), pp.getEnum());
 			if (type != null && !pp.getRequired() && type.isPrimitive()) {
 				type = type.boxify();
+			}
+			return type;
+		}
+	}
+
+	public AbstractJType getExistingClass(HeaderParameter hp) {
+		if (hp.getType().equals(ArrayProperty.TYPE)) {
+			return getExistingClass(hp.getItems()).array();
+		} else {
+			AbstractJType type = getExistingClass(hp.getType(), hp.getName(), hp.getFormat(), hp.getEnum());
+			if (type != null && !hp.getRequired() && type.isPrimitive()) {
+				type = type.boxify();
+			}
+			if (type == null) {
+				throw new NullPointerException("can't convert header parameters for type=" + hp.getType() + " name="
+						+ hp.getName() + " format=" + hp.getFormat() + " enum=" + hp.getEnum());
 			}
 			return type;
 		}

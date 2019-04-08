@@ -35,6 +35,7 @@ import io.swagger.models.Path;
 import io.swagger.models.RefModel;
 import io.swagger.models.Response;
 import io.swagger.models.parameters.BodyParameter;
+import io.swagger.models.parameters.HeaderParameter;
 import io.swagger.models.parameters.Parameter;
 import io.swagger.models.parameters.PathParameter;
 import io.swagger.models.parameters.QueryParameter;
@@ -141,6 +142,18 @@ public class FetchTranslation {
 		response = SwaggerCompiler.getResponse(operation);
 		makeFetchMethInit();
 		addPathJavadoc();
+		IJExpression propsParam = JExpr._null();
+		if (!headerParameters.isEmpty()) {
+			JVar propsParamVar = fetchMeth.body().decl(bridge.propertiesType(), "headerProperties")
+					.init(bridge.propertiesType()._new());
+			for (Entry<String, JVar> headerParamEntry : headerParameters.entrySet()) {
+				fetchMeth.body()
+						.add(propsParamVar.invoke("put").arg(headerParamEntry.getKey())
+								.arg(headerParamEntry.getValue().invoke("toString")));
+			}
+			propsParam = propsParamVar;
+		}
+
 		JInvocation possibleRet;
 		switch (optype) {
 		case post:
@@ -212,7 +225,6 @@ public class FetchTranslation {
 		fetchMethName = fetchMethName.replaceAll("__", "_").replaceAll("_$", "");
 
 		makeFetchRetType();
-		findConnected();
 		// create the method
 		fetchMeth = fetcherClass.method(JMod.PUBLIC,
 				fetchRetType, fetchMethName);
@@ -242,8 +254,6 @@ public class FetchTranslation {
 		}
 		url = fetchMeth.body().decl(cm.ref(String.class), "url");
 		url.init(JExpr.direct(urlAssign));
-
-		propsParam = fetchMeth.param(bridge.propertiesType(), propsParamName);
 	}
 
 	/**
@@ -276,13 +286,6 @@ public class FetchTranslation {
 		// " structure=" + resourceStructure);
 	}
 
-	/** true iff the path requires connection */
-	public boolean connected;
-
-	protected void findConnected() {
-		connected = operation.getParameters().stream().filter(p -> p.getName().equals("token")).findAny().isPresent();
-	}
-
 	////
 	// parameters management for the fetch method
 	////
@@ -302,10 +305,10 @@ public class FetchTranslation {
 	 */
 	private List<JVar> bodyparameters = new ArrayList<>();
 
-	public List<JVar> allParams = new ArrayList<>();
+	/** header name to header variable */
+	private Map<String, JVar> headerParameters = new HashMap<>();
 
-	/** argument of the fetch method for the header handler */
-	JVar propsParam;
+	public List<JVar> allParams = new ArrayList<>();
 
 	/**
 	 * extract the parameters from an operation and put them in corresponding
@@ -364,6 +367,14 @@ public class FetchTranslation {
 						allParams.add(param);
 					}
 				}
+				break;
+			case "header":
+				fetchMeth.javadoc().addParam(p.getName()).add(p.getDescription());
+				HeaderParameter hp = (HeaderParameter) p;
+				String newname = ClassBridge.sanitizeVarName(hp.getName());
+				param = fetchMeth.param(bridge.getExistingClass(hp), newname);
+				headerParameters.put(hp.getName(), param);
+				allParams.add(param);
 				break;
 			default:
 				logger.error("no matching type " + p.getIn() + " for parameter " + p.getName() + " in operation "

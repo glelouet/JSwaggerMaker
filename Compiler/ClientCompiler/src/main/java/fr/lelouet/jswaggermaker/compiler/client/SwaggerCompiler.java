@@ -136,7 +136,6 @@ public class SwaggerCompiler {
 		}
 		dir.mkdirs();
 		new JCMWriter(cm).build(dir);
-
 	}
 
 	public static Response getResponse(Operation operation) {

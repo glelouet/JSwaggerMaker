@@ -23,11 +23,11 @@ public class Anonymous
      * @param body
      *     order placed for purchasing the pet
      */
-    public Requested<Order> placeOrder(Order body, Map<String, String> properties) {
+    public Requested<Order> placeOrder(Order body) {
         String url = ("https://petstore.swagger.io/v2/store/order");
         Map<String, Object> content = new HashMap<>();
         content.put("body", body);
-        return requestPost(url, properties, content, Order.class);
+        return requestPost(url, null, content, Order.class);
     }
 
     /**
@@ -39,9 +39,9 @@ public class Anonymous
      * @param orderId
      *     ID of pet that needs to be fetched
      */
-    public Requested<Order> getOrderById(long orderId, Map<String, String> properties) {
+    public Requested<Order> getOrderById(long orderId) {
         String url = ("https://petstore.swagger.io/v2/store/order/{orderId}".replace("{orderId}", ""+orderId));
-        return requestGet(url, properties, Order.class);
+        return requestGet(url, null, Order.class);
     }
 
     /**
@@ -53,9 +53,9 @@ public class Anonymous
      * @param orderId
      *     ID of the order that needs to be deleted
      */
-    public void deleteOrder(long orderId, Map<String, String> properties) {
+    public void deleteOrder(long orderId) {
         String url = ("https://petstore.swagger.io/v2/store/order/{orderId}".replace("{orderId}", ""+orderId));
-        requestDel(url, properties);
+        requestDel(url, null);
     }
 
     /**
@@ -67,11 +67,11 @@ public class Anonymous
      * @param body
      *     Created user object
      */
-    public void createUser(User body, Map<String, String> properties) {
+    public void createUser(User body) {
         String url = ("https://petstore.swagger.io/v2/user");
         Map<String, Object> content = new HashMap<>();
         content.put("body", body);
-        requestPost(url, properties, content, Void.class);
+        requestPost(url, null, content, Void.class);
     }
 
     /**
@@ -82,11 +82,11 @@ public class Anonymous
      * @param body
      *     List of user object
      */
-    public void createUsersWithArrayInput(User[] body, Map<String, String> properties) {
+    public void createUsersWithArrayInput(User[] body) {
         String url = ("https://petstore.swagger.io/v2/user/createWithArray");
         Map<String, Object> content = new HashMap<>();
         content.put("body", body);
-        requestPost(url, properties, content, Void.class);
+        requestPost(url, null, content, Void.class);
     }
 
     /**
@@ -97,11 +97,11 @@ public class Anonymous
      * @param body
      *     List of user object
      */
-    public void createUsersWithListInput(User[] body, Map<String, String> properties) {
+    public void createUsersWithListInput(User[] body) {
         String url = ("https://petstore.swagger.io/v2/user/createWithList");
         Map<String, Object> content = new HashMap<>();
         content.put("body", body);
-        requestPost(url, properties, content, Void.class);
+        requestPost(url, null, content, Void.class);
     }
 
     /**
@@ -114,9 +114,9 @@ public class Anonymous
      * @param password
      *     The password for login in clear text
      */
-    public Requested<String> loginUser(String username, String password, Map<String, String> properties) {
+    public Requested<String> loginUser(String username, String password) {
         String url = ("https://petstore.swagger.io/v2/user/login"+"?"+(username==null?"":"&username="+flatten(username))+(password==null?"":"&password="+flatten(password)));
-        return requestGet(url, properties, String.class);
+        return requestGet(url, null, String.class);
     }
 
     /**
@@ -124,9 +124,9 @@ public class Anonymous
      * <p>
      * </p>
      */
-    public void logoutUser(Map<String, String> properties) {
+    public void logoutUser() {
         String url = ("https://petstore.swagger.io/v2/user/logout");
-        requestGet(url, properties, Void.class);
+        requestGet(url, null, Void.class);
     }
 
     /**
@@ -137,9 +137,9 @@ public class Anonymous
      * @param username
      *     The name that needs to be fetched. Use user1 for testing. 
      */
-    public Requested<User> getUserByName(String username, Map<String, String> properties) {
+    public Requested<User> getUserByName(String username) {
         String url = ("https://petstore.swagger.io/v2/user/{username}".replace("{username}", ""+username));
-        return requestGet(url, properties, User.class);
+        return requestGet(url, null, User.class);
     }
 
     /**
@@ -153,11 +153,11 @@ public class Anonymous
      * @param body
      *     Updated user object
      */
-    public void updateUser(String username, User body, Map<String, String> properties) {
+    public void updateUser(String username, User body) {
         String url = ("https://petstore.swagger.io/v2/user/{username}".replace("{username}", ""+username));
         Map<String, Object> content = new HashMap<>();
         content.put("body", body);
-        requestPut(url, properties, content);
+        requestPut(url, null, content);
     }
 
     /**
@@ -169,8 +169,8 @@ public class Anonymous
      * @param username
      *     The name that needs to be deleted
      */
-    public void deleteUser(String username, Map<String, String> properties) {
+    public void deleteUser(String username) {
         String url = ("https://petstore.swagger.io/v2/user/{username}".replace("{username}", ""+username));
-        requestDel(url, properties);
+        requestDel(url, null);
     }
 }
