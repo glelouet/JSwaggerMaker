@@ -39,4 +39,6 @@
 			</plugin>
 		</plugins>
 	</build>
+	<name>ESIExample</name>
+	<description>example of compiling jswaggermaker against https://esi.evetech.net/_latest/swagger.json</description>
 </project>

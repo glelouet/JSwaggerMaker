@@ -3,6 +3,8 @@ package fr.lelouet.jswaggermaker.compiler.client;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashSet;
 
 public class CompilerOptions {
 
@@ -32,6 +34,10 @@ public class CompilerOptions {
 
 	public String pckg = null;
 
+	public static final String GLOBALPARAMSPREFIX = "globals=";
+
+	public HashSet<String> globals = new HashSet<>();
+
 	public static final String CACHEPREFIX = "cache=";
 
 	public String cache = null;
@@ -47,6 +53,8 @@ public class CompilerOptions {
 			outDir = arg.substring(OUTDIRPREFIX.length());
 		} else if (arg.startsWith(PACKAGEPREFIX)) {
 			pckg = arg.substring(PACKAGEPREFIX.length());
+		} else if (arg.startsWith(GLOBALPARAMSPREFIX)) {
+			globals = new HashSet<>(Arrays.asList(arg.substring(GLOBALPARAMSPREFIX.length()).split(",")));
 		} else if (arg.startsWith(SWAGGERURLPREFIX)) {
 			swaggerURL = arg.substring(SWAGGERURLPREFIX.length());
 		} else {

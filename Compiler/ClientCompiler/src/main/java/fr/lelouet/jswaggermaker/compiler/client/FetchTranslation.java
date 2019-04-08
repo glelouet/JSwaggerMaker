@@ -147,9 +147,13 @@ public class FetchTranslation {
 			JVar propsParamVar = fetchMeth.body().decl(bridge.propertiesType(), "headerProperties")
 					.init(bridge.propertiesType()._new());
 			for (Entry<String, JVar> headerParamEntry : headerParameters.entrySet()) {
-				fetchMeth.body()
-						.add(propsParamVar.invoke("put").arg(headerParamEntry.getKey())
-								.arg(headerParamEntry.getValue().invoke("toString")));
+				JVar param = headerParamEntry.getValue();
+				JInvocation putcall = propsParamVar.invoke("put").arg(headerParamEntry.getKey()).arg(JExpr.lit("").plus(param));
+				if (param.type().isPrimitive()) {
+					fetchMeth.body().add(putcall);
+				}else {
+					fetchMeth.body()._if(param.neNull())._then().add(putcall);
+				}
 			}
 			propsParam = propsParamVar;
 		}
@@ -170,9 +174,8 @@ public class FetchTranslation {
 				possibleRet = JExpr.invoke("requestPostMap").arg(url).arg(propsParam)
 						.arg(content == null ? JExpr._null() : content).arg(JExpr.dotClass(resourceFlatType.boxify()));
 			} else {
-				possibleRet = JExpr.invoke( "requestPost").arg(url)
-						.arg(propsParam).arg(content == null ? JExpr._null() : content)
-						.arg(JExpr.dotClass(resourceType.boxify()));
+				possibleRet = JExpr.invoke("requestPost").arg(url).arg(propsParam)
+						.arg(content == null ? JExpr._null() : content).arg(JExpr.dotClass(resourceType.boxify()));
 			}
 			break;
 		case put:
@@ -192,8 +195,7 @@ public class FetchTranslation {
 				possibleRet = JExpr.invoke("requestGetMap").arg(url).arg(propsParam)
 						.arg(JExpr.dotClass(resourceFlatType.boxify()));
 			} else {
-				possibleRet = JExpr.invoke("requestGet").arg(url)
-						.arg(propsParam).arg(JExpr.dotClass(resourceType.boxify()));
+				possibleRet = JExpr.invoke("requestGet").arg(url).arg(propsParam).arg(JExpr.dotClass(resourceType.boxify()));
 			}
 			break;
 		case delete:
@@ -226,8 +228,7 @@ public class FetchTranslation {
 
 		makeFetchRetType();
 		// create the method
-		fetchMeth = fetcherClass.method(JMod.PUBLIC,
-				fetchRetType, fetchMethName);
+		fetchMeth = fetcherClass.method(JMod.PUBLIC, fetchRetType, fetchMethName);
 		// add the parameters
 		extractFetchParameters();
 
@@ -316,10 +317,9 @@ public class FetchTranslation {
 	 */
 	protected void extractFetchParameters() {
 		for (Parameter p : operation.getParameters()) {
-			if (ignoreparameter(p)) {
-				continue;
-			}
 			String in = p.getIn();
+			boolean inField = bridge.options.globals.contains(p.getName());
+
 			AbstractJType pt;
 			JVar param;
 			switch (in) {
@@ -330,14 +330,17 @@ public class FetchTranslation {
 				if (!pp.getRequired() && pt.isPrimitive()) {
 					pt = pt.boxify();
 				}
-				param = fetchMeth.param(pt, pp.getName());
+				param = inField ? bridge.getField(fetcherClass, p.getName(), pt, p.getDescription())
+						: fetchMeth.param(pt, pp.getName());
 				pathparameters.add(param);
 				allParams.add(param);
 				break;
 			case "query":
 				fetchMeth.javadoc().addParam(p.getName()).add(p.getDescription());
 				QueryParameter qp = (QueryParameter) p;
-				param = fetchMeth.param(bridge.getExistingClass(qp), qp.getName());
+				pt = bridge.getExistingClass(qp);
+				param = inField ? bridge.getField(fetcherClass, p.getName(), pt, p.getDescription())
+						: fetchMeth.param(pt, qp.getName());
 				queryparameters.add(param);
 				allParams.add(param);
 				break;
@@ -349,13 +352,15 @@ public class FetchTranslation {
 				if (schema instanceof ArrayModel) {
 					fetchMeth.javadoc().addParam(p.getName()).add(p.getDescription());
 					pt = bridge.getExistingClass((ArrayModel) schema);
-					param = fetchMeth.param(pt, bp.getName());
+					param = inField ? bridge.getField(fetcherClass, p.getName(), pt, p.getDescription())
+							: fetchMeth.param(pt, bp.getName());
 					bodyparameters.add(param);
 					allParams.add(param);
 				} else if (schema instanceof RefModel) {
 					fetchMeth.javadoc().addParam(p.getName()).add(p.getDescription());
 					pt = bridge.translateDefToClass(((RefModel) schema).getSimpleRef());
-					param = fetchMeth.param(pt, bp.getName());
+					param = inField ? bridge.getField(fetcherClass, p.getName(), pt, p.getDescription())
+							: fetchMeth.param(pt, bp.getName());
 					bodyparameters.add(param);
 					allParams.add(param);
 				} else {
@@ -372,7 +377,9 @@ public class FetchTranslation {
 				fetchMeth.javadoc().addParam(p.getName()).add(p.getDescription());
 				HeaderParameter hp = (HeaderParameter) p;
 				String newname = ClassBridge.sanitizeVarName(hp.getName());
-				param = fetchMeth.param(bridge.getExistingClass(hp), newname);
+				pt = bridge.getExistingClass(hp);
+				param = inField ? bridge.getField(fetcherClass, p.getName(), pt, p.getDescription())
+						: fetchMeth.param(bridge.getExistingClass(hp), newname);
 				headerParameters.put(hp.getName(), param);
 				allParams.add(param);
 				break;
@@ -383,17 +390,12 @@ public class FetchTranslation {
 		}
 	}
 
-	protected boolean ignoreparameter(Parameter p) {
-		return false;
-	}
-
 	protected void addPathJavadoc() {
 		fetchMeth.javadoc().append("" + operation.getSummary());
 		fetchMeth.javadoc().add(("\n<p>\n" + ("" + operation.getDescription()).replaceAll("---", "<br />") + "\n</p>")
 				.replaceAll("\n\n", "\n").replaceAll("<br />\n<", "<").replaceAll("\n<br />\n", "<br />\n"));
 		if (!requiredRoles.isEmpty()) {
-			JFieldVar rolesfield = fetcherClass.field(
-					JMod.PUBLIC | JMod.STATIC | JMod.FINAL, cm.ref(String.class).array(),
+			JFieldVar rolesfield = fetcherClass.field(JMod.PUBLIC | JMod.STATIC | JMod.FINAL, cm.ref(String.class).array(),
 					(operation.getOperationId() + "_roles").toUpperCase());
 			JArray array = JExpr.newArray(cm.ref(String.class));
 			for (String role : requiredRoles) {

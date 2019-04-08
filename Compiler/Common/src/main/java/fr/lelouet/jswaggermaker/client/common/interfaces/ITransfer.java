@@ -21,7 +21,7 @@ public interface ITransfer {
 	 *          the URL we want to access.
 	 * @param method
 	 *          the method (get, etc.)
-	 * @param properties
+	 * @param header
 	 *          the properties to send in the header
 	 * @param transmit
 	 *          the properties to send in the body
@@ -30,7 +30,7 @@ public interface ITransfer {
 	 * @return a new Requested that will hold the value for the URL once the
 	 *         request is complete.
 	 */
-	public <T> Requested<T> request(String url, String method, Map<String, String> properties,
+	public <T> Requested<T> request(String url, String method, Map<String, String> header,
 			Map<String, Object> transmit, Class<T> expectedClass);
 
 	/**

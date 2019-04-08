@@ -88,6 +88,7 @@ public class ClassBridge {
 	protected String connectedPackageName = "connected";
 	protected String disconnectedPackageName = "disconnected";
 
+
 	private AbstractJClass propertiesType;
 
 	public AbstractJClass propertiesType() {
@@ -112,7 +113,9 @@ public class ClassBridge {
 		keyPackage = rootPackage.subPackage(keysPackageName);
 		connectedPackage = rootPackage.subPackage(connectedPackageName);
 		disconnectedPackage = rootPackage.subPackage(disconnectedPackageName);
+
 	}
+
 
 	private JDefinedClass swaggerDCClass;
 
@@ -602,5 +605,16 @@ public class ClassBridge {
 		} else {
 			return translateToClass(s, responsePackage, s.getTitle());
 		}
+	}
+
+	/** create a field or retrieve it in a class */
+	public JVar getField(JDefinedClass fetcherClass, String name, AbstractJType pt, String description) {
+		String fieldName = sanitizeVarName(name);
+		JFieldVar ret = fetcherClass.fields().get(fieldName);
+		if (ret == null) {
+			ret = fetcherClass.field(JMod.PUBLIC, pt, fieldName);
+			ret.javadoc().add(description);
+		}
+		return ret;
 	}
 }

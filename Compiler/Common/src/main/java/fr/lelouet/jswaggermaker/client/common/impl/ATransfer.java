@@ -37,10 +37,10 @@ public abstract class ATransfer implements ITransfer {
 	private static final Logger logger = LoggerFactory.getLogger(ATransfer.class);
 
 	@Override
-	public <T> Requested<T> request(String url, String method, Map<String, String> properties,
+	public <T> Requested<T> request(String url, String method, Map<String, String> header,
 			Map<String, Object> transmit, Class<T> expectedClass) {
 		try {
-			HttpsURLConnection con = makeConnection(url, method, properties, transmit);
+			HttpsURLConnection con = makeConnection(url, method, header, transmit);
 			return convertConnnectionResult(con, s -> convert(s, expectedClass));
 		} catch (Exception e) {
 			return new RequestedImpl<>(url, HttpsURLConnection.HTTP_UNAVAILABLE, e.getMessage(), null, new HashMap<>());
@@ -112,10 +112,10 @@ public abstract class ATransfer implements ITransfer {
 	}
 
 	@Override
-	public <T> Requested<Map<String, T>> requestMap(String url, String method, Map<String, String> properties,
+	public <T> Requested<Map<String, T>> requestMap(String url, String method, Map<String, String> header,
 			Map<String, Object> transmit, Class<T> expectedClass) {
 		try {
-			HttpsURLConnection con = makeConnection(url, method, properties, transmit);
+			HttpsURLConnection con = makeConnection(url, method, header, transmit);
 			return convertConnnectionResult(con, s -> convertMap(s, expectedClass));
 		} catch (Exception e) {
 			return new RequestedImpl<>(url, HttpsURLConnection.HTTP_UNAVAILABLE, e.getMessage(), null, new HashMap<>());
