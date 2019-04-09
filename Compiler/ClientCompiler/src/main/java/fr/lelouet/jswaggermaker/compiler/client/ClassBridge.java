@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -197,7 +198,8 @@ public class ClassBridge {
 			throw new UnsupportedOperationException("can't create class for security type " + secDef.getType());
 		}
 		try {
-			JDefinedClass ret = rootPackage._class(secName)._extends(parent);
+
+			JDefinedClass ret = rootPackage._class(normalizeClassName(secName))._extends(parent);
 			ret.javadoc().add("access " + swagger.getHost() + " with authorization type " + secDef.getType() + ".");
 			// if the parent class has a constructor to call, we create the same
 			// constructor
@@ -391,6 +393,15 @@ public class ClassBridge {
 			ret = "_" + ret;
 		}
 		return ret;
+	}
+
+	public static String normalizeClassName(String s) {
+		if (s == null) {
+			return s;
+		}
+		String ret = Stream.of(s.split("[_-]")).filter(str -> str.length() > 0)
+				.map(str -> str.substring(0, 1).toUpperCase() + str.substring(1)).collect(Collectors.joining());
+		return sanitizeVarName(ret);
 	}
 
 	public AbstractJType getExistingClass(ArrayModel model) {

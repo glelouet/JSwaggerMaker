@@ -10,12 +10,12 @@ import petstore.swagger.io.definitions.Pet;
 /**
  * access petstore.swagger.io with authorization type apiKey.
  */
-public class api_key
+public class ApiKey
     extends APIKey
 {
     public static final String[] SCOPES = new String[] { };
 
-    public api_key(String key) {
+    public ApiKey(String key) {
         super(key, "api_key", In.HEADER);
     }
 

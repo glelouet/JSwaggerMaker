@@ -11,12 +11,12 @@ import petstore.swagger.io.definitions.Pet;
 /**
  * access petstore.swagger.io with authorization type oauth2.
  */
-public class petstore_auth
+public class PetstoreAuth
     extends Oauth2
 {
     public static final String[] SCOPES = new String[] {"write:pets", "read:pets"};
 
-    public petstore_auth(String refreshToken, String basicAuth) {
+    public PetstoreAuth(String refreshToken, String basicAuth) {
         super(refreshToken, basicAuth, "https://petstore.swagger.io/oauth/authorize");
     }
 
