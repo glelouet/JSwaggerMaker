@@ -30,6 +30,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 
 import fr.lelouet.jswaggermaker.client.common.interfaces.ITransfer;
 import fr.lelouet.jswaggermaker.client.common.interfaces.Requested;
+import fr.lelouet.jswaggermaker.client.common.interfaces.cache.ICache;
 
 public abstract class ATransfer implements ITransfer {
 
@@ -39,12 +40,23 @@ public abstract class ATransfer implements ITransfer {
 	@Override
 	public <T> Requested<T> request(String url, String method, Map<String, String> header,
 			Map<String, Object> transmit, Class<T> expectedClass) {
+		Requested<T> ret = null;
+		if (cache != null) {
+			ret = cache.request(url, method, header, expectedClass);
+		}
+		if (ret != null) {
+			return ret;
+		}
 		try {
 			HttpsURLConnection con = makeConnection(url, method, header, transmit);
-			return convertConnnectionResult(con, s -> convert(s, expectedClass));
+			ret = convertConnnectionResult(con, s -> convert(s, expectedClass));
 		} catch (Exception e) {
 			return new RequestedImpl<>(url, HttpsURLConnection.HTTP_UNAVAILABLE, e.getMessage(), null, new HashMap<>());
 		}
+		if (cache != null) {
+			cache.retrieved(url, method, ret);
+		}
+		return ret;
 	}
 
 	protected HttpsURLConnection makeConnection(String url, String method, Map<String, String> header,
@@ -247,5 +259,7 @@ public abstract class ATransfer implements ITransfer {
 	protected String addConnection(String url, Map<String, String> header, Map<String, Object> transmit) {
 		return url;
 	}
+
+	public ICache cache;
 
 }

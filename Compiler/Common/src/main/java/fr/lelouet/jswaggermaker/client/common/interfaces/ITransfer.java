@@ -6,7 +6,6 @@ import java.util.Map;
  * interface for the basic transfer capacities.<br />
  * <ul>
  * <li>send GET|PUT|POST|DELETE requests</li>
- * <li>convert a string into a class</li>
  * <li>flatten object into url parameter</li>
  * </ul>
  */

@@ -1,7 +1,9 @@
 package fr.lelouet.jswaggermaker.client.common.interfaces;
 
+import java.sql.Date;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -18,7 +20,7 @@ public interface Requested<T> {
 
 	public String getURL();
 
-	public default boolean isOk() {
+	public default boolean isSuccess() {
 		return getResponseCode() / 100 == 2;
 	}
 
@@ -42,26 +44,72 @@ public interface Requested<T> {
 	 */
 	public static final DateTimeFormatter formatter = DateTimeFormatter.RFC_1123_DATE_TIME;
 
-	/**
-	 * extract the cache expire delay from the headers returned by a connection.
-	 * If the headers are missing the data, return 0
-	 *
-	 * @return the long value of milliseconds after which the cache will expire,
-	 *         or System.currentTimeMillis if missing header entries
-	 */
-	public default long getCacheExpire() {
-		List<String> expirel = getHeaders().get("Expires");
-		if (expirel == null || expirel.isEmpty()) {
-			return 0;
-		}
-		List<String> datel = getHeaders().get("Date");
-		if (datel == null || datel.isEmpty()) {
-			return 0;
-		}
+	public static long date2seconds(String date) {
 		synchronized (formatter) {
-			return 1000 * ZonedDateTime.parse(expirel.get(0), formatter).toEpochSecond()
-					- 1000 * ZonedDateTime.parse(datel.get(0), formatter).toEpochSecond();
+			return ZonedDateTime.parse(date, formatter).toEpochSecond();
 		}
+	}
+
+	public static String ms2date(long milliseconds) {
+		synchronized (formatter) {
+			return formatter.toFormat().format(new Date(milliseconds));
+		}
+	}
+
+	public static final String EXPIRES_HEADER = "Expires";
+
+	/**
+	 * extract the first value of the header for Expires
+	 *
+	 * @return the first value if present, or null.
+	 */
+	public default String getExpires() {
+		List<String> expirel = getHeaders().get("Expires");
+		if (expirel == null || expirel.size() < 1) {
+			return null;
+		}
+		return expirel.get(0);
+	}
+
+	/**
+	 * extract the value of the header for Expires, as standard seconds
+	 *
+	 * @return the expires header in seconds, or 0
+	 */
+	public default long getExpiresSeconds() {
+		String expires = getExpires();
+		if (expires == null) {
+			return 0;
+		}
+		return date2seconds(expires);
+	}
+
+	public static final String DATE_HEADER = "Date";
+
+	/**
+	 * extract the first value of the header for Date
+	 *
+	 * @return the first value if present, or null.
+	 */
+	public default String getDate() {
+		List<String> datel = getHeaders().get(DATE_HEADER);
+		if (datel == null || datel.size() < 1) {
+			return null;
+		}
+		return datel.get(0);
+	}
+
+	/**
+	 * extract the value of the date header, as standard seconds
+	 *
+	 * @return the date header in seconds, or 0.
+	 */
+	public default long getDateSeconds() {
+		String date = getDate();
+		if (date == null) {
+			return 0;
+		}
+		return date2seconds(date);
 	}
 
 	/**
@@ -90,7 +138,7 @@ public interface Requested<T> {
 	}
 
 	/**
-	 * get the number of pages for a request.
+	 * get the number of pages, or 1.
 	 *
 	 * @return the number of pages specified by the header
 	 */
@@ -108,6 +156,15 @@ public interface Requested<T> {
 			return getHeaders().get(ETAG).get(0);
 		}
 		return null;
+	}
+
+	public static final String CACHECONTROL = "Cache-Control";
+
+	/**
+	 * get the cache-control headers, or an empty list
+	 */
+	public default List<String> getCacheControl() {
+		return getHeaders().getOrDefault(CACHECONTROL, Collections.emptyList());
 	}
 
 }

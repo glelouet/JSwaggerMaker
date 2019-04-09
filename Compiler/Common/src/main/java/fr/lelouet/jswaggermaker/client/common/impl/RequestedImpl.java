@@ -32,7 +32,7 @@ public class RequestedImpl<T> implements Requested<T> {
 
 	@Override
 	public T getOK() {
-		if (!isOk()) {
+		if (!isSuccess()) {
 			throw new NullPointerException("received " + responseCode + " : " + error);
 		}
 		return ok;
@@ -40,7 +40,7 @@ public class RequestedImpl<T> implements Requested<T> {
 
 	@Override
 	public T getOKOr(T ifnotok) {
-		if (isOk()) {
+		if (isSuccess()) {
 			return ok;
 		} else {
 			return ifnotok;

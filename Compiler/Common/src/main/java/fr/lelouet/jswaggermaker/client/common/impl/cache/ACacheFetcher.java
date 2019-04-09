@@ -180,7 +180,7 @@ public abstract class ACacheFetcher {
 						String etag = res.getETag();
 						if (etag != null) {
 							if (!etag.equals(lastEtag)) {
-								if (res.isOk()) {
+								if (res.isSuccess()) {
 									cacheHandler.accept(res.getOK());
 								} else if (res.isClientError() && res.getResponseCode() != 420) {
 									logger.debug("setting null in cache for request response type " + res.getError());
@@ -188,7 +188,7 @@ public abstract class ACacheFetcher {
 								}
 							}
 							lastEtag = etag;
-						} else if (res.isOk()) {
+						} else if (res.isSuccess()) {
 							lastEtag = res.getETag();
 							cacheHandler.accept(res.getOK());
 						} else if (res.isRedirect() && res.getResponseCode() == 304) {
@@ -199,7 +199,7 @@ public abstract class ACacheFetcher {
 						} else {
 							logger.debug("" + res.getResponseCode() + " : " + res.getError());
 						}
-						delay_ms = res.getCacheExpire();
+						delay_ms = 1000 * (res.getExpiresSeconds() - res.getDateSeconds());
 					}
 				}
 			} catch (Throwable e) {
@@ -293,14 +293,14 @@ public abstract class ACacheFetcher {
 				return null;
 			}
 			int nbPages = res.getNbPages();
-			if (res.isOk() && nbPages > 1) {
+			if (res.isSuccess() && nbPages > 1) {
 				res.getOK().addAll(IntStream.rangeClosed(2, nbPages).parallel()
 						.mapToObj(page -> resourceAccess.apply(page, parameters)).peek(req -> {
-							if (!req.isOk()) {
+							if (!req.isSuccess()) {
 								res.responseCode = req.getResponseCode();
 								res.error = req.getError();
 							}
-						}).filter(Requested::isOk).map(req -> req.getOK()).flatMap(arr -> Stream.of(arr))
+						}).filter(Requested::isSuccess).map(req -> req.getOK()).flatMap(arr -> Stream.of(arr))
 						.collect(Collectors.toList()));
 			}
 			return res;
@@ -309,7 +309,7 @@ public abstract class ACacheFetcher {
 		protected RequestedImpl<List<T>> convertToList(Requested<T[]> apply) {
 			RequestedImpl<List<T>> ret = new RequestedImpl<>(apply.getURL(), apply.getResponseCode(), apply.getError(),
 					new ArrayList<>(), apply.getHeaders());
-			if (apply.isOk() && apply.getOK() != null) {
+			if (apply.isSuccess() && apply.getOK() != null) {
 				ret.getOK().addAll(Arrays.asList(apply.getOK()));
 			}
 			return ret;
