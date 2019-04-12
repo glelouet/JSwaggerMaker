@@ -92,8 +92,9 @@ public class LazyGetCache implements ICache {
 		isStale = getTimeMs() < maxExpirys * 1000;
 		if (!immutable) {
 			return isStale;
+		} else {
+			return true;
 		}
-		return true;
 	}
 
 	/**

@@ -13,4 +13,10 @@ public class ClassBridgeTest {
 		Assert.assertEquals(ClassBridge.normalizeClassName("apiKey"), "ApiKey");
 	}
 
+	@Test
+	public void testSanitize() {
+		Assert.assertEquals(ClassBridge.sanitizeVarName("bla-a"), "bla_a");
+		Assert.assertEquals(ClassBridge.sanitizeVarName("{player_id}"), "player_id");
+	}
+
 }

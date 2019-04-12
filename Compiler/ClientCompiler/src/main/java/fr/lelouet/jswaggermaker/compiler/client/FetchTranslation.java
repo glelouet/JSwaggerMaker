@@ -3,9 +3,11 @@ package fr.lelouet.jswaggermaker.compiler.client;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,12 +60,14 @@ public class FetchTranslation {
 
 	public final Operation operation;
 	public final OpType optype;
+	public final String baseURL;
 	public final String path;
 	public final ClassBridge bridge;
 	public final Map<String, List<String>> security;
 
 	public final JCodeModel cm;
-	public final JDefinedClass fetcherClass;
+	public JDefinedClass fetcherClass;
+	public JDefinedClass rootHolderClass;
 
 	public static enum OpType {
 		get {
@@ -96,15 +100,15 @@ public class FetchTranslation {
 
 	public String propsParamName = "properties";
 
-	public FetchTranslation(Operation operation, OpType optype, String path, ClassBridge bridge,
+	public FetchTranslation(Operation operation, OpType optype, String baseURL, String path, ClassBridge bridge,
 			Map<String, List<String>> security) {
 		this.operation = operation;
 		this.optype = optype;
+		this.baseURL = baseURL;
 		this.path = path;
 		this.bridge = bridge;
 		this.security = security;
 		cm = bridge.cm;
-		fetcherClass = bridge.getFetcherClass(security);
 	}
 
 	protected Response response;
@@ -136,11 +140,36 @@ public class FetchTranslation {
 
 	public List<String> requiredRoles;
 
+	protected ArrayList<String> pathsParams = new ArrayList<>();
+	protected ArrayList<String> pathsNoParam = new ArrayList<>();
+
 	public void apply() {
 		if (operation == null) {
 			return;
 		}
 		response = SwaggerCompiler.getResponse(operation);
+		HashSet<String> alternateRoute = new HashSet<>();
+		Object alternateversions = operation.getVendorExtensions().get("x-alternate-versions");
+		if (alternateversions != null) {
+			@SuppressWarnings("unchecked")
+			List<String> versionsl = (List<String>) alternateversions;
+			if (!versionsl.isEmpty()) {
+				alternateRoute.addAll(versionsl);
+			}
+		}
+		for (String pathToken : path.split("/")) {
+			if (!alternateRoute.contains(pathToken)) {
+				if (pathToken.length() > 0) {
+					if( pathToken.startsWith("{")) {
+						pathsParams.add(ClassBridge.sanitizeVarName(pathToken));
+					} else {
+						pathsNoParam.add(pathToken.toLowerCase());
+					}
+				}
+			}
+		}
+		fetcherClass = bridge.getFetcherClass(security, pathsNoParam);
+		rootHolderClass = bridge.getFetcherClass(security);
 		makeFetchMethInit();
 		addPathJavadoc();
 		IJExpression propsParam = JExpr._null();
@@ -221,11 +250,12 @@ public class FetchTranslation {
 	 */
 	@SuppressWarnings("unchecked")
 	protected void makeFetchMethInit() {
-		String fetchMethName = operation.getOperationId();
-		for (Parameter p : operation.getParameters()) {
-			fetchMethName = fetchMethName.replaceAll(p.getName(), "");
+		String fetchMethName = optype.name();
+		if (pathsParams.size() > 0) {
+			fetchMethName+= "By"
+					+ pathsParams.stream().map(token -> ClassBridge.camelcase(ClassBridge.normalizeClassName(token)))
+					.collect(Collectors.joining());
 		}
-		fetchMethName = fetchMethName.replaceAll("__", "_").replaceAll("_$", "");
 
 		makeFetchRetType();
 		// create the method
@@ -239,7 +269,7 @@ public class FetchTranslation {
 			requiredRoles = Collections.emptyList();
 		}
 
-		String urlAssign = "\"" + path + "\"";
+		String urlAssign = "\"" + baseURL + path + "\"";
 		for (JVar jv : pathparameters) {
 			urlAssign += ".replace(\"{" + jv.name() + "}\", \"\"+" + jv.name() + ")";
 		}
@@ -331,7 +361,7 @@ public class FetchTranslation {
 				if (!pp.getRequired() && pt.isPrimitive()) {
 					pt = pt.boxify();
 				}
-				param = inField ? bridge.getField(fetcherClass, p.getName(), pt, p.getDescription())
+				param = inField ? bridge.getField(rootHolderClass, p.getName(), pt, p.getDescription())
 						: fetchMeth.param(pt, pp.getName());
 				pathparameters.add(param);
 				allParams.add(param);
@@ -340,7 +370,7 @@ public class FetchTranslation {
 				fetchMeth.javadoc().addParam(p.getName()).add(p.getDescription());
 				QueryParameter qp = (QueryParameter) p;
 				pt = bridge.getExistingClass(qp);
-				param = inField ? bridge.getField(fetcherClass, p.getName(), pt, p.getDescription())
+				param = inField ? bridge.getField(rootHolderClass, p.getName(), pt, p.getDescription())
 						: fetchMeth.param(pt, qp.getName());
 				queryparameters.add(param);
 				allParams.add(param);
@@ -353,14 +383,14 @@ public class FetchTranslation {
 				if (schema instanceof ArrayModel) {
 					fetchMeth.javadoc().addParam(p.getName()).add(p.getDescription());
 					pt = bridge.getExistingClass((ArrayModel) schema);
-					param = inField ? bridge.getField(fetcherClass, p.getName(), pt, p.getDescription())
+					param = inField ? bridge.getField(rootHolderClass, p.getName(), pt, p.getDescription())
 							: fetchMeth.param(pt, bp.getName());
 					bodyparameters.add(param);
 					allParams.add(param);
 				} else if (schema instanceof RefModel) {
 					fetchMeth.javadoc().addParam(p.getName()).add(p.getDescription());
 					pt = bridge.translateDefToClass(((RefModel) schema).getSimpleRef());
-					param = inField ? bridge.getField(fetcherClass, p.getName(), pt, p.getDescription())
+					param = inField ? bridge.getField(rootHolderClass, p.getName(), pt, p.getDescription())
 							: fetchMeth.param(pt, bp.getName());
 					bodyparameters.add(param);
 					allParams.add(param);
@@ -379,7 +409,7 @@ public class FetchTranslation {
 				HeaderParameter hp = (HeaderParameter) p;
 				String newname = ClassBridge.sanitizeVarName(hp.getName());
 				pt = bridge.getExistingClass(hp);
-				param = inField ? bridge.getField(fetcherClass, p.getName(), pt, p.getDescription())
+				param = inField ? bridge.getField(rootHolderClass, p.getName(), pt, p.getDescription())
 						: fetchMeth.param(bridge.getExistingClass(hp), newname);
 				headerParameters.put(hp.getName(), param);
 				allParams.add(param);
@@ -396,7 +426,7 @@ public class FetchTranslation {
 		fetchMeth.javadoc().add(("\n<p>\n" + ("" + operation.getDescription()).replaceAll("---", "<br />") + "\n</p>")
 				.replaceAll("\n\n", "\n").replaceAll("<br />\n<", "<").replaceAll("\n<br />\n", "<br />\n"));
 		if (!requiredRoles.isEmpty()) {
-			JFieldVar rolesfield = fetcherClass.field(JMod.PUBLIC | JMod.STATIC | JMod.FINAL, cm.ref(String.class).array(),
+			JFieldVar rolesfield = rootHolderClass.field(JMod.PUBLIC | JMod.STATIC | JMod.FINAL, cm.ref(String.class).array(),
 					(operation.getOperationId() + "_roles").toUpperCase());
 			JArray array = JExpr.newArray(cm.ref(String.class));
 			for (String role : requiredRoles) {

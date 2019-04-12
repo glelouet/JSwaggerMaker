@@ -102,10 +102,10 @@ public class SwaggerCompiler {
 					continue;
 				}
 				if (op.getSecurity() == null || op.getSecurity().isEmpty()) {
-					apptyToPath(op, optype, baseURL + resource, cltrans, null);
+					apptyToPath(op, optype, baseURL, resource, cltrans, null);
 				} else {
 					for (Map<String, List<String>> sec : op.getSecurity()) {
-						apptyToPath(op, optype, baseURL + resource, cltrans, sec);
+						apptyToPath(op, optype, baseURL, resource, cltrans, sec);
 					}
 				}
 			}
@@ -120,9 +120,9 @@ public class SwaggerCompiler {
 		return null;
 	}
 
-	protected void apptyToPath(Operation op, OpType optype, String url, ClassBridge cltrans,
+	protected void apptyToPath(Operation op, OpType optype, String baseURL, String path, ClassBridge cltrans,
 			Map<String, List<String>> security) {
-		FetchTranslation f = new FetchTranslation(op, optype, url, cltrans, security);
+		FetchTranslation f = new FetchTranslation(op, optype, baseURL, path, cltrans, security);
 		f.apply();
 		if (cachemaker != null) {
 			cachemaker.apply(f);
@@ -135,7 +135,7 @@ public class SwaggerCompiler {
 			delDir(dir);
 		}
 		dir.mkdirs();
-		new JCMWriter(cm).build(dir);
+		new JCMWriter(cm).build(dir, dir, null);
 	}
 
 	public static Response getResponse(Operation operation) {

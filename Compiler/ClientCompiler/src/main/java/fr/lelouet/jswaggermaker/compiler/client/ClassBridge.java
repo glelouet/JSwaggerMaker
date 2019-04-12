@@ -122,6 +122,51 @@ public class ClassBridge {
 
 	private HashMap<String, JDefinedClass> singleSecurityClasses = new HashMap<>();
 
+	/**
+	 * get the class that is accessible through the fetcher for given security,
+	 * and following given subpaths.
+	 * 
+	 * @param security
+	 * @param subPaths
+	 * @return
+	 */
+	public JDefinedClass getFetcherClass(Map<String, List<String>> security, List<String> subPaths) {
+		JDefinedClass theclass = getFetcherClass(security);
+		for (String subPath : subPaths) {
+			theclass = subClass(theclass, normalizeClassName(subPath));
+		}
+		return theclass;
+	}
+
+	protected JDefinedClass subClass(JDefinedClass theclass, String subPath) {
+		String fieldName = sanitizeVarName(subPath.toLowerCase());
+		JFieldVar field = theclass.fields().get(fieldName);
+		if (field != null) {
+			if (field.type() instanceof JDefinedClass) {
+				return (JDefinedClass) field.type();
+			} else {
+				throw new UnsupportedOperationException("can't cast " + field.type() + " as a jdefinedclas");
+			}
+		} else {
+			// we need to create it
+			JDefinedClass subclass = createSubClass(theclass, subPath);
+			theclass.field(JMod.PUBLIC | JMod.FINAL, subclass, fieldName).init(subclass._new());
+			return subclass;
+		}
+	}
+
+	/** create a subclass in a class */
+	private JDefinedClass createSubClass(JDefinedClass theclass, String subPath) {
+		String newname = camelcase(normalizeClassName(subPath));
+		try {
+			// System.err.println("creating class " + newname + " in " + theclass);
+			return theclass._class(newname);
+		} catch (JClassAlreadyExistsException e) {
+			throw new UnsupportedOperationException("while creating class " + newname + " in " + theclass, e);
+		}
+	}
+
+	/** create if needed, and return, a class for given security and path */
 	public JDefinedClass getFetcherClass(Map<String, List<String>> security) {
 		if (security == null || security.isEmpty()) {
 			if (swaggerDCClass == null) {
@@ -388,7 +433,7 @@ public class ClassBridge {
 		if (keywords.contains(s)) {
 			return "_" + s;
 		}
-		String ret = s.replaceAll("[- #]", "_");
+		String ret = s.replaceAll("[\\{\\}]", "").replaceAll("[- #]", "_");
 		if (ret.matches("^[0-9].*")) {
 			ret = "_" + ret;
 		}
@@ -402,6 +447,16 @@ public class ClassBridge {
 		String ret = Stream.of(s.split("[_-]")).filter(str -> str.length() > 0)
 				.map(str -> str.substring(0, 1).toUpperCase() + str.substring(1)).collect(Collectors.joining());
 		return sanitizeVarName(ret);
+	}
+
+	public static String camelcase(String token) {
+		if (token == null) {
+			return null;
+		}
+		if (token.length() < 2) {
+			return token.toUpperCase();
+		}
+		return token.substring(0, 1).toUpperCase() + token.substring(1, token.length()).toLowerCase();
 	}
 
 	public AbstractJType getExistingClass(ArrayModel model) {
