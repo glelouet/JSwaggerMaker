@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -64,7 +65,7 @@ public class FetchTranslation {
 	public final String path;
 	public final ClassBridge bridge;
 	public final String securityName;
-	public final List<String> securityOptions;
+	public final Set<String> securityScopes;
 
 	public final JCodeModel cm;
 	public JDefinedClass fetcherClass;
@@ -102,14 +103,14 @@ public class FetchTranslation {
 	public String propsParamName = "properties";
 
 	public FetchTranslation(Operation operation, OpType optype, String baseURL, String path, ClassBridge bridge,
-			String securityName, List<String> securityOptions) {
+			String securityName, Set<String> securityScopes) {
 		this.operation = operation;
 		this.optype = optype;
 		this.baseURL = baseURL;
 		this.path = path;
 		this.bridge = bridge;
 		this.securityName = securityName;
-		this.securityOptions = securityOptions;
+		this.securityScopes = securityScopes;
 		cm = bridge.cm;
 	}
 

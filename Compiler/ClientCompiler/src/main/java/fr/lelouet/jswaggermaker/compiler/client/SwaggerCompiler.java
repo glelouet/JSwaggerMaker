@@ -3,9 +3,12 @@ package fr.lelouet.jswaggermaker.compiler.client;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -105,9 +108,22 @@ public class SwaggerCompiler {
 				if (op.getSecurity() == null || op.getSecurity().isEmpty()) {
 					apptyToPath(op, optype, baseURL, resource, cltrans, null);
 				} else {
+					// first remake the map securityName -> scopes
+					Map<String, Set<String>> mapSec = new HashMap<>();
 					for (Map<String, List<String>> sec : op.getSecurity()) {
-						apptyToPath(op, optype, baseURL, resource, cltrans, sec);
+						if (sec == null || sec.isEmpty()) {
+							mapSec.put(null, null);
+						}
+						for (Entry<String, List<String>> secEntry : sec.entrySet()) {
+							Set<String> set = mapSec.get(secEntry.getKey());
+							if (set == null) {
+								set = new HashSet<>();
+								mapSec.put(secEntry.getKey(), set);
+							}
+							set.addAll(secEntry.getValue());
+						}
 					}
+					apptyToPath(op, optype, baseURL, resource, cltrans, mapSec);
 				}
 			}
 		});
@@ -122,23 +138,15 @@ public class SwaggerCompiler {
 	}
 
 	protected void apptyToPath(Operation op, OpType optype, String baseURL, String path, ClassBridge cltrans,
-			Map<String, List<String>> securities) {
-		logger.debug("applyToPath " + baseURL + " " + path);
-		if (securities == null || securities.isEmpty()) {
-			FetchTranslation f = new FetchTranslation(op, optype, baseURL, path, cltrans, null, null);
+			Map<String, Set<String>> securities) {
+		logger.debug("applyToPath [" + optype + "]" + path);
+		for (Entry<String, Set<String>> security : securities.entrySet()) {
+			logger.debug("path=[" + optype + "]" + path + " security=" + security.getKey());
+			FetchTranslation f = new FetchTranslation(op, optype, baseURL, path, cltrans, security.getKey(),
+					security.getValue());
 			f.apply();
 			if (cachemaker != null) {
 				cachemaker.apply(f);
-			}
-		} else {
-			for (Entry<String, List<String>> security : securities.entrySet()) {
-				logger.debug("working on path " + path + " with security name " + security.getKey());
-				FetchTranslation f = new FetchTranslation(op, optype, baseURL, path, cltrans, security.getKey(),
-						security.getValue());
-				f.apply();
-				if (cachemaker != null) {
-					cachemaker.apply(f);
-				}
 			}
 		}
 	}
