@@ -221,7 +221,8 @@ public class FetchTranslation {
 					fetchMeth.body().add(content.invoke("put").arg(p.name()).arg(p));
 				}
 			}
-			possibleRet = JExpr.invoke("requestPut").arg(url).arg(propsParam).arg(content == null ? JExpr._null() : content);
+			possibleRet = JExpr.invoke("requestPut").arg(url).arg(propsParam).arg(content == null ? JExpr._null() : content)
+					.arg(JExpr.dotClass(resourceType.boxify()));
 			break;
 		case get:
 			if (resourceStructure == RETURNTYPE.MAP) {

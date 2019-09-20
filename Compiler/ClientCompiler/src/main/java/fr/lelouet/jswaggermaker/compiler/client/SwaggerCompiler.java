@@ -105,11 +105,11 @@ public class SwaggerCompiler {
 				if (op == null) {
 					continue;
 				}
+				// first remake the map securityName -> scopes
+				Map<String, Set<String>> mapSec = new HashMap<>();
 				if (op.getSecurity() == null || op.getSecurity().isEmpty()) {
-					apptyToPath(op, optype, baseURL, resource, cltrans, null);
+					mapSec.put(null, null);
 				} else {
-					// first remake the map securityName -> scopes
-					Map<String, Set<String>> mapSec = new HashMap<>();
 					for (Map<String, List<String>> sec : op.getSecurity()) {
 						if (sec == null || sec.isEmpty()) {
 							mapSec.put(null, null);
@@ -123,8 +123,9 @@ public class SwaggerCompiler {
 							set.addAll(secEntry.getValue());
 						}
 					}
-					apptyToPath(op, optype, baseURL, resource, cltrans, mapSec);
 				}
+				apptyToPath(op, optype, baseURL, resource, cltrans, mapSec);
+
 			}
 		});
 		return cm;

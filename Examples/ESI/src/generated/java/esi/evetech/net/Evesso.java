@@ -643,7 +643,7 @@ public class Evesso
                 String url = ("https://esi.evetech.net/v3/characters/{character_id}/calendar/{event_id}/".replace("{character_id}", ""+character_id).replace("{event_id}", ""+event_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
                 Map<String, Object> content = new HashMap<>();
                 content.put("response", response);
-                requestPut(url, null, content);
+                requestPut(url, null, content, Void.class);
             }
 
             public class Attendees {
@@ -796,7 +796,7 @@ public class Evesso
                 String url = ("https://esi.evetech.net/v2/characters/{character_id}/contacts/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(label_ids==null?"":"&label_ids="+flatten(label_ids))+"&standing="+flatten(standing)+(token==null?"":"&token="+flatten(token))+(watched==null?"":"&watched="+flatten(watched)));
                 Map<String, Object> content = new HashMap<>();
                 content.put("contact_ids", contact_ids);
-                requestPut(url, null, content);
+                requestPut(url, null, content, Void.class);
             }
 
             /**
@@ -1419,7 +1419,7 @@ public class Evesso
                 Map<String, Object> content = new HashMap<>();
                 content.put("labels", labels);
                 content.put("read", read);
-                requestPut(url, null, content);
+                requestPut(url, null, content, Void.class);
             }
 
             /**
@@ -3596,7 +3596,7 @@ public class Evesso
             Map<String, Object> content = new HashMap<>();
             content.put("is_free_move", is_free_move);
             content.put("motd", motd);
-            requestPut(url, null, content);
+            requestPut(url, null, content, Void.class);
         }
 
         public class Members {
@@ -3702,7 +3702,7 @@ public class Evesso
                 content.put("role", role);
                 content.put("squad_id", squad_id);
                 content.put("wing_id", wing_id);
-                requestPut(url, null, content);
+                requestPut(url, null, content, Void.class);
             }
 
             /**
@@ -3749,7 +3749,7 @@ public class Evesso
                 String url = ("https://esi.evetech.net/v1/fleets/{fleet_id}/squads/{squad_id}/".replace("{fleet_id}", ""+fleet_id).replace("{squad_id}", ""+squad_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
                 Map<String, Object> content = new HashMap<>();
                 content.put("name", name);
-                requestPut(url, null, content);
+                requestPut(url, null, content, Void.class);
             }
 
             /**
@@ -3850,7 +3850,7 @@ public class Evesso
                 String url = ("https://esi.evetech.net/v1/fleets/{fleet_id}/wings/{wing_id}/".replace("{fleet_id}", ""+fleet_id).replace("{wing_id}", ""+wing_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
                 Map<String, Object> content = new HashMap<>();
                 content.put("name", name);
-                requestPut(url, null, content);
+                requestPut(url, null, content, Void.class);
             }
 
             /**

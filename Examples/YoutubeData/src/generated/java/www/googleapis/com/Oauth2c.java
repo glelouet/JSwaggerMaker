@@ -320,7 +320,7 @@ public class Oauth2c
             String url = ("https://www.googleapis.com/youtube/v3/captions"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(onBehalfOf==null?"":"&onBehalfOf="+flatten(onBehalfOf))+(onBehalfOfContentOwner==null?"":"&onBehalfOfContentOwner="+flatten(onBehalfOfContentOwner))+(part==null?"":"&part="+flatten(part))+(sync==null?"":"&sync="+flatten(sync)));
             Map<String, Object> content = new HashMap<>();
             content.put("body", body);
-            return requestPut(url, null, content);
+            return requestPut(url, null, content, Caption.class);
         }
 
         /**
@@ -586,7 +586,7 @@ public class Oauth2c
             String url = ("https://www.googleapis.com/youtube/v3/channels"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(onBehalfOfContentOwner==null?"":"&onBehalfOfContentOwner="+flatten(onBehalfOfContentOwner))+(part==null?"":"&part="+flatten(part)));
             Map<String, Object> content = new HashMap<>();
             content.put("body", body);
-            return requestPut(url, null, content);
+            return requestPut(url, null, content, Channel.class);
         }
     }
 
@@ -742,7 +742,7 @@ public class Oauth2c
             String url = ("https://www.googleapis.com/youtube/v3/channelSections"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(onBehalfOfContentOwner==null?"":"&onBehalfOfContentOwner="+flatten(onBehalfOfContentOwner))+(part==null?"":"&part="+flatten(part)));
             Map<String, Object> content = new HashMap<>();
             content.put("body", body);
-            return requestPut(url, null, content);
+            return requestPut(url, null, content, ChannelSection.class);
         }
 
         /**
@@ -921,7 +921,7 @@ public class Oauth2c
             String url = ("https://www.googleapis.com/youtube/v3/comments"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(part==null?"":"&part="+flatten(part)));
             Map<String, Object> content = new HashMap<>();
             content.put("body", body);
-            return requestPut(url, null, content);
+            return requestPut(url, null, content, Caption.class);
         }
 
         /**
@@ -1196,7 +1196,7 @@ public class Oauth2c
             String url = ("https://www.googleapis.com/youtube/v3/commentThreads"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(part==null?"":"&part="+flatten(part)));
             Map<String, Object> content = new HashMap<>();
             content.put("body", body);
-            return requestPut(url, null, content);
+            return requestPut(url, null, content, CommentThread.class);
         }
     }
 
@@ -1504,7 +1504,7 @@ public class Oauth2c
             String url = ("https://www.googleapis.com/youtube/v3/liveBroadcasts"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(onBehalfOfContentOwner==null?"":"&onBehalfOfContentOwner="+flatten(onBehalfOfContentOwner))+(onBehalfOfContentOwnerChannel==null?"":"&onBehalfOfContentOwnerChannel="+flatten(onBehalfOfContentOwnerChannel))+(part==null?"":"&part="+flatten(part)));
             Map<String, Object> content = new HashMap<>();
             content.put("body", body);
-            return requestPut(url, null, content);
+            return requestPut(url, null, content, LiveBroadcast.class);
         }
 
         /**
@@ -2232,7 +2232,7 @@ public class Oauth2c
             String url = ("https://www.googleapis.com/youtube/v3/liveStreams"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(onBehalfOfContentOwner==null?"":"&onBehalfOfContentOwner="+flatten(onBehalfOfContentOwner))+(onBehalfOfContentOwnerChannel==null?"":"&onBehalfOfContentOwnerChannel="+flatten(onBehalfOfContentOwnerChannel))+(part==null?"":"&part="+flatten(part)));
             Map<String, Object> content = new HashMap<>();
             content.put("body", body);
-            return requestPut(url, null, content);
+            return requestPut(url, null, content, LiveStream.class);
         }
 
         /**
@@ -2517,7 +2517,7 @@ public class Oauth2c
             String url = ("https://www.googleapis.com/youtube/v3/playlistItems"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(onBehalfOfContentOwner==null?"":"&onBehalfOfContentOwner="+flatten(onBehalfOfContentOwner))+(part==null?"":"&part="+flatten(part)));
             Map<String, Object> content = new HashMap<>();
             content.put("body", body);
-            return requestPut(url, null, content);
+            return requestPut(url, null, content, PlaylistItem.class);
         }
 
         /**
@@ -2724,7 +2724,7 @@ public class Oauth2c
             String url = ("https://www.googleapis.com/youtube/v3/playlists"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(onBehalfOfContentOwner==null?"":"&onBehalfOfContentOwner="+flatten(onBehalfOfContentOwner))+(part==null?"":"&part="+flatten(part)));
             Map<String, Object> content = new HashMap<>();
             content.put("body", body);
-            return requestPut(url, null, content);
+            return requestPut(url, null, content, Playlist.class);
         }
 
         /**
@@ -3487,7 +3487,7 @@ public class Oauth2c
             String url = ("https://www.googleapis.com/youtube/v3/videos"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(onBehalfOfContentOwner==null?"":"&onBehalfOfContentOwner="+flatten(onBehalfOfContentOwner))+(part==null?"":"&part="+flatten(part)));
             Map<String, Object> content = new HashMap<>();
             content.put("body", body);
-            return requestPut(url, null, content);
+            return requestPut(url, null, content, Video.class);
         }
 
         /**

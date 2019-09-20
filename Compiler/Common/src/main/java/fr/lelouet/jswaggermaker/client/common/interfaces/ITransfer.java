@@ -81,8 +81,9 @@ public interface ITransfer {
 	}
 
 	/** request a PUT URL */
-	public default Requested<Void> requestPut(String url, Map<String, String> properties, Map<String, Object> transmit) {
-		return request(url, "PUT", properties, transmit, null);
+	public default <T> Requested<T> requestPut(String url, Map<String, String> properties, Map<String, Object> transmit,
+			Class<T> expectedClass) {
+		return request(url, "PUT", properties, transmit, expectedClass);
 	}
 
 	/**
