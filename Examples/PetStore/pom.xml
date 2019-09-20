@@ -41,6 +41,6 @@
 			</plugin>
 		</plugins>
 	</build>
-	<name>PetStoreExample</name>
+	<name>PetStore Example</name>
 	<description>example of compiling jswaggermaker against https://petstore.swagger.io/v2/swagger.json</description>
 </project>

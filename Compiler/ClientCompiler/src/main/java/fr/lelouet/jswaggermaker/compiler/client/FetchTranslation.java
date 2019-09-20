@@ -63,7 +63,8 @@ public class FetchTranslation {
 	public final String baseURL;
 	public final String path;
 	public final ClassBridge bridge;
-	public final Map<String, List<String>> security;
+	public final String securityName;
+	public final List<String> securityOptions;
 
 	public final JCodeModel cm;
 	public JDefinedClass fetcherClass;
@@ -101,13 +102,14 @@ public class FetchTranslation {
 	public String propsParamName = "properties";
 
 	public FetchTranslation(Operation operation, OpType optype, String baseURL, String path, ClassBridge bridge,
-			Map<String, List<String>> security) {
+			String securityName, List<String> securityOptions) {
 		this.operation = operation;
 		this.optype = optype;
 		this.baseURL = baseURL;
 		this.path = path;
 		this.bridge = bridge;
-		this.security = security;
+		this.securityName = securityName;
+		this.securityOptions = securityOptions;
 		cm = bridge.cm;
 	}
 
@@ -168,8 +170,8 @@ public class FetchTranslation {
 				}
 			}
 		}
-		fetcherClass = bridge.getFetcherClass(security, pathsNoParam);
-		rootHolderClass = bridge.getFetcherClass(security);
+		fetcherClass = bridge.getFetcherClass(securityName, pathsNoParam);
+		rootHolderClass = bridge.getFetcherClass(securityName);
 		makeFetchMethInit();
 		addPathJavadoc();
 		IJExpression propsParam = JExpr._null();
@@ -276,8 +278,7 @@ public class FetchTranslation {
 		if (queryparameters.size() > 0) {
 			urlAssign += "+\"?\"";
 		}
-		for (int pi = 0; pi < queryparameters.size(); pi++) {
-			JVar qp = queryparameters.get(pi);
+		for (JVar qp : queryparameters) {
 			if (qp.type() instanceof JPrimitiveType) {
 				urlAssign += "+\"&" + qp.name() + "=\"+flatten(" + qp.name() + ")";
 			} else {
@@ -293,6 +294,7 @@ public class FetchTranslation {
 	 */
 	protected void makeFetchRetType() {
 		Model m = response == null ? null : response.getResponseSchema();
+		logger.debug("making response type for path=" + path + " responsemodel=" + m);
 		if (m == null) {
 			resourceStructure = RETURNTYPE.NONE;
 			resourceType = resourceFlatType = cm.VOID;

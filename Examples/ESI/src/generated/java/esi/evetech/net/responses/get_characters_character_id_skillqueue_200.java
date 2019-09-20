@@ -2,7 +2,7 @@ package esi.evetech.net.responses;
 
 public class get_characters_character_id_skillqueue_200 {
     /**
-     * finish_date string
+     * Date on which training of the skill will complete. Omitted if the skill queue is paused.
      */
     public String finish_date;
     /**

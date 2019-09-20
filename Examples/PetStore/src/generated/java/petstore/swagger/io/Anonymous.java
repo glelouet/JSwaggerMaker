@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import fr.lelouet.jswaggermaker.client.common.impl.securities.Disconnected;
 import fr.lelouet.jswaggermaker.client.common.interfaces.Requested;
+import petstore.swagger.io.definitions.Order;
+import petstore.swagger.io.definitions.User;
 
 
 /**
@@ -12,191 +14,163 @@ import fr.lelouet.jswaggermaker.client.common.interfaces.Requested;
 public class Anonymous
     extends Disconnected
 {
-    public final Anonymous.Store store = new Anonymous.Store();
-    public final Anonymous.User user = new Anonymous.User();
 
-    public class Store {
-        public final Anonymous.Store.Order order = new Anonymous.Store.Order();
-
-        public class Order {
-
-            /**
-             * Place an order for a pet
-             * <p>
-             * </p>
-             * 
-             * @param body
-             *     order placed for purchasing the pet
-             */
-            public Requested<petstore.swagger.io.definitions.Order> post(petstore.swagger.io.definitions.Order body) {
-                String url = ("https://petstore.swagger.io/v2/store/order");
-                Map<String, Object> content = new HashMap<>();
-                content.put("body", body);
-                return requestPost(url, null, content, petstore.swagger.io.definitions.Order.class);
-            }
-
-            /**
-             * Find purchase order by ID
-             * <p>
-             * For valid response try integer IDs with value >= 1 and <= 10. Other values will generated exceptions
-             * </p>
-             * 
-             * @param orderId
-             *     ID of pet that needs to be fetched
-             */
-            public Requested<petstore.swagger.io.definitions.Order> getByOrderid(long orderId) {
-                String url = ("https://petstore.swagger.io/v2/store/order/{orderId}".replace("{orderId}", ""+orderId));
-                return requestGet(url, null, petstore.swagger.io.definitions.Order.class);
-            }
-
-            /**
-             * Delete purchase order by ID
-             * <p>
-             * For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors
-             * </p>
-             * 
-             * @param orderId
-             *     ID of the order that needs to be deleted
-             */
-            public void deleteByOrderid(long orderId) {
-                String url = ("https://petstore.swagger.io/v2/store/order/{orderId}".replace("{orderId}", ""+orderId));
-                requestDel(url, null);
-            }
-        }
+    /**
+     * Place an order for a pet
+     * <p>
+     * </p>
+     * 
+     * @param body
+     *     order placed for purchasing the pet
+     */
+    public Requested<Order> placeOrder(Order body) {
+        String url = ("https://petstore.swagger.io/v2/store/order");
+        Map<String, Object> content = new HashMap<>();
+        content.put("body", body);
+        return requestPost(url, null, content, Order.class);
     }
 
-    public class User {
-        public final Anonymous.User.Createwitharray createwitharray = new Anonymous.User.Createwitharray();
-        public final Anonymous.User.Createwithlist createwithlist = new Anonymous.User.Createwithlist();
-        public final Anonymous.User.Login login = new Anonymous.User.Login();
-        public final Anonymous.User.Logout logout = new Anonymous.User.Logout();
+    /**
+     * Find purchase order by ID
+     * <p>
+     * For valid response try integer IDs with value >= 1 and <= 10. Other values will generated exceptions
+     * </p>
+     * 
+     * @param orderId
+     *     ID of pet that needs to be fetched
+     */
+    public Requested<Order> getOrderById(long orderId) {
+        String url = ("https://petstore.swagger.io/v2/store/order/{orderId}".replace("{orderId}", ""+orderId));
+        return requestGet(url, null, Order.class);
+    }
 
-        /**
-         * Create user
-         * <p>
-         * This can only be done by the logged in user.
-         * </p>
-         * 
-         * @param body
-         *     Created user object
-         */
-        public void post(petstore.swagger.io.definitions.User body) {
-            String url = ("https://petstore.swagger.io/v2/user");
-            Map<String, Object> content = new HashMap<>();
-            content.put("body", body);
-            requestPost(url, null, content, Void.class);
-        }
+    /**
+     * Delete purchase order by ID
+     * <p>
+     * For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors
+     * </p>
+     * 
+     * @param orderId
+     *     ID of the order that needs to be deleted
+     */
+    public void deleteOrder(long orderId) {
+        String url = ("https://petstore.swagger.io/v2/store/order/{orderId}".replace("{orderId}", ""+orderId));
+        requestDel(url, null);
+    }
 
-        /**
-         * Get user by user name
-         * <p>
-         * </p>
-         * 
-         * @param username
-         *     The name that needs to be fetched. Use user1 for testing. 
-         */
-        public Requested<petstore.swagger.io.definitions.User> getByUsername(String username) {
-            String url = ("https://petstore.swagger.io/v2/user/{username}".replace("{username}", ""+username));
-            return requestGet(url, null, petstore.swagger.io.definitions.User.class);
-        }
+    /**
+     * Create user
+     * <p>
+     * This can only be done by the logged in user.
+     * </p>
+     * 
+     * @param body
+     *     Created user object
+     */
+    public void createUser(User body) {
+        String url = ("https://petstore.swagger.io/v2/user");
+        Map<String, Object> content = new HashMap<>();
+        content.put("body", body);
+        requestPost(url, null, content, Void.class);
+    }
 
-        /**
-         * Updated user
-         * <p>
-         * This can only be done by the logged in user.
-         * </p>
-         * 
-         * @param username
-         *     name that need to be updated
-         * @param body
-         *     Updated user object
-         */
-        public void putByUsername(String username, petstore.swagger.io.definitions.User body) {
-            String url = ("https://petstore.swagger.io/v2/user/{username}".replace("{username}", ""+username));
-            Map<String, Object> content = new HashMap<>();
-            content.put("body", body);
-            requestPut(url, null, content);
-        }
+    /**
+     * Creates list of users with given input array
+     * <p>
+     * </p>
+     * 
+     * @param body
+     *     List of user object
+     */
+    public void createUsersWithArrayInput(User[] body) {
+        String url = ("https://petstore.swagger.io/v2/user/createWithArray");
+        Map<String, Object> content = new HashMap<>();
+        content.put("body", body);
+        requestPost(url, null, content, Void.class);
+    }
 
-        /**
-         * Delete user
-         * <p>
-         * This can only be done by the logged in user.
-         * </p>
-         * 
-         * @param username
-         *     The name that needs to be deleted
-         */
-        public void deleteByUsername(String username) {
-            String url = ("https://petstore.swagger.io/v2/user/{username}".replace("{username}", ""+username));
-            requestDel(url, null);
-        }
+    /**
+     * Creates list of users with given input array
+     * <p>
+     * </p>
+     * 
+     * @param body
+     *     List of user object
+     */
+    public void createUsersWithListInput(User[] body) {
+        String url = ("https://petstore.swagger.io/v2/user/createWithList");
+        Map<String, Object> content = new HashMap<>();
+        content.put("body", body);
+        requestPost(url, null, content, Void.class);
+    }
 
-        public class Createwitharray {
+    /**
+     * Logs user into the system
+     * <p>
+     * </p>
+     * 
+     * @param username
+     *     The user name for login
+     * @param password
+     *     The password for login in clear text
+     */
+    public Requested<String> loginUser(String username, String password) {
+        String url = ("https://petstore.swagger.io/v2/user/login"+"?"+(username==null?"":"&username="+flatten(username))+(password==null?"":"&password="+flatten(password)));
+        return requestGet(url, null, String.class);
+    }
 
-            /**
-             * Creates list of users with given input array
-             * <p>
-             * </p>
-             * 
-             * @param body
-             *     List of user object
-             */
-            public void post(petstore.swagger.io.definitions.User[] body) {
-                String url = ("https://petstore.swagger.io/v2/user/createWithArray");
-                Map<String, Object> content = new HashMap<>();
-                content.put("body", body);
-                requestPost(url, null, content, Void.class);
-            }
-        }
+    /**
+     * Logs out current logged in user session
+     * <p>
+     * </p>
+     */
+    public void logoutUser() {
+        String url = ("https://petstore.swagger.io/v2/user/logout");
+        requestGet(url, null, Void.class);
+    }
 
-        public class Createwithlist {
+    /**
+     * Get user by user name
+     * <p>
+     * </p>
+     * 
+     * @param username
+     *     The name that needs to be fetched. Use user1 for testing. 
+     */
+    public Requested<User> getUserByName(String username) {
+        String url = ("https://petstore.swagger.io/v2/user/{username}".replace("{username}", ""+username));
+        return requestGet(url, null, User.class);
+    }
 
-            /**
-             * Creates list of users with given input array
-             * <p>
-             * </p>
-             * 
-             * @param body
-             *     List of user object
-             */
-            public void post(petstore.swagger.io.definitions.User[] body) {
-                String url = ("https://petstore.swagger.io/v2/user/createWithList");
-                Map<String, Object> content = new HashMap<>();
-                content.put("body", body);
-                requestPost(url, null, content, Void.class);
-            }
-        }
+    /**
+     * Updated user
+     * <p>
+     * This can only be done by the logged in user.
+     * </p>
+     * 
+     * @param username
+     *     name that need to be updated
+     * @param body
+     *     Updated user object
+     */
+    public void updateUser(String username, User body) {
+        String url = ("https://petstore.swagger.io/v2/user/{username}".replace("{username}", ""+username));
+        Map<String, Object> content = new HashMap<>();
+        content.put("body", body);
+        requestPut(url, null, content);
+    }
 
-        public class Login {
-
-            /**
-             * Logs user into the system
-             * <p>
-             * </p>
-             * 
-             * @param username
-             *     The user name for login
-             * @param password
-             *     The password for login in clear text
-             */
-            public Requested<String> get(String username, String password) {
-                String url = ("https://petstore.swagger.io/v2/user/login"+"?"+(username==null?"":"&username="+flatten(username))+(password==null?"":"&password="+flatten(password)));
-                return requestGet(url, null, String.class);
-            }
-        }
-
-        public class Logout {
-
-            /**
-             * Logs out current logged in user session
-             * <p>
-             * </p>
-             */
-            public void get() {
-                String url = ("https://petstore.swagger.io/v2/user/logout");
-                requestGet(url, null, Void.class);
-            }
-        }
+    /**
+     * Delete user
+     * <p>
+     * This can only be done by the logged in user.
+     * </p>
+     * 
+     * @param username
+     *     The name that needs to be deleted
+     */
+    public void deleteUser(String username) {
+        String url = ("https://petstore.swagger.io/v2/user/{username}".replace("{username}", ""+username));
+        requestDel(url, null);
     }
 }

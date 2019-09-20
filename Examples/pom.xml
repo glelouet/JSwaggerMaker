@@ -15,6 +15,10 @@
 	<modules>
 		<module>PetStore</module>
 		<module>ESI</module>
+<!-- 		disabled because discourse spec contains structural issues -->
+<!-- 		<module>Discourse</module> -->
+		<module>YoutbueData</module>
+		<module>YoutubeData</module>
 	</modules>
 	<dependencies>
 		<dependency>

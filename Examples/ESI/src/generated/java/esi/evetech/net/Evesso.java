@@ -49,6 +49,7 @@ import esi.evetech.net.responses.get_characters_character_id_skills;
 import esi.evetech.net.responses.get_characters_character_id_standings_200;
 import esi.evetech.net.responses.get_characters_character_id_stats_200;
 import esi.evetech.net.responses.get_characters_character_id_titles_200;
+import esi.evetech.net.responses.get_characters_character_id_wallet_journal_200;
 import esi.evetech.net.responses.get_characters_character_id_wallet_transactions_200;
 import esi.evetech.net.responses.get_corporation_corporation_id_mining_extractions_200;
 import esi.evetech.net.responses.get_corporation_corporation_id_mining_observers_200;
@@ -1621,7 +1622,7 @@ public class Evesso
              *     Access token to use if unable to set a header
              */
             public Requested<get_characters_character_id_notifications_200 []> getByCharacterid(int character_id, String If_None_Match) {
-                String url = ("https://esi.evetech.net/v4/characters/{character_id}/notifications/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
+                String url = ("https://esi.evetech.net/v5/characters/{character_id}/notifications/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(token==null?"":"&token="+flatten(token)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
@@ -1909,7 +1910,8 @@ public class Evesso
              * Get current ship
              * <p>
              * Get the current ship type, name and id<br />
-             * This route is cached for up to 5 seconds
+             * This route is cached for up to 5 seconds<br />
+             * [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/characters/{character_id}/ship/)
              * </p>
              * 
              * @param character_id
@@ -2106,9 +2108,7 @@ public class Evesso
                  * Get character wallet journal
                  * <p>
                  * Retrieve the given character's wallet journal going 30 days back<br />
-                 * This route is cached for up to 3600 seconds<br />
-                 * Warning: This route has an upgrade available<br />
-                 * [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/characters/{character_id}/wallet/journal/)
+                 * This route is cached for up to 3600 seconds
                  * </p>
                  * 
                  * @param character_id
@@ -2122,13 +2122,13 @@ public class Evesso
                  * @param token
                  *     Access token to use if unable to set a header
                  */
-                public Requested<get_corporations_corporation_id_wallets_division_journal_200 []> getByCharacterid(int character_id, String If_None_Match, Integer page) {
-                    String url = ("https://esi.evetech.net/v5/characters/{character_id}/wallet/journal/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
+                public Requested<get_characters_character_id_wallet_journal_200 []> getByCharacterid(int character_id, String If_None_Match, Integer page) {
+                    String url = ("https://esi.evetech.net/v6/characters/{character_id}/wallet/journal/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page))+(token==null?"":"&token="+flatten(token)));
                     HashMap<String, String> headerProperties = new HashMap<String, String>();
                     if (If_None_Match!= null) {
                         headerProperties.put("If-None-Match", (""+ If_None_Match));
                     }
-                    return requestGet(url, headerProperties, get_corporations_corporation_id_wallets_division_journal_200 [].class);
+                    return requestGet(url, headerProperties, get_characters_character_id_wallet_journal_200 [].class);
                 }
             }
 
@@ -2792,7 +2792,8 @@ public class Evesso
                  * Overview of a corporation involved in faction warfare
                  * <p>
                  * Statistics about a corporation involved in faction warfare<br />
-                 * This route expires daily at 11:05
+                 * This route expires daily at 11:05<br />
+                 * [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/fw/stats/)
                  * </p>
                  * 
                  * @param corporation_id

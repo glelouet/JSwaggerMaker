@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -121,11 +122,24 @@ public class SwaggerCompiler {
 	}
 
 	protected void apptyToPath(Operation op, OpType optype, String baseURL, String path, ClassBridge cltrans,
-			Map<String, List<String>> security) {
-		FetchTranslation f = new FetchTranslation(op, optype, baseURL, path, cltrans, security);
-		f.apply();
-		if (cachemaker != null) {
-			cachemaker.apply(f);
+			Map<String, List<String>> securities) {
+		logger.debug("applyToPath " + baseURL + " " + path);
+		if (securities == null || securities.isEmpty()) {
+			FetchTranslation f = new FetchTranslation(op, optype, baseURL, path, cltrans, null, null);
+			f.apply();
+			if (cachemaker != null) {
+				cachemaker.apply(f);
+			}
+		} else {
+			for (Entry<String, List<String>> security : securities.entrySet()) {
+				logger.debug("working on path " + path + " with security name " + security.getKey());
+				FetchTranslation f = new FetchTranslation(op, optype, baseURL, path, cltrans, security.getKey(),
+						security.getValue());
+				f.apply();
+				if (cachemaker != null) {
+					cachemaker.apply(f);
+				}
+			}
 		}
 	}
 

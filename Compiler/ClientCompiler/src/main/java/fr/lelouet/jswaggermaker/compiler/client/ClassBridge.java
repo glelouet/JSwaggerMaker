@@ -56,6 +56,7 @@ import io.swagger.models.properties.DecimalProperty;
 import io.swagger.models.properties.FloatProperty;
 import io.swagger.models.properties.IntegerProperty;
 import io.swagger.models.properties.LongProperty;
+import io.swagger.models.properties.MapProperty;
 import io.swagger.models.properties.ObjectProperty;
 import io.swagger.models.properties.Property;
 import io.swagger.models.properties.RefProperty;
@@ -125,13 +126,13 @@ public class ClassBridge {
 	/**
 	 * get the class that is accessible through the fetcher for given security,
 	 * and following given subpaths.
-	 * 
+	 *
 	 * @param security
 	 * @param subPaths
 	 * @return
 	 */
-	public JDefinedClass getFetcherClass(Map<String, List<String>> security, List<String> subPaths) {
-		JDefinedClass theclass = getFetcherClass(security);
+	public JDefinedClass getFetcherClass(String securityName, List<String> subPaths) {
+		JDefinedClass theclass = getFetcherClass(securityName);
 		for (String subPath : subPaths) {
 			theclass = subClass(theclass, normalizeClassName(subPath));
 		}
@@ -159,7 +160,7 @@ public class ClassBridge {
 	private JDefinedClass createSubClass(JDefinedClass theclass, String subPath) {
 		String newname = camelcase(normalizeClassName(subPath));
 		try {
-			// System.err.println("creating class " + newname + " in " + theclass);
+			logger.debug("creating class " + newname + " in " + theclass);
 			return theclass._class(newname);
 		} catch (JClassAlreadyExistsException e) {
 			throw new UnsupportedOperationException("while creating class " + newname + " in " + theclass, e);
@@ -167,8 +168,8 @@ public class ClassBridge {
 	}
 
 	/** create if needed, and return, a class for given security and path */
-	public JDefinedClass getFetcherClass(Map<String, List<String>> security) {
-		if (security == null || security.isEmpty()) {
+	public JDefinedClass getFetcherClass(String securityName) {
+		if (securityName == null) {
 			if (swaggerDCClass == null) {
 				synchronized (this) {
 					if (swaggerDCClass == null) {
@@ -183,22 +184,17 @@ public class ClassBridge {
 			}
 			return swaggerDCClass;
 		} else {
-			if (security.size() == 1) {
-				Entry<String, List<String>> secEntry = security.entrySet().iterator().next();
-				String secName = secEntry.getKey();
-				JDefinedClass ret = singleSecurityClasses.get(secName);
-				if (ret == null) {
-					synchronized (singleSecurityClasses) {
-						ret = singleSecurityClasses.get(secName);
-						if (ret == null) {
-							ret = makeClassForSecurity(secName);
-							singleSecurityClasses.put(secName, ret);
-						}
+			JDefinedClass ret = singleSecurityClasses.get(securityName);
+			if (ret == null) {
+				synchronized (singleSecurityClasses) {
+					ret = singleSecurityClasses.get(securityName);
+					if (ret == null) {
+						ret = makeClassForSecurity(securityName);
+						singleSecurityClasses.put(securityName, ret);
 					}
 				}
-				return ret;
 			}
-			throw new UnsupportedOperationException("can't create security class for " + security);
+			return ret;
 		}
 	}
 
@@ -336,6 +332,8 @@ public class ClassBridge {
 	 * @return
 	 */
 	public AbstractJType translateToClass(Property p, JPackage pck, String name) {
+		logger.debug("translatetoclass name=" + name + " package=" + pck.name() + " prop.type=" + p.getType()
+		+ " prop.title=" + p.getTitle());
 		AbstractJType ret = getExistingClass(p.getType(), name, p.getFormat(),
 				p instanceof StringProperty ? ((StringProperty) p).getEnum() : null);
 		if (ret != null) {
@@ -343,7 +341,15 @@ public class ClassBridge {
 		}
 		switch (p.getType()) {
 		case ObjectProperty.TYPE:
-			return translateToClass((ObjectProperty) p, pck, name);
+			if (p.getClass() == MapProperty.class) {
+				return translateToClass((MapProperty) p, pck, name);
+			} else {
+				ObjectProperty op = (ObjectProperty) p;
+				if (op.getProperties() == null || op.getProperties().isEmpty()) {
+					return cm._ref(Object.class);
+				}
+				return translateToClass(op, pck, name);
+			}
 		case ArrayProperty.TYPE:
 			return translateToClass((ArrayProperty) p, pck, name);
 		case RefProperty.TYPE:
@@ -363,6 +369,7 @@ public class ClassBridge {
 			}
 			switch (format) {
 			case LongProperty.FORMAT:
+			case "uint32":
 				return cm.LONG;
 			case IntegerProperty.FORMAT:
 				return cm.INT;
@@ -433,7 +440,7 @@ public class ClassBridge {
 		if (keywords.contains(s)) {
 			return "_" + s;
 		}
-		String ret = s.replaceAll("[\\{\\}]", "").replaceAll("[- #]", "_");
+		String ret = s.replaceAll("[\\{\\}]", "").replaceAll("[- #.]", "_");
 		if (ret.matches("^[0-9].*")) {
 			ret = "_" + ret;
 		}
@@ -503,9 +510,11 @@ public class ClassBridge {
 	protected HashMap<Map<String, String>, JDefinedClass> createdClasses = new HashMap<>();
 
 	protected JDefinedClass translateToClass(ObjectProperty p, JPackage pck, String name) {
-		// System.err.println("translate to class " + name + " objectproperty=" +
-		// p);
-		Map<String, String> classDef = p.getProperties().entrySet().stream()
+		logger.debug("translate to class " + name + " objectproperty=" + p.getProperties());
+		Map<String, String> classDef = p
+				.getProperties()
+				.entrySet()
+				.stream()
 				.collect(Collectors.toMap(Entry::getKey, e -> propertyTypeExtended(e.getValue())));
 		JDefinedClass createdClass = createdClasses.get(classDef);
 		if (createdClass != null) {
@@ -514,13 +523,21 @@ public class ClassBridge {
 		try {
 			JDefinedClass cl = pck._class(name.replaceAll("_ok", ""));
 			for (Entry<String, Property> e : p.getProperties().entrySet()) {
+				String propName = e.getKey();
+				logger.debug("making field for property " + propName);
+				String sanitizedPropName = sanitizeVarName(propName);
 				Property prop = e.getValue();
 				String structName = prop.getTitle();
 				if (structName == null) {
-					structName = e.getKey().toUpperCase();
+					structName = sanitizedPropName.toUpperCase();
 				}
-				JFieldVar field = cl.field(JMod.PUBLIC, translateToClass(prop, pck, structName), e.getKey());
+				AbstractJType type = translateToClass(prop, pck, structName);
+				logger.debug("call field for name=" + e.getKey() + " type=" + type);
+				JFieldVar field = cl.field(JMod.PUBLIC, type, sanitizedPropName);
 				field.javadoc().add(prop.getDescription());
+				if (!sanitizedPropName.equals(propName)) {
+					field.annotate(JsonProperty.class).param("value", propName);
+				}
 			}
 			createEquals(cl);
 			createHashCode(cl);
@@ -550,6 +567,11 @@ public class ClassBridge {
 		return arraCl.array();
 	}
 
+	protected AbstractJClass translateToClass(MapProperty mp, JPackage pck, String name) {
+		AbstractJType valueType = translateToClass(mp.getAdditionalProperties(), pck, null);
+		return cm.ref(HashMap.class).narrow(String.class).narrow(valueType);
+	}
+
 	/** cache of existing definitions */
 	private HashMap<String, AbstractJType> definitions = new HashMap<>();
 
@@ -573,6 +595,7 @@ public class ClassBridge {
 	}
 
 	public AbstractJType translateToClass(Model m, JPackage pck, String name) {
+		logger.debug("translateToClass pck=" + pck.name() + " name=" + name);
 		if (m == null) {
 			return cm.VOID;
 		} else if (m.getClass() == ArrayModel.class) {

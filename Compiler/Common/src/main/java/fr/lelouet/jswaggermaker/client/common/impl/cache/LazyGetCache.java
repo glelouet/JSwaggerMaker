@@ -68,6 +68,7 @@ public class LazyGetCache implements ICache {
 	public static final String MUSTREVALIDATE_DIRECTIVE = "must-revalidate";
 	public static final String MAXAGE_DIRECTIVE = "max-age=";
 
+	@SuppressWarnings("unused")
 	boolean needValidation(Requested<?> data) {
 		boolean isStale = true;
 		boolean immutable = false;
