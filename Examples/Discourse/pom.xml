@@ -1,22 +1,16 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>fr.lelouet.jswaggermaker</groupId>
-    <artifactId>Examples</artifactId>
-    <version>0.0.1</version>
-  </parent>
-  <groupId>fr.lelouet.jswaggermaker.examples</groupId>
-  <artifactId>Discourse</artifactId>
-  <name>DiscourseExample</name>
-  <description>example of compiling jswaggermaker against https://docs.discourse.org/swagger.json</description>
-	<dependencies>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<optional>true</optional>
-		</dependency>
-	</dependencies>
-
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>fr.lelouet.jswaggermaker</groupId>
+		<artifactId>Examples</artifactId>
+		<version>0.0.1</version>
+	</parent>
+	<groupId>fr.lelouet.jswaggermaker.examples</groupId>
+	<artifactId>Discourse</artifactId>
+	<name>DiscourseExample</name>
+	<description>example of compiling jswaggermaker against https://docs.discourse.org/swagger.json</description>
 	<build>
 		<plugins>
 			<plugin>
@@ -35,7 +29,7 @@
 					<mainClass>fr.lelouet.jswaggermaker.compiler.client.SwaggerCompiler</mainClass>
 					<arguments>
 						<argument>url=https://docs.discourse.org/swagger.json</argument>
-						<argument>folder=${project.basedir}/src/generated/java/</argument> 
+						<argument>folder=${project.basedir}/src/generated/java/</argument>
 					</arguments>
 				</configuration>
 			</plugin>

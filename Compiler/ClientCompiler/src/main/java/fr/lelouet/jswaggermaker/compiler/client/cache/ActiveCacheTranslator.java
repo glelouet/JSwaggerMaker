@@ -20,7 +20,7 @@ import com.helger.jcodemodel.JVar;
 import fr.lelouet.jswaggermaker.client.common.interfaces.cache.ICacheHelper;
 import fr.lelouet.jswaggermaker.compiler.client.ClassBridge;
 import fr.lelouet.jswaggermaker.compiler.client.CompilerOptions;
-import fr.lelouet.jswaggermaker.compiler.client.FetchTranslation;
+import fr.lelouet.jswaggermaker.compiler.client.PathTranslation;
 
 public class ActiveCacheTranslator implements CacheTranslator {
 
@@ -40,7 +40,7 @@ public class ActiveCacheTranslator implements CacheTranslator {
 	}
 
 	@Override
-	public void apply(FetchTranslation ft) {
+	public void apply(PathTranslation ft) {
 		new ActiveCacheData(this, ft, options).apply();
 	}
 

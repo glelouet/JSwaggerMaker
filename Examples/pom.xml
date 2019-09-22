@@ -19,11 +19,16 @@
 <!-- 		<module>Discourse</module> -->
 		<module>YoutbueData</module>
 		<module>YoutubeData</module>
+		<module>Github</module>
 	</modules>
 	<dependencies>
 		<dependency>
 			<groupId>fr.lelouet.jswaggermaker.compiler</groupId>
 			<artifactId>ClientCompiler</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
 		</dependency>
 	</dependencies>
 	<build>

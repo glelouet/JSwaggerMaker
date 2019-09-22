@@ -6,7 +6,9 @@
     <version>0.0.1</version>
   </parent>
   <groupId>fr.lelouet.jswaggermaker.examples</groupId>
-  <artifactId>YoutubeData</artifactId>
+  <artifactId>Github</artifactId>
+  <name>GithubExample</name>
+  <description>example of compiling jswaggermaker against https://api.apis.guru/v2/specs/github.com/v3/swagger.json</description>
 	<build>
 		<plugins>
 			<plugin>
@@ -24,13 +26,11 @@
 				<configuration>
 					<mainClass>fr.lelouet.jswaggermaker.compiler.client.SwaggerCompiler</mainClass>
 					<arguments>
-						<argument>url=https://api.apis.guru/v2/specs/googleapis.com/youtube/v3/swagger.json</argument>
+						<argument>url=https://api.apis.guru/v2/specs/github.com/v3/swagger.json</argument>
 						<argument>folder=${project.basedir}/src/generated/java/</argument> 
 					</arguments>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-	<name>YoutubeData Example</name>
-	<description>example of compiling jswaggermaker against https://api.apis.guru/v2/specs/googleapis.com/youtube/v3/swagger.json</description>
 </project>

@@ -1,9 +1,9 @@
 package fr.lelouet.jswaggermaker.compiler.client.cache;
 
-import fr.lelouet.jswaggermaker.compiler.client.FetchTranslation;
+import fr.lelouet.jswaggermaker.compiler.client.PathTranslation;
 
 public interface CacheTranslator {
 
-	public void apply(FetchTranslation ft);
+	public void apply(PathTranslation ft);
 
 }

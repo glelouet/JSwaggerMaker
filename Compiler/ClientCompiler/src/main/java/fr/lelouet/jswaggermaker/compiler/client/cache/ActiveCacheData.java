@@ -25,8 +25,8 @@ import fr.lelouet.collectionholders.interfaces.ObsMapHolder;
 import fr.lelouet.collectionholders.interfaces.ObsObjHolder;
 import fr.lelouet.jswaggermaker.compiler.client.ClassBridge;
 import fr.lelouet.jswaggermaker.compiler.client.CompilerOptions;
-import fr.lelouet.jswaggermaker.compiler.client.FetchTranslation;
-import fr.lelouet.jswaggermaker.compiler.client.FetchTranslation.RETURNTYPE;
+import fr.lelouet.jswaggermaker.compiler.client.PathTranslation;
+import fr.lelouet.jswaggermaker.compiler.client.PathTranslation.RETURNTYPE;
 import io.swagger.models.Operation;
 import io.swagger.models.parameters.Parameter;
 import javafx.beans.property.SimpleObjectProperty;
@@ -36,14 +36,14 @@ import javafx.collections.ObservableMap;
 
 public class ActiveCacheData {
 
-	final FetchTranslation translation;
+	final PathTranslation translation;
 	final ActiveCacheTranslator translator;
 	final JCodeModel cm;
 	final Operation operation;
 	final ClassBridge bridge;
 	final CompilerOptions options;
 
-	public ActiveCacheData(ActiveCacheTranslator translator, FetchTranslation ft, CompilerOptions options) {
+	public ActiveCacheData(ActiveCacheTranslator translator, PathTranslation ft, CompilerOptions options) {
 		this.translator = translator;
 		translation = ft;
 		cm = ft.cm;

@@ -45,9 +45,9 @@ import io.swagger.models.parameters.PathParameter;
 import io.swagger.models.parameters.QueryParameter;
 import io.swagger.models.properties.Property;
 
-public class FetchTranslation {
+public class PathTranslation {
 
-	private static final Logger logger = LoggerFactory.getLogger(FetchTranslation.class);
+	private static final Logger logger = LoggerFactory.getLogger(PathTranslation.class);
 
 	/**
 	 * how to handle the result of the fetch method in the cache method :
@@ -102,7 +102,7 @@ public class FetchTranslation {
 
 	public String propsParamName = "properties";
 
-	public FetchTranslation(Operation operation, OpType optype, String baseURL, String path, ClassBridge bridge,
+	public PathTranslation(Operation operation, OpType optype, String baseURL, String path, ClassBridge bridge,
 			String securityName, Set<String> securityScopes) {
 		this.operation = operation;
 		this.optype = optype;
@@ -296,7 +296,7 @@ public class FetchTranslation {
 	 */
 	protected void makeFetchRetType() {
 		Model m = response == null ? null : response.getResponseSchema();
-		logger.debug("making response type for path=" + path + " responsemodel=" + m);
+		logger.trace("making response type for path=" + path + " responsemodel=" + m);
 		if (m == null) {
 			resourceStructure = RETURNTYPE.NONE;
 			resourceType = resourceFlatType = cm.VOID;

@@ -17,7 +17,7 @@ import com.helger.jcodemodel.JClassAlreadyExistsException;
 import com.helger.jcodemodel.JCodeModel;
 import com.helger.jcodemodel.writer.JCMWriter;
 
-import fr.lelouet.jswaggermaker.compiler.client.FetchTranslation.OpType;
+import fr.lelouet.jswaggermaker.compiler.client.PathTranslation.OpType;
 import fr.lelouet.jswaggermaker.compiler.client.cache.ActiveCacheTranslator;
 import fr.lelouet.jswaggermaker.compiler.client.cache.CacheTranslator;
 import io.swagger.models.ArrayModel;
@@ -140,10 +140,10 @@ public class SwaggerCompiler {
 
 	protected void apptyToPath(Operation op, OpType optype, String baseURL, String path, ClassBridge cltrans,
 			Map<String, Set<String>> securities) {
-		logger.debug("applyToPath [" + optype + "]" + path);
+		logger.trace("applyToPath [" + optype + "]" + path);
 		for (Entry<String, Set<String>> security : securities.entrySet()) {
-			logger.debug("path=[" + optype + "]" + path + " security=" + security.getKey());
-			FetchTranslation f = new FetchTranslation(op, optype, baseURL, path, cltrans, security.getKey(),
+			logger.trace("path=[" + optype + "]" + path + " security=" + security.getKey());
+			PathTranslation f = new PathTranslation(op, optype, baseURL, path, cltrans, security.getKey(),
 					security.getValue());
 			f.apply();
 			if (cachemaker != null) {

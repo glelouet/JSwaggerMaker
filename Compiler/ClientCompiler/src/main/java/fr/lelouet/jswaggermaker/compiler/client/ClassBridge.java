@@ -40,6 +40,7 @@ import fr.lelouet.jswaggermaker.client.common.impl.securities.APIKey;
 import fr.lelouet.jswaggermaker.client.common.impl.securities.Disconnected;
 import fr.lelouet.jswaggermaker.client.common.impl.securities.Oauth2;
 import io.swagger.models.ArrayModel;
+import io.swagger.models.ComposedModel;
 import io.swagger.models.Model;
 import io.swagger.models.ModelImpl;
 import io.swagger.models.RefModel;
@@ -160,7 +161,7 @@ public class ClassBridge {
 	private JDefinedClass createSubClass(JDefinedClass theclass, String subPath) {
 		String newname = camelcase(normalizeClassName(subPath));
 		try {
-			logger.debug("creating class " + newname + " in " + theclass);
+			logger.trace("creating class " + newname + " in " + theclass);
 			return theclass._class(newname);
 		} catch (JClassAlreadyExistsException e) {
 			throw new UnsupportedOperationException("while creating class " + newname + " in " + theclass, e);
@@ -311,7 +312,7 @@ public class ClassBridge {
 		if (tokens.size() < 3) {
 			common += "_" + classDef.entrySet().stream().map(e -> e.getKey() + e.getValue()).collect(Collectors.joining("_"));
 		}
-		logger.debug("merging " + names + " into " + common);
+		logger.trace("merging " + names + " into " + common);
 		return common;
 	}
 
@@ -332,7 +333,7 @@ public class ClassBridge {
 	 * @return
 	 */
 	public AbstractJType translateToClass(Property p, JPackage pck, String name) {
-		logger.debug("translatetoclass name=" + name + " package=" + pck.name() + " prop.type=" + p.getType()
+		logger.trace("translatetoclass name=" + name + " package=" + pck.name() + " prop.type=" + p.getType()
 		+ " prop.title=" + p.getTitle());
 		AbstractJType ret = getExistingClass(p.getType(), name, p.getFormat(),
 				p instanceof StringProperty ? ((StringProperty) p).getEnum() : null);
@@ -510,7 +511,7 @@ public class ClassBridge {
 	protected HashMap<Map<String, String>, JDefinedClass> createdClasses = new HashMap<>();
 
 	protected JDefinedClass translateToClass(ObjectProperty p, JPackage pck, String name) {
-		logger.debug("translate to class " + name + " objectproperty=" + p.getProperties());
+		logger.trace("translate to class " + name + " objectproperty=" + p.getProperties());
 		Map<String, String> classDef = p
 				.getProperties()
 				.entrySet()
@@ -524,7 +525,7 @@ public class ClassBridge {
 			JDefinedClass cl = pck._class(name.replaceAll("_ok", ""));
 			for (Entry<String, Property> e : p.getProperties().entrySet()) {
 				String propName = e.getKey();
-				logger.debug("making field for property " + propName);
+				logger.trace("making field for property " + propName);
 				String sanitizedPropName = sanitizeVarName(propName);
 				Property prop = e.getValue();
 				String structName = prop.getTitle();
@@ -532,7 +533,7 @@ public class ClassBridge {
 					structName = sanitizedPropName.toUpperCase();
 				}
 				AbstractJType type = translateToClass(prop, pck, structName);
-				logger.debug("call field for name=" + e.getKey() + " type=" + type);
+				logger.trace("call field for name=" + e.getKey() + " type=" + type);
 				JFieldVar field = cl.field(JMod.PUBLIC, type, sanitizedPropName);
 				field.javadoc().add(prop.getDescription());
 				if (!sanitizedPropName.equals(propName)) {
@@ -595,7 +596,7 @@ public class ClassBridge {
 	}
 
 	public AbstractJType translateToClass(Model m, JPackage pck, String name) {
-		logger.debug("translateToClass pck=" + pck.name() + " name=" + name);
+		logger.trace("translateToClass pck=" + pck.name() + " name=" + name);
 		if (m == null) {
 			return cm.VOID;
 		} else if (m.getClass() == ArrayModel.class) {
@@ -606,6 +607,8 @@ public class ClassBridge {
 			return translateToClass(mi, pck, name);
 		} else if (m.getClass() == RefModel.class) {
 			return translateToClass((RefModel) m, pck, name);
+		} else if (m.getClass() == ComposedModel.class) {
+			return translateToClass((ComposedModel) m, pck, name);
 		} else {
 			throw new UnsupportedOperationException("can't translate model class " + m.getClass());
 		}
@@ -625,6 +628,18 @@ public class ClassBridge {
 
 	protected AbstractJType translateToClass(RefModel rf, JPackage pck, String name) {
 		return translateDefToClass(rf.getSimpleRef());
+	}
+
+	protected AbstractJType translateToClass(ComposedModel rf, JPackage pck, String name) {
+		if (rf.getAllOf() != null && !rf.getAllOf().isEmpty()) {
+			return translateToClass(rf.getAllOf(), pck, name);
+		}
+		throw new UnsupportedOperationException("can't do " + rf);
+	}
+
+	protected AbstractJType translateToClass(List<Model> allOf, JPackage pck, String name) {
+		System.err.println("creating merged item for class name " + name);
+		return null;
 	}
 
 	public void createEquals(JDefinedClass cl) {
