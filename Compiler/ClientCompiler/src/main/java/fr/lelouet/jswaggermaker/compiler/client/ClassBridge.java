@@ -53,6 +53,7 @@ import io.swagger.models.parameters.HeaderParameter;
 import io.swagger.models.parameters.QueryParameter;
 import io.swagger.models.properties.ArrayProperty;
 import io.swagger.models.properties.BooleanProperty;
+import io.swagger.models.properties.ComposedProperty;
 import io.swagger.models.properties.DecimalProperty;
 import io.swagger.models.properties.FloatProperty;
 import io.swagger.models.properties.IntegerProperty;
@@ -91,7 +92,6 @@ public class ClassBridge {
 	protected String connectedPackageName = "connected";
 	protected String disconnectedPackageName = "disconnected";
 
-
 	private AbstractJClass propertiesType;
 
 	public AbstractJClass propertiesType() {
@@ -118,7 +118,6 @@ public class ClassBridge {
 		disconnectedPackage = rootPackage.subPackage(disconnectedPackageName);
 
 	}
-
 
 	private JDefinedClass swaggerDCClass;
 
@@ -256,7 +255,7 @@ public class ClassBridge {
 						Parameter p = parentCons.getParameters()[i];
 						String name = p.getName();
 						if (parentConsNameReplace != null && i < parentConsNameReplace.length && parentConsNameReplace[i] != null) {
-							name= parentConsNameReplace[i];
+							name = parentConsNameReplace[i];
 						}
 						consbody.arg(cons.param(p.getType(), name));
 					}
@@ -333,8 +332,12 @@ public class ClassBridge {
 	 * @return
 	 */
 	public AbstractJType translateToClass(Property p, JPackage pck, String name) {
-		logger.trace("translatetoclass name=" + name + " package=" + pck.name() + " prop.type=" + p.getType()
+		logger.debug("translatetoclass name=" + name + " package=" + pck.name() + " prop.type=" + p.getType()
 		+ " prop.title=" + p.getTitle());
+		if (name == null) {
+			logger.warn("name is null, package=" + pck.name() + " property=" + p);
+			return cm.ref(Object.class);
+		}
 		AbstractJType ret = getExistingClass(p.getType(), name, p.getFormat(),
 				p instanceof StringProperty ? ((StringProperty) p).getEnum() : null);
 		if (ret != null) {
@@ -344,6 +347,8 @@ public class ClassBridge {
 		case ObjectProperty.TYPE:
 			if (p.getClass() == MapProperty.class) {
 				return translateToClass((MapProperty) p, pck, name);
+			} else if (p.getClass() == ComposedProperty.class) {
+				return translateToClass((ComposedProperty) p, pck, name);
 			} else {
 				ObjectProperty op = (ObjectProperty) p;
 				if (op.getProperties() == null || op.getProperties().isEmpty()) {
@@ -361,8 +366,10 @@ public class ClassBridge {
 	}
 
 	public AbstractJType getExistingClass(String type, String name, String format, List<String> enums) {
-		// System.err.println("get existing class type=" + type + " name=" + name +
-		// " format=" + format + " enums=" + enums);
+		logger.debug("get existing class type=" + type + " name=" + name + " format=" + format + " enums=" + enums);
+		if (type == null) {
+			return cm.ref(Object.class);
+		}
 		switch (type) {
 		case IntegerProperty.TYPE:
 			if (format == null) {
@@ -385,6 +392,9 @@ public class ClassBridge {
 			}
 			return cm.ref(String.class);
 		case DecimalProperty.TYPE:
+			if (format == null) {
+				return cm.DOUBLE;
+			}
 			switch (format) {
 			case FloatProperty.FORMAT:
 				return cm.FLOAT;
@@ -511,47 +521,69 @@ public class ClassBridge {
 	protected HashMap<Map<String, String>, JDefinedClass> createdClasses = new HashMap<>();
 
 	protected JDefinedClass translateToClass(ObjectProperty p, JPackage pck, String name) {
-		logger.trace("translate to class " + name + " objectproperty=" + p.getProperties());
-		Map<String, String> classDef = p
-				.getProperties()
-				.entrySet()
-				.stream()
-				.collect(Collectors.toMap(Entry::getKey, e -> propertyTypeExtended(e.getValue())));
+		logger.debug("translate objectproperty name=" + name + " objectproperty=" + p.getProperties());
+		Map<String, String> classDef = p.getProperties().entrySet().stream()
+				.collect(Collectors.toMap(Entry::getKey, e -> propertyTypeEnumerated(e.getValue())));
 		JDefinedClass createdClass = createdClasses.get(classDef);
 		if (createdClass != null) {
 			return createdClass;
 		}
 		try {
-			JDefinedClass cl = pck._class(name.replaceAll("_ok", ""));
+			JDefinedClass cl = pck._class(camelcase(normalizeClassName(name.replaceAll("_ok", ""))));
+			createdClasses.put(classDef, cl);
+			makeClass(cl, p);
+			return cl;
+		} catch (JClassAlreadyExistsException e) {
+			throw new UnsupportedOperationException("already exists " + e.getExistingClass().fullName(), e);
+		}
+	}
+
+	/**
+	 * create the fields, the equal and hashcode methods, in a class
+	 *
+	 * @param tobuild
+	 * @param prop
+	 */
+	protected void makeClass(JDefinedClass cl, Property property) {
+		if (property.getClass() == ObjectProperty.class) {
+			ObjectProperty p = (ObjectProperty) property;
 			for (Entry<String, Property> e : p.getProperties().entrySet()) {
 				String propName = e.getKey();
-				logger.trace("making field for property " + propName);
+				logger.debug("making field for property " + propName);
 				String sanitizedPropName = sanitizeVarName(propName);
 				Property prop = e.getValue();
 				String structName = prop.getTitle();
 				if (structName == null) {
-					structName = sanitizedPropName.toUpperCase();
+					structName = camelcase(sanitizedPropName);
 				}
-				AbstractJType type = translateToClass(prop, pck, structName);
-				logger.trace("call field for name=" + e.getKey() + " type=" + type);
+				AbstractJType type = translateToClass(prop, cl.getPackage().subPackage(cl.name().toLowerCase()), structName);
+				logger.debug("call field for name=" + e.getKey() + " type=" + type);
 				JFieldVar field = cl.field(JMod.PUBLIC, type, sanitizedPropName);
 				field.javadoc().add(prop.getDescription());
 				if (!sanitizedPropName.equals(propName)) {
 					field.annotate(JsonProperty.class).param("value", propName);
 				}
 			}
-			createEquals(cl);
-			createHashCode(cl);
-			createdClasses.put(classDef, cl);
-			return cl;
-		} catch (JClassAlreadyExistsException e) {
-			throw new UnsupportedOperationException("catch this", e);
+		} else {
+			throw new UnsupportedOperationException("can't create class data from property class " + property.getClass());
 		}
+		createEquals(cl);
+		createHashCode(cl);
 	}
 
-	public static String propertyTypeExtended(Property structure) {
+	/**
+	 * add the enumerations to a property typed String.
+	 *
+	 * @param structure
+	 * @return
+	 */
+	public static String propertyTypeEnumerated(Property structure) {
+
 		String ret = structure.getType();// + (structure.getFormat() != null ? "(" +
 		// structure.getFormat() + ")" : "");
+		if (ret == null) {
+			return "object";
+		}
 		if (structure instanceof StringProperty) {
 			List<String> enums = ((StringProperty) structure).getEnum();
 			if (enums != null) {
@@ -560,6 +592,7 @@ public class ClassBridge {
 				ret += enums;
 			}
 		}
+		logger.debug("structure=" + structure + " format=" + structure.getFormat() + " extended=" + ret);
 		return ret;
 	}
 
@@ -569,6 +602,7 @@ public class ClassBridge {
 	}
 
 	protected AbstractJClass translateToClass(MapProperty mp, JPackage pck, String name) {
+		logger.debug("translate mapproperty map=" + mp + " pck=" + pck + " name=" + name);
 		AbstractJType valueType = translateToClass(mp.getAdditionalProperties(), pck, null);
 		return cm.ref(HashMap.class).narrow(String.class).narrow(valueType);
 	}
@@ -576,23 +610,150 @@ public class ClassBridge {
 	/** cache of existing definitions */
 	private HashMap<String, AbstractJType> definitions = new HashMap<>();
 
+	/**
+	 * get the type for a definition.
+	 * <p>
+	 * A big issue here is to handle recursive definitions : eg a linkedlist
+	 * refers to itself, or a constraint specification can refer to an expression
+	 * tree, that refers to constraints. For this reason, we first find the
+	 * highest complex model we need, eg if it is an array of X we find X, we
+	 * create the class for this X, we store the array of X as the type for that
+	 * definition, and after that is stored, we create the fields in the class
+	 * </p>
+	 *
+	 * @param defName
+	 * @return
+	 */
 	protected AbstractJType translateDefToClass(String defName) {
+		logger.debug("translate def " + defName);
 		AbstractJType ret = definitions.get(defName);
+		JDefinedClass tobuild = null;
+		Property compilation = null;
+		Model m = null;
 		if (ret == null) {
 			synchronized (definitions) {
 				ret = definitions.get(defName);
 				if (ret == null) {
-					Model m = swagger.getDefinitions().get(defName);
+					m = swagger.getDefinitions().get(defName);
 					if (m == null) {
 						throw new UnsupportedOperationException(
 								"got no model for definition " + defName + " existing are " + swagger.getDefinitions().keySet());
 					}
-					ret = translateToClass(m, definitionsPackage, defName);
+					PartiallyCompiled pc = partCompile(new PropertyModelConverter().modelToProperty(m),
+							definitionsPackage, normalizeClassName(defName));
+					ret = pc.returned;
+					tobuild = pc.toCompile;
+					compilation = pc.compilationProperties;
 					definitions.put(defName, ret);
 				}
 			}
 		}
+		if (tobuild != null) {
+			makeClass(tobuild, compilation);
+		}
 		return ret;
+	}
+
+	protected class PartiallyCompiled {
+		public AbstractJType returned;
+		public JDefinedClass toCompile;
+		public Property compilationProperties;
+
+		public PartiallyCompiled(AbstractJType returned) {
+			this.returned = returned;
+		}
+
+		public PartiallyCompiled(AbstractJType returned, JDefinedClass toCompile, Property compilationProperties) {
+			this.returned = returned;
+			this.toCompile = toCompile;
+			this.compilationProperties = compilationProperties;
+		}
+
+		/**
+		 * replace the returned by an array of returned
+		 * @return this
+		 */
+		public PartiallyCompiled inArray() {
+			returned = returned.array();
+			return this;
+		}
+
+		/**
+		 * replace the reutnred by a hashmap from string to returned.
+		 * @return this
+		 */
+		public PartiallyCompiled inMap() {
+			returned = cm.ref(HashMap.class).narrow(String.class).narrow(returned);
+			return this;
+		}
+
+	}
+
+	/**
+	 * translate a property as much as possible, with
+	 *
+	 * @param property
+	 * @param pck
+	 * @param defName
+	 * @return
+	 */
+	protected PartiallyCompiled partCompile(Property property, JPackage pck, String definedClassName) {
+		logger.debug("part compiling property=" + property + " package=" + pck.name());
+		if (property == null) {
+			return new PartiallyCompiled(cm.VOID);
+		} else {
+			if (property.getType() == null) {
+				return new PartiallyCompiled(cm.ref(Object.class));
+			}
+			switch (property.getType()) {
+			case ArrayProperty.TYPE:
+				return partCompile(((ArrayProperty) property).getItems(), pck, definedClassName).inArray();
+			case ObjectProperty.TYPE:
+				if (property.getClass() == MapProperty.class) {
+					return partCompile(((MapProperty) property).getAdditionalProperties(), pck, definedClassName).inMap();
+				} else if (property.getClass() == ObjectProperty.class) {
+					try {
+						logger.debug(
+								"creating compilelater class name=" + definedClassName + " pck=" + pck.name() + " property="
+										+ property);
+						JDefinedClass newclass = pck._class(JMod.PUBLIC, definedClassName);
+						return new PartiallyCompiled(newclass, newclass, property);
+					} catch (JClassAlreadyExistsException e) {
+						throw new UnsupportedOperationException("catch this", e);
+					}
+				} else {
+					throw new UnsupportedOperationException("class of objectproperty not handled : " + property.getClass());
+				}
+			case StringProperty.TYPE:
+				return new PartiallyCompiled(convertStringProperty(property));
+			case IntegerProperty.TYPE:
+				return new PartiallyCompiled(convertIntegerProperty(property));
+			case RefProperty.TYPE:
+				return new PartiallyCompiled(translateDefToClass(((RefProperty) property).getSimpleRef()));
+			default:
+				throw new UnsupportedOperationException("property type " + property.getType() + " unsupported");
+			}
+		}
+	}
+
+	/**
+	 * convert a property that has a type string.
+	 *
+	 * @param property
+	 * @return
+	 */
+	protected AbstractJType convertStringProperty(Property property) {
+		return cm.ref(String.class);
+	}
+
+	/**
+	 * convert a property that has a type integer.
+	 *
+	 * @param property
+	 * @return
+	 */
+	protected AbstractJType convertIntegerProperty(Property property) {
+		return cm.INT;
 	}
 
 	public AbstractJType translateToClass(Model m, JPackage pck, String name) {
@@ -616,6 +777,7 @@ public class ClassBridge {
 
 	protected AbstractJType translateToClass(ModelImpl mi, JPackage pck, String name) {
 		// System.err.println(" translating ModelImpl to class " + name);
+		// if additionnal properties, it's a Map <string, additionnalproperty>
 		if (mi.getAdditionalProperties() != null) {
 			Property s = mi.getAdditionalProperties();
 			AbstractJType resourceFlatType = translateToClass(s, pck, s.getTitle());
@@ -630,16 +792,41 @@ public class ClassBridge {
 		return translateDefToClass(rf.getSimpleRef());
 	}
 
-	protected AbstractJType translateToClass(ComposedModel rf, JPackage pck, String name) {
+	protected AbstractJType translateToClass(ComposedModel cm, JPackage pck, String name) {
+		Property s = new PropertyModelConverter().modelToProperty(cm);
+		return translateToClass(s, pck, name);
+	}
+
+	protected AbstractJType translateToClass(ComposedProperty rf, JPackage pck, String name) {
 		if (rf.getAllOf() != null && !rf.getAllOf().isEmpty()) {
 			return translateToClass(rf.getAllOf(), pck, name);
 		}
 		throw new UnsupportedOperationException("can't do " + rf);
+
 	}
 
-	protected AbstractJType translateToClass(List<Model> allOf, JPackage pck, String name) {
-		System.err.println("creating merged item for class name " + name);
-		return null;
+	protected AbstractJType translateToClass(List<Property> allOf, JPackage pck, String name) {
+		logger.debug("creating merged item for class name " + name);
+		AbstractJType ret = cm._getClass(pck + "." + name);
+		if (ret != null) {
+			System.err.println("return existing class pck=" + pck.name() + " name=" + name);
+			return ret;
+		}
+		try {
+			ret = cm._class(JMod.PUBLIC, pck.name() + "." + name);
+			logger.debug("created class for composite " + ret.fullName());
+		} catch (JClassAlreadyExistsException e) {
+			throw new UnsupportedOperationException("catch this", e);
+		}
+		for (Property prop : allOf) {
+			if (prop.getClass() == Property.class) {
+
+			} else if (prop.getClass() == RefProperty.class) {
+			} else {
+				logger.debug("can't add model class " + prop.getClass() + " to a class");
+			}
+		}
+		return ret;
 	}
 
 	public void createEquals(JDefinedClass cl) {
