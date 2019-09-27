@@ -113,7 +113,7 @@ public class Anonymous
     public class Emojis {
 
         /**
-         * null
+         * 
          * <p>
          * Lists all the emojis available to use on GitHub.
          * </p>
@@ -134,7 +134,7 @@ public class Anonymous
     public class Events {
 
         /**
-         * null
+         * 
          * <p>
          * List public events.
          * </p>
@@ -155,7 +155,7 @@ public class Anonymous
     public class Feeds {
 
         /**
-         * null
+         * 
          * <p>
          * List Feeds.
          * GitHub provides several timeline resources in Atom format. The Feeds API
@@ -183,7 +183,7 @@ public class Anonymous
         public final Anonymous.Gists.Star star = new Anonymous.Gists.Star();
 
         /**
-         * null
+         * 
          * <p>
          * List the authenticated user's gists or if called anonymously, this will
          * return all public gists.
@@ -206,7 +206,7 @@ public class Anonymous
         }
 
         /**
-         * null
+         * 
          * <p>
          * Create a gist.
          * </p>
@@ -227,7 +227,7 @@ public class Anonymous
         }
 
         /**
-         * null
+         * 
          * <p>
          * Get a single gist.
          * </p>
@@ -247,7 +247,7 @@ public class Anonymous
         }
 
         /**
-         * null
+         * 
          * <p>
          * Delete a gist.
          * </p>
@@ -269,7 +269,7 @@ public class Anonymous
         public class Comments {
 
             /**
-             * null
+             * 
              * <p>
              * List comments on a gist.
              * </p>
@@ -289,7 +289,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Create a commen
              * </p>
@@ -312,7 +312,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Get a single comment.
              * </p>
@@ -334,7 +334,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Delete a comment.
              * </p>
@@ -359,7 +359,7 @@ public class Anonymous
         public class Forks {
 
             /**
-             * null
+             * 
              * <p>
              * Fork a gist.
              * </p>
@@ -382,7 +382,7 @@ public class Anonymous
         public class Public {
 
             /**
-             * null
+             * 
              * <p>
              * List all public gists.
              * </p>
@@ -407,7 +407,7 @@ public class Anonymous
         public class Star {
 
             /**
-             * null
+             * 
              * <p>
              * Check if a gist is starred.
              * </p>
@@ -427,7 +427,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Star a gist.
              * </p>
@@ -447,7 +447,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Unstar a gist.
              * </p>
@@ -470,7 +470,7 @@ public class Anonymous
         public class Starred {
 
             /**
-             * null
+             * 
              * <p>
              * List the authenticated user's starred gists.
              * </p>
@@ -499,7 +499,7 @@ public class Anonymous
         public class Templates {
 
             /**
-             * null
+             * 
              * <p>
              * Listing available templates.
              * List all templates available to pass as an option when creating a repository.
@@ -518,7 +518,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Get a single template.
              * </p>
@@ -541,7 +541,7 @@ public class Anonymous
     public class Issues {
 
         /**
-         * null
+         * 
          * <p>
          * List issues.
          * List all issues across all the authenticated user's visible repositories.
@@ -590,7 +590,7 @@ public class Anonymous
             public class Search {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Find issues by state and keyword.
                  * </p>
@@ -625,7 +625,7 @@ public class Anonymous
             public class Search {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Find repositories by keyword. Note, this legacy method does not follow the v3 pagination pattern. This method returns up to 100 results per page and pages can be fetched using the start_page parameter.
                  * </p>
@@ -666,7 +666,7 @@ public class Anonymous
             public class Email {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * This API call is added for compatibility reasons only.
                  * </p>
@@ -689,7 +689,7 @@ public class Anonymous
             public class Search {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Find users by keyword.
                  * </p>
@@ -725,7 +725,7 @@ public class Anonymous
         public final Anonymous.Markdown.Raw raw = new Anonymous.Markdown.Raw();
 
         /**
-         * null
+         * 
          * <p>
          * Render an arbitrary Markdown document
          * </p>
@@ -748,7 +748,7 @@ public class Anonymous
         public class Raw {
 
             /**
-             * null
+             * 
              * <p>
              * Render a Markdown document in raw mode
              * </p>
@@ -770,7 +770,7 @@ public class Anonymous
     public class Meta {
 
         /**
-         * null
+         * 
          * <p>
          * This gives some information about GitHub.com, the service.
          * </p>
@@ -794,7 +794,7 @@ public class Anonymous
         public class Events {
 
             /**
-             * null
+             * 
              * <p>
              * List public events for a network of repositories.
              * </p>
@@ -821,7 +821,7 @@ public class Anonymous
         public final Anonymous.Notifications.Threads threads = new Anonymous.Notifications.Threads();
 
         /**
-         * null
+         * 
          * <p>
          * List your notifications.
          * List all notifications for the current user, grouped by repository.
@@ -853,7 +853,7 @@ public class Anonymous
         }
 
         /**
-         * null
+         * 
          * <p>
          * Mark as read.
          * Marking a notification as "read" removes it from the default view on GitHub.com.
@@ -878,7 +878,7 @@ public class Anonymous
             public final Anonymous.Notifications.Threads.Subscription subscription = new Anonymous.Notifications.Threads.Subscription();
 
             /**
-             * null
+             * 
              * <p>
              * View a single thread.
              * </p>
@@ -900,7 +900,7 @@ public class Anonymous
             public class Subscription {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Get a Thread Subscription.
                  * </p>
@@ -920,7 +920,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Set a Thread Subscription.
                  * This lets you subscribe to a thread, or ignore it. Subscribing to a thread
@@ -946,7 +946,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Delete a Thread Subscription.
                  * </p>
@@ -977,7 +977,7 @@ public class Anonymous
         public final Anonymous.Orgs.Teams teams = new Anonymous.Orgs.Teams();
 
         /**
-         * null
+         * 
          * <p>
          * Get an Organization.
          * </p>
@@ -999,7 +999,7 @@ public class Anonymous
         public class Events {
 
             /**
-             * null
+             * 
              * <p>
              * List public events for an organization.
              * </p>
@@ -1022,7 +1022,7 @@ public class Anonymous
         public class Issues {
 
             /**
-             * null
+             * 
              * <p>
              * List issues.
              * List all issues for a given organization for the authenticated user.
@@ -1066,7 +1066,7 @@ public class Anonymous
         public class Members {
 
             /**
-             * null
+             * 
              * <p>
              * Members list.
              * List all users who are members of an organization. A member is a user tha
@@ -1091,7 +1091,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Check if a user is, publicly or privately, a member of the organization.
              * </p>
@@ -1113,7 +1113,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Remove a member.
              * Removing a user from this list will remove them from all teams and they
@@ -1140,7 +1140,7 @@ public class Anonymous
         public class Publicmembers {
 
             /**
-             * null
+             * 
              * <p>
              * Public members list.
              * Members of an organization can choose to have their membership publicized
@@ -1162,7 +1162,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Check public membership.
              * </p>
@@ -1184,7 +1184,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Publicize a user's membership.
              * </p>
@@ -1206,7 +1206,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Conceal a user's membership.
              * </p>
@@ -1231,7 +1231,7 @@ public class Anonymous
         public class Repos {
 
             /**
-             * null
+             * 
              * <p>
              * List repositories for the specified org.
              * </p>
@@ -1252,7 +1252,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Create a new repository for the authenticated user. OAuth users must supply
              * repo scope.
@@ -1279,7 +1279,7 @@ public class Anonymous
         public class Teams {
 
             /**
-             * null
+             * 
              * <p>
              * List teams.
              * </p>
@@ -1299,7 +1299,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Create team.
              * In order to create a team, the authenticated user must be an owner of organization.
@@ -1327,7 +1327,7 @@ public class Anonymous
     public class Ratelimit {
 
         /**
-         * null
+         * 
          * <p>
          * Get your current rate limit status
          * Note: Accessing this endpoint does not count against your rate limit.
@@ -1381,7 +1381,7 @@ public class Anonymous
         public final Anonymous.Repos.Watchers watchers = new Anonymous.Repos.Watchers();
 
         /**
-         * null
+         * 
          * <p>
          * Get repository.
          * </p>
@@ -1403,7 +1403,7 @@ public class Anonymous
         }
 
         /**
-         * null
+         * 
          * <p>
          * Delete a Repository.
          * Deleting a repository requires admin access. If OAuth is used, the delete_repo
@@ -1427,7 +1427,7 @@ public class Anonymous
         }
 
         /**
-         * null
+         * 
          * <p>
          * Get archive link.
          * This method will return a 302 to a URL to download a tarball or zipball
@@ -1463,7 +1463,7 @@ public class Anonymous
         public class Assignees {
 
             /**
-             * null
+             * 
              * <p>
              * List assignees.
              * This call lists all the available assignees (owner + collaborators) to which
@@ -1487,7 +1487,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Check assignee.
              * You may also check to see if a particular user is an assignee for a repository.
@@ -1518,7 +1518,7 @@ public class Anonymous
         public class Branches {
 
             /**
-             * null
+             * 
              * <p>
              * Get list of branches
              * </p>
@@ -1540,7 +1540,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Get Branch
              * </p>
@@ -1570,7 +1570,7 @@ public class Anonymous
         public class Collaborators {
 
             /**
-             * null
+             * 
              * <p>
              * List.
              * When authenticating as an organization owner of an organization-owned
@@ -1596,7 +1596,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Check if user is a collaborator
              * </p>
@@ -1623,7 +1623,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Add collaborator.
              * </p>
@@ -1650,7 +1650,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Remove collaborator.
              * </p>
@@ -1680,7 +1680,7 @@ public class Anonymous
         public class Comments {
 
             /**
-             * null
+             * 
              * <p>
              * List commit comments for a repository.
              * Comments are ordered by ascending ID.
@@ -1703,7 +1703,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Get a single commit comment.
              * </p>
@@ -1730,7 +1730,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Delete a commit comment
              * </p>
@@ -1762,7 +1762,7 @@ public class Anonymous
             public final Anonymous.Repos.Commits.Comments comments = new Anonymous.Repos.Commits.Comments();
 
             /**
-             * null
+             * 
              * <p>
              * List commits on a repository.
              * </p>
@@ -1803,7 +1803,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Get a single commit.
              * </p>
@@ -1832,7 +1832,7 @@ public class Anonymous
             public class Comments {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * List comments for a single commitList comments for a single commit.
                  * </p>
@@ -1859,7 +1859,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Create a commit comment.
                  * </p>
@@ -1893,7 +1893,7 @@ public class Anonymous
             public class Status {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Get the combined Status for a specific Ref
                  * The Combined status endpoint is currently available for developers to preview. During the preview period, the API may change without advance notice. Please see the blog post for full details.
@@ -1926,7 +1926,7 @@ public class Anonymous
         public class Compare {
 
             /**
-             * null
+             * 
              * <p>
              * Compare two commits
              * </p>
@@ -1957,7 +1957,7 @@ public class Anonymous
         public class Contents {
 
             /**
-             * null
+             * 
              * <p>
              * Get contents.
              * This method returns the contents of a file or directory in a repository.
@@ -1994,7 +1994,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Create a file.
              * </p>
@@ -2024,7 +2024,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Delete a file.
              * This method deletes a file in a repository.
@@ -2056,7 +2056,7 @@ public class Anonymous
         public class Contributors {
 
             /**
-             * null
+             * 
              * <p>
              * Get list of contributors.
              * </p>
@@ -2087,7 +2087,7 @@ public class Anonymous
             public final Anonymous.Repos.Deployments.Statuses statuses = new Anonymous.Repos.Deployments.Statuses();
 
             /**
-             * null
+             * 
              * <p>
              * Users with pull access can view deployments for a repository
              * </p>
@@ -2109,7 +2109,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Users with push access can create a deployment for a given ref
              * </p>
@@ -2139,7 +2139,7 @@ public class Anonymous
             public class Statuses {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Users with pull access can view deployment statuses for a deployment
                  * </p>
@@ -2166,7 +2166,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Create a Deployment Status
                  * Users with push access can create deployment statuses for a given deployment:
@@ -2202,7 +2202,7 @@ public class Anonymous
         public class Downloads {
 
             /**
-             * null
+             * 
              * <p>
              * Deprecated. List downloads for a repository.
              * </p>
@@ -2224,7 +2224,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Deprecated. Get a single download.
              * </p>
@@ -2251,7 +2251,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Deprecated. Delete a download.
              * </p>
@@ -2281,7 +2281,7 @@ public class Anonymous
         public class Events {
 
             /**
-             * null
+             * 
              * <p>
              * Get list of repository events.
              * </p>
@@ -2306,7 +2306,7 @@ public class Anonymous
         public class Forks {
 
             /**
-             * null
+             * 
              * <p>
              * List forks.
              * </p>
@@ -2332,7 +2332,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Create a fork.
              * Forking a Repository happens asynchronously. Therefore, you may have to wai
@@ -2373,7 +2373,7 @@ public class Anonymous
             public class Blobs {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Create a Blob.
                  * </p>
@@ -2401,7 +2401,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Get a Blob.
                  * Since blobs can be any arbitrary binary data, the input and responses for
@@ -2435,7 +2435,7 @@ public class Anonymous
             public class Commits {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Create a Commit.
                  * </p>
@@ -2463,7 +2463,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Get a Commit.
                  * </p>
@@ -2493,7 +2493,7 @@ public class Anonymous
             public class Refs {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Get all References
                  * </p>
@@ -2515,7 +2515,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Create a Reference
                  * </p>
@@ -2543,7 +2543,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Get a Reference
                  * </p>
@@ -2569,7 +2569,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Delete a Reference
                  * Example: Deleting a branch: DELETE /repos/octocat/Hello-World/git/refs/heads/feature-a 
@@ -2600,7 +2600,7 @@ public class Anonymous
             public class Tags {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Create a Tag Object.
                  * Note that creating a tag object does not create the reference that makes a
@@ -2633,7 +2633,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Get a Tag.
                  * </p>
@@ -2662,7 +2662,7 @@ public class Anonymous
             public class Trees {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Create a Tree.
                  * The tree creation API will take nested entries as well. If both a tree and
@@ -2693,7 +2693,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Get a Tree.
                  * </p>
@@ -2728,7 +2728,7 @@ public class Anonymous
             public final Anonymous.Repos.Hooks.Tests tests = new Anonymous.Repos.Hooks.Tests();
 
             /**
-             * null
+             * 
              * <p>
              * Get list of hooks.
              * </p>
@@ -2750,7 +2750,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Create a hook.
              * </p>
@@ -2778,7 +2778,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Get single hook.
              * </p>
@@ -2805,7 +2805,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Delete a hook.
              * </p>
@@ -2834,7 +2834,7 @@ public class Anonymous
             public class Tests {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Test a push hook.
                  * This will trigger the hook with the latest push to the current repository
@@ -2873,7 +2873,7 @@ public class Anonymous
             public final Anonymous.Repos.Issues.Labels labels = new Anonymous.Repos.Issues.Labels();
 
             /**
-             * null
+             * 
              * <p>
              * List issues for a repository.
              * </p>
@@ -2916,7 +2916,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Create an issue.
              * Any user with pull access to a repository can create an issue.
@@ -2945,7 +2945,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Get a single issue
              * </p>
@@ -2974,7 +2974,7 @@ public class Anonymous
             public class Comments {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * List comments in a repository.
                  * </p>
@@ -3009,7 +3009,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Get a single comment.
                  * </p>
@@ -3036,7 +3036,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Delete a comment.
                  * </p>
@@ -3063,7 +3063,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * List comments on an issue.
                  * </p>
@@ -3090,7 +3090,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Create a comment.
                  * </p>
@@ -3124,7 +3124,7 @@ public class Anonymous
             public class Events {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * List issue events for a repository.
                  * </p>
@@ -3146,7 +3146,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Get a single event.
                  * </p>
@@ -3173,7 +3173,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * List events for an issue.
                  * </p>
@@ -3203,7 +3203,7 @@ public class Anonymous
             public class Labels {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * List labels on an issue.
                  * </p>
@@ -3230,7 +3230,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Add labels to an issue.
                  * </p>
@@ -3261,7 +3261,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Replace all labels for an issue.
                  * Sending an empty array ([]) will remove all Labels from the Issue.
@@ -3293,7 +3293,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Remove all labels from an issue.
                  * </p>
@@ -3320,7 +3320,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Remove a label from an issue.
                  * </p>
@@ -3354,7 +3354,7 @@ public class Anonymous
         public class Keys {
 
             /**
-             * null
+             * 
              * <p>
              * Get list of keys.
              * </p>
@@ -3376,7 +3376,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Create a key.
              * </p>
@@ -3404,7 +3404,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Get a key
              * </p>
@@ -3431,7 +3431,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Delete a key.
              * </p>
@@ -3461,7 +3461,7 @@ public class Anonymous
         public class Labels {
 
             /**
-             * null
+             * 
              * <p>
              * List all labels for this repository.
              * </p>
@@ -3483,7 +3483,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Create a label.
              * </p>
@@ -3511,7 +3511,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Get a single label.
              * </p>
@@ -3538,7 +3538,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Delete a label.
              * </p>
@@ -3568,7 +3568,7 @@ public class Anonymous
         public class Languages {
 
             /**
-             * null
+             * 
              * <p>
              * List languages.
              * List languages for the specified repository. The value on the right of a
@@ -3595,7 +3595,7 @@ public class Anonymous
         public class Merges {
 
             /**
-             * null
+             * 
              * <p>
              * Perform a merge.
              * </p>
@@ -3627,7 +3627,7 @@ public class Anonymous
             public final Anonymous.Repos.Milestones.Labels labels = new Anonymous.Repos.Milestones.Labels();
 
             /**
-             * null
+             * 
              * <p>
              * List milestones for a repository.
              * </p>
@@ -3660,7 +3660,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Create a milestone.
              * </p>
@@ -3688,7 +3688,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Get a single milestone.
              * </p>
@@ -3715,7 +3715,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Delete a milestone.
              * </p>
@@ -3744,7 +3744,7 @@ public class Anonymous
             public class Labels {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Get labels for every issue in a milestone.
                  * </p>
@@ -3775,7 +3775,7 @@ public class Anonymous
         public class Notifications {
 
             /**
-             * null
+             * 
              * <p>
              * List your notifications in a repository
              * List all notifications for the current user.
@@ -3813,7 +3813,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Mark notifications as read in a repository.
              * Marking all notifications in a repository as "read" removes them from the
@@ -3850,7 +3850,7 @@ public class Anonymous
             public final Anonymous.Repos.Pulls.Merge merge = new Anonymous.Repos.Pulls.Merge();
 
             /**
-             * null
+             * 
              * <p>
              * List pull requests.
              * </p>
@@ -3885,7 +3885,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Create a pull request.
              * </p>
@@ -3913,7 +3913,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Get a single pull request.
              * </p>
@@ -3942,7 +3942,7 @@ public class Anonymous
             public class Comments {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * List comments in a repository.
                  * By default, Review Comments are ordered by ascending ID.
@@ -3978,7 +3978,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Get a single comment.
                  * </p>
@@ -4005,7 +4005,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Delete a comment.
                  * </p>
@@ -4032,7 +4032,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * List comments on a pull request.
                  * </p>
@@ -4059,7 +4059,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Create a comment.
                  *   #TODO Alternative input ( http://developer.github.com/v3/pulls/comments/ )
@@ -4102,7 +4102,7 @@ public class Anonymous
             public class Commits {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * List commits on a pull request.
                  * </p>
@@ -4132,7 +4132,7 @@ public class Anonymous
             public class Files {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * List pull requests files.
                  * </p>
@@ -4162,7 +4162,7 @@ public class Anonymous
             public class Merge {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Get if a pull request has been merged.
                  * </p>
@@ -4189,7 +4189,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Merge a pull request (Merge Button's)
                  * </p>
@@ -4224,7 +4224,7 @@ public class Anonymous
         public class Readme {
 
             /**
-             * null
+             * 
              * <p>
              * Get the README.
              * This method returns the preferred README for a repository.
@@ -4256,7 +4256,7 @@ public class Anonymous
             public final Anonymous.Repos.Releases.Assets assets = new Anonymous.Repos.Releases.Assets();
 
             /**
-             * null
+             * 
              * <p>
              * Users with push access to the repository will receive all releases (i.e., published releases and draft releases). Users with pull access will receive published releases only
              * </p>
@@ -4278,7 +4278,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Create a release
              * Users with push access to the repository can create a release.
@@ -4307,7 +4307,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Get a single release
              * </p>
@@ -4333,7 +4333,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Users with push access to the repository can delete a release.
              * </p>
@@ -4361,7 +4361,7 @@ public class Anonymous
             public class Assets {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Get a single release asset
                  * </p>
@@ -4387,7 +4387,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Delete a release asset
                  * </p>
@@ -4413,7 +4413,7 @@ public class Anonymous
                 }
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * List assets for a release
                  * </p>
@@ -4426,7 +4426,7 @@ public class Anonymous
                  * @param Accept
                  *     Is used to set specified media type.
                  */
-                public Requested<Asset[]> getByOwnerRepoId(String owner,
+                public Requested<Asset[]> getByOwnerRepoId2(String owner,
                     String repo,
                     String id,
                     String Accept) {
@@ -4443,7 +4443,7 @@ public class Anonymous
         public class Stargazers {
 
             /**
-             * null
+             * 
              * <p>
              * List Stargazers.
              * </p>
@@ -4475,7 +4475,7 @@ public class Anonymous
             public class Codefrequency {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Get the number of additions and deletions per week.
                  * Returns a weekly aggregate of the number of additions and deletions pushed
@@ -4502,7 +4502,7 @@ public class Anonymous
             public class Commitactivity {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Get the last year of commit activity data.
                  * Returns the last year of commit activity grouped by week. The days array
@@ -4529,7 +4529,7 @@ public class Anonymous
             public class Contributors {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Get contributors list with additions, deletions, and commit counts.
                  * </p>
@@ -4554,7 +4554,7 @@ public class Anonymous
             public class Participation {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Get the weekly commit count for the repo owner and everyone else.
                  * </p>
@@ -4579,7 +4579,7 @@ public class Anonymous
             public class Punchcard {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * Get the number of commits per hour in each day.
                  * Each array contains the day number, hour number, and number of commits
@@ -4612,7 +4612,7 @@ public class Anonymous
         public class Statuses {
 
             /**
-             * null
+             * 
              * <p>
              * List Statuses for a specific Ref.
              * </p>
@@ -4640,7 +4640,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Create a Status.
              * </p>
@@ -4675,7 +4675,7 @@ public class Anonymous
         public class Subscribers {
 
             /**
-             * null
+             * 
              * <p>
              * List watchers.
              * </p>
@@ -4700,7 +4700,7 @@ public class Anonymous
         public class Subscription {
 
             /**
-             * null
+             * 
              * <p>
              * Get a Repository Subscription.
              * </p>
@@ -4722,7 +4722,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Set a Repository Subscription
              * </p>
@@ -4750,7 +4750,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Delete a Repository Subscription.
              * </p>
@@ -4775,7 +4775,7 @@ public class Anonymous
         public class Tags {
 
             /**
-             * null
+             * 
              * <p>
              * Get list of tags.
              * </p>
@@ -4800,7 +4800,7 @@ public class Anonymous
         public class Teams {
 
             /**
-             * null
+             * 
              * <p>
              * Get list of teams
              * </p>
@@ -4825,7 +4825,7 @@ public class Anonymous
         public class Watchers {
 
             /**
-             * null
+             * 
              * <p>
              * List Stargazers. New implementation.
              * </p>
@@ -4851,7 +4851,7 @@ public class Anonymous
     public class Repositories {
 
         /**
-         * null
+         * 
          * <p>
          * List all public repositories.
          * This provides a dump of every public repository, in the order that they
@@ -4886,7 +4886,7 @@ public class Anonymous
         public class Code {
 
             /**
-             * null
+             * 
              * <p>
              * Search code.
              * </p>
@@ -4932,7 +4932,7 @@ public class Anonymous
         public class Issues {
 
             /**
-             * null
+             * 
              * <p>
              * Find issues by state and keyword. (This method returns up to 100 results per page.)
              * </p>
@@ -4962,7 +4962,7 @@ public class Anonymous
         public class Repositories {
 
             /**
-             * null
+             * 
              * <p>
              * Search repositories.
              * </p>
@@ -5005,7 +5005,7 @@ public class Anonymous
         public class Users {
 
             /**
-             * null
+             * 
              * <p>
              * Search users.
              * </p>
@@ -5051,7 +5051,7 @@ public class Anonymous
         public final Anonymous.Teams.Repos repos = new Anonymous.Teams.Repos();
 
         /**
-         * null
+         * 
          * <p>
          * Get team.
          * </p>
@@ -5071,7 +5071,7 @@ public class Anonymous
         }
 
         /**
-         * null
+         * 
          * <p>
          * Delete team.
          * In order to delete a team, the authenticated user must be an owner of the
@@ -5095,7 +5095,7 @@ public class Anonymous
         public class Members {
 
             /**
-             * null
+             * 
              * <p>
              * List team members.
              * In order to list members in a team, the authenticated user must be a member
@@ -5117,7 +5117,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * The "Get team member" API is deprecated and is scheduled for removal in the next major version of the API. We recommend using the Get team membership API instead. It allows you to get both active and pending memberships.
              * Get team member.
@@ -5142,7 +5142,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * The API (described below) is deprecated and is scheduled for removal in the next major version of the API. We recommend using the Add team membership API instead. It allows you to invite new organization members to your teams.
              * Add team member.
@@ -5168,7 +5168,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * The "Remove team member" API is deprecated and is scheduled for removal in the next major version of the API. We recommend using the Remove team membership API instead. It allows you to remove both active and pending memberships.
              * Remove team member.
@@ -5198,7 +5198,7 @@ public class Anonymous
         public class Memberships {
 
             /**
-             * null
+             * 
              * <p>
              * Get team membership.
              * In order to get a user's membership with a team, the authenticated user must be a member of the team or an owner of the team's organization.
@@ -5221,7 +5221,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Add team membership.
              * In order to add a membership between a user and a team, the authenticated user must have 'admin' permissions to the team or be an owner of the organization that the team is associated with.
@@ -5246,7 +5246,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Remove team membership.
              * In order to remove a membership between a user and a team, the authenticated user must have 'admin' permissions to the team or be an owner of the organization that the team is associated with. NOTE: This does not delete the user, it just removes their membership from the team.
@@ -5272,7 +5272,7 @@ public class Anonymous
         public class Repos {
 
             /**
-             * null
+             * 
              * <p>
              * List team repos
              * </p>
@@ -5292,7 +5292,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Check if a team manages a repository
              * </p>
@@ -5319,7 +5319,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * In order to add a repository to a team, the authenticated user must be an owner of the org that the team is associated with. Also, the repository must be owned by the organization, or a direct fork of a repository owned by the organization.
              * </p>
@@ -5346,7 +5346,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * In order to remove a repository from a team, the authenticated user must be an owner of the org that the team is associated with. NOTE: This does not delete the repository, it just removes it from the team.
              * </p>
@@ -5387,7 +5387,7 @@ public class Anonymous
         public final Anonymous.User.Teams teams = new Anonymous.User.Teams();
 
         /**
-         * null
+         * 
          * <p>
          * Get the authenticated user.
          * </p>
@@ -5407,7 +5407,7 @@ public class Anonymous
         public class Emails {
 
             /**
-             * null
+             * 
              * <p>
              * List email addresses for a user.
              * In the final version of the API, this method will return an array of hashes
@@ -5430,7 +5430,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Add email address(es).
              * You can post a single email address or an array of addresses.
@@ -5452,7 +5452,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Delete email address(es).
              * You can include a single email address or an array of addresses.
@@ -5475,7 +5475,7 @@ public class Anonymous
         public class Followers {
 
             /**
-             * null
+             * 
              * <p>
              * List the authenticated user's followers
              * </p>
@@ -5496,7 +5496,7 @@ public class Anonymous
         public class Following {
 
             /**
-             * null
+             * 
              * <p>
              * List who the authenticated user is following.
              * </p>
@@ -5514,7 +5514,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Check if you are following a user.
              * </p>
@@ -5534,7 +5534,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Follow a user.
              * Following a user requires the user to be logged in and authenticated with
@@ -5556,7 +5556,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Unfollow a user.
              * Unfollowing a user requires the user to be logged in and authenticated with
@@ -5581,7 +5581,7 @@ public class Anonymous
         public class Issues {
 
             /**
-             * null
+             * 
              * <p>
              * List issues.
              * List all issues across owned and member repositories for the authenticated
@@ -5623,7 +5623,7 @@ public class Anonymous
         public class Keys {
 
             /**
-             * null
+             * 
              * <p>
              * List your public keys.
              * Lists the current user's keys. Management of public keys via the API requires
@@ -5643,7 +5643,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Create a public key.
              * </p>
@@ -5664,7 +5664,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Get a single public key.
              * </p>
@@ -5684,7 +5684,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Delete a public key. Removes a public key. Requires that you are authenticated via Basic Auth or via OAuth with at least admin:public_key scope.
              * </p>
@@ -5707,7 +5707,7 @@ public class Anonymous
         public class Orgs {
 
             /**
-             * null
+             * 
              * <p>
              * List public and private organizations for the authenticated user.
              * </p>
@@ -5728,7 +5728,7 @@ public class Anonymous
         public class Repos {
 
             /**
-             * null
+             * 
              * <p>
              * List repositories for the authenticated user. Note that this does not include
              * repositories owned by organizations which the user can access. You can lis
@@ -5749,7 +5749,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Create a new repository for the authenticated user. OAuth users must supply
              * repo scope.
@@ -5774,7 +5774,7 @@ public class Anonymous
         public class Starred {
 
             /**
-             * null
+             * 
              * <p>
              * List repositories being starred by the authenticated user.
              * </p>
@@ -5796,7 +5796,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Check if you are starring a repository.
              * </p>
@@ -5818,7 +5818,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Star a repository.
              * </p>
@@ -5840,7 +5840,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Unstar a repository
              * </p>
@@ -5865,7 +5865,7 @@ public class Anonymous
         public class Subscriptions {
 
             /**
-             * null
+             * 
              * <p>
              * List repositories being watched by the authenticated user.
              * </p>
@@ -5883,7 +5883,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Check if you are watching a repository.
              * </p>
@@ -5905,7 +5905,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Watch a repository.
              * </p>
@@ -5927,7 +5927,7 @@ public class Anonymous
             }
 
             /**
-             * null
+             * 
              * <p>
              * Stop watching a repository
              * </p>
@@ -5952,7 +5952,7 @@ public class Anonymous
         public class Teams {
 
             /**
-             * null
+             * 
              * <p>
              * List all of the teams across all of the organizations to which the authenticated user belongs. This method requires user or repo scope when authenticating via OAuth.
              * </p>
@@ -5984,7 +5984,7 @@ public class Anonymous
         public final Anonymous.Users.Subscriptions subscriptions = new Anonymous.Users.Subscriptions();
 
         /**
-         * null
+         * 
          * <p>
          * Get all users.
          * This provides a dump of every user, in the order that they signed up for GitHub.
@@ -6007,7 +6007,7 @@ public class Anonymous
         }
 
         /**
-         * null
+         * 
          * <p>
          * Get a single user.
          * </p>
@@ -6030,7 +6030,7 @@ public class Anonymous
             public final Anonymous.Users.Events.Orgs orgs = new Anonymous.Users.Events.Orgs();
 
             /**
-             * null
+             * 
              * <p>
              * If you are authenticated as the given user, you will see your private events. Otherwise, you'll only see public events.
              * </p>
@@ -6052,7 +6052,7 @@ public class Anonymous
             public class Orgs {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * This is the user's organization dashboard. You must be authenticated as the user to view this.
                  * </p>
@@ -6077,7 +6077,7 @@ public class Anonymous
         public class Followers {
 
             /**
-             * null
+             * 
              * <p>
              * List a user's followers
              * </p>
@@ -6100,7 +6100,7 @@ public class Anonymous
         public class Following {
 
             /**
-             * null
+             * 
              * <p>
              * Check if one user follows another.
              * </p>
@@ -6125,7 +6125,7 @@ public class Anonymous
         public class Gists {
 
             /**
-             * null
+             * 
              * <p>
              * List a users gists.
              * </p>
@@ -6152,7 +6152,7 @@ public class Anonymous
         public class Keys {
 
             /**
-             * null
+             * 
              * <p>
              * List public keys for a user.
              * Lists the verified public keys for a user. This is accessible by anyone.
@@ -6176,7 +6176,7 @@ public class Anonymous
         public class Orgs {
 
             /**
-             * null
+             * 
              * <p>
              * List all public organizations for a user.
              * </p>
@@ -6200,7 +6200,7 @@ public class Anonymous
             public final Anonymous.Users.Receivedevents.Public _public = new Anonymous.Users.Receivedevents.Public();
 
             /**
-             * null
+             * 
              * <p>
              * These are events that you'll only see public events.
              * </p>
@@ -6222,7 +6222,7 @@ public class Anonymous
             public class Public {
 
                 /**
-                 * null
+                 * 
                  * <p>
                  * List public events that a user has received
                  * </p>
@@ -6246,7 +6246,7 @@ public class Anonymous
         public class Repos {
 
             /**
-             * null
+             * 
              * <p>
              * List public repositories for the specified user.
              * </p>
@@ -6270,7 +6270,7 @@ public class Anonymous
         public class Starred {
 
             /**
-             * null
+             * 
              * <p>
              * List repositories being starred by a user.
              * </p>
@@ -6293,7 +6293,7 @@ public class Anonymous
         public class Subscriptions {
 
             /**
-             * null
+             * 
              * <p>
              * List repositories being watched by a user.
              * </p>

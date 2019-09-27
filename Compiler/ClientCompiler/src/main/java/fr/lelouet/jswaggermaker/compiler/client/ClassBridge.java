@@ -332,7 +332,7 @@ public class ClassBridge {
 	 * @return
 	 */
 	public AbstractJType translateToClass(Property p, JPackage pck, String name) {
-		logger.debug("translatetoclass name=" + name + " package=" + pck.name() + " prop.type=" + p.getType()
+		logger.trace("translatetoclass name=" + name + " package=" + pck.name() + " prop.type=" + p.getType()
 		+ " prop.title=" + p.getTitle());
 		if (name == null) {
 			logger.warn("name is null, package=" + pck.name() + " property=" + p);
@@ -366,7 +366,7 @@ public class ClassBridge {
 	}
 
 	public AbstractJType getExistingClass(String type, String name, String format, List<String> enums) {
-		logger.debug("get existing class type=" + type + " name=" + name + " format=" + format + " enums=" + enums);
+		logger.trace("get existing class type=" + type + " name=" + name + " format=" + format + " enums=" + enums);
 		if (type == null) {
 			return cm.ref(Object.class);
 		}
@@ -529,7 +529,7 @@ public class ClassBridge {
 	protected HashMap<Map<String, String>, JDefinedClass> createdClasses = new HashMap<>();
 
 	protected JDefinedClass translateToClass(ObjectProperty p, JPackage pck, String name) {
-		logger.debug("translate objectproperty name=" + name + " objectproperty=" + p.getProperties());
+		logger.trace("translate objectproperty name=" + name + " objectproperty=" + p.getProperties());
 		Map<String, String> classDef = p.getProperties().entrySet().stream()
 				.collect(Collectors.toMap(Entry::getKey, e -> propertyTypeEnumerated(e.getValue())));
 		JDefinedClass createdClass = createdClasses.get(classDef);
@@ -558,7 +558,7 @@ public class ClassBridge {
 			if (p.getProperties() != null) {
 				for (Entry<String, Property> e : p.getProperties().entrySet()) {
 					String propName = e.getKey();
-					logger.debug("making field for property " + propName);
+					logger.trace("making field for property " + propName);
 					String sanitizedPropName = sanitizeVarName(propName);
 					Property prop = e.getValue();
 					String structName = prop.getTitle();
@@ -566,7 +566,7 @@ public class ClassBridge {
 						structName = camelcase(sanitizedPropName);
 					}
 					AbstractJType type = translateToClass(prop, cl.getPackage().subPackage(cl.name().toLowerCase()), structName);
-					logger.debug("call field for name=" + e.getKey() + " type=" + type);
+					logger.trace("call field for name=" + e.getKey() + " type=" + type);
 					JFieldVar field = cl.field(JMod.PUBLIC, type, sanitizedPropName);
 					field.javadoc().add(prop.getDescription());
 					if (!sanitizedPropName.equals(propName)) {
@@ -602,7 +602,7 @@ public class ClassBridge {
 				ret += enums;
 			}
 		}
-		logger.debug("structure=" + structure + " format=" + structure.getFormat() + " extended=" + ret);
+		logger.trace("structure=" + structure + " format=" + structure.getFormat() + " extended=" + ret);
 		return ret;
 	}
 
@@ -612,7 +612,7 @@ public class ClassBridge {
 	}
 
 	protected AbstractJClass translateToClass(MapProperty mp, JPackage pck, String name) {
-		logger.debug("translate mapproperty map=" + mp + " pck=" + pck + " name=" + name);
+		logger.trace("translate mapproperty map=" + mp + " pck=" + pck + " name=" + name);
 		AbstractJType valueType = translateToClass(mp.getAdditionalProperties(), pck, null);
 		return cm.ref(HashMap.class).narrow(String.class).narrow(valueType);
 	}
@@ -635,7 +635,7 @@ public class ClassBridge {
 	 * @return
 	 */
 	protected AbstractJType translateDefToClass(String defName) {
-		logger.debug("translate def " + defName);
+		logger.trace("translate def " + defName);
 		AbstractJType ret = definitions.get(defName);
 		JDefinedClass tobuild = null;
 		Property compilation = null;
@@ -708,7 +708,7 @@ public class ClassBridge {
 	 * @return
 	 */
 	protected PartiallyCompiled partCompile(Property property, JPackage pck, String definedClassName) {
-		logger.debug("part compiling property=" + property + " package=" + pck.name());
+		logger.trace("part compiling property=" + property + " package=" + pck.name());
 		if (property == null) {
 			return new PartiallyCompiled(cm.VOID);
 		} else {
@@ -723,7 +723,7 @@ public class ClassBridge {
 					return partCompile(((MapProperty) property).getAdditionalProperties(), pck, definedClassName).inMap();
 				} else if (property.getClass() == ObjectProperty.class) {
 					try {
-						logger.debug(
+						logger.trace(
 								"creating compilelater class name=" + definedClassName + " pck=" + pck.name() + " property="
 										+ property);
 						JDefinedClass newclass = pck._class(JMod.PUBLIC, definedClassName);
@@ -816,7 +816,7 @@ public class ClassBridge {
 	}
 
 	protected AbstractJType translateToClass(List<Property> allOf, JPackage pck, String name) {
-		logger.debug("creating merged item for class name " + name);
+		logger.trace("creating merged item for class name " + name);
 		AbstractJType ret = cm._getClass(pck + "." + name);
 		if (ret != null) {
 			System.err.println("return existing class pck=" + pck.name() + " name=" + name);
@@ -824,7 +824,7 @@ public class ClassBridge {
 		}
 		try {
 			ret = cm._class(JMod.PUBLIC, pck.name() + "." + name);
-			logger.debug("created class for composite " + ret.fullName());
+			logger.trace("created class for composite " + ret.fullName());
 		} catch (JClassAlreadyExistsException e) {
 			throw new UnsupportedOperationException("catch this", e);
 		}

@@ -243,6 +243,7 @@ public class Evesso
 
             /**
              * Get alliance contacts
+             * 
              * <p>
              * Return contacts of an alliance<br />
              * This route is cached for up to 300 seconds
@@ -272,6 +273,7 @@ public class Evesso
 
                 /**
                  * Get alliance contact labels
+                 * 
                  * <p>
                  * Return custom labels for an alliance's contacts<br />
                  * This route is cached for up to 300 seconds
@@ -340,6 +342,7 @@ public class Evesso
 
             /**
              * Get agents research
+             * 
              * <p>
              * Return a list of agents research information for a character. The formula for finding the current research points with an agent is: currentPoints = remainderPoints + pointsPerDay * days(currentTime - researchStartDate)<br />
              * This route is cached for up to 3600 seconds
@@ -370,6 +373,7 @@ public class Evesso
 
             /**
              * Get character assets
+             * 
              * <p>
              * Return a list of the characters assets<br />
              * This route is cached for up to 3600 seconds
@@ -399,6 +403,7 @@ public class Evesso
 
                 /**
                  * Get character asset locations
+                 * 
                  * <p>
                  * Return locations for a set of item ids, which you can get from character assets endpoint. Coordinates for items in hangars or stations are set to (0,0,0)
                  * </p>
@@ -424,6 +429,7 @@ public class Evesso
 
                 /**
                  * Get character asset names
+                 * 
                  * <p>
                  * Return names for a set of item ids, which you can get from character assets endpoint. Typically used for items that can customize names, like containers or ships.
                  * </p>
@@ -450,6 +456,7 @@ public class Evesso
 
             /**
              * Get character attributes
+             * 
              * <p>
              * Return attributes of a character<br />
              * This route is cached for up to 120 seconds
@@ -478,6 +485,7 @@ public class Evesso
 
             /**
              * Get blueprints
+             * 
              * <p>
              * Return a list of blueprints the character owns<br />
              * This route is cached for up to 3600 seconds
@@ -509,6 +517,7 @@ public class Evesso
 
             /**
              * List bookmarks
+             * 
              * <p>
              * A list of your character's personal bookmarks<br />
              * This route is cached for up to 3600 seconds
@@ -538,6 +547,7 @@ public class Evesso
 
                 /**
                  * List bookmark folders
+                 * 
                  * <p>
                  * A list of your character's personal bookmark folders<br />
                  * This route is cached for up to 3600 seconds
@@ -570,6 +580,7 @@ public class Evesso
 
             /**
              * List calendar event summaries
+             * 
              * <p>
              * Get 50 event summaries from the calendar. If no from_event ID is given, the resource will return the next 50 chronological event summaries from now. If a from_event ID is specified, it will return the next 50 chronological event summaries from after that event<br />
              * This route is cached for up to 5 seconds
@@ -597,6 +608,7 @@ public class Evesso
 
             /**
              * Get an event
+             * 
              * <p>
              * Get all the information for a specific event<br />
              * This route is cached for up to 5 seconds
@@ -624,6 +636,7 @@ public class Evesso
 
             /**
              * Respond to an event
+             * 
              * <p>
              * Set your response status to an event
              * </p>
@@ -650,6 +663,7 @@ public class Evesso
 
                 /**
                  * Get attendees
+                 * 
                  * <p>
                  * Get all invited attendees for a given event<br />
                  * This route is cached for up to 600 seconds
@@ -681,6 +695,7 @@ public class Evesso
 
             /**
              * Get clones
+             * 
              * <p>
              * A list of the character's clones<br />
              * This route is cached for up to 120 seconds
@@ -710,6 +725,7 @@ public class Evesso
 
             /**
              * Get contacts
+             * 
              * <p>
              * Return contacts of a character<br />
              * This route is cached for up to 300 seconds
@@ -737,6 +753,7 @@ public class Evesso
 
             /**
              * Add contacts
+             * 
              * <p>
              * Bulk add contacts with same settings
              * </p>
@@ -769,6 +786,7 @@ public class Evesso
 
             /**
              * Edit contacts
+             * 
              * <p>
              * Bulk edit contacts with same settings
              * </p>
@@ -801,6 +819,7 @@ public class Evesso
 
             /**
              * Delete contacts
+             * 
              * <p>
              * Bulk delete contacts
              * </p>
@@ -823,6 +842,7 @@ public class Evesso
 
                 /**
                  * Get contact labels
+                 * 
                  * <p>
                  * Return custom labels for a character's contacts<br />
                  * This route is cached for up to 300 seconds
@@ -854,6 +874,7 @@ public class Evesso
 
             /**
              * Get contracts
+             * 
              * <p>
              * Returns contracts available to a character, only if the character is issuer, acceptor or assignee. Only returns contracts no older than 30 days, or if the status is "in_progress".<br />
              * This route is cached for up to 300 seconds
@@ -883,6 +904,7 @@ public class Evesso
 
                 /**
                  * Get contract bids
+                 * 
                  * <p>
                  * Lists bids on a particular auction contract<br />
                  * This route is cached for up to 300 seconds
@@ -913,6 +935,7 @@ public class Evesso
 
                 /**
                  * Get contract items
+                 * 
                  * <p>
                  * Lists items of a particular contract<br />
                  * This route is cached for up to 3600 seconds
@@ -944,6 +967,7 @@ public class Evesso
 
             /**
              * Calculate a CSPA charge cost
+             * 
              * <p>
              * Takes a source character ID in the url and a set of target character ID's in the body, returns a CSPA charge cost
              * </p>
@@ -969,6 +993,7 @@ public class Evesso
 
             /**
              * Get jump fatigue
+             * 
              * <p>
              * Return a character's jump activation and fatigue information<br />
              * This route is cached for up to 300 seconds
@@ -997,6 +1022,7 @@ public class Evesso
 
             /**
              * Delete fitting
+             * 
              * <p>
              * Delete a fitting from a character
              * </p>
@@ -1017,6 +1043,7 @@ public class Evesso
 
             /**
              * Get fittings
+             * 
              * <p>
              * Return fittings of a character<br />
              * This route is cached for up to 300 seconds
@@ -1042,6 +1069,7 @@ public class Evesso
 
             /**
              * Create fitting
+             * 
              * <p>
              * Save a new fitting for a character
              * </p>
@@ -1080,6 +1108,7 @@ public class Evesso
 
             /**
              * Get character fleet info
+             * 
              * <p>
              * Return the fleet ID the character is in, if any.<br />
              * This route is cached for up to 60 seconds<br />
@@ -1113,6 +1142,7 @@ public class Evesso
 
                 /**
                  * Overview of a character involved in faction warfare
+                 * 
                  * <p>
                  * Statistical overview of a character involved in faction warfare<br />
                  * This route expires daily at 11:05
@@ -1142,6 +1172,7 @@ public class Evesso
 
             /**
              * Get active implants
+             * 
              * <p>
              * Return implants on the active clone of a character<br />
              * This route is cached for up to 120 seconds
@@ -1173,6 +1204,7 @@ public class Evesso
 
                 /**
                  * List character industry jobs
+                 * 
                  * <p>
                  * List industry jobs placed by a character<br />
                  * This route is cached for up to 300 seconds
@@ -1207,6 +1239,7 @@ public class Evesso
 
                 /**
                  * Get a character's recent kills and losses
+                 * 
                  * <p>
                  * Return a list of a character's kills and losses going back 90 days<br />
                  * This route is cached for up to 300 seconds
@@ -1238,6 +1271,7 @@ public class Evesso
 
             /**
              * Get character location
+             * 
              * <p>
              * Information about the characters current location. Returns the current solar system id, and also the current station or structure ID if applicable<br />
              * This route is cached for up to 5 seconds
@@ -1269,6 +1303,7 @@ public class Evesso
 
                 /**
                  * Get loyalty points
+                 * 
                  * <p>
                  * Return a list of loyalty points for all corporations the character has worked for<br />
                  * This route is cached for up to 3600 seconds
@@ -1300,6 +1335,7 @@ public class Evesso
 
             /**
              * Return mail headers
+             * 
              * <p>
              * Return the 50 most recent mail headers belonging to the character that match the query criteria. Queries can be filtered by label, and last_mail_id can be used to paginate backwards<br />
              * This route is cached for up to 30 seconds
@@ -1332,6 +1368,7 @@ public class Evesso
 
             /**
              * Send a new mail
+             * 
              * <p>
              * Create and send a new mail
              * </p>
@@ -1367,6 +1404,7 @@ public class Evesso
 
             /**
              * Return a mail
+             * 
              * <p>
              * Return the contents of an EVE mail<br />
              * This route is cached for up to 30 seconds
@@ -1394,6 +1432,7 @@ public class Evesso
 
             /**
              * Update metadata about a mail
+             * 
              * <p>
              * Update metadata about a mail
              * </p>
@@ -1424,6 +1463,7 @@ public class Evesso
 
             /**
              * Delete a mail
+             * 
              * <p>
              * Delete a mail
              * </p>
@@ -1446,6 +1486,7 @@ public class Evesso
 
                 /**
                  * Delete a mail label
+                 * 
                  * <p>
                  * Delete a mail label
                  * </p>
@@ -1466,6 +1507,7 @@ public class Evesso
 
                 /**
                  * Create a mail label
+                 * 
                  * <p>
                  * Create a mail label
                  * </p>
@@ -1491,6 +1533,7 @@ public class Evesso
 
                 /**
                  * Get mail labels and unread counts
+                 * 
                  * <p>
                  * Return a list of the users mail labels, unread counts for each label and a total unread count.<br />
                  * This route is cached for up to 30 seconds
@@ -1519,6 +1562,7 @@ public class Evesso
 
                 /**
                  * Return mailing list subscriptions
+                 * 
                  * <p>
                  * Return all mailing lists that the character is subscribed to<br />
                  * This route is cached for up to 120 seconds
@@ -1548,6 +1592,7 @@ public class Evesso
 
             /**
              * Get medals
+             * 
              * <p>
              * Return a list of medals the character has<br />
              * This route is cached for up to 3600 seconds
@@ -1576,6 +1621,7 @@ public class Evesso
 
             /**
              * Character mining ledger
+             * 
              * <p>
              * Paginated record of all mining done by a character for the past 30 days<br />
              * This route is cached for up to 600 seconds
@@ -1607,6 +1653,7 @@ public class Evesso
 
             /**
              * Get character notifications
+             * 
              * <p>
              * Return character notifications<br />
              * This route is cached for up to 600 seconds
@@ -1634,6 +1681,7 @@ public class Evesso
 
                 /**
                  * Get new contact notifications
+                 * 
                  * <p>
                  * Return notifications about having been added to someone's contact list<br />
                  * This route is cached for up to 600 seconds
@@ -1663,6 +1711,7 @@ public class Evesso
 
             /**
              * Get character online
+             * 
              * <p>
              * Checks if the character is currently online<br />
              * This route is cached for up to 60 seconds
@@ -1691,6 +1740,7 @@ public class Evesso
 
             /**
              * Get a character's completed tasks
+             * 
              * <p>
              * Return a list of tasks finished by a character<br />
              * This route is cached for up to 3600 seconds
@@ -1720,6 +1770,7 @@ public class Evesso
 
             /**
              * List open orders from a character
+             * 
              * <p>
              * List open market orders placed by a character<br />
              * This route is cached for up to 1200 seconds
@@ -1747,6 +1798,7 @@ public class Evesso
 
                 /**
                  * List historical orders by a character
+                 * 
                  * <p>
                  * List cancelled and expired market orders placed by a character up to 90 days in the past.<br />
                  * This route is cached for up to 3600 seconds
@@ -1778,6 +1830,7 @@ public class Evesso
 
             /**
              * Get colonies
+             * 
              * <p>
              * Returns a list of all planetary colonies owned by a character.<br />
              * This route is cached for up to 600 seconds
@@ -1803,6 +1856,7 @@ public class Evesso
 
             /**
              * Get colony layout
+             * 
              * <p>
              * Returns full details on the layout of a single planetary colony, including links, pins and routes. Note: Planetary information is only recalculated when the colony is viewed through the client. Information will not update until this criteria is met.<br />
              * This route is cached for up to 600 seconds
@@ -1833,6 +1887,7 @@ public class Evesso
 
             /**
              * Get character corporation roles
+             * 
              * <p>
              * Returns a character's corporation roles<br />
              * This route is cached for up to 3600 seconds
@@ -1861,6 +1916,7 @@ public class Evesso
 
             /**
              * Search on a string
+             * 
              * <p>
              * Search for entities that match a given sub-string.<br />
              * This route is cached for up to 3600 seconds
@@ -1908,6 +1964,7 @@ public class Evesso
 
             /**
              * Get current ship
+             * 
              * <p>
              * Get the current ship type, name and id<br />
              * This route is cached for up to 5 seconds<br />
@@ -1937,6 +1994,7 @@ public class Evesso
 
             /**
              * Get character's skill queue
+             * 
              * <p>
              * List the configured skill queue for the given character<br />
              * This route is cached for up to 120 seconds
@@ -1965,6 +2023,7 @@ public class Evesso
 
             /**
              * Get character skills
+             * 
              * <p>
              * List all trained skills for the given character<br />
              * This route is cached for up to 120 seconds
@@ -1993,6 +2052,7 @@ public class Evesso
 
             /**
              * Get standings
+             * 
              * <p>
              * Return character standings from agents, NPC corporations, and factions<br />
              * This route is cached for up to 3600 seconds
@@ -2021,6 +2081,7 @@ public class Evesso
 
             /**
              * Yearly aggregate stats
+             * 
              * <p>
              * Returns aggregate yearly stats for a character<br />
              * This route is cached for up to 86400 seconds
@@ -2049,6 +2110,7 @@ public class Evesso
 
             /**
              * Get character corporation titles
+             * 
              * <p>
              * Returns a character's titles<br />
              * This route is cached for up to 3600 seconds
@@ -2079,6 +2141,7 @@ public class Evesso
 
             /**
              * Get a character's wallet balance
+             * 
              * <p>
              * Returns a character's wallet balance<br />
              * This route is cached for up to 120 seconds
@@ -2106,6 +2169,7 @@ public class Evesso
 
                 /**
                  * Get character wallet journal
+                 * 
                  * <p>
                  * Retrieve the given character's wallet journal going 30 days back<br />
                  * This route is cached for up to 3600 seconds
@@ -2136,6 +2200,7 @@ public class Evesso
 
                 /**
                  * Get wallet transactions
+                 * 
                  * <p>
                  * Get wallet transactions of a character<br />
                  * This route is cached for up to 3600 seconds
@@ -2175,6 +2240,7 @@ public class Evesso
 
                 /**
                  * Moon extraction timers
+                 * 
                  * <p>
                  * Extraction timers for all moon chunks being extracted by refineries belonging to a corporation.<br />
                  * This route is cached for up to 1800 seconds<br />
@@ -2209,6 +2275,7 @@ public class Evesso
 
                 /**
                  * Corporation mining observers
+                 * 
                  * <p>
                  * Paginated list of all entities capable of observing and recording mining for a corporation<br />
                  * This route is cached for up to 3600 seconds<br />
@@ -2240,6 +2307,7 @@ public class Evesso
 
                 /**
                  * Observed corporation mining
+                 * 
                  * <p>
                  * Paginated record of all mining seen by an observer<br />
                  * This route is cached for up to 3600 seconds<br />
@@ -2308,6 +2376,7 @@ public class Evesso
 
             /**
              * Get corporation assets
+             * 
              * <p>
              * Return a list of the corporation assets<br />
              * This route is cached for up to 3600 seconds<br />
@@ -2341,6 +2410,7 @@ public class Evesso
 
                 /**
                  * Get corporation asset locations
+                 * 
                  * <p>
                  * Return locations for a set of item ids, which you can get from corporation assets endpoint. Coordinates for items in hangars or stations are set to (0,0,0)<br />
                  * Requires one of the following EVE corporation role(s): Director
@@ -2370,6 +2440,7 @@ public class Evesso
 
                 /**
                  * Get corporation asset names
+                 * 
                  * <p>
                  * Return names for a set of item ids, which you can get from corporation assets endpoint. Only valid for items that can customize names, like containers or ships<br />
                  * Requires one of the following EVE corporation role(s): Director
@@ -2400,6 +2471,7 @@ public class Evesso
 
             /**
              * Get corporation blueprints
+             * 
              * <p>
              * Returns a list of blueprints the corporation owns<br />
              * This route is cached for up to 3600 seconds<br />
@@ -2435,6 +2507,7 @@ public class Evesso
 
             /**
              * List corporation bookmarks
+             * 
              * <p>
              * A list of your corporation's bookmarks<br />
              * This route is cached for up to 3600 seconds
@@ -2464,6 +2537,7 @@ public class Evesso
 
                 /**
                  * List corporation bookmark folders
+                 * 
                  * <p>
                  * A list of your corporation's bookmark folders<br />
                  * This route is cached for up to 3600 seconds
@@ -2496,6 +2570,7 @@ public class Evesso
 
             /**
              * Get corporation contacts
+             * 
              * <p>
              * Return contacts of a corporation<br />
              * This route is cached for up to 300 seconds
@@ -2525,6 +2600,7 @@ public class Evesso
 
                 /**
                  * Get corporation contact labels
+                 * 
                  * <p>
                  * Return custom labels for a corporation's contacts<br />
                  * This route is cached for up to 300 seconds
@@ -2557,6 +2633,7 @@ public class Evesso
 
                 /**
                  * Get all corporation ALSC logs
+                 * 
                  * <p>
                  * Returns logs recorded in the past seven days from all audit log secure containers (ALSC) owned by a given corporation<br />
                  * This route is cached for up to 600 seconds<br />
@@ -2594,6 +2671,7 @@ public class Evesso
 
             /**
              * Get corporation contracts
+             * 
              * <p>
              * Returns contracts available to a corporation, only if the corporation is issuer, acceptor or assignee. Only returns contracts no older than 30 days, or if the status is "in_progress".<br />
              * This route is cached for up to 300 seconds
@@ -2623,6 +2701,7 @@ public class Evesso
 
                 /**
                  * Get corporation contract bids
+                 * 
                  * <p>
                  * Lists bids on a particular auction contract<br />
                  * This route is cached for up to 3600 seconds
@@ -2658,6 +2737,7 @@ public class Evesso
 
                 /**
                  * Get corporation contract items
+                 * 
                  * <p>
                  * Lists items of a particular contract<br />
                  * This route is cached for up to 3600 seconds
@@ -2689,6 +2769,7 @@ public class Evesso
 
             /**
              * List corporation customs offices
+             * 
              * <p>
              * List customs offices owned by a corporation<br />
              * This route is cached for up to 3600 seconds<br />
@@ -2723,6 +2804,7 @@ public class Evesso
 
             /**
              * Get corporation divisions
+             * 
              * <p>
              * Return corporation hangar and wallet division names, only show if a division is not using the default name<br />
              * This route is cached for up to 3600 seconds<br />
@@ -2755,6 +2837,7 @@ public class Evesso
 
             /**
              * Get corporation facilities
+             * 
              * <p>
              * Return a corporation's facilities<br />
              * This route is cached for up to 3600 seconds<br />
@@ -2790,6 +2873,7 @@ public class Evesso
 
                 /**
                  * Overview of a corporation involved in faction warfare
+                 * 
                  * <p>
                  * Statistics about a corporation involved in faction warfare<br />
                  * This route expires daily at 11:05<br />
@@ -2823,6 +2907,7 @@ public class Evesso
 
                 /**
                  * List corporation industry jobs
+                 * 
                  * <p>
                  * List industry jobs run by a corporation<br />
                  * This route is cached for up to 300 seconds<br />
@@ -2866,6 +2951,7 @@ public class Evesso
 
                 /**
                  * Get a corporation's recent kills and losses
+                 * 
                  * <p>
                  * Get a list of a corporation's kills and losses going back 90 days<br />
                  * This route is cached for up to 300 seconds<br />
@@ -2902,6 +2988,7 @@ public class Evesso
 
             /**
              * Get corporation medals
+             * 
              * <p>
              * Returns a corporation's medals<br />
              * This route is cached for up to 3600 seconds
@@ -2931,6 +3018,7 @@ public class Evesso
 
                 /**
                  * Get corporation issued medals
+                 * 
                  * <p>
                  * Returns medals issued by a corporation<br />
                  * This route is cached for up to 3600 seconds<br />
@@ -2968,6 +3056,7 @@ public class Evesso
 
             /**
              * Get corporation members
+             * 
              * <p>
              * Return the current member list of a corporation, the token's character need to be a member of the corporation.<br />
              * This route is cached for up to 3600 seconds
@@ -2995,6 +3084,7 @@ public class Evesso
 
                 /**
                  * Get corporation member limit
+                 * 
                  * <p>
                  * Return a corporation's member limit, not including CEO himself<br />
                  * This route is cached for up to 3600 seconds<br />
@@ -3027,6 +3117,7 @@ public class Evesso
 
                 /**
                  * Get corporation's members' titles
+                 * 
                  * <p>
                  * Returns a corporation's members' titles<br />
                  * This route is cached for up to 3600 seconds<br />
@@ -3060,6 +3151,7 @@ public class Evesso
 
             /**
              * Track corporation members
+             * 
              * <p>
              * Returns additional information about a corporation's members which helps tracking their activities<br />
              * This route is cached for up to 3600 seconds<br />
@@ -3093,6 +3185,7 @@ public class Evesso
 
             /**
              * List open orders from a corporation
+             * 
              * <p>
              * List open market orders placed on behalf of a corporation<br />
              * This route is cached for up to 1200 seconds<br />
@@ -3126,6 +3219,7 @@ public class Evesso
 
                 /**
                  * List historical orders from a corporation
+                 * 
                  * <p>
                  * List cancelled and expired market orders placed on behalf of a corporation up to 90 days in the past.<br />
                  * This route is cached for up to 3600 seconds<br />
@@ -3162,6 +3256,7 @@ public class Evesso
 
             /**
              * Get corporation member roles
+             * 
              * <p>
              * Return the roles of all members if the character has the personnel manager role or any grantable role.<br />
              * This route is cached for up to 3600 seconds
@@ -3189,6 +3284,7 @@ public class Evesso
 
                 /**
                  * Get corporation member roles history
+                 * 
                  * <p>
                  * Return how roles have changed for a coporation's members, up to a month<br />
                  * This route is cached for up to 3600 seconds<br />
@@ -3224,6 +3320,7 @@ public class Evesso
 
             /**
              * Get corporation shareholders
+             * 
              * <p>
              * Return the current shareholders of a corporation.<br />
              * This route is cached for up to 3600 seconds<br />
@@ -3258,6 +3355,7 @@ public class Evesso
 
             /**
              * Get corporation standings
+             * 
              * <p>
              * Return corporation standings from agents, NPC corporations, and factions<br />
              * This route is cached for up to 3600 seconds
@@ -3288,6 +3386,7 @@ public class Evesso
 
             /**
              * Get corporation starbases (POSes)
+             * 
              * <p>
              * Returns list of corporation starbases (POSes)<br />
              * This route is cached for up to 3600 seconds<br />
@@ -3319,6 +3418,7 @@ public class Evesso
 
             /**
              * Get starbase (POS) detail
+             * 
              * <p>
              * Returns various settings and fuels of a starbase (POS)<br />
              * This route is cached for up to 3600 seconds<br />
@@ -3358,6 +3458,7 @@ public class Evesso
 
             /**
              * Get corporation structures
+             * 
              * <p>
              * Get a list of corporation structures. This route's version includes the changes to structures detailed in this blog: https://www.eveonline.com/article/upwell-2.0-structures-changes-coming-on-february-13th<br />
              * This route is cached for up to 3600 seconds<br />
@@ -3403,6 +3504,7 @@ public class Evesso
 
             /**
              * Get corporation titles
+             * 
              * <p>
              * Returns a corporation's titles<br />
              * This route is cached for up to 3600 seconds<br />
@@ -3437,6 +3539,7 @@ public class Evesso
 
             /**
              * Returns a corporation's wallet balance
+             * 
              * <p>
              * Get a corporation's wallets<br />
              * This route is cached for up to 300 seconds<br />
@@ -3468,6 +3571,7 @@ public class Evesso
 
                 /**
                  * Get corporation wallet journal
+                 * 
                  * <p>
                  * Retrieve the given corporation's wallet journal for the given division going 30 days back<br />
                  * This route is cached for up to 3600 seconds<br />
@@ -3507,6 +3611,7 @@ public class Evesso
 
                 /**
                  * Get corporation wallet transactions
+                 * 
                  * <p>
                  * Get wallet transactions of a corporation<br />
                  * This route is cached for up to 3600 seconds<br />
@@ -3551,6 +3656,7 @@ public class Evesso
 
         /**
          * Get fleet information
+         * 
          * <p>
          * Return details about a fleet<br />
          * This route is cached for up to 5 seconds
@@ -3576,6 +3682,7 @@ public class Evesso
 
         /**
          * Update fleet
+         * 
          * <p>
          * Update settings about a fleet
          * </p>
@@ -3603,6 +3710,7 @@ public class Evesso
 
             /**
              * Get fleet members
+             * 
              * <p>
              * Return information about fleet members<br />
              * This route is cached for up to 5 seconds
@@ -3638,6 +3746,7 @@ public class Evesso
 
             /**
              * Create fleet invitation
+             * 
              * <p>
              * Invite a character into the fleet. If a character has a CSPA charge set it is not possible to invite them to the fleet using ESI
              * </p>
@@ -3673,6 +3782,7 @@ public class Evesso
 
             /**
              * Move fleet member
+             * 
              * <p>
              * Move a fleet member around
              * </p>
@@ -3707,6 +3817,7 @@ public class Evesso
 
             /**
              * Kick fleet member
+             * 
              * <p>
              * Kick a fleet member
              * </p>
@@ -3730,6 +3841,7 @@ public class Evesso
 
             /**
              * Rename fleet squad
+             * 
              * <p>
              * Rename a fleet squad
              * </p>
@@ -3754,6 +3866,7 @@ public class Evesso
 
             /**
              * Delete fleet squad
+             * 
              * <p>
              * Delete a fleet squad, only empty squads can be deleted
              * </p>
@@ -3778,6 +3891,7 @@ public class Evesso
 
             /**
              * Get fleet wings
+             * 
              * <p>
              * Return information about wings in a fleet<br />
              * This route is cached for up to 5 seconds
@@ -3813,6 +3927,7 @@ public class Evesso
 
             /**
              * Create fleet wing
+             * 
              * <p>
              * Create a new wing in a fleet
              * </p>
@@ -3831,6 +3946,7 @@ public class Evesso
 
             /**
              * Rename fleet wing
+             * 
              * <p>
              * Rename a fleet wing
              * </p>
@@ -3855,6 +3971,7 @@ public class Evesso
 
             /**
              * Delete fleet wing
+             * 
              * <p>
              * Delete a fleet wing, only empty wings can be deleted. The wing may contain squads, but the squads must be empty
              * </p>
@@ -3877,6 +3994,7 @@ public class Evesso
 
                 /**
                  * Create fleet squad
+                 * 
                  * <p>
                  * Create a new squad in a fleet
                  * </p>
@@ -3905,6 +4023,7 @@ public class Evesso
 
             /**
              * List orders in a structure
+             * 
              * <p>
              * Return all orders in a structure<br />
              * This route is cached for up to 300 seconds
@@ -3943,6 +4062,7 @@ public class Evesso
 
                 /**
                  * Set Autopilot Waypoint
+                 * 
                  * <p>
                  * Set a solar system as autopilot waypoint
                  * </p>
@@ -3975,6 +4095,7 @@ public class Evesso
 
                 /**
                  * Open Contract Window
+                 * 
                  * <p>
                  * Open the contract window inside the client
                  * </p>
@@ -3996,6 +4117,7 @@ public class Evesso
 
                 /**
                  * Open Information Window
+                 * 
                  * <p>
                  * Open the information window for a character, corporation or alliance inside the client
                  * </p>
@@ -4017,6 +4139,7 @@ public class Evesso
 
                 /**
                  * Open Market Details
+                 * 
                  * <p>
                  * Open the market details window for a specific typeID inside the client
                  * </p>
@@ -4038,6 +4161,7 @@ public class Evesso
 
                 /**
                  * Open New Mail Window
+                 * 
                  * <p>
                  * Open the New Mail window, according to settings from the request if applicable
                  * </p>
@@ -4082,6 +4206,7 @@ public class Evesso
 
             /**
              * Get structure information
+             * 
              * <p>
              * Returns information on requested structure if you are on the ACL. Otherwise, returns "Forbidden" for all inputs.<br />
              * This route is cached for up to 3600 seconds

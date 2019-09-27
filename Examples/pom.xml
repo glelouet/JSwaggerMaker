@@ -16,7 +16,7 @@
 		<module>PetStore</module>
 		<module>ESI</module>
 		<module>Discourse</module>
-		<module>YoutbueData</module>
+		
 		<module>YoutubeData</module>
 		<module>Github</module>
 	</modules>

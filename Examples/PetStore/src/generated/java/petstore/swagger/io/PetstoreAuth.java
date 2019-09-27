@@ -27,6 +27,7 @@ public class PetstoreAuth
 
         /**
          * Add a new pet to the store
+         * 
          * <p>
          * </p>
          * 
@@ -42,6 +43,7 @@ public class PetstoreAuth
 
         /**
          * Update an existing pet
+         * 
          * <p>
          * </p>
          * 
@@ -57,6 +59,7 @@ public class PetstoreAuth
 
         /**
          * Updates a pet in the store with form data
+         * 
          * <p>
          * </p>
          * 
@@ -70,6 +73,7 @@ public class PetstoreAuth
 
         /**
          * Deletes a pet
+         * 
          * <p>
          * </p>
          * 
@@ -90,6 +94,7 @@ public class PetstoreAuth
 
             /**
              * Finds Pets by status
+             * 
              * <p>
              * Multiple status values can be provided with comma separated strings
              * </p>
@@ -107,6 +112,7 @@ public class PetstoreAuth
 
             /**
              * Finds Pets by tags
+             * 
              * <p>
              * Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
              * </p>
@@ -124,6 +130,7 @@ public class PetstoreAuth
 
             /**
              * uploads an image
+             * 
              * <p>
              * </p>
              * 

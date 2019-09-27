@@ -24,6 +24,7 @@ public class ApiKey
 
         /**
          * Find pet by ID
+         * 
          * <p>
          * Returns a single pet
          * </p>
@@ -44,6 +45,7 @@ public class ApiKey
 
             /**
              * Returns pet inventories by status
+             * 
              * <p>
              * Returns a map of status codes to quantities
              * </p>

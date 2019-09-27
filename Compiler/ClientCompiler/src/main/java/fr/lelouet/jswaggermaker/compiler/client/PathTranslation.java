@@ -10,6 +10,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -263,9 +264,15 @@ public class PathTranslation {
 					.collect(Collectors.joining());
 		}
 
+		String fFetchName = fetchMethName;
+		String renamed = Stream
+				.concat(Stream.of(fetchMethName), IntStream.iterate(2, i -> i + 1).mapToObj(i -> fFetchName + i)).filter(
+						name -> !fetcherClass.methods().stream().filter(meth -> meth.name().equals(name)).findAny().isPresent())
+				.findFirst().orElse(null);
+
 		makeFetchRetType();
 		// create the method
-		fetchMeth = fetcherClass.method(JMod.PUBLIC, fetchRetType, fetchMethName);
+		fetchMeth = fetcherClass.method(JMod.PUBLIC, fetchRetType, renamed);
 		// add the parameters
 		extractFetchParameters();
 
@@ -366,8 +373,6 @@ public class PathTranslation {
 						.filter(s -> !allParams.stream().filter(jv -> jv.name().equals(s)).findAny().isPresent()).findFirst().get();
 			}
 
-			System.err.println("parameter " + p.getName() + " rename=" + rename + " to " + paramName);
-
 			AbstractJType pt;
 			JVar param;
 			switch (in) {
@@ -442,7 +447,9 @@ public class PathTranslation {
 	}
 
 	protected void addPathJavadoc() {
-		fetchMeth.javadoc().append("" + operation.getSummary());
+		if (operation.getSummary() != null) {
+			fetchMeth.javadoc().append("" + operation.getSummary() + "\n");
+		}
 		fetchMeth.javadoc().add(("\n<p>\n" + ("" + operation.getDescription()).replaceAll("---", "<br />") + "\n</p>")
 				.replaceAll("\n\n", "\n").replaceAll("<br />\n<", "<").replaceAll("\n<br />\n", "<br />\n"));
 		if (!requiredRoles.isEmpty()) {

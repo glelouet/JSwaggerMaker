@@ -22,6 +22,7 @@ public class Anonymous
 
             /**
              * Place an order for a pet
+             * 
              * <p>
              * </p>
              * 
@@ -37,6 +38,7 @@ public class Anonymous
 
             /**
              * Find purchase order by ID
+             * 
              * <p>
              * For valid response try integer IDs with value >= 1 and <= 10. Other values will generated exceptions
              * </p>
@@ -51,6 +53,7 @@ public class Anonymous
 
             /**
              * Delete purchase order by ID
+             * 
              * <p>
              * For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors
              * </p>
@@ -73,6 +76,7 @@ public class Anonymous
 
         /**
          * Create user
+         * 
          * <p>
          * This can only be done by the logged in user.
          * </p>
@@ -89,6 +93,7 @@ public class Anonymous
 
         /**
          * Get user by user name
+         * 
          * <p>
          * </p>
          * 
@@ -102,6 +107,7 @@ public class Anonymous
 
         /**
          * Updated user
+         * 
          * <p>
          * This can only be done by the logged in user.
          * </p>
@@ -120,6 +126,7 @@ public class Anonymous
 
         /**
          * Delete user
+         * 
          * <p>
          * This can only be done by the logged in user.
          * </p>
@@ -136,6 +143,7 @@ public class Anonymous
 
             /**
              * Creates list of users with given input array
+             * 
              * <p>
              * </p>
              * 
@@ -154,6 +162,7 @@ public class Anonymous
 
             /**
              * Creates list of users with given input array
+             * 
              * <p>
              * </p>
              * 
@@ -172,6 +181,7 @@ public class Anonymous
 
             /**
              * Logs user into the system
+             * 
              * <p>
              * </p>
              * 
@@ -190,6 +200,7 @@ public class Anonymous
 
             /**
              * Logs out current logged in user session
+             * 
              * <p>
              * </p>
              */

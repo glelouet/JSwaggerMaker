@@ -101,6 +101,7 @@ public class Anonymous
 
         /**
          * List all alliances
+         * 
          * <p>
          * List all active player alliances<br />
          * This route is cached for up to 3600 seconds
@@ -122,6 +123,7 @@ public class Anonymous
 
         /**
          * Get alliance information
+         * 
          * <p>
          * Public information about an alliance<br />
          * This route is cached for up to 3600 seconds
@@ -147,6 +149,7 @@ public class Anonymous
 
             /**
              * List alliance's corporations
+             * 
              * <p>
              * List all current member corporations of an alliance<br />
              * This route is cached for up to 3600 seconds
@@ -173,6 +176,7 @@ public class Anonymous
 
             /**
              * Get alliance icon
+             * 
              * <p>
              * Get the icon urls for a alliance<br />
              * This route expires daily at 11:05
@@ -203,6 +207,7 @@ public class Anonymous
 
         /**
          * Get character's public information
+         * 
          * <p>
          * Public information about a character<br />
          * This route is cached for up to 3600 seconds
@@ -228,6 +233,7 @@ public class Anonymous
 
             /**
              * Character affiliation
+             * 
              * <p>
              * Bulk lookup of character IDs to corporation, alliance and faction<br />
              * This route is cached for up to 3600 seconds
@@ -250,6 +256,7 @@ public class Anonymous
 
             /**
              * Get corporation history
+             * 
              * <p>
              * Get a list of all the corporations a character has been a member of<br />
              * This route is cached for up to 3600 seconds
@@ -276,6 +283,7 @@ public class Anonymous
 
             /**
              * Get character portraits
+             * 
              * <p>
              * Get portrait urls for a character<br />
              * This route expires daily at 11:05
@@ -308,6 +316,7 @@ public class Anonymous
 
             /**
              * Get public contracts
+             * 
              * <p>
              * Returns a paginated list of all public contracts in the given region<br />
              * This route is cached for up to 1800 seconds
@@ -335,6 +344,7 @@ public class Anonymous
 
                 /**
                  * Get public contract bids
+                 * 
                  * <p>
                  * Lists bids on a public auction contract<br />
                  * This route is cached for up to 300 seconds
@@ -363,6 +373,7 @@ public class Anonymous
 
                 /**
                  * Get public contract items
+                 * 
                  * <p>
                  * Lists items of a public contract<br />
                  * This route is cached for up to 3600 seconds
@@ -396,6 +407,7 @@ public class Anonymous
 
         /**
          * Get corporation information
+         * 
          * <p>
          * Public information about a corporation<br />
          * This route is cached for up to 3600 seconds
@@ -421,6 +433,7 @@ public class Anonymous
 
             /**
              * Get alliance history
+             * 
              * <p>
              * Get a list of all the alliances a corporation has been a member of<br />
              * This route is cached for up to 3600 seconds
@@ -447,6 +460,7 @@ public class Anonymous
 
             /**
              * Get corporation icon
+             * 
              * <p>
              * Get the icon urls for a corporation<br />
              * This route is cached for up to 3600 seconds
@@ -473,6 +487,7 @@ public class Anonymous
 
             /**
              * Get npc corporations
+             * 
              * <p>
              * Get a list of npc corporations<br />
              * This route expires daily at 11:05
@@ -503,6 +518,7 @@ public class Anonymous
 
             /**
              * Get attributes
+             * 
              * <p>
              * Get a list of dogma attribute ids<br />
              * This route expires daily at 11:05
@@ -524,6 +540,7 @@ public class Anonymous
 
             /**
              * Get attribute information
+             * 
              * <p>
              * Get information on a dogma attribute<br />
              * This route expires daily at 11:05
@@ -553,6 +570,7 @@ public class Anonymous
 
                 /**
                  * Get dynamic item information
+                 * 
                  * <p>
                  * Returns info about a dynamic item resulting from mutation with a mutaplasmid.<br />
                  * This route expires daily at 11:05
@@ -582,6 +600,7 @@ public class Anonymous
 
             /**
              * Get effects
+             * 
              * <p>
              * Get a list of dogma effect ids<br />
              * This route expires daily at 11:05
@@ -603,6 +622,7 @@ public class Anonymous
 
             /**
              * Get effect information
+             * 
              * <p>
              * Get information on a dogma effect<br />
              * This route expires daily at 11:05
@@ -638,6 +658,7 @@ public class Anonymous
 
             /**
              * List of the top factions in faction warfare
+             * 
              * <p>
              * Top 4 leaderboard of factions for kills and victory points separated by total, last week and yesterday<br />
              * This route expires daily at 11:05
@@ -661,6 +682,7 @@ public class Anonymous
 
                 /**
                  * List of the top pilots in faction warfare
+                 * 
                  * <p>
                  * Top 100 leaderboard of pilots for kills and victory points separated by total, last week and yesterday<br />
                  * This route expires daily at 11:05
@@ -685,6 +707,7 @@ public class Anonymous
 
                 /**
                  * List of the top corporations in faction warfare
+                 * 
                  * <p>
                  * Top 10 leaderboard of corporations for kills and victory points separated by total, last week and yesterday<br />
                  * This route expires daily at 11:05
@@ -710,6 +733,7 @@ public class Anonymous
 
             /**
              * An overview of statistics about factions involved in faction warfare
+             * 
              * <p>
              * Statistical overviews of factions involved in faction warfare<br />
              * This route expires daily at 11:05
@@ -734,6 +758,7 @@ public class Anonymous
 
             /**
              * Ownership of faction warfare systems
+             * 
              * <p>
              * An overview of the current ownership of faction warfare solar systems<br />
              * This route is cached for up to 1800 seconds
@@ -758,6 +783,7 @@ public class Anonymous
 
             /**
              * Data about which NPC factions are at war
+             * 
              * <p>
              * Data about which NPC factions are at war<br />
              * This route expires daily at 11:05
@@ -783,6 +809,7 @@ public class Anonymous
 
         /**
          * List incursions
+         * 
          * <p>
          * Return a list of current incursions<br />
          * This route is cached for up to 300 seconds
@@ -811,6 +838,7 @@ public class Anonymous
 
             /**
              * List industry facilities
+             * 
              * <p>
              * Return a list of industry facilities<br />
              * This route is cached for up to 3600 seconds
@@ -835,6 +863,7 @@ public class Anonymous
 
             /**
              * List solar system cost indices
+             * 
              * <p>
              * Return cost indices for solar systems<br />
              * This route is cached for up to 3600 seconds
@@ -863,6 +892,7 @@ public class Anonymous
 
             /**
              * List insurance levels
+             * 
              * <p>
              * Return available insurance levels for all ship types<br />
              * This route is cached for up to 3600 seconds
@@ -895,6 +925,7 @@ public class Anonymous
 
         /**
          * Get a single killmail
+         * 
          * <p>
          * Return a single killmail from its ID and hash<br />
          * This route is cached for up to 1209600 seconds
@@ -929,6 +960,7 @@ public class Anonymous
 
                 /**
                  * List loyalty store offers
+                 * 
                  * <p>
                  * Return a list of offers from a specific corporation's loyalty store<br />
                  * This route expires daily at 11:05
@@ -964,6 +996,7 @@ public class Anonymous
 
             /**
              * Get item groups
+             * 
              * <p>
              * Get a list of item groups<br />
              * This route expires daily at 11:05
@@ -985,6 +1018,7 @@ public class Anonymous
 
             /**
              * Get item group information
+             * 
              * <p>
              * Get information on an item group<br />
              * This route expires daily at 11:05
@@ -1021,6 +1055,7 @@ public class Anonymous
 
             /**
              * List historical market statistics in a region
+             * 
              * <p>
              * Return a list of historical market statistics for the specified type in a region<br />
              * This route expires daily at 11:05
@@ -1049,6 +1084,7 @@ public class Anonymous
 
             /**
              * List orders in a region
+             * 
              * <p>
              * Return a list of orders in a region<br />
              * This route is cached for up to 300 seconds
@@ -1085,6 +1121,7 @@ public class Anonymous
 
             /**
              * List market prices
+             * 
              * <p>
              * Return a list of prices<br />
              * This route is cached for up to 3600 seconds
@@ -1109,6 +1146,7 @@ public class Anonymous
 
             /**
              * List type IDs relevant to a market
+             * 
              * <p>
              * Return a list of type IDs that have active orders in the region, for efficient market indexing.<br />
              * This route is cached for up to 600 seconds
@@ -1142,6 +1180,7 @@ public class Anonymous
 
             /**
              * Get opportunities groups
+             * 
              * <p>
              * Return a list of opportunities groups<br />
              * This route expires daily at 11:05
@@ -1163,6 +1202,7 @@ public class Anonymous
 
             /**
              * Get opportunities group
+             * 
              * <p>
              * Return information of an opportunities group<br />
              * This route expires daily at 11:05
@@ -1199,6 +1239,7 @@ public class Anonymous
 
             /**
              * Get opportunities tasks
+             * 
              * <p>
              * Return a list of opportunities tasks<br />
              * This route expires daily at 11:05
@@ -1220,6 +1261,7 @@ public class Anonymous
 
             /**
              * Get opportunities task
+             * 
              * <p>
              * Return information of an opportunities task<br />
              * This route expires daily at 11:05
@@ -1247,6 +1289,7 @@ public class Anonymous
 
         /**
          * Get route
+         * 
          * <p>
          * Get the systems between origin and destination<br />
          * This route is cached for up to 86400 seconds
@@ -1286,6 +1329,7 @@ public class Anonymous
 
         /**
          * Search on a string
+         * 
          * <p>
          * Search for entities that match a given sub-string.<br />
          * This route is cached for up to 3600 seconds
@@ -1333,6 +1377,7 @@ public class Anonymous
 
             /**
              * List sovereignty campaigns
+             * 
              * <p>
              * Shows sovereignty data for campaigns.<br />
              * This route is cached for up to 5 seconds
@@ -1357,6 +1402,7 @@ public class Anonymous
 
             /**
              * List sovereignty of systems
+             * 
              * <p>
              * Shows sovereignty information for solar systems<br />
              * This route is cached for up to 3600 seconds
@@ -1381,6 +1427,7 @@ public class Anonymous
 
             /**
              * List sovereignty structures
+             * 
              * <p>
              * Shows sovereignty data for structures.<br />
              * This route is cached for up to 120 seconds
@@ -1406,6 +1453,7 @@ public class Anonymous
 
         /**
          * Retrieve the uptime and player counts
+         * 
          * <p>
          * EVE Server status<br />
          * This route is cached for up to 30 seconds
@@ -1455,6 +1503,7 @@ public class Anonymous
 
             /**
              * Get ancestries
+             * 
              * <p>
              * Get all character ancestries<br />
              * This route expires daily at 11:05
@@ -1486,6 +1535,7 @@ public class Anonymous
 
             /**
              * Get asteroid belt information
+             * 
              * <p>
              * Get information on an asteroid belt<br />
              * This route expires daily at 11:05
@@ -1512,6 +1562,7 @@ public class Anonymous
 
             /**
              * Get bloodlines
+             * 
              * <p>
              * Get a list of bloodlines<br />
              * This route expires daily at 11:05
@@ -1543,6 +1594,7 @@ public class Anonymous
 
             /**
              * Get item categories
+             * 
              * <p>
              * Get a list of item categories<br />
              * This route expires daily at 11:05
@@ -1564,6 +1616,7 @@ public class Anonymous
 
             /**
              * Get item category information
+             * 
              * <p>
              * Get information of an item category<br />
              * This route expires daily at 11:05
@@ -1600,6 +1653,7 @@ public class Anonymous
 
             /**
              * Get constellations
+             * 
              * <p>
              * Get a list of constellations<br />
              * This route expires daily at 11:05
@@ -1621,6 +1675,7 @@ public class Anonymous
 
             /**
              * Get constellation information
+             * 
              * <p>
              * Get information on a constellation<br />
              * This route expires daily at 11:05
@@ -1657,6 +1712,7 @@ public class Anonymous
 
             /**
              * Get factions
+             * 
              * <p>
              * Get a list of factions<br />
              * This route expires daily at 11:05
@@ -1688,6 +1744,7 @@ public class Anonymous
 
             /**
              * Get graphics
+             * 
              * <p>
              * Get a list of graphics<br />
              * This route expires daily at 11:05
@@ -1709,6 +1766,7 @@ public class Anonymous
 
             /**
              * Get graphic information
+             * 
              * <p>
              * Get information on a graphic<br />
              * This route expires daily at 11:05
@@ -1735,6 +1793,7 @@ public class Anonymous
 
             /**
              * Get item groups
+             * 
              * <p>
              * Get a list of item groups<br />
              * This route expires daily at 11:05
@@ -1758,6 +1817,7 @@ public class Anonymous
 
             /**
              * Get item group information
+             * 
              * <p>
              * Get information on an item group<br />
              * This route expires daily at 11:05
@@ -1794,6 +1854,7 @@ public class Anonymous
 
             /**
              * Bulk names to IDs
+             * 
              * <p>
              * Resolve a set of names to IDs in the following categories: agents, alliances, characters, constellations, corporations factions, inventory_types, regions, stations, and systems. Only exact matches will be returned. All names searched for are cached for 12 hours
              * </p>
@@ -1823,6 +1884,7 @@ public class Anonymous
 
             /**
              * Get moon information
+             * 
              * <p>
              * Get information on a moon<br />
              * This route expires daily at 11:05
@@ -1849,6 +1911,7 @@ public class Anonymous
 
             /**
              * Get names and categories for a set of IDs
+             * 
              * <p>
              * Resolve a set of IDs to names and categories. Supported ID's for resolving are: Characters, Corporations, Alliances, Stations, Solar Systems, Constellations, Regions, Types, Factions
              * </p>
@@ -1870,6 +1933,7 @@ public class Anonymous
 
             /**
              * Get planet information
+             * 
              * <p>
              * Get information on a planet<br />
              * This route expires daily at 11:05
@@ -1896,6 +1960,7 @@ public class Anonymous
 
             /**
              * Get character races
+             * 
              * <p>
              * Get a list of character races<br />
              * This route expires daily at 11:05
@@ -1927,6 +1992,7 @@ public class Anonymous
 
             /**
              * Get regions
+             * 
              * <p>
              * Get a list of regions<br />
              * This route expires daily at 11:05
@@ -1948,6 +2014,7 @@ public class Anonymous
 
             /**
              * Get region information
+             * 
              * <p>
              * Get information on a region<br />
              * This route expires daily at 11:05
@@ -1984,6 +2051,7 @@ public class Anonymous
 
             /**
              * Get schematic information
+             * 
              * <p>
              * Get information on a planetary factory schematic<br />
              * This route is cached for up to 3600 seconds
@@ -2010,6 +2078,7 @@ public class Anonymous
 
             /**
              * Get stargate information
+             * 
              * <p>
              * Get information on a stargate<br />
              * This route expires daily at 11:05
@@ -2036,6 +2105,7 @@ public class Anonymous
 
             /**
              * Get star information
+             * 
              * <p>
              * Get information on a star<br />
              * This route expires daily at 11:05
@@ -2062,6 +2132,7 @@ public class Anonymous
 
             /**
              * Get station information
+             * 
              * <p>
              * Get information on a station<br />
              * This route expires daily at 11:05
@@ -2088,6 +2159,7 @@ public class Anonymous
 
             /**
              * List all public structures
+             * 
              * <p>
              * List all public structures<br />
              * This route is cached for up to 3600 seconds
@@ -2114,6 +2186,7 @@ public class Anonymous
 
             /**
              * Get system jumps
+             * 
              * <p>
              * Get the number of jumps in solar systems within the last hour ending at the timestamp of the Last-Modified header, excluding wormhole space. Only systems with jumps will be listed<br />
              * This route is cached for up to 3600 seconds
@@ -2138,6 +2211,7 @@ public class Anonymous
 
             /**
              * Get system kills
+             * 
              * <p>
              * Get the number of ship, pod and NPC kills per solar system within the last hour ending at the timestamp of the Last-Modified header, excluding wormhole space. Only systems with kills will be listed<br />
              * This route is cached for up to 3600 seconds
@@ -2162,6 +2236,7 @@ public class Anonymous
 
             /**
              * Get solar systems
+             * 
              * <p>
              * Get a list of solar systems<br />
              * This route expires daily at 11:05
@@ -2183,6 +2258,7 @@ public class Anonymous
 
             /**
              * Get solar system information
+             * 
              * <p>
              * Get information on a solar system.<br />
              * This route expires daily at 11:05
@@ -2219,6 +2295,7 @@ public class Anonymous
 
             /**
              * Get types
+             * 
              * <p>
              * Get a list of type ids<br />
              * This route expires daily at 11:05
@@ -2242,6 +2319,7 @@ public class Anonymous
 
             /**
              * Get type information
+             * 
              * <p>
              * Get information on a type<br />
              * This route expires daily at 11:05
@@ -2280,6 +2358,7 @@ public class Anonymous
 
         /**
          * List wars
+         * 
          * <p>
          * Return a list of wars<br />
          * This route is cached for up to 3600 seconds
@@ -2303,6 +2382,7 @@ public class Anonymous
 
         /**
          * Get war information
+         * 
          * <p>
          * Return details about a war<br />
          * This route is cached for up to 3600 seconds
@@ -2328,6 +2408,7 @@ public class Anonymous
 
             /**
              * List kills for a war
+             * 
              * <p>
              * Return a list of kills related to a war<br />
              * This route is cached for up to 3600 seconds
