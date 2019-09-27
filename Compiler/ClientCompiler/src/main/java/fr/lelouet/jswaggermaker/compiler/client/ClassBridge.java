@@ -555,21 +555,23 @@ public class ClassBridge {
 	protected void makeClass(JDefinedClass cl, Property property) {
 		if (property.getClass() == ObjectProperty.class) {
 			ObjectProperty p = (ObjectProperty) property;
-			for (Entry<String, Property> e : p.getProperties().entrySet()) {
-				String propName = e.getKey();
-				logger.debug("making field for property " + propName);
-				String sanitizedPropName = sanitizeVarName(propName);
-				Property prop = e.getValue();
-				String structName = prop.getTitle();
-				if (structName == null) {
-					structName = camelcase(sanitizedPropName);
-				}
-				AbstractJType type = translateToClass(prop, cl.getPackage().subPackage(cl.name().toLowerCase()), structName);
-				logger.debug("call field for name=" + e.getKey() + " type=" + type);
-				JFieldVar field = cl.field(JMod.PUBLIC, type, sanitizedPropName);
-				field.javadoc().add(prop.getDescription());
-				if (!sanitizedPropName.equals(propName)) {
-					field.annotate(JsonProperty.class).param("value", propName);
+			if (p.getProperties() != null) {
+				for (Entry<String, Property> e : p.getProperties().entrySet()) {
+					String propName = e.getKey();
+					logger.debug("making field for property " + propName);
+					String sanitizedPropName = sanitizeVarName(propName);
+					Property prop = e.getValue();
+					String structName = prop.getTitle();
+					if (structName == null) {
+						structName = camelcase(sanitizedPropName);
+					}
+					AbstractJType type = translateToClass(prop, cl.getPackage().subPackage(cl.name().toLowerCase()), structName);
+					logger.debug("call field for name=" + e.getKey() + " type=" + type);
+					JFieldVar field = cl.field(JMod.PUBLIC, type, sanitizedPropName);
+					field.javadoc().add(prop.getDescription());
+					if (!sanitizedPropName.equals(propName)) {
+						field.annotate(JsonProperty.class).param("value", propName);
+					}
 				}
 			}
 		} else {
@@ -691,7 +693,7 @@ public class ClassBridge {
 		 * @return this
 		 */
 		public PartiallyCompiled inMap() {
-			returned = cm.ref(HashMap.class).narrow(String.class).narrow(returned);
+			returned = cm.ref(Map.class).narrow(String.class).narrow(returned);
 			return this;
 		}
 
@@ -828,8 +830,9 @@ public class ClassBridge {
 		}
 		for (Property prop : allOf) {
 			if (prop.getClass() == Property.class) {
-
+				logger.warn("unimplemented allof over property " + prop);
 			} else if (prop.getClass() == RefProperty.class) {
+				logger.warn("unimplemented allof over property " + prop);
 			} else {
 				logger.debug("can't add model class " + prop.getClass() + " to a class");
 			}
@@ -838,6 +841,9 @@ public class ClassBridge {
 	}
 
 	public void createEquals(JDefinedClass cl) {
+		if (cl.fields().isEmpty()) {
+			return;
+		}
 		JMethod eqmeth = cl.method(JMod.PUBLIC, cm.BOOLEAN, "equals");
 		JVar eqOther = eqmeth.param(cm.ref(Object.class), "other");
 		eqmeth.annotate(Override.class);
@@ -868,6 +874,9 @@ public class ClassBridge {
 	}
 
 	public void createHashCode(JDefinedClass cl) {
+		if (cl.fields().isEmpty()) {
+			return;
+		}
 		JMethod hashmeth = cl.method(JMod.PUBLIC, cm.INT, "hashCode");
 		IJExpression ret = null;
 		for (JFieldVar field : cl.fields().values()) {

@@ -16,7 +16,7 @@ public class CommentThreadSnippet {
     /**
      * The top level comment of this thread.
      */
-    public Caption topLevelComment;
+    public Comment topLevelComment;
     /**
      * The total number of replies (not including the top level comment).
      */

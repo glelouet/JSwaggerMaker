@@ -22,7 +22,7 @@ public class ChannelSection {
     /**
      * Localizations for different languages
      */
-    public HashMap<String, ChannelSectionLocalization> localizations;
+    public HashMap<String, Object> localizations;
     /**
      * The snippet object contains basic details about the channel section, such as its type, style and title.
      */

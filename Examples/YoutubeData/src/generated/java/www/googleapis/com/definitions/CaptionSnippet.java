@@ -1,19 +1,19 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.AUDIOTRACKTYPE;
-import www.googleapis.com.structures.FAILUREREASON;
-import www.googleapis.com.structures.STATUS;
-import www.googleapis.com.structures.TRACKKIND;
+import www.googleapis.com.structures.Audiotracktype;
+import www.googleapis.com.structures.Failurereason;
+import www.googleapis.com.structures.Status;
+import www.googleapis.com.structures.Trackkind;
 
 public class CaptionSnippet {
     /**
      * The type of audio track associated with the caption track.
      */
-    public AUDIOTRACKTYPE audioTrackType;
+    public Audiotracktype audioTrackType;
     /**
      * The reason that YouTube failed to process the caption track. This property is only present if the state property's value is failed.
      */
-    public FAILUREREASON failureReason;
+    public Failurereason failureReason;
     /**
      * Indicates whether YouTube synchronized the caption track to the audio track in the video. The value will be true if a sync was explicitly requested when the caption track was uploaded. For example, when calling the captions.insert or captions.update methods, you can set the sync parameter to true to instruct YouTube to sync the uploaded track to the video. If the value is false, YouTube uses the time codes in the uploaded caption track to determine when to display captions.
      */
@@ -49,11 +49,11 @@ public class CaptionSnippet {
     /**
      * The caption track's status.
      */
-    public STATUS status;
+    public Status status;
     /**
      * The caption track's type.
      */
-    public TRACKKIND trackKind;
+    public Trackkind trackKind;
     /**
      * The ID that YouTube uses to uniquely identify the video associated with the caption track.
      */

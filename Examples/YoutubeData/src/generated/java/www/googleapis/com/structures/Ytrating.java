@@ -1,0 +1,18 @@
+package www.googleapis.com.structures;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public enum Ytrating {
+    @JsonProperty("ytAgeRestricted")
+    ytAgeRestricted("ytAgeRestricted");
+    public final String toString;
+
+    Ytrating(String toString) {
+        this.toString = toString;
+    }
+
+    @Override
+    public String toString() {
+        return toString;
+    }
+}

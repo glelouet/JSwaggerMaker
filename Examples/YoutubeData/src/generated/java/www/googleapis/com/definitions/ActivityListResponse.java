@@ -26,7 +26,7 @@ public class ActivityListResponse {
      * The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set.
      */
     public String prevPageToken;
-    public Object tokenPagination;
+    public TokenPagination tokenPagination;
     /**
      * The visitorId identifies the visitor.
      */

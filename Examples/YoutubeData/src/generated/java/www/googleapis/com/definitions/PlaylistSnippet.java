@@ -20,7 +20,7 @@ public class PlaylistSnippet {
     /**
      * Localized title and description, read-only.
      */
-    public ChannelLocalization localized;
+    public PlaylistLocalization localized;
     /**
      * The date and time that the playlist was created. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
      */

@@ -1,12 +1,12 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.PRIVACYSTATUS;
+import www.googleapis.com.structures.Privacystatus;
 
 public class PlaylistItemStatus {
     /**
      * This resource's privacy status.
      */
-    public PRIVACYSTATUS privacyStatus;
+    public Privacystatus privacyStatus;
 
     @Override
     public boolean equals(Object other) {

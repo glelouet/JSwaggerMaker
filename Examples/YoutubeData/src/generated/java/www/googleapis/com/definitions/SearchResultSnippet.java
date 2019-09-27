@@ -1,6 +1,6 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.LIVEBROADCASTCONTENT;
+import www.googleapis.com.structures.Livebroadcastcontent;
 
 public class SearchResultSnippet {
     /**
@@ -18,7 +18,7 @@ public class SearchResultSnippet {
     /**
      * It indicates if the resource (video or channel) has upcoming/active live broadcast content. Or it's "none" if there is not any upcoming/active live broadcasts.
      */
-    public LIVEBROADCASTCONTENT liveBroadcastContent;
+    public Livebroadcastcontent liveBroadcastContent;
     /**
      * The creation date and time of the resource that the search result identifies. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
      */

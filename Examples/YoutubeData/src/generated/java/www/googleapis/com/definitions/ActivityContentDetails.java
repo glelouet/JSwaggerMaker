@@ -8,19 +8,19 @@ public class ActivityContentDetails {
     /**
      * The channelItem object contains details about a resource which was added to a channel. This property is only present if the snippet.type is channelItem.
      */
-    public ActivityContentDetailsBulletin channelItem;
+    public ActivityContentDetailsChannelItem channelItem;
     /**
      * The comment object contains information about a resource that received a comment. This property is only present if the snippet.type is comment.
      */
-    public ActivityContentDetailsBulletin comment;
+    public ActivityContentDetailsComment comment;
     /**
      * The favorite object contains information about a video that was marked as a favorite video. This property is only present if the snippet.type is favorite.
      */
-    public ActivityContentDetailsBulletin favorite;
+    public ActivityContentDetailsFavorite favorite;
     /**
      * The like object contains information about a resource that received a positive (like) rating. This property is only present if the snippet.type is like.
      */
-    public ActivityContentDetailsBulletin like;
+    public ActivityContentDetailsLike like;
     /**
      * The playlistItem object contains information about a new playlist item. This property is only present if the snippet.type is playlistItem.
      */
@@ -40,7 +40,7 @@ public class ActivityContentDetails {
     /**
      * The subscription object contains information about a channel that a user subscribed to. This property is only present if the snippet.type is subscription.
      */
-    public ActivityContentDetailsBulletin subscription;
+    public ActivityContentDetailsSubscription subscription;
     /**
      * The upload object contains information about the uploaded video. This property is only present if the snippet.type is upload.
      */

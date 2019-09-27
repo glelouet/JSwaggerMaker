@@ -1,12 +1,12 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.REASON;
+import www.googleapis.com.structures.Reason;
 
 public class ActivityContentDetailsRecommendation {
     /**
      * The reason that the resource is recommended to the user.
      */
-    public REASON reason;
+    public Reason reason;
     /**
      * The resourceId object contains information that identifies the recommended resource.
      */

@@ -1,359 +1,359 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.ACBRATING;
-import www.googleapis.com.structures.AGCOMRATING;
-import www.googleapis.com.structures.ANATELRATING;
-import www.googleapis.com.structures.BBFCRATING;
-import www.googleapis.com.structures.BFVCRATING;
-import www.googleapis.com.structures.BMUKKRATING;
-import www.googleapis.com.structures.CATVFRRATING;
-import www.googleapis.com.structures.CATVRATING;
-import www.googleapis.com.structures.CBFCRATING;
-import www.googleapis.com.structures.CCCRATING;
-import www.googleapis.com.structures.CCERATING;
-import www.googleapis.com.structures.CHFILMRATING;
-import www.googleapis.com.structures.CHVRSRATING;
-import www.googleapis.com.structures.CICFRATING;
-import www.googleapis.com.structures.CNARATING;
-import www.googleapis.com.structures.CNCRATING;
-import www.googleapis.com.structures.CSARATING;
-import www.googleapis.com.structures.CSCFRATING;
-import www.googleapis.com.structures.CZFILMRATING;
-import www.googleapis.com.structures.DJCTQRATING;
-import www.googleapis.com.structures.DJCTQRATINGREASONS;
-import www.googleapis.com.structures.ECBMCTRATING;
-import www.googleapis.com.structures.EEFILMRATING;
-import www.googleapis.com.structures.EGFILMRATING;
-import www.googleapis.com.structures.EIRINRATING;
-import www.googleapis.com.structures.FCBMRATING;
-import www.googleapis.com.structures.FCORATING;
-import www.googleapis.com.structures.FMOCRATING;
-import www.googleapis.com.structures.FPBRATING;
-import www.googleapis.com.structures.FPBRATINGREASONS;
-import www.googleapis.com.structures.FSKRATING;
-import www.googleapis.com.structures.GRFILMRATING;
-import www.googleapis.com.structures.ICAARATING;
-import www.googleapis.com.structures.IFCORATING;
-import www.googleapis.com.structures.ILFILMRATING;
-import www.googleapis.com.structures.INCAARATING;
-import www.googleapis.com.structures.KFCBRATING;
-import www.googleapis.com.structures.KIJKWIJZERRATING;
-import www.googleapis.com.structures.KMRBRATING;
-import www.googleapis.com.structures.LSFRATING;
-import www.googleapis.com.structures.MCCAARATING;
-import www.googleapis.com.structures.MCCYPRATING;
-import www.googleapis.com.structures.MCSTRATING;
-import www.googleapis.com.structures.MDARATING;
-import www.googleapis.com.structures.MEDIETILSYNETRATING;
-import www.googleapis.com.structures.MEKURATING;
-import www.googleapis.com.structures.MENAMPAARATING;
-import www.googleapis.com.structures.MIBACRATING;
-import www.googleapis.com.structures.MOCRATING;
-import www.googleapis.com.structures.MOCTWRATING;
-import www.googleapis.com.structures.MPAARATING;
-import www.googleapis.com.structures.MPAATRATING;
-import www.googleapis.com.structures.MTRCBRATING;
-import www.googleapis.com.structures.NBCPLRATING;
-import www.googleapis.com.structures.NBCRATING;
-import www.googleapis.com.structures.NFRCRATING;
-import www.googleapis.com.structures.NFVCBRATING;
-import www.googleapis.com.structures.NKCLVRATING;
-import www.googleapis.com.structures.NMCRATING;
-import www.googleapis.com.structures.OFLCRATING;
-import www.googleapis.com.structures.PEFILMRATING;
-import www.googleapis.com.structures.RCNOFRATING;
-import www.googleapis.com.structures.RESORTEVIOLENCIARATING;
-import www.googleapis.com.structures.RTCRATING;
-import www.googleapis.com.structures.RTERATING;
-import www.googleapis.com.structures.RUSSIARATING;
-import www.googleapis.com.structures.SKFILMRATING;
-import www.googleapis.com.structures.SMAISRATING;
-import www.googleapis.com.structures.SMSARATING;
-import www.googleapis.com.structures.TVPGRATING;
-import www.googleapis.com.structures.YTRATING;
+import www.googleapis.com.structures.Acbrating;
+import www.googleapis.com.structures.Agcomrating;
+import www.googleapis.com.structures.Anatelrating;
+import www.googleapis.com.structures.Bbfcrating;
+import www.googleapis.com.structures.Bfvcrating;
+import www.googleapis.com.structures.Bmukkrating;
+import www.googleapis.com.structures.Catvfrrating;
+import www.googleapis.com.structures.Catvrating;
+import www.googleapis.com.structures.Cbfcrating;
+import www.googleapis.com.structures.Cccrating;
+import www.googleapis.com.structures.Ccerating;
+import www.googleapis.com.structures.Chfilmrating;
+import www.googleapis.com.structures.Chvrsrating;
+import www.googleapis.com.structures.Cicfrating;
+import www.googleapis.com.structures.Cnarating;
+import www.googleapis.com.structures.Cncrating;
+import www.googleapis.com.structures.Csarating;
+import www.googleapis.com.structures.Cscfrating;
+import www.googleapis.com.structures.Czfilmrating;
+import www.googleapis.com.structures.Djctqrating;
+import www.googleapis.com.structures.Djctqratingreasons;
+import www.googleapis.com.structures.Ecbmctrating;
+import www.googleapis.com.structures.Eefilmrating;
+import www.googleapis.com.structures.Egfilmrating;
+import www.googleapis.com.structures.Eirinrating;
+import www.googleapis.com.structures.Fcbmrating;
+import www.googleapis.com.structures.Fcorating;
+import www.googleapis.com.structures.Fmocrating;
+import www.googleapis.com.structures.Fpbrating;
+import www.googleapis.com.structures.Fpbratingreasons;
+import www.googleapis.com.structures.Fskrating;
+import www.googleapis.com.structures.Grfilmrating;
+import www.googleapis.com.structures.Icaarating;
+import www.googleapis.com.structures.Ifcorating;
+import www.googleapis.com.structures.Ilfilmrating;
+import www.googleapis.com.structures.Incaarating;
+import www.googleapis.com.structures.Kfcbrating;
+import www.googleapis.com.structures.Kijkwijzerrating;
+import www.googleapis.com.structures.Kmrbrating;
+import www.googleapis.com.structures.Lsfrating;
+import www.googleapis.com.structures.Mccaarating;
+import www.googleapis.com.structures.Mccyprating;
+import www.googleapis.com.structures.Mcstrating;
+import www.googleapis.com.structures.Mdarating;
+import www.googleapis.com.structures.Medietilsynetrating;
+import www.googleapis.com.structures.Mekurating;
+import www.googleapis.com.structures.Menampaarating;
+import www.googleapis.com.structures.Mibacrating;
+import www.googleapis.com.structures.Mocrating;
+import www.googleapis.com.structures.Moctwrating;
+import www.googleapis.com.structures.Mpaarating;
+import www.googleapis.com.structures.Mpaatrating;
+import www.googleapis.com.structures.Mtrcbrating;
+import www.googleapis.com.structures.Nbcplrating;
+import www.googleapis.com.structures.Nbcrating;
+import www.googleapis.com.structures.Nfrcrating;
+import www.googleapis.com.structures.Nfvcbrating;
+import www.googleapis.com.structures.Nkclvrating;
+import www.googleapis.com.structures.Nmcrating;
+import www.googleapis.com.structures.Oflcrating;
+import www.googleapis.com.structures.Pefilmrating;
+import www.googleapis.com.structures.Rcnofrating;
+import www.googleapis.com.structures.Resorteviolenciarating;
+import www.googleapis.com.structures.Rtcrating;
+import www.googleapis.com.structures.Rterating;
+import www.googleapis.com.structures.Russiarating;
+import www.googleapis.com.structures.Skfilmrating;
+import www.googleapis.com.structures.Smaisrating;
+import www.googleapis.com.structures.Smsarating;
+import www.googleapis.com.structures.Tvpgrating;
+import www.googleapis.com.structures.Ytrating;
 
 public class ContentRating {
     /**
      * The video's Australian Classification Board (ACB) or Australian Communications and Media Authority (ACMA) rating. ACMA ratings are used to classify children's television programming.
      */
-    public ACBRATING acbRating;
+    public Acbrating acbRating;
     /**
      * The video's rating from Italy's Autorità per le Garanzie nelle Comunicazioni (AGCOM).
      */
-    public AGCOMRATING agcomRating;
+    public Agcomrating agcomRating;
     /**
      * The video's Anatel (Asociación Nacional de Televisión) rating for Chilean television.
      */
-    public ANATELRATING anatelRating;
+    public Anatelrating anatelRating;
     /**
      * The video's British Board of Film Classification (BBFC) rating.
      */
-    public BBFCRATING bbfcRating;
+    public Bbfcrating bbfcRating;
     /**
      * The video's rating from Thailand's Board of Film and Video Censors.
      */
-    public BFVCRATING bfvcRating;
+    public Bfvcrating bfvcRating;
     /**
      * The video's rating from the Austrian Board of Media Classification (Bundesministerium für Unterricht, Kunst und Kultur).
      */
-    public BMUKKRATING bmukkRating;
+    public Bmukkrating bmukkRating;
     /**
      * Rating system for Canadian TV - Canadian TV Classification System The video's rating from the Canadian Radio-Television and Telecommunications Commission (CRTC) for Canadian English-language broadcasts. For more information, see the Canadian Broadcast Standards Council website.
      */
-    public CATVRATING catvRating;
+    public Catvrating catvRating;
     /**
      * The video's rating from the Canadian Radio-Television and Telecommunications Commission (CRTC) for Canadian French-language broadcasts. For more information, see the Canadian Broadcast Standards Council website.
      */
-    public CATVFRRATING catvfrRating;
+    public Catvfrrating catvfrRating;
     /**
      * The video's Central Board of Film Certification (CBFC - India) rating.
      */
-    public CBFCRATING cbfcRating;
+    public Cbfcrating cbfcRating;
     /**
      * The video's Consejo de Calificación Cinematográfica (Chile) rating.
      */
-    public CCCRATING cccRating;
+    public Cccrating cccRating;
     /**
      * The video's rating from Portugal's Comissão de Classificação de Espect´culos.
      */
-    public CCERATING cceRating;
+    public Ccerating cceRating;
     /**
      * The video's rating in Switzerland.
      */
-    public CHFILMRATING chfilmRating;
+    public Chfilmrating chfilmRating;
     /**
      * The video's Canadian Home Video Rating System (CHVRS) rating.
      */
-    public CHVRSRATING chvrsRating;
+    public Chvrsrating chvrsRating;
     /**
      * The video's rating from the Commission de Contrôle des Films (Belgium).
      */
-    public CICFRATING cicfRating;
+    public Cicfrating cicfRating;
     /**
      * The video's rating from Romania's CONSILIUL NATIONAL AL AUDIOVIZUALULUI (CNA).
      */
-    public CNARATING cnaRating;
+    public Cnarating cnaRating;
     /**
      * Rating system in France - Commission de classification cinematographique
      */
-    public CNCRATING cncRating;
+    public Cncrating cncRating;
     /**
      * The video's rating from France's Conseil supérieur de l?audiovisuel, which rates broadcast content.
      */
-    public CSARATING csaRating;
+    public Csarating csaRating;
     /**
      * The video's rating from Luxembourg's Commission de surveillance de la classification des films (CSCF).
      */
-    public CSCFRATING cscfRating;
+    public Cscfrating cscfRating;
     /**
      * The video's rating in the Czech Republic.
      */
-    public CZFILMRATING czfilmRating;
+    public Czfilmrating czfilmRating;
     /**
      * The video's Departamento de Justiça, Classificação, Qualificação e Títulos (DJCQT - Brazil) rating.
      */
-    public DJCTQRATING djctqRating;
+    public Djctqrating djctqRating;
     /**
      * Reasons that explain why the video received its DJCQT (Brazil) rating.
      */
-    public DJCTQRATINGREASONS[] djctqRatingReasons;
+    public Djctqratingreasons[] djctqRatingReasons;
     /**
      * Rating system in Turkey - Evaluation and Classification Board of the Ministry of Culture and Tourism
      */
-    public ECBMCTRATING ecbmctRating;
+    public Ecbmctrating ecbmctRating;
     /**
      * The video's rating in Estonia.
      */
-    public EEFILMRATING eefilmRating;
+    public Eefilmrating eefilmRating;
     /**
      * The video's rating in Egypt.
      */
-    public EGFILMRATING egfilmRating;
+    public Egfilmrating egfilmRating;
     /**
      * The video's Eirin (映倫) rating. Eirin is the Japanese rating system.
      */
-    public EIRINRATING eirinRating;
+    public Eirinrating eirinRating;
     /**
      * The video's rating from Malaysia's Film Censorship Board.
      */
-    public FCBMRATING fcbmRating;
+    public Fcbmrating fcbmRating;
     /**
      * The video's rating from Hong Kong's Office for Film, Newspaper and Article Administration.
      */
-    public FCORATING fcoRating;
+    public Fcorating fcoRating;
     /**
      * This property has been deprecated. Use the contentDetails.contentRating.cncRating instead.
      */
-    public FMOCRATING fmocRating;
+    public Fmocrating fmocRating;
     /**
      * The video's rating from South Africa's Film and Publication Board.
      */
-    public FPBRATING fpbRating;
+    public Fpbrating fpbRating;
     /**
      * Reasons that explain why the video received its FPB (South Africa) rating.
      */
-    public FPBRATINGREASONS[] fpbRatingReasons;
+    public Fpbratingreasons[] fpbRatingReasons;
     /**
      * The video's Freiwillige Selbstkontrolle der Filmwirtschaft (FSK - Germany) rating.
      */
-    public FSKRATING fskRating;
+    public Fskrating fskRating;
     /**
      * The video's rating in Greece.
      */
-    public GRFILMRATING grfilmRating;
+    public Grfilmrating grfilmRating;
     /**
      * The video's Instituto de la Cinematografía y de las Artes Audiovisuales (ICAA - Spain) rating.
      */
-    public ICAARATING icaaRating;
+    public Icaarating icaaRating;
     /**
      * The video's Irish Film Classification Office (IFCO - Ireland) rating. See the IFCO website for more information.
      */
-    public IFCORATING ifcoRating;
+    public Ifcorating ifcoRating;
     /**
      * The video's rating in Israel.
      */
-    public ILFILMRATING ilfilmRating;
+    public Ilfilmrating ilfilmRating;
     /**
      * The video's INCAA (Instituto Nacional de Cine y Artes Audiovisuales - Argentina) rating.
      */
-    public INCAARATING incaaRating;
+    public Incaarating incaaRating;
     /**
      * The video's rating from the Kenya Film Classification Board.
      */
-    public KFCBRATING kfcbRating;
+    public Kfcbrating kfcbRating;
     /**
      * voor de Classificatie van Audiovisuele Media (Netherlands).
      */
-    public KIJKWIJZERRATING kijkwijzerRating;
+    public Kijkwijzerrating kijkwijzerRating;
     /**
      * The video's Korea Media Rating Board (영상물등급위원회) rating. The KMRB rates videos in South Korea.
      */
-    public KMRBRATING kmrbRating;
+    public Kmrbrating kmrbRating;
     /**
      * The video's rating from Indonesia's Lembaga Sensor Film.
      */
-    public LSFRATING lsfRating;
+    public Lsfrating lsfRating;
     /**
      * The video's rating from Malta's Film Age-Classification Board.
      */
-    public MCCAARATING mccaaRating;
+    public Mccaarating mccaaRating;
     /**
      * The video's rating from the Danish Film Institute's (Det Danske Filminstitut) Media Council for Children and Young People.
      */
-    public MCCYPRATING mccypRating;
+    public Mccyprating mccypRating;
     /**
      * The video's rating system for Vietnam - MCST
      */
-    public MCSTRATING mcstRating;
+    public Mcstrating mcstRating;
     /**
      * The video's rating from Singapore's Media Development Authority (MDA) and, specifically, it's Board of Film Censors (BFC).
      */
-    public MDARATING mdaRating;
+    public Mdarating mdaRating;
     /**
      * The video's rating from Medietilsynet, the Norwegian Media Authority.
      */
-    public MEDIETILSYNETRATING medietilsynetRating;
+    public Medietilsynetrating medietilsynetRating;
     /**
      * The video's rating from Finland's Kansallinen Audiovisuaalinen Instituutti (National Audiovisual Institute).
      */
-    public MEKURATING mekuRating;
+    public Mekurating mekuRating;
     /**
      * The rating system for MENA countries, a clone of MPAA. It is needed to
      */
-    public MENAMPAARATING menaMpaaRating;
+    public Menampaarating menaMpaaRating;
     /**
      * The video's rating from the Ministero dei Beni e delle Attività Culturali e del Turismo (Italy).
      */
-    public MIBACRATING mibacRating;
+    public Mibacrating mibacRating;
     /**
      * The video's Ministerio de Cultura (Colombia) rating.
      */
-    public MOCRATING mocRating;
+    public Mocrating mocRating;
     /**
      * The video's rating from Taiwan's Ministry of Culture (文化部).
      */
-    public MOCTWRATING moctwRating;
+    public Moctwrating moctwRating;
     /**
      * The video's Motion Picture Association of America (MPAA) rating.
      */
-    public MPAARATING mpaaRating;
+    public Mpaarating mpaaRating;
     /**
      * The rating system for trailer, DVD, and Ad in the US. See http://movielabs.com/md/ratings/v2.3/html/US_MPAAT_Ratings.html.
      */
-    public MPAATRATING mpaatRating;
+    public Mpaatrating mpaatRating;
     /**
      * The video's rating from the Movie and Television Review and Classification Board (Philippines).
      */
-    public MTRCBRATING mtrcbRating;
+    public Mtrcbrating mtrcbRating;
     /**
      * The video's rating from the Maldives National Bureau of Classification.
      */
-    public NBCRATING nbcRating;
+    public Nbcrating nbcRating;
     /**
      * The video's rating in Poland.
      */
-    public NBCPLRATING nbcplRating;
+    public Nbcplrating nbcplRating;
     /**
      * The video's rating from the Bulgarian National Film Center.
      */
-    public NFRCRATING nfrcRating;
+    public Nfrcrating nfrcRating;
     /**
      * The video's rating from Nigeria's National Film and Video Censors Board.
      */
-    public NFVCBRATING nfvcbRating;
+    public Nfvcbrating nfvcbRating;
     /**
      * The video's rating from the Nacionãlais Kino centrs (National Film Centre of Latvia).
      */
-    public NKCLVRATING nkclvRating;
-    public NMCRATING nmcRating;
+    public Nkclvrating nkclvRating;
+    public Nmcrating nmcRating;
     /**
      * The video's Office of Film and Literature Classification (OFLC - New Zealand) rating.
      */
-    public OFLCRATING oflcRating;
+    public Oflcrating oflcRating;
     /**
      * The video's rating in Peru.
      */
-    public PEFILMRATING pefilmRating;
+    public Pefilmrating pefilmRating;
     /**
      * The video's rating from the Hungarian Nemzeti Filmiroda, the Rating Committee of the National Office of Film.
      */
-    public RCNOFRATING rcnofRating;
+    public Rcnofrating rcnofRating;
     /**
      * The video's rating in Venezuela.
      */
-    public RESORTEVIOLENCIARATING resorteviolenciaRating;
+    public Resorteviolenciarating resorteviolenciaRating;
     /**
      * The video's General Directorate of Radio, Television and Cinematography (Mexico) rating.
      */
-    public RTCRATING rtcRating;
+    public Rtcrating rtcRating;
     /**
      * The video's rating from Ireland's Raidió Teilifís Éireann.
      */
-    public RTERATING rteRating;
+    public Rterating rteRating;
     /**
      * The video's National Film Registry of the Russian Federation (MKRF - Russia) rating.
      */
-    public RUSSIARATING russiaRating;
+    public Russiarating russiaRating;
     /**
      * The video's rating in Slovakia.
      */
-    public SKFILMRATING skfilmRating;
+    public Skfilmrating skfilmRating;
     /**
      * The video's rating in Iceland.
      */
-    public SMAISRATING smaisRating;
+    public Smaisrating smaisRating;
     /**
      * The video's rating from Statens medieråd (Sweden's National Media Council).
      */
-    public SMSARATING smsaRating;
+    public Smsarating smsaRating;
     /**
      * The video's TV Parental Guidelines (TVPG) rating.
      */
-    public TVPGRATING tvpgRating;
+    public Tvpgrating tvpgRating;
     /**
      * A rating that YouTube uses to identify age-restricted content.
      */
-    public YTRATING ytRating;
+    public Ytrating ytRating;
 
     @Override
     public boolean equals(Object other) {

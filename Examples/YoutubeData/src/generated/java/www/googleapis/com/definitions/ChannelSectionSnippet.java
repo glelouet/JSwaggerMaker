@@ -1,7 +1,7 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.STYLE;
-import www.googleapis.com.structures.TYPE;
+import www.googleapis.com.structures.Style;
+import www.googleapis.com.structures.Type;
 
 public class ChannelSectionSnippet {
     /**
@@ -23,7 +23,7 @@ public class ChannelSectionSnippet {
     /**
      * The style of the channel section.
      */
-    public STYLE style;
+    public Style style;
     /**
      * The channel section's title for multiple_playlists and multiple_channels.
      */
@@ -31,7 +31,7 @@ public class ChannelSectionSnippet {
     /**
      * The type of the channel section.
      */
-    public TYPE type;
+    public Type type;
 
     @Override
     public boolean equals(Object other) {

@@ -1,27 +1,27 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.LIFECYCLESTATUS;
-import www.googleapis.com.structures.LIVEBROADCASTPRIORITY;
-import www.googleapis.com.structures.PRIVACYSTATUS;
-import www.googleapis.com.structures.RECORDINGSTATUS;
+import www.googleapis.com.structures.Lifecyclestatus;
+import www.googleapis.com.structures.Livebroadcastpriority;
+import www.googleapis.com.structures.Privacystatus;
+import www.googleapis.com.structures.Recordingstatus;
 
 public class LiveBroadcastStatus {
     /**
      * The broadcast's status. The status can be updated using the API's liveBroadcasts.transition method.
      */
-    public LIFECYCLESTATUS lifeCycleStatus;
+    public Lifecyclestatus lifeCycleStatus;
     /**
      * Priority of the live broadcast event (internal state).
      */
-    public LIVEBROADCASTPRIORITY liveBroadcastPriority;
+    public Livebroadcastpriority liveBroadcastPriority;
     /**
      * The broadcast's privacy status. Note that the broadcast represents exactly one YouTube video, so the privacy settings are identical to those supported for videos. In addition, you can set this field by modifying the broadcast resource or by setting the privacyStatus field of the corresponding video resource.
      */
-    public PRIVACYSTATUS privacyStatus;
+    public Privacystatus privacyStatus;
     /**
      * The broadcast's recording status.
      */
-    public RECORDINGSTATUS recordingStatus;
+    public Recordingstatus recordingStatus;
 
     @Override
     public boolean equals(Object other) {

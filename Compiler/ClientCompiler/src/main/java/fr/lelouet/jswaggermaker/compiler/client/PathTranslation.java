@@ -25,6 +25,7 @@ import com.helger.jcodemodel.JFieldVar;
 import com.helger.jcodemodel.JInvocation;
 import com.helger.jcodemodel.JMethod;
 import com.helger.jcodemodel.JMod;
+import com.helger.jcodemodel.JNarrowedClass;
 import com.helger.jcodemodel.JPrimitiveType;
 import com.helger.jcodemodel.JSynchronizedBlock;
 import com.helger.jcodemodel.JTryBlock;
@@ -234,7 +235,7 @@ public class PathTranslation {
 			}
 			break;
 		case delete:
-			possibleRet = JExpr.invoke("requestDel").arg(url).arg(propsParam);
+			possibleRet = JExpr.invoke("requestDel").arg(url).arg(propsParam).arg(JExpr.dotClass(resourceType.boxify()));
 			break;
 		default:
 			throw new UnsupportedOperationException("unsupported type " + optype + " for path " + path);
@@ -308,10 +309,12 @@ public class PathTranslation {
 				resourceStructure = RETURNTYPE.LIST;
 				resourceFlatType = resourceType.elementType();
 				fetchRetType = cm.ref(Requested.class).narrow(resourceType);
-			} else if (m.getClass() == ModelImpl.class && ((ModelImpl) m).getAdditionalProperties() != null) {
+			} else if (resourceType.erasure().equals(cm.ref(Map.class))) {
 				resourceStructure = RETURNTYPE.MAP;
-				resourceFlatType = bridge.getReponseClass(((ModelImpl) m).getAdditionalProperties());
+				resourceFlatType = ((JNarrowedClass) resourceType).getTypeParameters().get(1);
 				fetchRetType = cm.ref(Requested.class).narrow(resourceType);
+			} else if (m.getClass() == ModelImpl.class && ((ModelImpl) m).getAdditionalProperties() != null) {
+				throw new UnsupportedOperationException("class not a map with map properties");
 			} else {
 				resourceStructure = RETURNTYPE.OBJECT;
 				resourceFlatType = resourceType;

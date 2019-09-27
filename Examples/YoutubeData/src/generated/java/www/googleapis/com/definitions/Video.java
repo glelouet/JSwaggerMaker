@@ -34,7 +34,7 @@ public class Video {
     /**
      * List with all localizations.
      */
-    public HashMap<String, ChannelLocalization> localizations;
+    public HashMap<String, Object> localizations;
     /**
      * The monetizationDetails object encapsulates information about the monetization status of the video.
      */

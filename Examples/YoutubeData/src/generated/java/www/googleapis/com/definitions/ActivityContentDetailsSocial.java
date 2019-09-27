@@ -1,6 +1,6 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.TYPE;
+import www.googleapis.com.structures.Type;
 
 public class ActivityContentDetailsSocial {
     /**
@@ -22,7 +22,7 @@ public class ActivityContentDetailsSocial {
     /**
      * The name of the social network.
      */
-    public TYPE type;
+    public Type type;
 
     @Override
     public boolean equals(Object other) {

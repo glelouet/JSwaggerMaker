@@ -22,7 +22,7 @@ public class CommentThreadListResponse {
      */
     public String nextPageToken;
     public PageInfo pageInfo;
-    public Object tokenPagination;
+    public TokenPagination tokenPagination;
     /**
      * The visitorId identifies the visitor.
      */

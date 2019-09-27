@@ -1,7 +1,7 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.SEVERITY;
-import www.googleapis.com.structures.TYPE;
+import www.googleapis.com.structures.Severity;
+import www.googleapis.com.structures.Type;
 
 public class LiveStreamConfigurationIssue {
     /**
@@ -15,11 +15,11 @@ public class LiveStreamConfigurationIssue {
     /**
      * How severe this issue is to the stream.
      */
-    public SEVERITY severity;
+    public Severity severity;
     /**
      * The kind of error happening.
      */
-    public TYPE type;
+    public Type type;
 
     @Override
     public boolean equals(Object other) {

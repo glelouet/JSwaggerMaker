@@ -1,6 +1,6 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.TYPE;
+import www.googleapis.com.structures.Type;
 
 public class ActivitySnippet {
     /**
@@ -34,7 +34,7 @@ public class ActivitySnippet {
     /**
      * The type of activity that the resource describes.
      */
-    public TYPE type;
+    public Type type;
 
     @Override
     public boolean equals(Object other) {

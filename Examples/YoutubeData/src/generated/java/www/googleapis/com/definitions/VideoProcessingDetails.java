@@ -1,7 +1,7 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.PROCESSINGFAILUREREASON;
-import www.googleapis.com.structures.PROCESSINGSTATUS;
+import www.googleapis.com.structures.Processingfailurereason;
+import www.googleapis.com.structures.Processingstatus;
 
 public class VideoProcessingDetails {
     /**
@@ -15,7 +15,7 @@ public class VideoProcessingDetails {
     /**
      * The reason that YouTube failed to process the video. This property will only have a value if the processingStatus property's value is failed.
      */
-    public PROCESSINGFAILUREREASON processingFailureReason;
+    public Processingfailurereason processingFailureReason;
     /**
      * This value indicates whether the video processing engine has generated suggestions that might improve YouTube's ability to process the the video, warnings that explain video processing problems, or errors that cause video processing problems. You can retrieve these suggestions by requesting the suggestions part in your videos.list() request.
      */
@@ -27,7 +27,7 @@ public class VideoProcessingDetails {
     /**
      * The video's processing status. This value indicates whether YouTube was able to process the video or if the video is still being processed.
      */
-    public PROCESSINGSTATUS processingStatus;
+    public Processingstatus processingStatus;
     /**
      * This value indicates whether keyword (tag) suggestions are available for the video. Tags can be added to a video's metadata to make it easier for other users to find the video. You can retrieve these suggestions by requesting the suggestions part in your videos.list() request.
      */

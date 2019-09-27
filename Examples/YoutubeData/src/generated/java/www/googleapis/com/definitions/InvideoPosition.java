@@ -1,17 +1,17 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.CORNERPOSITION;
-import www.googleapis.com.structures.TYPE;
+import www.googleapis.com.structures.Cornerposition;
+import www.googleapis.com.structures.Type;
 
 public class InvideoPosition {
     /**
      * Describes in which corner of the video the visual widget will appear.
      */
-    public CORNERPOSITION cornerPosition;
+    public Cornerposition cornerPosition;
     /**
      * Defines the position type.
      */
-    public TYPE type;
+    public Type type;
 
     @Override
     public boolean equals(Object other) {

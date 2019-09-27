@@ -1,6 +1,6 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.TYPE;
+import www.googleapis.com.structures.Type;
 
 public class LiveChatMessageSnippet {
     /**
@@ -24,7 +24,7 @@ public class LiveChatMessageSnippet {
     public LiveChatMessageRetractedDetails messageRetractedDetails;
     public LiveChatPollClosedDetails pollClosedDetails;
     public LiveChatPollEditedDetails pollEditedDetails;
-    public LiveChatPollEditedDetails pollOpenedDetails;
+    public LiveChatPollOpenedDetails pollOpenedDetails;
     public LiveChatPollVotedDetails pollVotedDetails;
     /**
      * The date and time when the message was orignally published. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
@@ -45,7 +45,7 @@ public class LiveChatMessageSnippet {
     /**
      * The type of message, this will always be present, it determines the contents of the message as well as which fields will be present.
      */
-    public TYPE type;
+    public Type type;
     public LiveChatUserBannedMessageDetails userBannedDetails;
 
     @Override

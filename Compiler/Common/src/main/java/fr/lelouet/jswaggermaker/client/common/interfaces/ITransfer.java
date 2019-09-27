@@ -53,8 +53,8 @@ public interface ITransfer {
 			Map<String, Object> transmit, Class<T> expectedClass);
 
 	/** request a DELETE URL */
-	public default Requested<Void> requestDel(String url, Map<String, String> properties) {
-		return request(url, "DELETE", properties, null, null);
+	public default <T> Requested<T> requestDel(String url, Map<String, String> properties, Class<T> expectedClass) {
+		return request(url, "DELETE", properties, null, expectedClass);
 	}
 
 	/** request a GET URL */

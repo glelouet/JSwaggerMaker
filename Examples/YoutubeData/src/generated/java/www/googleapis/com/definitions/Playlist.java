@@ -22,7 +22,7 @@ public class Playlist {
     /**
      * Localizations for different languages
      */
-    public HashMap<String, ChannelLocalization> localizations;
+    public HashMap<String, Object> localizations;
     /**
      * The player object contains information that you would use to play the playlist in an embedded player.
      */
@@ -34,7 +34,7 @@ public class Playlist {
     /**
      * The status object contains status information for the playlist.
      */
-    public PlaylistItemStatus status;
+    public PlaylistStatus status;
 
     @Override
     public boolean equals(Object other) {

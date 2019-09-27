@@ -27,7 +27,7 @@ public class SearchListResponse {
      */
     public String prevPageToken;
     public String regionCode;
-    public Object tokenPagination;
+    public TokenPagination tokenPagination;
     /**
      * The visitorId identifies the visitor.
      */

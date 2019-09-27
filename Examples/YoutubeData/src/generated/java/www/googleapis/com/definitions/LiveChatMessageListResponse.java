@@ -30,7 +30,7 @@ public class LiveChatMessageListResponse {
      * The amount of time the client should wait before polling again.
      */
     public long pollingIntervalMillis;
-    public Object tokenPagination;
+    public TokenPagination tokenPagination;
     /**
      * The visitorId identifies the visitor.
      */

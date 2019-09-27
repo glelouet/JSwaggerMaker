@@ -1,6 +1,6 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.ROTATION;
+import www.googleapis.com.structures.Rotation;
 
 public class VideoFileDetailsVideoStream {
     /**
@@ -26,7 +26,7 @@ public class VideoFileDetailsVideoStream {
     /**
      * The amount that YouTube needs to rotate the original source content to properly display the video.
      */
-    public ROTATION rotation;
+    public Rotation rotation;
     /**
      * A value that uniquely identifies a video vendor. Typically, the value is a four-letter vendor code.
      */

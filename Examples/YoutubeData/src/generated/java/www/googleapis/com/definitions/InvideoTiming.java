@@ -1,6 +1,6 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.TYPE;
+import www.googleapis.com.structures.Type;
 
 public class InvideoTiming {
     /**
@@ -14,7 +14,7 @@ public class InvideoTiming {
     /**
      * Describes a timing type. If the value is offsetFromStart, then the offsetMs field represents an offset from the start of the video. If the value is offsetFromEnd, then the offsetMs field represents an offset from the end of the video.
      */
-    public TYPE type;
+    public Type type;
 
     @Override
     public boolean equals(Object other) {

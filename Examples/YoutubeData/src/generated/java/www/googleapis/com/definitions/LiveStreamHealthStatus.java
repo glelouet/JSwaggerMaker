@@ -1,6 +1,6 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.STATUS;
+import www.googleapis.com.structures.Status;
 
 public class LiveStreamHealthStatus {
     /**
@@ -14,7 +14,7 @@ public class LiveStreamHealthStatus {
     /**
      * The status code of this stream
      */
-    public STATUS status;
+    public Status status;
 
     @Override
     public boolean equals(Object other) {

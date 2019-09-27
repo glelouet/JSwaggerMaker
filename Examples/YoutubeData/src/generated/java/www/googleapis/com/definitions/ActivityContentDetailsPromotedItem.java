@@ -1,6 +1,6 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.CTATYPE;
+import www.googleapis.com.structures.Ctatype;
 
 public class ActivityContentDetailsPromotedItem {
     /**
@@ -18,7 +18,7 @@ public class ActivityContentDetailsPromotedItem {
     /**
      * The type of call-to-action, a message to the user indicating action that can be taken.
      */
-    public CTATYPE ctaType;
+    public Ctatype ctaType;
     /**
      * The custom call-to-action button text. If specified, it will override the default button text for the cta_type.
      */

@@ -83,7 +83,7 @@ public class PetstoreAuth
             if (api_key!= null) {
                 headerProperties.put("api_key", (""+ api_key));
             }
-            requestDel(url, headerProperties);
+            requestDel(url, headerProperties, Void.class);
         }
 
         public class Findbystatus {

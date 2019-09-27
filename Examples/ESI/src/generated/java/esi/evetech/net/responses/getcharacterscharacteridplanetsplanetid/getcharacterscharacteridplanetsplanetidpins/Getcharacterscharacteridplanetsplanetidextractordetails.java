@@ -1,0 +1,57 @@
+package esi.evetech.net.responses.getcharacterscharacteridplanetsplanetid.getcharacterscharacteridplanetsplanetidpins;
+
+import esi.evetech.net.responses.getcharacterscharacteridplanetsplanetid.getcharacterscharacteridplanetsplanetidpins.getcharacterscharacteridplanetsplanetidextractordetails.Getcharacterscharacteridplanetsplanetidheads;
+
+public class Getcharacterscharacteridplanetsplanetidextractordetails {
+    /**
+     * in seconds
+     */
+    public int cycle_time;
+    /**
+     * head_radius number
+     */
+    public float head_radius;
+    /**
+     * heads array
+     */
+    public Getcharacterscharacteridplanetsplanetidheads[] heads;
+    /**
+     * product_type_id integer
+     */
+    public int product_type_id;
+    /**
+     * qty_per_cycle integer
+     */
+    public int qty_per_cycle;
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+        if ((other == null)||(other.getClass()!= getClass())) {
+            return false;
+        }
+        Getcharacterscharacteridplanetsplanetidextractordetails othersame = ((Getcharacterscharacteridplanetsplanetidextractordetails) other);
+        if (cycle_time!= othersame.cycle_time) {
+            return false;
+        }
+        if (head_radius!= othersame.head_radius) {
+            return false;
+        }
+        if ((heads!= othersame.heads)&&((heads == null)||(!heads.equals(othersame.heads)))) {
+            return false;
+        }
+        if (product_type_id!= othersame.product_type_id) {
+            return false;
+        }
+        if (qty_per_cycle!= othersame.qty_per_cycle) {
+            return false;
+        }
+        return true;
+    }
+
+    public int hashCode() {
+        return ((((cycle_time + Double.hashCode(head_radius))+((heads == null)? 0 :heads.hashCode()))+ product_type_id)+ qty_per_cycle);
+    }
+}

@@ -60,7 +60,7 @@ public class Anonymous
              */
             public void deleteByOrderid(long orderId) {
                 String url = ("https://petstore.swagger.io/v2/store/order/{orderId}".replace("{orderId}", ""+orderId));
-                requestDel(url, null);
+                requestDel(url, null, Void.class);
             }
         }
     }
@@ -129,7 +129,7 @@ public class Anonymous
          */
         public void deleteByUsername(String username) {
             String url = ("https://petstore.swagger.io/v2/user/{username}".replace("{username}", ""+username));
-            requestDel(url, null);
+            requestDel(url, null, Void.class);
         }
 
         public class Createwitharray {

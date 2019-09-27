@@ -42,7 +42,7 @@ public class Channel {
     /**
      * Localizations for different languages
      */
-    public HashMap<String, ChannelLocalization> localizations;
+    public HashMap<String, Object> localizations;
     /**
      * The snippet object contains basic details about the channel, such as its title, description, and thumbnail images.
      */

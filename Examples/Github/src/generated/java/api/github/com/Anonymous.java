@@ -121,13 +121,13 @@ public class Anonymous
          * @param Accept
          *     Is used to set specified media type.
          */
-        public Requested<HashMap<String, String>> get(String Accept) {
+        public Requested<Map<String, String>> get(String Accept) {
             String url = ("https://api.github.com//emojis");
             HashMap<String, String> headerProperties = new HashMap<String, String>();
             if (Accept!= null) {
                 headerProperties.put("Accept", (""+ Accept));
             }
-            return requestGet(url, headerProperties, HashMap.class);
+            return requestGetMap(url, headerProperties, String.class);
         }
     }
 
@@ -263,7 +263,7 @@ public class Anonymous
             if (Accept!= null) {
                 headerProperties.put("Accept", (""+ Accept));
             }
-            requestDel(url, headerProperties);
+            requestDel(url, headerProperties, Void.class);
         }
 
         public class Comments {
@@ -352,7 +352,7 @@ public class Anonymous
                 if (Accept!= null) {
                     headerProperties.put("Accept", (""+ Accept));
                 }
-                requestDel(url, headerProperties);
+                requestDel(url, headerProperties, Void.class);
             }
         }
 
@@ -463,7 +463,7 @@ public class Anonymous
                 if (Accept!= null) {
                     headerProperties.put("Accept", (""+ Accept));
                 }
-                requestDel(url, headerProperties);
+                requestDel(url, headerProperties, Void.class);
             }
         }
 
@@ -962,7 +962,7 @@ public class Anonymous
                     if (Accept!= null) {
                         headerProperties.put("Accept", (""+ Accept));
                     }
-                    requestDel(url, headerProperties);
+                    requestDel(url, headerProperties, Void.class);
                 }
             }
         }
@@ -1133,7 +1133,7 @@ public class Anonymous
                 if (Accept!= null) {
                     headerProperties.put("Accept", (""+ Accept));
                 }
-                requestDel(url, headerProperties);
+                requestDel(url, headerProperties, Void.class);
             }
         }
 
@@ -1224,7 +1224,7 @@ public class Anonymous
                 if (Accept!= null) {
                     headerProperties.put("Accept", (""+ Accept));
                 }
-                requestDel(url, headerProperties);
+                requestDel(url, headerProperties, Void.class);
             }
         }
 
@@ -1423,7 +1423,7 @@ public class Anonymous
             if (Accept!= null) {
                 headerProperties.put("Accept", (""+ Accept));
             }
-            requestDel(url, headerProperties);
+            requestDel(url, headerProperties, Void.class);
         }
 
         /**
@@ -1673,7 +1673,7 @@ public class Anonymous
                 if (Accept!= null) {
                     headerProperties.put("Accept", (""+ Accept));
                 }
-                requestDel(url, headerProperties);
+                requestDel(url, headerProperties, Void.class);
             }
         }
 
@@ -1753,7 +1753,7 @@ public class Anonymous
                 if (Accept!= null) {
                     headerProperties.put("Accept", (""+ Accept));
                 }
-                requestDel(url, headerProperties);
+                requestDel(url, headerProperties, Void.class);
             }
         }
 
@@ -2049,7 +2049,7 @@ public class Anonymous
                 if (Accept!= null) {
                     headerProperties.put("Accept", (""+ Accept));
                 }
-                return requestDel(url, headerProperties);
+                return requestDel(url, headerProperties, DeleteFile.class);
             }
         }
 
@@ -2274,7 +2274,7 @@ public class Anonymous
                 if (Accept!= null) {
                     headerProperties.put("Accept", (""+ Accept));
                 }
-                requestDel(url, headerProperties);
+                requestDel(url, headerProperties, Void.class);
             }
         }
 
@@ -2593,7 +2593,7 @@ public class Anonymous
                     if (Accept!= null) {
                         headerProperties.put("Accept", (""+ Accept));
                     }
-                    requestDel(url, headerProperties);
+                    requestDel(url, headerProperties, Void.class);
                 }
             }
 
@@ -2828,7 +2828,7 @@ public class Anonymous
                 if (Accept!= null) {
                     headerProperties.put("Accept", (""+ Accept));
                 }
-                requestDel(url, headerProperties);
+                requestDel(url, headerProperties, Void.class);
             }
 
             public class Tests {
@@ -3059,7 +3059,7 @@ public class Anonymous
                     if (Accept!= null) {
                         headerProperties.put("Accept", (""+ Accept));
                     }
-                    requestDel(url, headerProperties);
+                    requestDel(url, headerProperties, Void.class);
                 }
 
                 /**
@@ -3316,7 +3316,7 @@ public class Anonymous
                     if (Accept!= null) {
                         headerProperties.put("Accept", (""+ Accept));
                     }
-                    requestDel(url, headerProperties);
+                    requestDel(url, headerProperties, Void.class);
                 }
 
                 /**
@@ -3346,7 +3346,7 @@ public class Anonymous
                     if (Accept!= null) {
                         headerProperties.put("Accept", (""+ Accept));
                     }
-                    requestDel(url, headerProperties);
+                    requestDel(url, headerProperties, Void.class);
                 }
             }
         }
@@ -3454,7 +3454,7 @@ public class Anonymous
                 if (Accept!= null) {
                     headerProperties.put("Accept", (""+ Accept));
                 }
-                requestDel(url, headerProperties);
+                requestDel(url, headerProperties, Void.class);
             }
         }
 
@@ -3561,7 +3561,7 @@ public class Anonymous
                 if (Accept!= null) {
                     headerProperties.put("Accept", (""+ Accept));
                 }
-                requestDel(url, headerProperties);
+                requestDel(url, headerProperties, Void.class);
             }
         }
 
@@ -3582,13 +3582,13 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public Requested<HashMap<String, Integer>> getByOwnerRepo(String owner, String repo, String Accept) {
+            public Requested<Map<String, Integer>> getByOwnerRepo(String owner, String repo, String Accept) {
                 String url = ("https://api.github.com//repos/{owner}/{repo}/languages".replace("{owner}", ""+owner).replace("{repo}", ""+repo));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (Accept!= null) {
                     headerProperties.put("Accept", (""+ Accept));
                 }
-                return requestGet(url, headerProperties, HashMap.class);
+                return requestGetMap(url, headerProperties, Integer.class);
             }
         }
 
@@ -3738,7 +3738,7 @@ public class Anonymous
                 if (Accept!= null) {
                     headerProperties.put("Accept", (""+ Accept));
                 }
-                requestDel(url, headerProperties);
+                requestDel(url, headerProperties, Void.class);
             }
 
             public class Labels {
@@ -4028,7 +4028,7 @@ public class Anonymous
                     if (Accept!= null) {
                         headerProperties.put("Accept", (""+ Accept));
                     }
-                    requestDel(url, headerProperties);
+                    requestDel(url, headerProperties, Void.class);
                 }
 
                 /**
@@ -4355,7 +4355,7 @@ public class Anonymous
                 if (Accept!= null) {
                     headerProperties.put("Accept", (""+ Accept));
                 }
-                requestDel(url, headerProperties);
+                requestDel(url, headerProperties, Void.class);
             }
 
             public class Assets {
@@ -4409,7 +4409,7 @@ public class Anonymous
                     if (Accept!= null) {
                         headerProperties.put("Accept", (""+ Accept));
                     }
-                    requestDel(url, headerProperties);
+                    requestDel(url, headerProperties, Void.class);
                 }
 
                 /**
@@ -4768,7 +4768,7 @@ public class Anonymous
                 if (Accept!= null) {
                     headerProperties.put("Accept", (""+ Accept));
                 }
-                requestDel(url, headerProperties);
+                requestDel(url, headerProperties, Void.class);
             }
         }
 
@@ -5089,7 +5089,7 @@ public class Anonymous
             if (Accept!= null) {
                 headerProperties.put("Accept", (""+ Accept));
             }
-            requestDel(url, headerProperties);
+            requestDel(url, headerProperties, Void.class);
         }
 
         public class Members {
@@ -5191,7 +5191,7 @@ public class Anonymous
                 if (Accept!= null) {
                     headerProperties.put("Accept", (""+ Accept));
                 }
-                requestDel(url, headerProperties);
+                requestDel(url, headerProperties, Void.class);
             }
         }
 
@@ -5265,7 +5265,7 @@ public class Anonymous
                 if (Accept!= null) {
                     headerProperties.put("Accept", (""+ Accept));
                 }
-                requestDel(url, headerProperties);
+                requestDel(url, headerProperties, Void.class);
             }
         }
 
@@ -5369,7 +5369,7 @@ public class Anonymous
                 if (Accept!= null) {
                     headerProperties.put("Accept", (""+ Accept));
                 }
-                requestDel(url, headerProperties);
+                requestDel(url, headerProperties, Void.class);
             }
         }
     }
@@ -5468,7 +5468,7 @@ public class Anonymous
                 if (Accept!= null) {
                     headerProperties.put("Accept", (""+ Accept));
                 }
-                requestDel(url, headerProperties);
+                requestDel(url, headerProperties, Void.class);
             }
         }
 
@@ -5574,7 +5574,7 @@ public class Anonymous
                 if (Accept!= null) {
                     headerProperties.put("Accept", (""+ Accept));
                 }
-                requestDel(url, headerProperties);
+                requestDel(url, headerProperties, Void.class);
             }
         }
 
@@ -5700,7 +5700,7 @@ public class Anonymous
                 if (Accept!= null) {
                     headerProperties.put("Accept", (""+ Accept));
                 }
-                requestDel(url, headerProperties);
+                requestDel(url, headerProperties, Void.class);
             }
         }
 
@@ -5858,7 +5858,7 @@ public class Anonymous
                 if (Accept!= null) {
                     headerProperties.put("Accept", (""+ Accept));
                 }
-                requestDel(url, headerProperties);
+                requestDel(url, headerProperties, Void.class);
             }
         }
 
@@ -5945,7 +5945,7 @@ public class Anonymous
                 if (Accept!= null) {
                     headerProperties.put("Accept", (""+ Accept));
                 }
-                requestDel(url, headerProperties);
+                requestDel(url, headerProperties, Void.class);
             }
         }
 

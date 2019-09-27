@@ -1,14 +1,14 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.CAPTION;
-import www.googleapis.com.structures.DEFINITION;
-import www.googleapis.com.structures.PROJECTION;
+import www.googleapis.com.structures.Caption;
+import www.googleapis.com.structures.Definition;
+import www.googleapis.com.structures.Projection;
 
 public class VideoContentDetails {
     /**
      * The value of captions indicates whether the video has captions or not.
      */
-    public CAPTION caption;
+    public Caption caption;
     /**
      * Specifies the ratings that the video received under various rating schemes.
      */
@@ -20,7 +20,7 @@ public class VideoContentDetails {
     /**
      * The value of definition indicates whether the video is available in high definition or only in standard definition.
      */
-    public DEFINITION definition;
+    public Definition definition;
     /**
      * The value of dimension indicates whether the video is available in 3D or in 2D.
      */
@@ -40,7 +40,7 @@ public class VideoContentDetails {
     /**
      * Specifies the projection format of the video.
      */
-    public PROJECTION projection;
+    public Projection projection;
     /**
      * The regionRestriction object contains information about the countries where a video is (or is not) viewable. The object will contain either the contentDetails.regionRestriction.allowed property or the contentDetails.regionRestriction.blocked property.
      */

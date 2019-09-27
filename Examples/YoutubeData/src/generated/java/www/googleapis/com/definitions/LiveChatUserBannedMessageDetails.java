@@ -1,6 +1,6 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.BANTYPE;
+import www.googleapis.com.structures.Bantype;
 
 public class LiveChatUserBannedMessageDetails {
     /**
@@ -10,7 +10,7 @@ public class LiveChatUserBannedMessageDetails {
     /**
      * The type of ban.
      */
-    public BANTYPE banType;
+    public Bantype banType;
     /**
      * The details of the user that was banned.
      */

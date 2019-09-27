@@ -1,66 +1,66 @@
 package esi.evetech.net;
 
 import java.util.HashMap;
-import esi.evetech.net.responses.get_alliances_alliance_id;
-import esi.evetech.net.responses.get_alliances_alliance_id_icons;
-import esi.evetech.net.responses.get_characters_character_id;
-import esi.evetech.net.responses.get_characters_character_id_corporationhistory_200;
-import esi.evetech.net.responses.get_characters_character_id_killmails_recent_200;
-import esi.evetech.net.responses.get_characters_character_id_portrait;
-import esi.evetech.net.responses.get_contracts_public_bids_contract_id_200;
-import esi.evetech.net.responses.get_contracts_public_items_contract_id_200;
-import esi.evetech.net.responses.get_contracts_public_region_id_200;
-import esi.evetech.net.responses.get_corporations_corporation_id;
-import esi.evetech.net.responses.get_corporations_corporation_id_alliancehistory_200;
-import esi.evetech.net.responses.get_corporations_corporation_id_icons;
-import esi.evetech.net.responses.get_dogma_attributes_attribute_id;
-import esi.evetech.net.responses.get_dogma_dynamic_items_type_id_item_id;
-import esi.evetech.net.responses.get_dogma_effects_effect_id;
-import esi.evetech.net.responses.get_fw_leaderboards;
-import esi.evetech.net.responses.get_fw_stats_200;
-import esi.evetech.net.responses.get_fw_systems_200;
-import esi.evetech.net.responses.get_fw_wars_200;
-import esi.evetech.net.responses.get_incursions_200;
-import esi.evetech.net.responses.get_industry_facilities_200;
-import esi.evetech.net.responses.get_industry_systems_200;
-import esi.evetech.net.responses.get_insurance_prices_200;
-import esi.evetech.net.responses.get_killmails_killmail_id_killmail_hash;
-import esi.evetech.net.responses.get_loyalty_stores_corporation_id_offers_200;
-import esi.evetech.net.responses.get_markets_groups_market_group_id;
-import esi.evetech.net.responses.get_markets_prices_200;
-import esi.evetech.net.responses.get_markets_region_id_history_200;
-import esi.evetech.net.responses.get_markets_region_id_orders_200;
-import esi.evetech.net.responses.get_opportunities_groups_group_id;
-import esi.evetech.net.responses.get_opportunities_tasks_task_id;
-import esi.evetech.net.responses.get_search;
-import esi.evetech.net.responses.get_sovereignty_campaigns_200;
-import esi.evetech.net.responses.get_sovereignty_map_200;
-import esi.evetech.net.responses.get_sovereignty_structures_200;
-import esi.evetech.net.responses.get_status;
-import esi.evetech.net.responses.get_universe_ancestries_200;
-import esi.evetech.net.responses.get_universe_asteroid_belts_asteroid_belt_id;
-import esi.evetech.net.responses.get_universe_bloodlines_200;
-import esi.evetech.net.responses.get_universe_categories_category_id;
-import esi.evetech.net.responses.get_universe_constellations_constellation_id;
-import esi.evetech.net.responses.get_universe_factions_200;
-import esi.evetech.net.responses.get_universe_graphics_graphic_id;
-import esi.evetech.net.responses.get_universe_groups_group_id;
-import esi.evetech.net.responses.get_universe_moons_moon_id;
-import esi.evetech.net.responses.get_universe_planets_planet_id;
-import esi.evetech.net.responses.get_universe_races_200;
-import esi.evetech.net.responses.get_universe_regions_region_id;
-import esi.evetech.net.responses.get_universe_schematics_schematic_id;
-import esi.evetech.net.responses.get_universe_stargates_stargate_id;
-import esi.evetech.net.responses.get_universe_stars_star_id;
-import esi.evetech.net.responses.get_universe_stations_station_id;
-import esi.evetech.net.responses.get_universe_system_jumps_200;
-import esi.evetech.net.responses.get_universe_system_kills_200;
-import esi.evetech.net.responses.get_universe_systems_system_id;
-import esi.evetech.net.responses.get_universe_types_type_id;
-import esi.evetech.net.responses.get_wars_war_id;
-import esi.evetech.net.responses.post_characters_affiliation_200;
-import esi.evetech.net.responses.post_universe_ids;
-import esi.evetech.net.responses.post_universe_names_200;
+import esi.evetech.net.responses.Getalliancesallianceid;
+import esi.evetech.net.responses.Getalliancesallianceidicons;
+import esi.evetech.net.responses.Getcharacterscharacterid;
+import esi.evetech.net.responses.Getcharacterscharacteridcorporationhistory200;
+import esi.evetech.net.responses.Getcharacterscharacteridkillmailsrecent200;
+import esi.evetech.net.responses.Getcharacterscharacteridportrait;
+import esi.evetech.net.responses.Getcontractspublicbidscontractid200;
+import esi.evetech.net.responses.Getcontractspublicitemscontractid200;
+import esi.evetech.net.responses.Getcontractspublicregionid200;
+import esi.evetech.net.responses.Getcorporationscorporationid;
+import esi.evetech.net.responses.Getcorporationscorporationidalliancehistory200;
+import esi.evetech.net.responses.Getcorporationscorporationidicons;
+import esi.evetech.net.responses.Getdogmaattributesattributeid;
+import esi.evetech.net.responses.Getdogmadynamicitemstypeiditemid;
+import esi.evetech.net.responses.Getdogmaeffectseffectid;
+import esi.evetech.net.responses.Getfwleaderboards;
+import esi.evetech.net.responses.Getfwstats200;
+import esi.evetech.net.responses.Getfwsystems200;
+import esi.evetech.net.responses.Getfwwars200;
+import esi.evetech.net.responses.Getincursions200;
+import esi.evetech.net.responses.Getindustryfacilities200;
+import esi.evetech.net.responses.Getindustrysystems200;
+import esi.evetech.net.responses.Getinsuranceprices200;
+import esi.evetech.net.responses.Getkillmailskillmailidkillmailhash;
+import esi.evetech.net.responses.Getloyaltystorescorporationidoffers200;
+import esi.evetech.net.responses.Getmarketsgroupsmarketgroupid;
+import esi.evetech.net.responses.Getmarketsprices200;
+import esi.evetech.net.responses.Getmarketsregionidhistory200;
+import esi.evetech.net.responses.Getmarketsregionidorders200;
+import esi.evetech.net.responses.Getopportunitiesgroupsgroupid;
+import esi.evetech.net.responses.Getopportunitiestaskstaskid;
+import esi.evetech.net.responses.Getsearch;
+import esi.evetech.net.responses.Getsovereigntycampaigns200;
+import esi.evetech.net.responses.Getsovereigntymap200;
+import esi.evetech.net.responses.Getsovereigntystructures200;
+import esi.evetech.net.responses.Getstatus;
+import esi.evetech.net.responses.Getuniverseancestries200;
+import esi.evetech.net.responses.Getuniverseasteroidbeltsasteroidbeltid;
+import esi.evetech.net.responses.Getuniversebloodlines200;
+import esi.evetech.net.responses.Getuniversecategoriescategoryid;
+import esi.evetech.net.responses.Getuniverseconstellationsconstellationid;
+import esi.evetech.net.responses.Getuniversefactions200;
+import esi.evetech.net.responses.Getuniversegraphicsgraphicid;
+import esi.evetech.net.responses.Getuniversegroupsgroupid;
+import esi.evetech.net.responses.Getuniversemoonsmoonid;
+import esi.evetech.net.responses.Getuniverseplanetsplanetid;
+import esi.evetech.net.responses.Getuniverseraces200;
+import esi.evetech.net.responses.Getuniverseregionsregionid;
+import esi.evetech.net.responses.Getuniverseschematicsschematicid;
+import esi.evetech.net.responses.Getuniversestargatesstargateid;
+import esi.evetech.net.responses.Getuniversestarsstarid;
+import esi.evetech.net.responses.Getuniversestationsstationid;
+import esi.evetech.net.responses.Getuniversesystemjumps200;
+import esi.evetech.net.responses.Getuniversesystemkills200;
+import esi.evetech.net.responses.Getuniversesystemssystemid;
+import esi.evetech.net.responses.Getuniversetypestypeid;
+import esi.evetech.net.responses.Getwarswarid;
+import esi.evetech.net.responses.Postcharactersaffiliation200;
+import esi.evetech.net.responses.Postuniverseids;
+import esi.evetech.net.responses.Postuniversenames200;
 import fr.lelouet.jswaggermaker.client.common.impl.securities.Disconnected;
 import fr.lelouet.jswaggermaker.client.common.interfaces.Requested;
 
@@ -108,7 +108,7 @@ public class Anonymous
          * 
          * @param datasource
          *     The server name you would like data from
-         * @param If-None-Match
+         * @param If_None_Match
          *     ETag from a previous request. A 304 will be returned if this matches the current ETag
          */
         public Requested<Integer[]> get(String If_None_Match) {
@@ -131,16 +131,16 @@ public class Anonymous
          *     An EVE alliance ID
          * @param datasource
          *     The server name you would like data from
-         * @param If-None-Match
+         * @param If_None_Match
          *     ETag from a previous request. A 304 will be returned if this matches the current ETag
          */
-        public Requested<get_alliances_alliance_id> getByAllianceid(int alliance_id, String If_None_Match) {
+        public Requested<Getalliancesallianceid> getByAllianceid(int alliance_id, String If_None_Match) {
             String url = ("https://esi.evetech.net/v3/alliances/{alliance_id}/".replace("{alliance_id}", ""+alliance_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
             HashMap<String, String> headerProperties = new HashMap<String, String>();
             if (If_None_Match!= null) {
                 headerProperties.put("If-None-Match", (""+ If_None_Match));
             }
-            return requestGet(url, headerProperties, get_alliances_alliance_id.class);
+            return requestGet(url, headerProperties, Getalliancesallianceid.class);
         }
 
         public class Corporations {
@@ -156,7 +156,7 @@ public class Anonymous
              *     An EVE alliance ID
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
             public Requested<Integer[]> getByAllianceid(int alliance_id, String If_None_Match) {
@@ -182,16 +182,16 @@ public class Anonymous
              *     An EVE alliance ID
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<get_alliances_alliance_id_icons> getByAllianceid(int alliance_id, String If_None_Match) {
+            public Requested<Getalliancesallianceidicons> getByAllianceid(int alliance_id, String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/alliances/{alliance_id}/icons/".replace("{alliance_id}", ""+alliance_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_alliances_alliance_id_icons.class);
+                return requestGet(url, headerProperties, Getalliancesallianceidicons.class);
             }
         }
     }
@@ -212,16 +212,16 @@ public class Anonymous
          *     An EVE character ID
          * @param datasource
          *     The server name you would like data from
-         * @param If-None-Match
+         * @param If_None_Match
          *     ETag from a previous request. A 304 will be returned if this matches the current ETag
          */
-        public Requested<get_characters_character_id> getByCharacterid(int character_id, String If_None_Match) {
+        public Requested<Getcharacterscharacterid> getByCharacterid(int character_id, String If_None_Match) {
             String url = ("https://esi.evetech.net/v4/characters/{character_id}/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
             HashMap<String, String> headerProperties = new HashMap<String, String>();
             if (If_None_Match!= null) {
                 headerProperties.put("If-None-Match", (""+ If_None_Match));
             }
-            return requestGet(url, headerProperties, get_characters_character_id.class);
+            return requestGet(url, headerProperties, Getcharacterscharacterid.class);
         }
 
         public class Affiliation {
@@ -238,11 +238,11 @@ public class Anonymous
              * @param datasource
              *     The server name you would like data from
              */
-            public Requested<post_characters_affiliation_200 []> post(int[] characters) {
+            public Requested<Postcharactersaffiliation200 []> post(int[] characters) {
                 String url = ("https://esi.evetech.net/v1/characters/affiliation/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 java.util.Map<String, Object> content = new HashMap<>();
                 content.put("characters", characters);
-                return requestPost(url, null, content, post_characters_affiliation_200 [].class);
+                return requestPost(url, null, content, Postcharactersaffiliation200 [].class);
             }
         }
 
@@ -259,16 +259,16 @@ public class Anonymous
              *     An EVE character ID
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<get_characters_character_id_corporationhistory_200 []> getByCharacterid(int character_id, String If_None_Match) {
+            public Requested<Getcharacterscharacteridcorporationhistory200 []> getByCharacterid(int character_id, String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/characters/{character_id}/corporationhistory/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_characters_character_id_corporationhistory_200 [].class);
+                return requestGet(url, headerProperties, Getcharacterscharacteridcorporationhistory200 [].class);
             }
         }
 
@@ -285,16 +285,16 @@ public class Anonymous
              *     An EVE character ID
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<get_characters_character_id_portrait> getByCharacterid(int character_id, String If_None_Match) {
+            public Requested<Getcharacterscharacteridportrait> getByCharacterid(int character_id, String If_None_Match) {
                 String url = ("https://esi.evetech.net/v2/characters/{character_id}/portrait/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_characters_character_id_portrait.class);
+                return requestGet(url, headerProperties, Getcharacterscharacteridportrait.class);
             }
         }
     }
@@ -315,20 +315,20 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param page
              *     Which page of results to return
              * @param region_id
              *     An EVE region id
              */
-            public Requested<get_contracts_public_region_id_200 []> getByRegionid(String If_None_Match, Integer page, int region_id) {
+            public Requested<Getcontractspublicregionid200 []> getByRegionid(String If_None_Match, Integer page, int region_id) {
                 String url = ("https://esi.evetech.net/v1/contracts/public/{region_id}/".replace("{region_id}", ""+region_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_contracts_public_region_id_200 [].class);
+                return requestGet(url, headerProperties, Getcontractspublicregionid200 [].class);
             }
 
             public class Bids {
@@ -344,18 +344,18 @@ public class Anonymous
                  *     ID of a contract
                  * @param datasource
                  *     The server name you would like data from
-                 * @param If-None-Match
+                 * @param If_None_Match
                  *     ETag from a previous request. A 304 will be returned if this matches the current ETag
                  * @param page
                  *     Which page of results to return
                  */
-                public Requested<get_contracts_public_bids_contract_id_200 []> getByContractid(int contract_id, String If_None_Match, Integer page) {
+                public Requested<Getcontractspublicbidscontractid200 []> getByContractid(int contract_id, String If_None_Match, Integer page) {
                     String url = ("https://esi.evetech.net/v1/contracts/public/bids/{contract_id}/".replace("{contract_id}", ""+contract_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page)));
                     HashMap<String, String> headerProperties = new HashMap<String, String>();
                     if (If_None_Match!= null) {
                         headerProperties.put("If-None-Match", (""+ If_None_Match));
                     }
-                    return requestGet(url, headerProperties, get_contracts_public_bids_contract_id_200 [].class);
+                    return requestGet(url, headerProperties, Getcontractspublicbidscontractid200 [].class);
                 }
             }
 
@@ -372,18 +372,18 @@ public class Anonymous
                  *     ID of a contract
                  * @param datasource
                  *     The server name you would like data from
-                 * @param If-None-Match
+                 * @param If_None_Match
                  *     ETag from a previous request. A 304 will be returned if this matches the current ETag
                  * @param page
                  *     Which page of results to return
                  */
-                public Requested<get_contracts_public_items_contract_id_200 []> getByContractid(int contract_id, String If_None_Match, Integer page) {
+                public Requested<Getcontractspublicitemscontractid200 []> getByContractid(int contract_id, String If_None_Match, Integer page) {
                     String url = ("https://esi.evetech.net/v1/contracts/public/items/{contract_id}/".replace("{contract_id}", ""+contract_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page)));
                     HashMap<String, String> headerProperties = new HashMap<String, String>();
                     if (If_None_Match!= null) {
                         headerProperties.put("If-None-Match", (""+ If_None_Match));
                     }
-                    return requestGet(url, headerProperties, get_contracts_public_items_contract_id_200 [].class);
+                    return requestGet(url, headerProperties, Getcontractspublicitemscontractid200 [].class);
                 }
             }
         }
@@ -405,16 +405,16 @@ public class Anonymous
          *     An EVE corporation ID
          * @param datasource
          *     The server name you would like data from
-         * @param If-None-Match
+         * @param If_None_Match
          *     ETag from a previous request. A 304 will be returned if this matches the current ETag
          */
-        public Requested<get_corporations_corporation_id> getByCorporationid(int corporation_id, String If_None_Match) {
+        public Requested<Getcorporationscorporationid> getByCorporationid(int corporation_id, String If_None_Match) {
             String url = ("https://esi.evetech.net/v4/corporations/{corporation_id}/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
             HashMap<String, String> headerProperties = new HashMap<String, String>();
             if (If_None_Match!= null) {
                 headerProperties.put("If-None-Match", (""+ If_None_Match));
             }
-            return requestGet(url, headerProperties, get_corporations_corporation_id.class);
+            return requestGet(url, headerProperties, Getcorporationscorporationid.class);
         }
 
         public class Alliancehistory {
@@ -430,16 +430,16 @@ public class Anonymous
              *     An EVE corporation ID
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<get_corporations_corporation_id_alliancehistory_200 []> getByCorporationid(int corporation_id, String If_None_Match) {
+            public Requested<Getcorporationscorporationidalliancehistory200 []> getByCorporationid(int corporation_id, String If_None_Match) {
                 String url = ("https://esi.evetech.net/v2/corporations/{corporation_id}/alliancehistory/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_corporations_corporation_id_alliancehistory_200 [].class);
+                return requestGet(url, headerProperties, Getcorporationscorporationidalliancehistory200 [].class);
             }
         }
 
@@ -456,16 +456,16 @@ public class Anonymous
              *     An EVE corporation ID
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<get_corporations_corporation_id_icons> getByCorporationid(int corporation_id, String If_None_Match) {
+            public Requested<Getcorporationscorporationidicons> getByCorporationid(int corporation_id, String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/corporations/{corporation_id}/icons/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_corporations_corporation_id_icons.class);
+                return requestGet(url, headerProperties, Getcorporationscorporationidicons.class);
             }
         }
 
@@ -480,7 +480,7 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
             public Requested<Integer[]> get(String If_None_Match) {
@@ -510,7 +510,7 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
             public Requested<Integer[]> get(String If_None_Match) {
@@ -533,16 +533,16 @@ public class Anonymous
              *     A dogma attribute ID
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<get_dogma_attributes_attribute_id> getByAttributeid(int attribute_id, String If_None_Match) {
+            public Requested<Getdogmaattributesattributeid> getByAttributeid(int attribute_id, String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/dogma/attributes/{attribute_id}/".replace("{attribute_id}", ""+attribute_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_dogma_attributes_attribute_id.class);
+                return requestGet(url, headerProperties, Getdogmaattributesattributeid.class);
             }
         }
 
@@ -560,20 +560,20 @@ public class Anonymous
                  * 
                  * @param datasource
                  *     The server name you would like data from
-                 * @param If-None-Match
+                 * @param If_None_Match
                  *     ETag from a previous request. A 304 will be returned if this matches the current ETag
                  * @param item_id
                  *     item_id integer
                  * @param type_id
                  *     type_id integer
                  */
-                public Requested<get_dogma_dynamic_items_type_id_item_id> getByTypeidItemid(String If_None_Match, long item_id, int type_id) {
+                public Requested<Getdogmadynamicitemstypeiditemid> getByTypeidItemid(String If_None_Match, long item_id, int type_id) {
                     String url = ("https://esi.evetech.net/v1/dogma/dynamic/items/{type_id}/{item_id}/".replace("{item_id}", ""+item_id).replace("{type_id}", ""+type_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                     HashMap<String, String> headerProperties = new HashMap<String, String>();
                     if (If_None_Match!= null) {
                         headerProperties.put("If-None-Match", (""+ If_None_Match));
                     }
-                    return requestGet(url, headerProperties, get_dogma_dynamic_items_type_id_item_id.class);
+                    return requestGet(url, headerProperties, Getdogmadynamicitemstypeiditemid.class);
                 }
             }
         }
@@ -589,7 +589,7 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
             public Requested<Integer[]> get(String If_None_Match) {
@@ -612,16 +612,16 @@ public class Anonymous
              *     The server name you would like data from
              * @param effect_id
              *     A dogma effect ID
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<get_dogma_effects_effect_id> getByEffectid(int effect_id, String If_None_Match) {
+            public Requested<Getdogmaeffectseffectid> getByEffectid(int effect_id, String If_None_Match) {
                 String url = ("https://esi.evetech.net/v2/dogma/effects/{effect_id}/".replace("{effect_id}", ""+effect_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_dogma_effects_effect_id.class);
+                return requestGet(url, headerProperties, Getdogmaeffectseffectid.class);
             }
         }
     }
@@ -645,16 +645,16 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<get_fw_leaderboards> get(String If_None_Match) {
+            public Requested<Getfwleaderboards> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/fw/leaderboards/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_fw_leaderboards.class);
+                return requestGet(url, headerProperties, Getfwleaderboards.class);
             }
 
             public class Characters {
@@ -668,16 +668,16 @@ public class Anonymous
                  * 
                  * @param datasource
                  *     The server name you would like data from
-                 * @param If-None-Match
+                 * @param If_None_Match
                  *     ETag from a previous request. A 304 will be returned if this matches the current ETag
                  */
-                public Requested<get_fw_leaderboards> get(String If_None_Match) {
+                public Requested<Getfwleaderboards> get(String If_None_Match) {
                     String url = ("https://esi.evetech.net/v1/fw/leaderboards/characters/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                     HashMap<String, String> headerProperties = new HashMap<String, String>();
                     if (If_None_Match!= null) {
                         headerProperties.put("If-None-Match", (""+ If_None_Match));
                     }
-                    return requestGet(url, headerProperties, get_fw_leaderboards.class);
+                    return requestGet(url, headerProperties, Getfwleaderboards.class);
                 }
             }
 
@@ -692,16 +692,16 @@ public class Anonymous
                  * 
                  * @param datasource
                  *     The server name you would like data from
-                 * @param If-None-Match
+                 * @param If_None_Match
                  *     ETag from a previous request. A 304 will be returned if this matches the current ETag
                  */
-                public Requested<get_fw_leaderboards> get(String If_None_Match) {
+                public Requested<Getfwleaderboards> get(String If_None_Match) {
                     String url = ("https://esi.evetech.net/v1/fw/leaderboards/corporations/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                     HashMap<String, String> headerProperties = new HashMap<String, String>();
                     if (If_None_Match!= null) {
                         headerProperties.put("If-None-Match", (""+ If_None_Match));
                     }
-                    return requestGet(url, headerProperties, get_fw_leaderboards.class);
+                    return requestGet(url, headerProperties, Getfwleaderboards.class);
                 }
             }
         }
@@ -717,16 +717,16 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<get_fw_stats_200 []> get(String If_None_Match) {
+            public Requested<Getfwstats200 []> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/fw/stats/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_fw_stats_200 [].class);
+                return requestGet(url, headerProperties, Getfwstats200 [].class);
             }
         }
 
@@ -741,16 +741,16 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<get_fw_systems_200 []> get(String If_None_Match) {
+            public Requested<Getfwsystems200 []> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v2/fw/systems/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_fw_systems_200 [].class);
+                return requestGet(url, headerProperties, Getfwsystems200 [].class);
             }
         }
 
@@ -765,16 +765,16 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<get_fw_wars_200 []> get(String If_None_Match) {
+            public Requested<Getfwwars200 []> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/fw/wars/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_fw_wars_200 [].class);
+                return requestGet(url, headerProperties, Getfwwars200 [].class);
             }
         }
     }
@@ -790,16 +790,16 @@ public class Anonymous
          * 
          * @param datasource
          *     The server name you would like data from
-         * @param If-None-Match
+         * @param If_None_Match
          *     ETag from a previous request. A 304 will be returned if this matches the current ETag
          */
-        public Requested<get_incursions_200 []> get(String If_None_Match) {
+        public Requested<Getincursions200 []> get(String If_None_Match) {
             String url = ("https://esi.evetech.net/v1/incursions/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
             HashMap<String, String> headerProperties = new HashMap<String, String>();
             if (If_None_Match!= null) {
                 headerProperties.put("If-None-Match", (""+ If_None_Match));
             }
-            return requestGet(url, headerProperties, get_incursions_200 [].class);
+            return requestGet(url, headerProperties, Getincursions200 [].class);
         }
     }
 
@@ -818,16 +818,16 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<get_industry_facilities_200 []> get(String If_None_Match) {
+            public Requested<Getindustryfacilities200 []> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/industry/facilities/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_industry_facilities_200 [].class);
+                return requestGet(url, headerProperties, Getindustryfacilities200 [].class);
             }
         }
 
@@ -842,16 +842,16 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<get_industry_systems_200 []> get(String If_None_Match) {
+            public Requested<Getindustrysystems200 []> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/industry/systems/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_industry_systems_200 [].class);
+                return requestGet(url, headerProperties, Getindustrysystems200 [].class);
             }
         }
     }
@@ -868,16 +868,16 @@ public class Anonymous
              * This route is cached for up to 3600 seconds
              * </p>
              * 
-             * @param Accept-Language
+             * @param Accept_Language
              *     Language to use in the response
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param language
              *     Language to use in the response, takes precedence over Accept-Language
              */
-            public Requested<get_insurance_prices_200 []> get(esi.evetech.net.structures.Accept_Language Accept_Language, String If_None_Match, esi.evetech.net.structures.language language) {
+            public Requested<Getinsuranceprices200 []> get(esi.evetech.net.structures.Accept_Language Accept_Language, String If_None_Match, esi.evetech.net.structures.language language) {
                 String url = ("https://esi.evetech.net/v1/insurance/prices/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(language==null?"":"&language="+flatten(language)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
@@ -886,7 +886,7 @@ public class Anonymous
                 if (Accept_Language!= null) {
                     headerProperties.put("Accept-Language", (""+ Accept_Language));
                 }
-                return requestGet(url, headerProperties, get_insurance_prices_200 [].class);
+                return requestGet(url, headerProperties, Getinsuranceprices200 [].class);
             }
         }
     }
@@ -902,20 +902,20 @@ public class Anonymous
          * 
          * @param datasource
          *     The server name you would like data from
-         * @param If-None-Match
+         * @param If_None_Match
          *     ETag from a previous request. A 304 will be returned if this matches the current ETag
          * @param killmail_hash
          *     The killmail hash for verification
          * @param killmail_id
          *     The killmail ID to be queried
          */
-        public Requested<get_killmails_killmail_id_killmail_hash> getByKillmailidKillmailhash(String If_None_Match, String killmail_hash, int killmail_id) {
+        public Requested<Getkillmailskillmailidkillmailhash> getByKillmailidKillmailhash(String If_None_Match, String killmail_hash, int killmail_id) {
             String url = ("https://esi.evetech.net/v1/killmails/{killmail_id}/{killmail_hash}/".replace("{killmail_hash}", ""+killmail_hash).replace("{killmail_id}", ""+killmail_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
             HashMap<String, String> headerProperties = new HashMap<String, String>();
             if (If_None_Match!= null) {
                 headerProperties.put("If-None-Match", (""+ If_None_Match));
             }
-            return requestGet(url, headerProperties, get_killmails_killmail_id_killmail_hash.class);
+            return requestGet(url, headerProperties, Getkillmailskillmailidkillmailhash.class);
         }
     }
 
@@ -938,16 +938,16 @@ public class Anonymous
                  *     An EVE corporation ID
                  * @param datasource
                  *     The server name you would like data from
-                 * @param If-None-Match
+                 * @param If_None_Match
                  *     ETag from a previous request. A 304 will be returned if this matches the current ETag
                  */
-                public Requested<get_loyalty_stores_corporation_id_offers_200 []> getByCorporationid(int corporation_id, String If_None_Match) {
+                public Requested<Getloyaltystorescorporationidoffers200 []> getByCorporationid(int corporation_id, String If_None_Match) {
                     String url = ("https://esi.evetech.net/v1/loyalty/stores/{corporation_id}/offers/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                     HashMap<String, String> headerProperties = new HashMap<String, String>();
                     if (If_None_Match!= null) {
                         headerProperties.put("If-None-Match", (""+ If_None_Match));
                     }
-                    return requestGet(url, headerProperties, get_loyalty_stores_corporation_id_offers_200 [].class);
+                    return requestGet(url, headerProperties, Getloyaltystorescorporationidoffers200 [].class);
                 }
             }
         }
@@ -971,7 +971,7 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
             public Requested<Integer[]> get(String If_None_Match) {
@@ -990,18 +990,18 @@ public class Anonymous
              * This route expires daily at 11:05
              * </p>
              * 
-             * @param Accept-Language
+             * @param Accept_Language
              *     Language to use in the response
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param language
              *     Language to use in the response, takes precedence over Accept-Language
              * @param market_group_id
              *     An Eve item group ID
              */
-            public Requested<get_markets_groups_market_group_id> getByMarketgroupid(esi.evetech.net.structures.Accept_Language Accept_Language,
+            public Requested<Getmarketsgroupsmarketgroupid> getByMarketgroupid(esi.evetech.net.structures.Accept_Language Accept_Language,
                 String If_None_Match,
                 esi.evetech.net.structures.language language,
                 int market_group_id) {
@@ -1013,7 +1013,7 @@ public class Anonymous
                 if (Accept_Language!= null) {
                     headerProperties.put("Accept-Language", (""+ Accept_Language));
                 }
-                return requestGet(url, headerProperties, get_markets_groups_market_group_id.class);
+                return requestGet(url, headerProperties, Getmarketsgroupsmarketgroupid.class);
             }
         }
 
@@ -1028,20 +1028,20 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param region_id
              *     Return statistics in this region
              * @param type_id
              *     Return statistics for this type
              */
-            public Requested<get_markets_region_id_history_200 []> getByRegionid(String If_None_Match, int region_id, int type_id) {
+            public Requested<Getmarketsregionidhistory200 []> getByRegionid(String If_None_Match, int region_id, int type_id) {
                 String url = ("https://esi.evetech.net/v1/markets/{region_id}/history/".replace("{region_id}", ""+region_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+"&type_id="+flatten(type_id));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_markets_region_id_history_200 [].class);
+                return requestGet(url, headerProperties, Getmarketsregionidhistory200 [].class);
             }
         }
 
@@ -1056,7 +1056,7 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param order_type
              *     Filter buy/sell orders, return all orders by default. If you query without type_id, we always return both buy and sell orders
@@ -1067,7 +1067,7 @@ public class Anonymous
              * @param type_id
              *     Return orders only for this type
              */
-            public Requested<get_markets_region_id_orders_200 []> getByRegionid(String If_None_Match,
+            public Requested<Getmarketsregionidorders200 []> getByRegionid(String If_None_Match,
                 esi.evetech.net.structures.order_type order_type,
                 Integer page,
                 int region_id,
@@ -1077,7 +1077,7 @@ public class Anonymous
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_markets_region_id_orders_200 [].class);
+                return requestGet(url, headerProperties, Getmarketsregionidorders200 [].class);
             }
         }
 
@@ -1092,16 +1092,16 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<get_markets_prices_200 []> get(String If_None_Match) {
+            public Requested<Getmarketsprices200 []> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/markets/prices/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_markets_prices_200 [].class);
+                return requestGet(url, headerProperties, Getmarketsprices200 [].class);
             }
         }
 
@@ -1116,7 +1116,7 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param page
              *     Which page of results to return
@@ -1149,7 +1149,7 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
             public Requested<Integer[]> get(String If_None_Match) {
@@ -1168,18 +1168,18 @@ public class Anonymous
              * This route expires daily at 11:05
              * </p>
              * 
-             * @param Accept-Language
+             * @param Accept_Language
              *     Language to use in the response
              * @param datasource
              *     The server name you would like data from
              * @param group_id
              *     ID of an opportunities group
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param language
              *     Language to use in the response, takes precedence over Accept-Language
              */
-            public Requested<get_opportunities_groups_group_id> getByGroupid(esi.evetech.net.structures.Accept_Language Accept_Language,
+            public Requested<Getopportunitiesgroupsgroupid> getByGroupid(esi.evetech.net.structures.Accept_Language Accept_Language,
                 int group_id,
                 String If_None_Match,
                 esi.evetech.net.structures.language language) {
@@ -1191,7 +1191,7 @@ public class Anonymous
                 if (Accept_Language!= null) {
                     headerProperties.put("Accept-Language", (""+ Accept_Language));
                 }
-                return requestGet(url, headerProperties, get_opportunities_groups_group_id.class);
+                return requestGet(url, headerProperties, Getopportunitiesgroupsgroupid.class);
             }
         }
 
@@ -1206,7 +1206,7 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
             public Requested<Integer[]> get(String If_None_Match) {
@@ -1227,18 +1227,18 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param task_id
              *     ID of an opportunities task
              */
-            public Requested<get_opportunities_tasks_task_id> getByTaskid(String If_None_Match, int task_id) {
+            public Requested<Getopportunitiestaskstaskid> getByTaskid(String If_None_Match, int task_id) {
                 String url = ("https://esi.evetech.net/v1/opportunities/tasks/{task_id}/".replace("{task_id}", ""+task_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_opportunities_tasks_task_id.class);
+                return requestGet(url, headerProperties, Getopportunitiestaskstaskid.class);
             }
         }
     }
@@ -1262,7 +1262,7 @@ public class Anonymous
          *     destination solar system ID
          * @param flag
          *     route security preference
-         * @param If-None-Match
+         * @param If_None_Match
          *     ETag from a previous request. A 304 will be returned if this matches the current ETag
          * @param origin
          *     origin solar system ID
@@ -1291,13 +1291,13 @@ public class Anonymous
          * This route is cached for up to 3600 seconds
          * </p>
          * 
-         * @param Accept-Language
+         * @param Accept_Language
          *     Language to use in the response
          * @param categories
          *     Type of entities to search for
          * @param datasource
          *     The server name you would like data from
-         * @param If-None-Match
+         * @param If_None_Match
          *     ETag from a previous request. A 304 will be returned if this matches the current ETag
          * @param language
          *     Language to use in the response, takes precedence over Accept-Language
@@ -1306,7 +1306,7 @@ public class Anonymous
          * @param strict
          *     Whether the search should be a strict match
          */
-        public Requested<get_search> get(esi.evetech.net.structures.Accept_Language Accept_Language,
+        public Requested<Getsearch> get(esi.evetech.net.structures.Accept_Language Accept_Language,
             String[] categories,
             String If_None_Match,
             esi.evetech.net.structures.language language,
@@ -1320,7 +1320,7 @@ public class Anonymous
             if (Accept_Language!= null) {
                 headerProperties.put("Accept-Language", (""+ Accept_Language));
             }
-            return requestGet(url, headerProperties, get_search.class);
+            return requestGet(url, headerProperties, Getsearch.class);
         }
     }
 
@@ -1340,16 +1340,16 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<get_sovereignty_campaigns_200 []> get(String If_None_Match) {
+            public Requested<Getsovereigntycampaigns200 []> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/sovereignty/campaigns/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_sovereignty_campaigns_200 [].class);
+                return requestGet(url, headerProperties, Getsovereigntycampaigns200 [].class);
             }
         }
 
@@ -1364,16 +1364,16 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<get_sovereignty_map_200 []> get(String If_None_Match) {
+            public Requested<Getsovereigntymap200 []> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/sovereignty/map/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_sovereignty_map_200 [].class);
+                return requestGet(url, headerProperties, Getsovereigntymap200 [].class);
             }
         }
 
@@ -1388,16 +1388,16 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<get_sovereignty_structures_200 []> get(String If_None_Match) {
+            public Requested<Getsovereigntystructures200 []> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/sovereignty/structures/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_sovereignty_structures_200 [].class);
+                return requestGet(url, headerProperties, Getsovereigntystructures200 [].class);
             }
         }
     }
@@ -1413,16 +1413,16 @@ public class Anonymous
          * 
          * @param datasource
          *     The server name you would like data from
-         * @param If-None-Match
+         * @param If_None_Match
          *     ETag from a previous request. A 304 will be returned if this matches the current ETag
          */
-        public Requested<get_status> get(String If_None_Match) {
+        public Requested<Getstatus> get(String If_None_Match) {
             String url = ("https://esi.evetech.net/v1/status/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
             HashMap<String, String> headerProperties = new HashMap<String, String>();
             if (If_None_Match!= null) {
                 headerProperties.put("If-None-Match", (""+ If_None_Match));
             }
-            return requestGet(url, headerProperties, get_status.class);
+            return requestGet(url, headerProperties, Getstatus.class);
         }
     }
 
@@ -1460,16 +1460,16 @@ public class Anonymous
              * This route expires daily at 11:05
              * </p>
              * 
-             * @param Accept-Language
+             * @param Accept_Language
              *     Language to use in the response
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param language
              *     Language to use in the response, takes precedence over Accept-Language
              */
-            public Requested<get_universe_ancestries_200 []> get(esi.evetech.net.structures.Accept_Language Accept_Language, String If_None_Match, esi.evetech.net.structures.language language) {
+            public Requested<Getuniverseancestries200 []> get(esi.evetech.net.structures.Accept_Language Accept_Language, String If_None_Match, esi.evetech.net.structures.language language) {
                 String url = ("https://esi.evetech.net/v1/universe/ancestries/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(language==null?"":"&language="+flatten(language)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
@@ -1478,7 +1478,7 @@ public class Anonymous
                 if (Accept_Language!= null) {
                     headerProperties.put("Accept-Language", (""+ Accept_Language));
                 }
-                return requestGet(url, headerProperties, get_universe_ancestries_200 [].class);
+                return requestGet(url, headerProperties, Getuniverseancestries200 [].class);
             }
         }
 
@@ -1495,16 +1495,16 @@ public class Anonymous
              *     asteroid_belt_id integer
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<get_universe_asteroid_belts_asteroid_belt_id> getByAsteroidbeltid(int asteroid_belt_id, String If_None_Match) {
+            public Requested<Getuniverseasteroidbeltsasteroidbeltid> getByAsteroidbeltid(int asteroid_belt_id, String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/universe/asteroid_belts/{asteroid_belt_id}/".replace("{asteroid_belt_id}", ""+asteroid_belt_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_universe_asteroid_belts_asteroid_belt_id.class);
+                return requestGet(url, headerProperties, Getuniverseasteroidbeltsasteroidbeltid.class);
             }
         }
 
@@ -1517,16 +1517,16 @@ public class Anonymous
              * This route expires daily at 11:05
              * </p>
              * 
-             * @param Accept-Language
+             * @param Accept_Language
              *     Language to use in the response
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param language
              *     Language to use in the response, takes precedence over Accept-Language
              */
-            public Requested<get_universe_bloodlines_200 []> get(esi.evetech.net.structures.Accept_Language Accept_Language, String If_None_Match, esi.evetech.net.structures.language language) {
+            public Requested<Getuniversebloodlines200 []> get(esi.evetech.net.structures.Accept_Language Accept_Language, String If_None_Match, esi.evetech.net.structures.language language) {
                 String url = ("https://esi.evetech.net/v1/universe/bloodlines/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(language==null?"":"&language="+flatten(language)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
@@ -1535,7 +1535,7 @@ public class Anonymous
                 if (Accept_Language!= null) {
                     headerProperties.put("Accept-Language", (""+ Accept_Language));
                 }
-                return requestGet(url, headerProperties, get_universe_bloodlines_200 [].class);
+                return requestGet(url, headerProperties, Getuniversebloodlines200 [].class);
             }
         }
 
@@ -1550,7 +1550,7 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
             public Requested<Integer[]> get(String If_None_Match) {
@@ -1569,18 +1569,18 @@ public class Anonymous
              * This route expires daily at 11:05
              * </p>
              * 
-             * @param Accept-Language
+             * @param Accept_Language
              *     Language to use in the response
              * @param category_id
              *     An Eve item category ID
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param language
              *     Language to use in the response, takes precedence over Accept-Language
              */
-            public Requested<get_universe_categories_category_id> getByCategoryid(esi.evetech.net.structures.Accept_Language Accept_Language,
+            public Requested<Getuniversecategoriescategoryid> getByCategoryid(esi.evetech.net.structures.Accept_Language Accept_Language,
                 int category_id,
                 String If_None_Match,
                 esi.evetech.net.structures.language language) {
@@ -1592,7 +1592,7 @@ public class Anonymous
                 if (Accept_Language!= null) {
                     headerProperties.put("Accept-Language", (""+ Accept_Language));
                 }
-                return requestGet(url, headerProperties, get_universe_categories_category_id.class);
+                return requestGet(url, headerProperties, Getuniversecategoriescategoryid.class);
             }
         }
 
@@ -1607,7 +1607,7 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
             public Requested<Integer[]> get(String If_None_Match) {
@@ -1626,18 +1626,18 @@ public class Anonymous
              * This route expires daily at 11:05
              * </p>
              * 
-             * @param Accept-Language
+             * @param Accept_Language
              *     Language to use in the response
              * @param constellation_id
              *     constellation_id integer
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param language
              *     Language to use in the response, takes precedence over Accept-Language
              */
-            public Requested<get_universe_constellations_constellation_id> getByConstellationid(esi.evetech.net.structures.Accept_Language Accept_Language,
+            public Requested<Getuniverseconstellationsconstellationid> getByConstellationid(esi.evetech.net.structures.Accept_Language Accept_Language,
                 int constellation_id,
                 String If_None_Match,
                 esi.evetech.net.structures.language language) {
@@ -1649,7 +1649,7 @@ public class Anonymous
                 if (Accept_Language!= null) {
                     headerProperties.put("Accept-Language", (""+ Accept_Language));
                 }
-                return requestGet(url, headerProperties, get_universe_constellations_constellation_id.class);
+                return requestGet(url, headerProperties, Getuniverseconstellationsconstellationid.class);
             }
         }
 
@@ -1662,16 +1662,16 @@ public class Anonymous
              * This route expires daily at 11:05
              * </p>
              * 
-             * @param Accept-Language
+             * @param Accept_Language
              *     Language to use in the response
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param language
              *     Language to use in the response, takes precedence over Accept-Language
              */
-            public Requested<get_universe_factions_200 []> get(esi.evetech.net.structures.Accept_Language Accept_Language, String If_None_Match, esi.evetech.net.structures.language language) {
+            public Requested<Getuniversefactions200 []> get(esi.evetech.net.structures.Accept_Language Accept_Language, String If_None_Match, esi.evetech.net.structures.language language) {
                 String url = ("https://esi.evetech.net/v2/universe/factions/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(language==null?"":"&language="+flatten(language)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
@@ -1680,7 +1680,7 @@ public class Anonymous
                 if (Accept_Language!= null) {
                     headerProperties.put("Accept-Language", (""+ Accept_Language));
                 }
-                return requestGet(url, headerProperties, get_universe_factions_200 [].class);
+                return requestGet(url, headerProperties, Getuniversefactions200 [].class);
             }
         }
 
@@ -1695,7 +1695,7 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
             public Requested<Integer[]> get(String If_None_Match) {
@@ -1718,16 +1718,16 @@ public class Anonymous
              *     The server name you would like data from
              * @param graphic_id
              *     graphic_id integer
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<get_universe_graphics_graphic_id> getByGraphicid(int graphic_id, String If_None_Match) {
+            public Requested<Getuniversegraphicsgraphicid> getByGraphicid(int graphic_id, String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/universe/graphics/{graphic_id}/".replace("{graphic_id}", ""+graphic_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_universe_graphics_graphic_id.class);
+                return requestGet(url, headerProperties, Getuniversegraphicsgraphicid.class);
             }
         }
 
@@ -1742,7 +1742,7 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param page
              *     Which page of results to return
@@ -1763,18 +1763,18 @@ public class Anonymous
              * This route expires daily at 11:05
              * </p>
              * 
-             * @param Accept-Language
+             * @param Accept_Language
              *     Language to use in the response
              * @param datasource
              *     The server name you would like data from
              * @param group_id
              *     An Eve item group ID
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param language
              *     Language to use in the response, takes precedence over Accept-Language
              */
-            public Requested<get_universe_groups_group_id> getByGroupid(esi.evetech.net.structures.Accept_Language Accept_Language,
+            public Requested<Getuniversegroupsgroupid> getByGroupid(esi.evetech.net.structures.Accept_Language Accept_Language,
                 int group_id,
                 String If_None_Match,
                 esi.evetech.net.structures.language language) {
@@ -1786,7 +1786,7 @@ public class Anonymous
                 if (Accept_Language!= null) {
                     headerProperties.put("Accept-Language", (""+ Accept_Language));
                 }
-                return requestGet(url, headerProperties, get_universe_groups_group_id.class);
+                return requestGet(url, headerProperties, Getuniversegroupsgroupid.class);
             }
         }
 
@@ -1798,7 +1798,7 @@ public class Anonymous
              * Resolve a set of names to IDs in the following categories: agents, alliances, characters, constellations, corporations factions, inventory_types, regions, stations, and systems. Only exact matches will be returned. All names searched for are cached for 12 hours
              * </p>
              * 
-             * @param Accept-Language
+             * @param Accept_Language
              *     Language to use in the response
              * @param datasource
              *     The server name you would like data from
@@ -1807,7 +1807,7 @@ public class Anonymous
              * @param names
              *     The names to resolve
              */
-            public Requested<post_universe_ids> post(esi.evetech.net.structures.Accept_Language Accept_Language, esi.evetech.net.structures.language language, String[] names) {
+            public Requested<Postuniverseids> post(esi.evetech.net.structures.Accept_Language Accept_Language, esi.evetech.net.structures.language language, String[] names) {
                 String url = ("https://esi.evetech.net/v1/universe/ids/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(language==null?"":"&language="+flatten(language)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (Accept_Language!= null) {
@@ -1815,7 +1815,7 @@ public class Anonymous
                 }
                 java.util.Map<String, Object> content = new HashMap<>();
                 content.put("names", names);
-                return requestPost(url, headerProperties, content, post_universe_ids.class);
+                return requestPost(url, headerProperties, content, Postuniverseids.class);
             }
         }
 
@@ -1830,18 +1830,18 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param moon_id
              *     moon_id integer
              */
-            public Requested<get_universe_moons_moon_id> getByMoonid(String If_None_Match, int moon_id) {
+            public Requested<Getuniversemoonsmoonid> getByMoonid(String If_None_Match, int moon_id) {
                 String url = ("https://esi.evetech.net/v1/universe/moons/{moon_id}/".replace("{moon_id}", ""+moon_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_universe_moons_moon_id.class);
+                return requestGet(url, headerProperties, Getuniversemoonsmoonid.class);
             }
         }
 
@@ -1858,11 +1858,11 @@ public class Anonymous
              * @param ids
              *     The ids to resolve
              */
-            public Requested<post_universe_names_200 []> post(int[] ids) {
+            public Requested<Postuniversenames200 []> post(int[] ids) {
                 String url = ("https://esi.evetech.net/v3/universe/names/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 java.util.Map<String, Object> content = new HashMap<>();
                 content.put("ids", ids);
-                return requestPost(url, null, content, post_universe_names_200 [].class);
+                return requestPost(url, null, content, Postuniversenames200 [].class);
             }
         }
 
@@ -1877,18 +1877,18 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param planet_id
              *     planet_id integer
              */
-            public Requested<get_universe_planets_planet_id> getByPlanetid(String If_None_Match, int planet_id) {
+            public Requested<Getuniverseplanetsplanetid> getByPlanetid(String If_None_Match, int planet_id) {
                 String url = ("https://esi.evetech.net/v1/universe/planets/{planet_id}/".replace("{planet_id}", ""+planet_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_universe_planets_planet_id.class);
+                return requestGet(url, headerProperties, Getuniverseplanetsplanetid.class);
             }
         }
 
@@ -1901,16 +1901,16 @@ public class Anonymous
              * This route expires daily at 11:05
              * </p>
              * 
-             * @param Accept-Language
+             * @param Accept_Language
              *     Language to use in the response
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param language
              *     Language to use in the response, takes precedence over Accept-Language
              */
-            public Requested<get_universe_races_200 []> get(esi.evetech.net.structures.Accept_Language Accept_Language, String If_None_Match, esi.evetech.net.structures.language language) {
+            public Requested<Getuniverseraces200 []> get(esi.evetech.net.structures.Accept_Language Accept_Language, String If_None_Match, esi.evetech.net.structures.language language) {
                 String url = ("https://esi.evetech.net/v1/universe/races/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(language==null?"":"&language="+flatten(language)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
@@ -1919,7 +1919,7 @@ public class Anonymous
                 if (Accept_Language!= null) {
                     headerProperties.put("Accept-Language", (""+ Accept_Language));
                 }
-                return requestGet(url, headerProperties, get_universe_races_200 [].class);
+                return requestGet(url, headerProperties, Getuniverseraces200 [].class);
             }
         }
 
@@ -1934,7 +1934,7 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
             public Requested<Integer[]> get(String If_None_Match) {
@@ -1953,18 +1953,18 @@ public class Anonymous
              * This route expires daily at 11:05
              * </p>
              * 
-             * @param Accept-Language
+             * @param Accept_Language
              *     Language to use in the response
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param language
              *     Language to use in the response, takes precedence over Accept-Language
              * @param region_id
              *     region_id integer
              */
-            public Requested<get_universe_regions_region_id> getByRegionid(esi.evetech.net.structures.Accept_Language Accept_Language,
+            public Requested<Getuniverseregionsregionid> getByRegionid(esi.evetech.net.structures.Accept_Language Accept_Language,
                 String If_None_Match,
                 esi.evetech.net.structures.language language,
                 int region_id) {
@@ -1976,7 +1976,7 @@ public class Anonymous
                 if (Accept_Language!= null) {
                     headerProperties.put("Accept-Language", (""+ Accept_Language));
                 }
-                return requestGet(url, headerProperties, get_universe_regions_region_id.class);
+                return requestGet(url, headerProperties, Getuniverseregionsregionid.class);
             }
         }
 
@@ -1991,18 +1991,18 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param schematic_id
              *     A PI schematic ID
              */
-            public Requested<get_universe_schematics_schematic_id> getBySchematicid(String If_None_Match, int schematic_id) {
+            public Requested<Getuniverseschematicsschematicid> getBySchematicid(String If_None_Match, int schematic_id) {
                 String url = ("https://esi.evetech.net/v1/universe/schematics/{schematic_id}/".replace("{schematic_id}", ""+schematic_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_universe_schematics_schematic_id.class);
+                return requestGet(url, headerProperties, Getuniverseschematicsschematicid.class);
             }
         }
 
@@ -2017,18 +2017,18 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param stargate_id
              *     stargate_id integer
              */
-            public Requested<get_universe_stargates_stargate_id> getByStargateid(String If_None_Match, int stargate_id) {
+            public Requested<Getuniversestargatesstargateid> getByStargateid(String If_None_Match, int stargate_id) {
                 String url = ("https://esi.evetech.net/v1/universe/stargates/{stargate_id}/".replace("{stargate_id}", ""+stargate_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_universe_stargates_stargate_id.class);
+                return requestGet(url, headerProperties, Getuniversestargatesstargateid.class);
             }
         }
 
@@ -2043,18 +2043,18 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param star_id
              *     star_id integer
              */
-            public Requested<get_universe_stars_star_id> getByStarid(String If_None_Match, int star_id) {
+            public Requested<Getuniversestarsstarid> getByStarid(String If_None_Match, int star_id) {
                 String url = ("https://esi.evetech.net/v1/universe/stars/{star_id}/".replace("{star_id}", ""+star_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_universe_stars_star_id.class);
+                return requestGet(url, headerProperties, Getuniversestarsstarid.class);
             }
         }
 
@@ -2069,18 +2069,18 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param station_id
              *     station_id integer
              */
-            public Requested<get_universe_stations_station_id> getByStationid(String If_None_Match, int station_id) {
+            public Requested<Getuniversestationsstationid> getByStationid(String If_None_Match, int station_id) {
                 String url = ("https://esi.evetech.net/v2/universe/stations/{station_id}/".replace("{station_id}", ""+station_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_universe_stations_station_id.class);
+                return requestGet(url, headerProperties, Getuniversestationsstationid.class);
             }
         }
 
@@ -2097,7 +2097,7 @@ public class Anonymous
              *     The server name you would like data from
              * @param filter
              *     Only list public structures that have this service online
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
             public Requested<Long[]> get(esi.evetech.net.structures.filter filter, String If_None_Match) {
@@ -2121,16 +2121,16 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<get_universe_system_jumps_200 []> get(String If_None_Match) {
+            public Requested<Getuniversesystemjumps200 []> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/universe/system_jumps/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_universe_system_jumps_200 [].class);
+                return requestGet(url, headerProperties, Getuniversesystemjumps200 [].class);
             }
         }
 
@@ -2145,16 +2145,16 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<get_universe_system_kills_200 []> get(String If_None_Match) {
+            public Requested<Getuniversesystemkills200 []> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v2/universe/system_kills/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_universe_system_kills_200 [].class);
+                return requestGet(url, headerProperties, Getuniversesystemkills200 [].class);
             }
         }
 
@@ -2169,7 +2169,7 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
             public Requested<Integer[]> get(String If_None_Match) {
@@ -2188,18 +2188,18 @@ public class Anonymous
              * This route expires daily at 11:05
              * </p>
              * 
-             * @param Accept-Language
+             * @param Accept_Language
              *     Language to use in the response
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param language
              *     Language to use in the response, takes precedence over Accept-Language
              * @param system_id
              *     system_id integer
              */
-            public Requested<get_universe_systems_system_id> getBySystemid(esi.evetech.net.structures.Accept_Language Accept_Language,
+            public Requested<Getuniversesystemssystemid> getBySystemid(esi.evetech.net.structures.Accept_Language Accept_Language,
                 String If_None_Match,
                 esi.evetech.net.structures.language language,
                 int system_id) {
@@ -2211,7 +2211,7 @@ public class Anonymous
                 if (Accept_Language!= null) {
                     headerProperties.put("Accept-Language", (""+ Accept_Language));
                 }
-                return requestGet(url, headerProperties, get_universe_systems_system_id.class);
+                return requestGet(url, headerProperties, Getuniversesystemssystemid.class);
             }
         }
 
@@ -2226,7 +2226,7 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param page
              *     Which page of results to return
@@ -2247,18 +2247,18 @@ public class Anonymous
              * This route expires daily at 11:05
              * </p>
              * 
-             * @param Accept-Language
+             * @param Accept_Language
              *     Language to use in the response
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param language
              *     Language to use in the response, takes precedence over Accept-Language
              * @param type_id
              *     An Eve item type ID
              */
-            public Requested<get_universe_types_type_id> getByTypeid(esi.evetech.net.structures.Accept_Language Accept_Language,
+            public Requested<Getuniversetypestypeid> getByTypeid(esi.evetech.net.structures.Accept_Language Accept_Language,
                 String If_None_Match,
                 esi.evetech.net.structures.language language,
                 int type_id) {
@@ -2270,7 +2270,7 @@ public class Anonymous
                 if (Accept_Language!= null) {
                     headerProperties.put("Accept-Language", (""+ Accept_Language));
                 }
-                return requestGet(url, headerProperties, get_universe_types_type_id.class);
+                return requestGet(url, headerProperties, Getuniversetypestypeid.class);
             }
         }
     }
@@ -2287,7 +2287,7 @@ public class Anonymous
          * 
          * @param datasource
          *     The server name you would like data from
-         * @param If-None-Match
+         * @param If_None_Match
          *     ETag from a previous request. A 304 will be returned if this matches the current ETag
          * @param max_war_id
          *     Only return wars with ID smaller than this
@@ -2310,18 +2310,18 @@ public class Anonymous
          * 
          * @param datasource
          *     The server name you would like data from
-         * @param If-None-Match
+         * @param If_None_Match
          *     ETag from a previous request. A 304 will be returned if this matches the current ETag
          * @param war_id
          *     ID for a war
          */
-        public Requested<get_wars_war_id> getByWarid(String If_None_Match, int war_id) {
+        public Requested<Getwarswarid> getByWarid(String If_None_Match, int war_id) {
             String url = ("https://esi.evetech.net/v1/wars/{war_id}/".replace("{war_id}", ""+war_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
             HashMap<String, String> headerProperties = new HashMap<String, String>();
             if (If_None_Match!= null) {
                 headerProperties.put("If-None-Match", (""+ If_None_Match));
             }
-            return requestGet(url, headerProperties, get_wars_war_id.class);
+            return requestGet(url, headerProperties, Getwarswarid.class);
         }
 
         public class Killmails {
@@ -2335,20 +2335,20 @@ public class Anonymous
              * 
              * @param datasource
              *     The server name you would like data from
-             * @param If-None-Match
+             * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              * @param page
              *     Which page of results to return
              * @param war_id
              *     A valid war ID
              */
-            public Requested<get_characters_character_id_killmails_recent_200 []> getByWarid(String If_None_Match, Integer page, int war_id) {
+            public Requested<Getcharacterscharacteridkillmailsrecent200 []> getByWarid(String If_None_Match, Integer page, int war_id) {
                 String url = ("https://esi.evetech.net/v1/wars/{war_id}/killmails/".replace("{war_id}", ""+war_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, get_characters_character_id_killmails_recent_200 [].class);
+                return requestGet(url, headerProperties, Getcharacterscharacteridkillmailsrecent200 [].class);
             }
         }
     }

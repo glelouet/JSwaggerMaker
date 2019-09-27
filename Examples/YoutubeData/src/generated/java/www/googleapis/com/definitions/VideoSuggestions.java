@@ -1,27 +1,27 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.EDITORSUGGESTIONS;
-import www.googleapis.com.structures.PROCESSINGERRORS;
-import www.googleapis.com.structures.PROCESSINGHINTS;
-import www.googleapis.com.structures.PROCESSINGWARNINGS;
+import www.googleapis.com.structures.Editorsuggestions;
+import www.googleapis.com.structures.Processingerrors;
+import www.googleapis.com.structures.Processinghints;
+import www.googleapis.com.structures.Processingwarnings;
 
 public class VideoSuggestions {
     /**
      * A list of video editing operations that might improve the video quality or playback experience of the uploaded video.
      */
-    public EDITORSUGGESTIONS[] editorSuggestions;
+    public Editorsuggestions[] editorSuggestions;
     /**
      * A list of errors that will prevent YouTube from successfully processing the uploaded video video. These errors indicate that, regardless of the video's current processing status, eventually, that status will almost certainly be failed.
      */
-    public PROCESSINGERRORS[] processingErrors;
+    public Processingerrors[] processingErrors;
     /**
      * A list of suggestions that may improve YouTube's ability to process the video.
      */
-    public PROCESSINGHINTS[] processingHints;
+    public Processinghints[] processingHints;
     /**
      * A list of reasons why YouTube may have difficulty transcoding the uploaded video or that might result in an erroneous transcoding. These warnings are generated before YouTube actually processes the uploaded video file. In addition, they identify issues that are unlikely to cause the video processing to fail but that might cause problems such as sync issues, video artifacts, or a missing audio track.
      */
-    public PROCESSINGWARNINGS[] processingWarnings;
+    public Processingwarnings[] processingWarnings;
     /**
      * A list of keyword tags that could be added to the video's metadata to increase the likelihood that users will locate your video when searching or browsing on YouTube.
      */

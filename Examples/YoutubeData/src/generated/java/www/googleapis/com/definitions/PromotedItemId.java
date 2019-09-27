@@ -1,6 +1,6 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.TYPE;
+import www.googleapis.com.structures.Type;
 
 public class PromotedItemId {
     /**
@@ -10,7 +10,7 @@ public class PromotedItemId {
     /**
      * Describes the type of the promoted item.
      */
-    public TYPE type;
+    public Type type;
     /**
      * If the promoted item represents a video, this field represents the unique YouTube ID identifying it. This field will be present only if type has the value video.
      */

@@ -10,20 +10,44 @@ import www.googleapis.com.definitions.Caption;
 import www.googleapis.com.definitions.CaptionListResponse;
 import www.googleapis.com.definitions.Channel;
 import www.googleapis.com.definitions.ChannelBannerResource;
+import www.googleapis.com.definitions.ChannelListResponse;
 import www.googleapis.com.definitions.ChannelSection;
+import www.googleapis.com.definitions.ChannelSectionListResponse;
+import www.googleapis.com.definitions.Comment;
+import www.googleapis.com.definitions.CommentListResponse;
 import www.googleapis.com.definitions.CommentThread;
 import www.googleapis.com.definitions.CommentThreadListResponse;
+import www.googleapis.com.definitions.GuideCategoryListResponse;
+import www.googleapis.com.definitions.I18nLanguageListResponse;
+import www.googleapis.com.definitions.I18nRegionListResponse;
 import www.googleapis.com.definitions.InvideoBranding;
 import www.googleapis.com.definitions.LiveBroadcast;
+import www.googleapis.com.definitions.LiveBroadcastListResponse;
+import www.googleapis.com.definitions.LiveChatBan;
 import www.googleapis.com.definitions.LiveChatMessage;
 import www.googleapis.com.definitions.LiveChatMessageListResponse;
+import www.googleapis.com.definitions.LiveChatModerator;
+import www.googleapis.com.definitions.LiveChatModeratorListResponse;
 import www.googleapis.com.definitions.LiveStream;
+import www.googleapis.com.definitions.LiveStreamListResponse;
+import www.googleapis.com.definitions.MemberListResponse;
+import www.googleapis.com.definitions.MembershipsLevelListResponse;
 import www.googleapis.com.definitions.Playlist;
 import www.googleapis.com.definitions.PlaylistItem;
+import www.googleapis.com.definitions.PlaylistItemListResponse;
+import www.googleapis.com.definitions.PlaylistListResponse;
 import www.googleapis.com.definitions.SearchListResponse;
+import www.googleapis.com.definitions.SponsorListResponse;
 import www.googleapis.com.definitions.Subscription;
+import www.googleapis.com.definitions.SubscriptionListResponse;
+import www.googleapis.com.definitions.SuperChatEventListResponse;
+import www.googleapis.com.definitions.ThumbnailSetResponse;
 import www.googleapis.com.definitions.Video;
 import www.googleapis.com.definitions.VideoAbuseReport;
+import www.googleapis.com.definitions.VideoAbuseReportReasonListResponse;
+import www.googleapis.com.definitions.VideoCategoryListResponse;
+import www.googleapis.com.definitions.VideoGetRatingResponse;
+import www.googleapis.com.definitions.VideoListResponse;
 
 
 /**
@@ -363,7 +387,7 @@ public class Oauth2c
             String onBehalfOf,
             String onBehalfOfContentOwner) {
             String url = ("https://www.googleapis.com/youtube/v3/captions"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(id==null?"":"&id="+flatten(id))+(onBehalfOf==null?"":"&onBehalfOf="+flatten(onBehalfOf))+(onBehalfOfContentOwner==null?"":"&onBehalfOfContentOwner="+flatten(onBehalfOfContentOwner)));
-            requestDel(url, null);
+            requestDel(url, null, Void.class);
         }
 
         /**
@@ -521,7 +545,7 @@ public class Oauth2c
          *     
          *     If the parameter identifies a property that contains child properties, the child properties will be included in the response. For example, in a channel resource, the contentDetails property contains other properties, such as the uploads properties. As such, if you set part=contentDetails, the API response will also contain all of those nested properties.
          */
-        public Requested<ActivityListResponse> get(www.googleapis.com.structures.alt alt,
+        public Requested<ChannelListResponse> get(www.googleapis.com.structures.alt alt,
             String fields,
             String key,
             String oauth_token,
@@ -540,7 +564,7 @@ public class Oauth2c
             String pageToken,
             String part) {
             String url = ("https://www.googleapis.com/youtube/v3/channels"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(categoryId==null?"":"&categoryId="+flatten(categoryId))+(forUsername==null?"":"&forUsername="+flatten(forUsername))+(hl==null?"":"&hl="+flatten(hl))+(id==null?"":"&id="+flatten(id))+(managedByMe==null?"":"&managedByMe="+flatten(managedByMe))+(maxResults==null?"":"&maxResults="+flatten(maxResults))+(mine==null?"":"&mine="+flatten(mine))+(mySubscribers==null?"":"&mySubscribers="+flatten(mySubscribers))+(onBehalfOfContentOwner==null?"":"&onBehalfOfContentOwner="+flatten(onBehalfOfContentOwner))+(pageToken==null?"":"&pageToken="+flatten(pageToken))+(part==null?"":"&part="+flatten(part)));
-            return requestGet(url, null, ActivityListResponse.class);
+            return requestGet(url, null, ChannelListResponse.class);
         }
 
         /**
@@ -629,7 +653,7 @@ public class Oauth2c
          *     
          *     If the parameter identifies a property that contains child properties, the child properties will be included in the response. For example, in a channelSection resource, the snippet property contains other properties, such as a display title for the channelSection. If you set part=snippet, the API response will also contain all of those nested properties.
          */
-        public Requested<CaptionListResponse> get(www.googleapis.com.structures.alt alt,
+        public Requested<ChannelSectionListResponse> get(www.googleapis.com.structures.alt alt,
             String fields,
             String key,
             String oauth_token,
@@ -643,7 +667,7 @@ public class Oauth2c
             String onBehalfOfContentOwner,
             String part) {
             String url = ("https://www.googleapis.com/youtube/v3/channelSections"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(channelId==null?"":"&channelId="+flatten(channelId))+(hl==null?"":"&hl="+flatten(hl))+(id==null?"":"&id="+flatten(id))+(mine==null?"":"&mine="+flatten(mine))+(onBehalfOfContentOwner==null?"":"&onBehalfOfContentOwner="+flatten(onBehalfOfContentOwner))+(part==null?"":"&part="+flatten(part)));
-            return requestGet(url, null, CaptionListResponse.class);
+            return requestGet(url, null, ChannelSectionListResponse.class);
         }
 
         /**
@@ -782,7 +806,7 @@ public class Oauth2c
             String id,
             String onBehalfOfContentOwner) {
             String url = ("https://www.googleapis.com/youtube/v3/channelSections"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(id==null?"":"&id="+flatten(id))+(onBehalfOfContentOwner==null?"":"&onBehalfOfContentOwner="+flatten(onBehalfOfContentOwner)));
-            requestDel(url, null);
+            requestDel(url, null, Void.class);
         }
     }
 
@@ -829,7 +853,7 @@ public class Oauth2c
          * @param textFormat
          *     This parameter indicates whether the API should return comments formatted as HTML or as plain text.
          */
-        public Requested<CommentThreadListResponse> get(www.googleapis.com.structures.alt alt,
+        public Requested<CommentListResponse> get(www.googleapis.com.structures.alt alt,
             String fields,
             String key,
             String oauth_token,
@@ -843,7 +867,7 @@ public class Oauth2c
             String part,
             www.googleapis.com.structures.textFormat textFormat) {
             String url = ("https://www.googleapis.com/youtube/v3/comments"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(id==null?"":"&id="+flatten(id))+(maxResults==null?"":"&maxResults="+flatten(maxResults))+(pageToken==null?"":"&pageToken="+flatten(pageToken))+(parentId==null?"":"&parentId="+flatten(parentId))+(part==null?"":"&part="+flatten(part))+(textFormat==null?"":"&textFormat="+flatten(textFormat)));
-            return requestGet(url, null, CommentThreadListResponse.class);
+            return requestGet(url, null, CommentListResponse.class);
         }
 
         /**
@@ -870,19 +894,19 @@ public class Oauth2c
          * @param part
          *     The part parameter identifies the properties that the API response will include. Set the parameter value to snippet. The snippet part has a quota cost of 2 units.
          */
-        public Requested<Caption> post(www.googleapis.com.structures.alt alt,
+        public Requested<Comment> post(www.googleapis.com.structures.alt alt,
             String fields,
             String key,
             String oauth_token,
             Boolean prettyPrint,
             String quotaUser,
             String userIp,
-            Caption body,
+            Comment body,
             String part) {
             String url = ("https://www.googleapis.com/youtube/v3/comments"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(part==null?"":"&part="+flatten(part)));
             Map<String, Object> content = new HashMap<>();
             content.put("body", body);
-            return requestPost(url, null, content, Caption.class);
+            return requestPost(url, null, content, Comment.class);
         }
 
         /**
@@ -909,19 +933,19 @@ public class Oauth2c
          * @param part
          *     The part parameter identifies the properties that the API response will include. You must at least include the snippet part in the parameter value since that part contains all of the properties that the API request can update.
          */
-        public Requested<Caption> put(www.googleapis.com.structures.alt alt,
+        public Requested<Comment> put(www.googleapis.com.structures.alt alt,
             String fields,
             String key,
             String oauth_token,
             Boolean prettyPrint,
             String quotaUser,
             String userIp,
-            Caption body,
+            Comment body,
             String part) {
             String url = ("https://www.googleapis.com/youtube/v3/comments"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(part==null?"":"&part="+flatten(part)));
             Map<String, Object> content = new HashMap<>();
             content.put("body", body);
-            return requestPut(url, null, content, Caption.class);
+            return requestPut(url, null, content, Comment.class);
         }
 
         /**
@@ -956,7 +980,7 @@ public class Oauth2c
             String userIp,
             String id) {
             String url = ("https://www.googleapis.com/youtube/v3/comments"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(id==null?"":"&id="+flatten(id)));
-            requestDel(url, null);
+            requestDel(url, null, Void.class);
         }
 
         public class Markasspam {
@@ -1231,7 +1255,7 @@ public class Oauth2c
          * @param regionCode
          *     The regionCode parameter instructs the API to return the list of guide categories available in the specified country. The parameter value is an ISO 3166-1 alpha-2 country code.
          */
-        public Requested<ActivityListResponse> get(www.googleapis.com.structures.alt alt,
+        public Requested<GuideCategoryListResponse> get(www.googleapis.com.structures.alt alt,
             String fields,
             String key,
             String oauth_token,
@@ -1243,7 +1267,7 @@ public class Oauth2c
             String part,
             String regionCode) {
             String url = ("https://www.googleapis.com/youtube/v3/guideCategories"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(hl==null?"":"&hl="+flatten(hl))+(id==null?"":"&id="+flatten(id))+(part==null?"":"&part="+flatten(part))+(regionCode==null?"":"&regionCode="+flatten(regionCode)));
-            return requestGet(url, null, ActivityListResponse.class);
+            return requestGet(url, null, GuideCategoryListResponse.class);
         }
     }
 
@@ -1274,7 +1298,7 @@ public class Oauth2c
          * @param part
          *     The part parameter specifies the i18nLanguage resource properties that the API response will include. Set the parameter value to snippet.
          */
-        public Requested<CaptionListResponse> get(www.googleapis.com.structures.alt alt,
+        public Requested<I18nLanguageListResponse> get(www.googleapis.com.structures.alt alt,
             String fields,
             String key,
             String oauth_token,
@@ -1284,7 +1308,7 @@ public class Oauth2c
             String hl,
             String part) {
             String url = ("https://www.googleapis.com/youtube/v3/i18nLanguages"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(hl==null?"":"&hl="+flatten(hl))+(part==null?"":"&part="+flatten(part)));
-            return requestGet(url, null, CaptionListResponse.class);
+            return requestGet(url, null, I18nLanguageListResponse.class);
         }
     }
 
@@ -1315,7 +1339,7 @@ public class Oauth2c
          * @param part
          *     The part parameter specifies the i18nRegion resource properties that the API response will include. Set the parameter value to snippet.
          */
-        public Requested<CaptionListResponse> get(www.googleapis.com.structures.alt alt,
+        public Requested<I18nRegionListResponse> get(www.googleapis.com.structures.alt alt,
             String fields,
             String key,
             String oauth_token,
@@ -1325,7 +1349,7 @@ public class Oauth2c
             String hl,
             String part) {
             String url = ("https://www.googleapis.com/youtube/v3/i18nRegions"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(hl==null?"":"&hl="+flatten(hl))+(part==null?"":"&part="+flatten(part)));
-            return requestGet(url, null, CaptionListResponse.class);
+            return requestGet(url, null, I18nRegionListResponse.class);
         }
     }
 
@@ -1379,7 +1403,7 @@ public class Oauth2c
          * @param part
          *     The part parameter specifies a comma-separated list of one or more liveBroadcast resource properties that the API response will include. The part names that you can include in the parameter value are id, snippet, contentDetails, and status.
          */
-        public Requested<ActivityListResponse> get(www.googleapis.com.structures.alt alt,
+        public Requested<LiveBroadcastListResponse> get(www.googleapis.com.structures.alt alt,
             String fields,
             String key,
             String oauth_token,
@@ -1396,7 +1420,7 @@ public class Oauth2c
             String pageToken,
             String part) {
             String url = ("https://www.googleapis.com/youtube/v3/liveBroadcasts"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(broadcastStatus==null?"":"&broadcastStatus="+flatten(broadcastStatus))+(broadcastType==null?"":"&broadcastType="+flatten(broadcastType))+(id==null?"":"&id="+flatten(id))+(maxResults==null?"":"&maxResults="+flatten(maxResults))+(mine==null?"":"&mine="+flatten(mine))+(onBehalfOfContentOwner==null?"":"&onBehalfOfContentOwner="+flatten(onBehalfOfContentOwner))+(onBehalfOfContentOwnerChannel==null?"":"&onBehalfOfContentOwnerChannel="+flatten(onBehalfOfContentOwnerChannel))+(pageToken==null?"":"&pageToken="+flatten(pageToken))+(part==null?"":"&part="+flatten(part)));
-            return requestGet(url, null, ActivityListResponse.class);
+            return requestGet(url, null, LiveBroadcastListResponse.class);
         }
 
         /**
@@ -1551,7 +1575,7 @@ public class Oauth2c
             String onBehalfOfContentOwner,
             String onBehalfOfContentOwnerChannel) {
             String url = ("https://www.googleapis.com/youtube/v3/liveBroadcasts"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(id==null?"":"&id="+flatten(id))+(onBehalfOfContentOwner==null?"":"&onBehalfOfContentOwner="+flatten(onBehalfOfContentOwner))+(onBehalfOfContentOwnerChannel==null?"":"&onBehalfOfContentOwnerChannel="+flatten(onBehalfOfContentOwnerChannel)));
-            requestDel(url, null);
+            requestDel(url, null, Void.class);
         }
 
         public class Bind {
@@ -1764,19 +1788,19 @@ public class Oauth2c
              * @param part
              *     The part parameter serves two purposes in this operation. It identifies the properties that the write operation will set as well as the properties that the API response returns. Set the parameter value to snippet.
              */
-            public Requested<Caption> post(www.googleapis.com.structures.alt alt,
+            public Requested<LiveChatBan> post(www.googleapis.com.structures.alt alt,
                 String fields,
                 String key,
                 String oauth_token,
                 Boolean prettyPrint,
                 String quotaUser,
                 String userIp,
-                Caption body,
+                LiveChatBan body,
                 String part) {
                 String url = ("https://www.googleapis.com/youtube/v3/liveChat/bans"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(part==null?"":"&part="+flatten(part)));
                 Map<String, Object> content = new HashMap<>();
                 content.put("body", body);
-                return requestPost(url, null, content, Caption.class);
+                return requestPost(url, null, content, LiveChatBan.class);
             }
 
             /**
@@ -1811,7 +1835,7 @@ public class Oauth2c
                 String userIp,
                 String id) {
                 String url = ("https://www.googleapis.com/youtube/v3/liveChat/bans"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(id==null?"":"&id="+flatten(id)));
-                requestDel(url, null);
+                requestDel(url, null, Void.class);
             }
         }
 
@@ -1940,7 +1964,7 @@ public class Oauth2c
                 String userIp,
                 String id) {
                 String url = ("https://www.googleapis.com/youtube/v3/liveChat/messages"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(id==null?"":"&id="+flatten(id)));
-                requestDel(url, null);
+                requestDel(url, null, Void.class);
             }
         }
 
@@ -1975,7 +1999,7 @@ public class Oauth2c
              * @param part
              *     The part parameter specifies the liveChatModerator resource parts that the API response will include. Supported values are id and snippet.
              */
-            public Requested<ActivityListResponse> get(www.googleapis.com.structures.alt alt,
+            public Requested<LiveChatModeratorListResponse> get(www.googleapis.com.structures.alt alt,
                 String fields,
                 String key,
                 String oauth_token,
@@ -1987,7 +2011,7 @@ public class Oauth2c
                 String pageToken,
                 String part) {
                 String url = ("https://www.googleapis.com/youtube/v3/liveChat/moderators"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(liveChatId==null?"":"&liveChatId="+flatten(liveChatId))+(maxResults==null?"":"&maxResults="+flatten(maxResults))+(pageToken==null?"":"&pageToken="+flatten(pageToken))+(part==null?"":"&part="+flatten(part)));
-                return requestGet(url, null, ActivityListResponse.class);
+                return requestGet(url, null, LiveChatModeratorListResponse.class);
             }
 
             /**
@@ -2014,19 +2038,19 @@ public class Oauth2c
              * @param part
              *     The part parameter serves two purposes in this operation. It identifies the properties that the write operation will set as well as the properties that the API response returns. Set the parameter value to snippet.
              */
-            public Requested<Caption> post(www.googleapis.com.structures.alt alt,
+            public Requested<LiveChatModerator> post(www.googleapis.com.structures.alt alt,
                 String fields,
                 String key,
                 String oauth_token,
                 Boolean prettyPrint,
                 String quotaUser,
                 String userIp,
-                Caption body,
+                LiveChatModerator body,
                 String part) {
                 String url = ("https://www.googleapis.com/youtube/v3/liveChat/moderators"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(part==null?"":"&part="+flatten(part)));
                 Map<String, Object> content = new HashMap<>();
                 content.put("body", body);
-                return requestPost(url, null, content, Caption.class);
+                return requestPost(url, null, content, LiveChatModerator.class);
             }
 
             /**
@@ -2061,7 +2085,7 @@ public class Oauth2c
                 String userIp,
                 String id) {
                 String url = ("https://www.googleapis.com/youtube/v3/liveChat/moderators"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(id==null?"":"&id="+flatten(id)));
-                requestDel(url, null);
+                requestDel(url, null, Void.class);
             }
         }
     }
@@ -2109,7 +2133,7 @@ public class Oauth2c
          * @param part
          *     The part parameter specifies a comma-separated list of one or more liveStream resource properties that the API response will include. The part names that you can include in the parameter value are id, snippet, cdn, and status.
          */
-        public Requested<ActivityListResponse> get(www.googleapis.com.structures.alt alt,
+        public Requested<LiveStreamListResponse> get(www.googleapis.com.structures.alt alt,
             String fields,
             String key,
             String oauth_token,
@@ -2124,7 +2148,7 @@ public class Oauth2c
             String pageToken,
             String part) {
             String url = ("https://www.googleapis.com/youtube/v3/liveStreams"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(id==null?"":"&id="+flatten(id))+(maxResults==null?"":"&maxResults="+flatten(maxResults))+(mine==null?"":"&mine="+flatten(mine))+(onBehalfOfContentOwner==null?"":"&onBehalfOfContentOwner="+flatten(onBehalfOfContentOwner))+(onBehalfOfContentOwnerChannel==null?"":"&onBehalfOfContentOwnerChannel="+flatten(onBehalfOfContentOwnerChannel))+(pageToken==null?"":"&pageToken="+flatten(pageToken))+(part==null?"":"&part="+flatten(part)));
-            return requestGet(url, null, ActivityListResponse.class);
+            return requestGet(url, null, LiveStreamListResponse.class);
         }
 
         /**
@@ -2279,7 +2303,7 @@ public class Oauth2c
             String onBehalfOfContentOwner,
             String onBehalfOfContentOwnerChannel) {
             String url = ("https://www.googleapis.com/youtube/v3/liveStreams"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(id==null?"":"&id="+flatten(id))+(onBehalfOfContentOwner==null?"":"&onBehalfOfContentOwner="+flatten(onBehalfOfContentOwner))+(onBehalfOfContentOwnerChannel==null?"":"&onBehalfOfContentOwnerChannel="+flatten(onBehalfOfContentOwnerChannel)));
-            requestDel(url, null);
+            requestDel(url, null, Void.class);
         }
     }
 
@@ -2316,7 +2340,7 @@ public class Oauth2c
          * @param part
          *     The part parameter specifies the member resource parts that the API response will include. Supported values are id and snippet.
          */
-        public Requested<CommentThreadListResponse> get(www.googleapis.com.structures.alt alt,
+        public Requested<MemberListResponse> get(www.googleapis.com.structures.alt alt,
             String fields,
             String key,
             String oauth_token,
@@ -2329,7 +2353,7 @@ public class Oauth2c
             String pageToken,
             String part) {
             String url = ("https://www.googleapis.com/youtube/v3/members"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(hasAccessToLevel==null?"":"&hasAccessToLevel="+flatten(hasAccessToLevel))+(maxResults==null?"":"&maxResults="+flatten(maxResults))+(mode==null?"":"&mode="+flatten(mode))+(pageToken==null?"":"&pageToken="+flatten(pageToken))+(part==null?"":"&part="+flatten(part)));
-            return requestGet(url, null, CommentThreadListResponse.class);
+            return requestGet(url, null, MemberListResponse.class);
         }
     }
 
@@ -2358,7 +2382,7 @@ public class Oauth2c
          * @param part
          *     The part parameter specifies the membershipsLevel resource parts that the API response will include. Supported values are id and snippet.
          */
-        public Requested<CaptionListResponse> get(www.googleapis.com.structures.alt alt,
+        public Requested<MembershipsLevelListResponse> get(www.googleapis.com.structures.alt alt,
             String fields,
             String key,
             String oauth_token,
@@ -2367,7 +2391,7 @@ public class Oauth2c
             String userIp,
             String part) {
             String url = ("https://www.googleapis.com/youtube/v3/membershipsLevels"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(part==null?"":"&part="+flatten(part)));
-            return requestGet(url, null, CaptionListResponse.class);
+            return requestGet(url, null, MembershipsLevelListResponse.class);
         }
     }
 
@@ -2412,7 +2436,7 @@ public class Oauth2c
          * @param videoId
          *     The videoId parameter specifies that the request should return only the playlist items that contain the specified video.
          */
-        public Requested<ActivityListResponse> get(www.googleapis.com.structures.alt alt,
+        public Requested<PlaylistItemListResponse> get(www.googleapis.com.structures.alt alt,
             String fields,
             String key,
             String oauth_token,
@@ -2427,7 +2451,7 @@ public class Oauth2c
             String playlistId,
             String videoId) {
             String url = ("https://www.googleapis.com/youtube/v3/playlistItems"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(id==null?"":"&id="+flatten(id))+(maxResults==null?"":"&maxResults="+flatten(maxResults))+(onBehalfOfContentOwner==null?"":"&onBehalfOfContentOwner="+flatten(onBehalfOfContentOwner))+(pageToken==null?"":"&pageToken="+flatten(pageToken))+(part==null?"":"&part="+flatten(part))+(playlistId==null?"":"&playlistId="+flatten(playlistId))+(videoId==null?"":"&videoId="+flatten(videoId)));
-            return requestGet(url, null, ActivityListResponse.class);
+            return requestGet(url, null, PlaylistItemListResponse.class);
         }
 
         /**
@@ -2557,7 +2581,7 @@ public class Oauth2c
             String id,
             String onBehalfOfContentOwner) {
             String url = ("https://www.googleapis.com/youtube/v3/playlistItems"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(id==null?"":"&id="+flatten(id))+(onBehalfOfContentOwner==null?"":"&onBehalfOfContentOwner="+flatten(onBehalfOfContentOwner)));
-            requestDel(url, null);
+            requestDel(url, null, Void.class);
         }
     }
 
@@ -2610,7 +2634,7 @@ public class Oauth2c
          *     
          *     If the parameter identifies a property that contains child properties, the child properties will be included in the response. For example, in a playlist resource, the snippet property contains properties like author, title, description, tags, and timeCreated. As such, if you set part=snippet, the API response will contain all of those properties.
          */
-        public Requested<ActivityListResponse> get(www.googleapis.com.structures.alt alt,
+        public Requested<PlaylistListResponse> get(www.googleapis.com.structures.alt alt,
             String fields,
             String key,
             String oauth_token,
@@ -2627,7 +2651,7 @@ public class Oauth2c
             String pageToken,
             String part) {
             String url = ("https://www.googleapis.com/youtube/v3/playlists"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(channelId==null?"":"&channelId="+flatten(channelId))+(hl==null?"":"&hl="+flatten(hl))+(id==null?"":"&id="+flatten(id))+(maxResults==null?"":"&maxResults="+flatten(maxResults))+(mine==null?"":"&mine="+flatten(mine))+(onBehalfOfContentOwner==null?"":"&onBehalfOfContentOwner="+flatten(onBehalfOfContentOwner))+(onBehalfOfContentOwnerChannel==null?"":"&onBehalfOfContentOwnerChannel="+flatten(onBehalfOfContentOwnerChannel))+(pageToken==null?"":"&pageToken="+flatten(pageToken))+(part==null?"":"&part="+flatten(part)));
-            return requestGet(url, null, ActivityListResponse.class);
+            return requestGet(url, null, PlaylistListResponse.class);
         }
 
         /**
@@ -2764,7 +2788,7 @@ public class Oauth2c
             String id,
             String onBehalfOfContentOwner) {
             String url = ("https://www.googleapis.com/youtube/v3/playlists"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(id==null?"":"&id="+flatten(id))+(onBehalfOfContentOwner==null?"":"&onBehalfOfContentOwner="+flatten(onBehalfOfContentOwner)));
-            requestDel(url, null);
+            requestDel(url, null, Void.class);
         }
     }
 
@@ -2941,7 +2965,7 @@ public class Oauth2c
          * @param part
          *     The part parameter specifies the sponsor resource parts that the API response will include. Supported values are id and snippet.
          */
-        public Requested<CommentThreadListResponse> get(www.googleapis.com.structures.alt alt,
+        public Requested<SponsorListResponse> get(www.googleapis.com.structures.alt alt,
             String fields,
             String key,
             String oauth_token,
@@ -2953,7 +2977,7 @@ public class Oauth2c
             String pageToken,
             String part) {
             String url = ("https://www.googleapis.com/youtube/v3/sponsors"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(filter==null?"":"&filter="+flatten(filter))+(maxResults==null?"":"&maxResults="+flatten(maxResults))+(pageToken==null?"":"&pageToken="+flatten(pageToken))+(part==null?"":"&part="+flatten(part)));
-            return requestGet(url, null, CommentThreadListResponse.class);
+            return requestGet(url, null, SponsorListResponse.class);
         }
     }
 
@@ -3012,7 +3036,7 @@ public class Oauth2c
          *     
          *     If the parameter identifies a property that contains child properties, the child properties will be included in the response. For example, in a subscription resource, the snippet property contains other properties, such as a display title for the subscription. If you set part=snippet, the API response will also contain all of those nested properties.
          */
-        public Requested<ActivityListResponse> get(www.googleapis.com.structures.alt alt,
+        public Requested<SubscriptionListResponse> get(www.googleapis.com.structures.alt alt,
             String fields,
             String key,
             String oauth_token,
@@ -3032,7 +3056,7 @@ public class Oauth2c
             String pageToken,
             String part) {
             String url = ("https://www.googleapis.com/youtube/v3/subscriptions"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(channelId==null?"":"&channelId="+flatten(channelId))+(forChannelId==null?"":"&forChannelId="+flatten(forChannelId))+(id==null?"":"&id="+flatten(id))+(maxResults==null?"":"&maxResults="+flatten(maxResults))+(mine==null?"":"&mine="+flatten(mine))+(myRecentSubscribers==null?"":"&myRecentSubscribers="+flatten(myRecentSubscribers))+(mySubscribers==null?"":"&mySubscribers="+flatten(mySubscribers))+(onBehalfOfContentOwner==null?"":"&onBehalfOfContentOwner="+flatten(onBehalfOfContentOwner))+(onBehalfOfContentOwnerChannel==null?"":"&onBehalfOfContentOwnerChannel="+flatten(onBehalfOfContentOwnerChannel))+(order==null?"":"&order="+flatten(order))+(pageToken==null?"":"&pageToken="+flatten(pageToken))+(part==null?"":"&part="+flatten(part)));
-            return requestGet(url, null, ActivityListResponse.class);
+            return requestGet(url, null, SubscriptionListResponse.class);
         }
 
         /**
@@ -3106,7 +3130,7 @@ public class Oauth2c
             String userIp,
             String id) {
             String url = ("https://www.googleapis.com/youtube/v3/subscriptions"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(id==null?"":"&id="+flatten(id)));
-            requestDel(url, null);
+            requestDel(url, null, Void.class);
         }
     }
 
@@ -3143,7 +3167,7 @@ public class Oauth2c
          * @param part
          *     The part parameter specifies the superChatEvent resource parts that the API response will include. Supported values are id and snippet.
          */
-        public Requested<CommentThreadListResponse> get(www.googleapis.com.structures.alt alt,
+        public Requested<SuperChatEventListResponse> get(www.googleapis.com.structures.alt alt,
             String fields,
             String key,
             String oauth_token,
@@ -3155,7 +3179,7 @@ public class Oauth2c
             String pageToken,
             String part) {
             String url = ("https://www.googleapis.com/youtube/v3/superChatEvents"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(hl==null?"":"&hl="+flatten(hl))+(maxResults==null?"":"&maxResults="+flatten(maxResults))+(pageToken==null?"":"&pageToken="+flatten(pageToken))+(part==null?"":"&part="+flatten(part)));
-            return requestGet(url, null, CommentThreadListResponse.class);
+            return requestGet(url, null, SuperChatEventListResponse.class);
         }
     }
 
@@ -3191,7 +3215,7 @@ public class Oauth2c
              * @param videoId
              *     The videoId parameter specifies a YouTube video ID for which the custom video thumbnail is being provided.
              */
-            public Requested<CaptionListResponse> post(www.googleapis.com.structures.alt alt,
+            public Requested<ThumbnailSetResponse> post(www.googleapis.com.structures.alt alt,
                 String fields,
                 String key,
                 String oauth_token,
@@ -3201,7 +3225,7 @@ public class Oauth2c
                 String onBehalfOfContentOwner,
                 String videoId) {
                 String url = ("https://www.googleapis.com/youtube/v3/thumbnails/set"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(onBehalfOfContentOwner==null?"":"&onBehalfOfContentOwner="+flatten(onBehalfOfContentOwner))+(videoId==null?"":"&videoId="+flatten(videoId)));
-                return requestPost(url, null, null, CaptionListResponse.class);
+                return requestPost(url, null, null, ThumbnailSetResponse.class);
             }
         }
     }
@@ -3233,7 +3257,7 @@ public class Oauth2c
          * @param part
          *     The part parameter specifies the videoCategory resource parts that the API response will include. Supported values are id and snippet.
          */
-        public Requested<CaptionListResponse> get(www.googleapis.com.structures.alt alt,
+        public Requested<VideoAbuseReportReasonListResponse> get(www.googleapis.com.structures.alt alt,
             String fields,
             String key,
             String oauth_token,
@@ -3243,7 +3267,7 @@ public class Oauth2c
             String hl,
             String part) {
             String url = ("https://www.googleapis.com/youtube/v3/videoAbuseReportReasons"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(hl==null?"":"&hl="+flatten(hl))+(part==null?"":"&part="+flatten(part)));
-            return requestGet(url, null, CaptionListResponse.class);
+            return requestGet(url, null, VideoAbuseReportReasonListResponse.class);
         }
     }
 
@@ -3278,7 +3302,7 @@ public class Oauth2c
          * @param regionCode
          *     The regionCode parameter instructs the API to return the list of video categories available in the specified country. The parameter value is an ISO 3166-1 alpha-2 country code.
          */
-        public Requested<ActivityListResponse> get(www.googleapis.com.structures.alt alt,
+        public Requested<VideoCategoryListResponse> get(www.googleapis.com.structures.alt alt,
             String fields,
             String key,
             String oauth_token,
@@ -3290,7 +3314,7 @@ public class Oauth2c
             String part,
             String regionCode) {
             String url = ("https://www.googleapis.com/youtube/v3/videoCategories"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(hl==null?"":"&hl="+flatten(hl))+(id==null?"":"&id="+flatten(id))+(part==null?"":"&part="+flatten(part))+(regionCode==null?"":"&regionCode="+flatten(regionCode)));
-            return requestGet(url, null, ActivityListResponse.class);
+            return requestGet(url, null, VideoCategoryListResponse.class);
         }
     }
 
@@ -3356,7 +3380,7 @@ public class Oauth2c
          * @param videoCategoryId
          *     The videoCategoryId parameter identifies the video category for which the chart should be retrieved. This parameter can only be used in conjunction with the chart parameter. By default, charts are not restricted to a particular category.
          */
-        public Requested<ActivityListResponse> get(www.googleapis.com.structures.alt alt,
+        public Requested<VideoListResponse> get(www.googleapis.com.structures.alt alt,
             String fields,
             String key,
             String oauth_token,
@@ -3377,7 +3401,7 @@ public class Oauth2c
             String regionCode,
             String videoCategoryId) {
             String url = ("https://www.googleapis.com/youtube/v3/videos"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(chart==null?"":"&chart="+flatten(chart))+(hl==null?"":"&hl="+flatten(hl))+(id==null?"":"&id="+flatten(id))+(locale==null?"":"&locale="+flatten(locale))+(maxHeight==null?"":"&maxHeight="+flatten(maxHeight))+(maxResults==null?"":"&maxResults="+flatten(maxResults))+(maxWidth==null?"":"&maxWidth="+flatten(maxWidth))+(myRating==null?"":"&myRating="+flatten(myRating))+(onBehalfOfContentOwner==null?"":"&onBehalfOfContentOwner="+flatten(onBehalfOfContentOwner))+(pageToken==null?"":"&pageToken="+flatten(pageToken))+(part==null?"":"&part="+flatten(part))+(regionCode==null?"":"&regionCode="+flatten(regionCode))+(videoCategoryId==null?"":"&videoCategoryId="+flatten(videoCategoryId)));
-            return requestGet(url, null, ActivityListResponse.class);
+            return requestGet(url, null, VideoListResponse.class);
         }
 
         /**
@@ -3527,7 +3551,7 @@ public class Oauth2c
             String id,
             String onBehalfOfContentOwner) {
             String url = ("https://www.googleapis.com/youtube/v3/videos"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(id==null?"":"&id="+flatten(id))+(onBehalfOfContentOwner==null?"":"&onBehalfOfContentOwner="+flatten(onBehalfOfContentOwner)));
-            requestDel(url, null);
+            requestDel(url, null, Void.class);
         }
 
         public class Getrating {
@@ -3559,7 +3583,7 @@ public class Oauth2c
              *     
              *     The onBehalfOfContentOwner parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner.
              */
-            public Requested<CaptionListResponse> get(www.googleapis.com.structures.alt alt,
+            public Requested<VideoGetRatingResponse> get(www.googleapis.com.structures.alt alt,
                 String fields,
                 String key,
                 String oauth_token,
@@ -3569,7 +3593,7 @@ public class Oauth2c
                 String id,
                 String onBehalfOfContentOwner) {
                 String url = ("https://www.googleapis.com/youtube/v3/videos/getRating"+"?"+(alt==null?"":"&alt="+flatten(alt))+(fields==null?"":"&fields="+flatten(fields))+(key==null?"":"&key="+flatten(key))+(oauth_token==null?"":"&oauth_token="+flatten(oauth_token))+(prettyPrint==null?"":"&prettyPrint="+flatten(prettyPrint))+(quotaUser==null?"":"&quotaUser="+flatten(quotaUser))+(userIp==null?"":"&userIp="+flatten(userIp))+(id==null?"":"&id="+flatten(id))+(onBehalfOfContentOwner==null?"":"&onBehalfOfContentOwner="+flatten(onBehalfOfContentOwner)));
-                return requestGet(url, null, CaptionListResponse.class);
+                return requestGet(url, null, VideoGetRatingResponse.class);
             }
         }
 

@@ -1,13 +1,13 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.STREAMSTATUS;
+import www.googleapis.com.structures.Streamstatus;
 
 public class LiveStreamStatus {
     /**
      * The health status of the stream.
      */
     public LiveStreamHealthStatus healthStatus;
-    public STREAMSTATUS streamStatus;
+    public Streamstatus streamStatus;
 
     @Override
     public boolean equals(Object other) {

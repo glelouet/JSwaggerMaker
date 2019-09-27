@@ -1,6 +1,6 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.LIVEBROADCASTCONTENT;
+import www.googleapis.com.structures.Livebroadcastcontent;
 
 public class VideoSnippet {
     /**
@@ -30,11 +30,11 @@ public class VideoSnippet {
     /**
      * Indicates if the video is an upcoming/active live broadcast. Or it's "none" if the video is not an upcoming/active live broadcast.
      */
-    public LIVEBROADCASTCONTENT liveBroadcastContent;
+    public Livebroadcastcontent liveBroadcastContent;
     /**
      * Localized snippet selected with the hl parameter. If no such localization exists, this field is populated with the default snippet. (Read-only)
      */
-    public ChannelLocalization localized;
+    public VideoLocalization localized;
     /**
      * The date and time that the video was uploaded. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
      */
