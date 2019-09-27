@@ -162,7 +162,7 @@ public class SwaggerCompiler {
 	}
 
 	public static Response getResponse(Operation operation) {
-		if (operation == null) {
+		if (operation == null || operation.getResponses() == null) {
 			return null;
 		}
 		Response r = operation.getResponses().get("200");

@@ -163,7 +163,7 @@ public class PathTranslation {
 				alternateRoute.addAll(versionsl);
 			}
 		}
-		for (String pathToken : path.split("/")) {
+		for (String pathToken : path.split("\\?")[0].split("/")) {
 			if (!alternateRoute.contains(pathToken)) {
 				if (pathToken.length() > 0) {
 					if( pathToken.startsWith("{")) {
@@ -328,9 +328,6 @@ public class PathTranslation {
 				fetchRetType = cm.ref(Requested.class).narrow(resourceType);
 			}
 		}
-		// System.err.println(
-		// "path " + path + " flat=" + resourceFlatType + " type=" + fetchRetType +
-		// " structure=" + resourceStructure);
 	}
 
 	////
@@ -357,6 +354,17 @@ public class PathTranslation {
 
 	public List<JVar> allParams = new ArrayList<>();
 
+	protected String nameForParameter(String name) {
+		String sanitizedName = ClassBridge.sanitizeVarName(name);
+		boolean rename = allParams.stream().filter(jv -> jv.name().equals(name)).findAny().isPresent();
+		String paramName = sanitizedName;
+		if (rename) {
+			paramName = IntStream.iterate(2, i -> i + 1).mapToObj(i -> sanitizedName + i)
+					.filter(s -> !allParams.stream().filter(jv -> jv.name().equals(s)).findAny().isPresent()).findFirst().get();
+		}
+		return paramName;
+	}
+
 	/**
 	 * extract the parameters from an operation and put them in corresponding
 	 * list. also add javadoc on the method for those parameters.
@@ -364,15 +372,8 @@ public class PathTranslation {
 	protected void extractFetchParameters() {
 		for (Parameter p : operation.getParameters()) {
 			String in = p.getIn();
-			String sanitizedName = ClassBridge.sanitizeVarName(p.getName());
 			boolean inField = bridge.options.globals.contains(p.getName());
-			boolean rename = allParams.stream().filter(jv -> jv.name().equals(sanitizedName)).findAny().isPresent();
-			String paramName = sanitizedName;
-			if (rename) {
-				paramName = IntStream.iterate(2, i -> i + 1).mapToObj(i -> sanitizedName + i)
-						.filter(s -> !allParams.stream().filter(jv -> jv.name().equals(s)).findAny().isPresent()).findFirst().get();
-			}
-
+			String paramName = nameForParameter(p.getName());
 			AbstractJType pt;
 			JVar param;
 			switch (in) {
@@ -400,8 +401,7 @@ public class PathTranslation {
 			case "body":
 				BodyParameter bp = (BodyParameter) p;
 				Model schema = bp.getSchema();
-				// System.err.println("body parameter " + bp.getName() + " model " +
-				// schema);
+				logger.trace("body parameter " + bp.getName() + " model " + schema);
 				if (schema instanceof ArrayModel) {
 					fetchMeth.javadoc().addParam(paramName).add(p.getDescription());
 					pt = bridge.getExistingClass((ArrayModel) schema);
@@ -420,12 +420,15 @@ public class PathTranslation {
 					// if we have a complex type, since we are making a function, we
 					// iterate over the fields of the actual complex type and translate
 					// them to as many additional parameters
-					for (Entry<String, Property> e : schema.getProperties().entrySet()) {
-						fetchMeth.javadoc().addParam(e.getKey()).add(e.getValue().getDescription());
-						AbstractJType type = bridge.translateToClass(e.getValue(), bridge.structurePackage, e.getKey());
-						param = fetchMeth.param(type, e.getKey());
-						bodyparameters.add(param);
-						allParams.add(param);
+					if (schema.getProperties() != null) {
+						for (Entry<String, Property> e : schema.getProperties().entrySet()) {
+							String subParamName = nameForParameter(e.getKey());
+							fetchMeth.javadoc().addParam(subParamName).add(e.getValue().getDescription());
+							AbstractJType type = bridge.translateToClass(e.getValue(), bridge.structurePackage, subParamName);
+							param = fetchMeth.param(type, subParamName);
+							bodyparameters.add(param);
+							allParams.add(param);
+						}
 					}
 				}
 				break;

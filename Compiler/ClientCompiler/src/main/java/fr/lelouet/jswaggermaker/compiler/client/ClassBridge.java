@@ -132,6 +132,7 @@ public class ClassBridge {
 	 * @return
 	 */
 	public JDefinedClass getFetcherClass(String securityName, List<String> subPaths) {
+		logger.trace("getting fetcher for security " + securityName + " for subpaths " + subPaths);
 		JDefinedClass theclass = getFetcherClass(securityName);
 		for (String subPath : subPaths) {
 			theclass = subClass(theclass, normalizeClassName(subPath));
@@ -140,6 +141,7 @@ public class ClassBridge {
 	}
 
 	protected JDefinedClass subClass(JDefinedClass theclass, String subPath) {
+		logger.trace("creating class for path=" + subPath + " in " + theclass);
 		String fieldName = sanitizeVarName(subPath.toLowerCase());
 		JFieldVar field = theclass.fields().get(fieldName);
 		if (field != null) {
@@ -159,8 +161,8 @@ public class ClassBridge {
 	/** create a subclass in a class */
 	private JDefinedClass createSubClass(JDefinedClass theclass, String subPath) {
 		String newname = camelcase(normalizeClassName(subPath));
+		logger.trace("creating class " + newname + " in " + theclass);
 		try {
-			logger.trace("creating class " + newname + " in " + theclass);
 			return theclass._class(newname);
 		} catch (JClassAlreadyExistsException e) {
 			throw new UnsupportedOperationException("while creating class " + newname + " in " + theclass, e);
@@ -332,10 +334,10 @@ public class ClassBridge {
 	 * @return
 	 */
 	public AbstractJType translateToClass(Property p, JPackage pck, String name) {
-		logger.trace("translatetoclass name=" + name + " package=" + pck.name() + " prop.type=" + p.getType()
-		+ " prop.title=" + p.getTitle());
-		if (name == null) {
-			logger.warn("name is null, package=" + pck.name() + " property=" + p);
+		logger.trace("translatetoclass name=" + name + " package=" + (pck == null ? null : pck.name()) + " prop.type="
+				+ (p == null ? null : p.getType()) + " prop.title=" + (p == null ? null : p.getTitle()));
+		if (name == null || p == null) {
+			logger.warn("invalid translation for property=" + p + " package=" + pck + " name=" + name);
 			return cm.ref(Object.class);
 		}
 		AbstractJType ret = getExistingClass(p.getType(), name, p.getFormat(),
@@ -410,7 +412,7 @@ public class ClassBridge {
 	}
 
 	protected AbstractJType getStringEnum(String name, List<String> enums) {
-		// System.err.println("create string enum " + name + " values " + enums);
+		logger.trace("create string enum " + name + " values " + enums);
 		JDefinedClass ret = null;
 		try {
 			name = sanitizeVarName(name);
@@ -451,7 +453,7 @@ public class ClassBridge {
 		if (keywords.contains(s)) {
 			return "_" + s;
 		}
-		String ret = s.replaceAll("[\\{\\}]", "").replaceAll("[- #.]", "_");
+		String ret = s.replaceAll("[\\{\\}]", "").replaceAll("[- #.\\[\\]]", "_");
 		if (ret.matches("^[0-9].*")) {
 			ret = "_" + ret;
 		}
@@ -470,7 +472,7 @@ public class ClassBridge {
 				.map(str -> str.substring(0, 1).toUpperCase() + str.substring(1)).collect(Collectors.joining());
 		ret = sanitizeVarName(ret);
 		if (javaLangClasses.contains(ret)) {
-			ret= ret+"_";
+			ret = ret + "_";
 		}
 		return ret;
 	}
@@ -649,8 +651,8 @@ public class ClassBridge {
 						throw new UnsupportedOperationException(
 								"got no model for definition " + defName + " existing are " + swagger.getDefinitions().keySet());
 					}
-					PartiallyCompiled pc = partCompile(new PropertyModelConverter().modelToProperty(m),
-							definitionsPackage, normalizeClassName(defName));
+					PartiallyCompiled pc = partCompile(new PropertyModelConverter().modelToProperty(m), definitionsPackage,
+							normalizeClassName(defName));
 					ret = pc.returned;
 					tobuild = pc.toCompile;
 					compilation = pc.compilationProperties;
@@ -681,6 +683,7 @@ public class ClassBridge {
 
 		/**
 		 * replace the returned by an array of returned
+		 *
 		 * @return this
 		 */
 		public PartiallyCompiled inArray() {
@@ -690,6 +693,7 @@ public class ClassBridge {
 
 		/**
 		 * replace the reutnred by a hashmap from string to returned.
+		 *
 		 * @return this
 		 */
 		public PartiallyCompiled inMap() {
@@ -723,9 +727,8 @@ public class ClassBridge {
 					return partCompile(((MapProperty) property).getAdditionalProperties(), pck, definedClassName).inMap();
 				} else if (property.getClass() == ObjectProperty.class) {
 					try {
-						logger.trace(
-								"creating compilelater class name=" + definedClassName + " pck=" + pck.name() + " property="
-										+ property);
+						logger.trace("creating compilelater class name=" + definedClassName + " pck=" + pck.name() + " property="
+								+ property);
 						JDefinedClass newclass = pck._class(JMod.PUBLIC, definedClassName);
 						return new PartiallyCompiled(newclass, newclass, property);
 					} catch (JClassAlreadyExistsException e) {
@@ -786,7 +789,7 @@ public class ClassBridge {
 	}
 
 	protected AbstractJType translateToClass(ModelImpl mi, JPackage pck, String name) {
-		// System.err.println(" translating ModelImpl to class " + name);
+		logger.trace(" translating ModelImpl to class " + name);
 		// if additionnal properties, it's a Map <string, additionnalproperty>
 		if (mi.getAdditionalProperties() != null) {
 			Property s = mi.getAdditionalProperties();
@@ -819,7 +822,7 @@ public class ClassBridge {
 		logger.trace("creating merged item for class name " + name);
 		AbstractJType ret = cm._getClass(pck + "." + name);
 		if (ret != null) {
-			System.err.println("return existing class pck=" + pck.name() + " name=" + name);
+			logger.trace("return existing class pck=" + pck.name() + " name=" + name);
 			return ret;
 		}
 		try {

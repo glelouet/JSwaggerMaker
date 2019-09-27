@@ -90,7 +90,7 @@ public class Oauth2
     public class Activities {
 
         /**
-         * null
+         * 
          * <p>
          * Returns a list of channel activity events that match the request criteria. For example, you can retrieve events associated with a particular channel, events associated with the user's subscriptions and Google+ friends, or the YouTube home page feed, which is customized for each user.
          * </p>
@@ -151,7 +151,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Posts a bulletin for a specific channel. (The user submitting the request must be authorized to act on the channel's behalf.)
          * Note: Even though an activity resource can contain information about actions like a user rating a video or marking a video as a favorite, you need to use other API methods to generate those activity resources. For example, you would use the API's videos.rate() method to rate a video and the playlistItems.insert() method to mark a video as a favorite.
@@ -194,7 +194,7 @@ public class Oauth2
     public class Captions {
 
         /**
-         * null
+         * 
          * <p>
          * Returns a list of caption tracks that are associated with a specified video. Note that the API response does not contain the actual captions and that the captions.download method provides the ability to retrieve a caption track.
          * </p>
@@ -243,7 +243,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Uploads a caption track.
          * </p>
@@ -295,7 +295,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Updates a caption track. When updating a caption track, you can change the track's draft status, upload a new caption file for the track, or both.
          * </p>
@@ -347,7 +347,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Deletes a specified caption track.
          * </p>
@@ -390,7 +390,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Downloads a caption track. The caption track is returned in its original format unless the request specifies a value for the tfmt parameter and in its original language unless the request specifies a value for the tlang parameter.
          * </p>
@@ -445,7 +445,7 @@ public class Oauth2
         public class Insert {
 
             /**
-             * null
+             * 
              * <p>
              * Uploads a channel banner image to YouTube. This method represents the first two steps in a three-step process to update the banner image for a channel:
              * - Call the channelBanners.insert method to upload the binary image data to YouTube. The image must have a 16:9 aspect ratio and be at least 2120x1192 pixels.
@@ -496,7 +496,7 @@ public class Oauth2
     public class Channels {
 
         /**
-         * null
+         * 
          * <p>
          * Returns a collection of zero or more channel resources that match the request criteria.
          * </p>
@@ -567,7 +567,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Updates a channel's metadata. Note that this method currently only supports updates to the channel resource's brandingSettings and invideoPromotion objects and their child properties.
          * </p>
@@ -616,7 +616,7 @@ public class Oauth2
     public class Channelsections {
 
         /**
-         * null
+         * 
          * <p>
          * Returns channelSection resources that match the API request criteria.
          * </p>
@@ -670,7 +670,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Adds a channelSection for the authenticated user's channel.
          * </p>
@@ -723,7 +723,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Update a channelSection.
          * </p>
@@ -769,7 +769,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Deletes a channelSection.
          * </p>
@@ -814,7 +814,7 @@ public class Oauth2
         public final Oauth2 .Comments.Setmoderationstatus setmoderationstatus = new Oauth2 .Comments.Setmoderationstatus();
 
         /**
-         * null
+         * 
          * <p>
          * Returns a list of comments that match the API request parameters.
          * </p>
@@ -870,7 +870,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Creates a reply to an existing comment. Note: To create a top-level comment, use the commentThreads.insert method.
          * </p>
@@ -909,7 +909,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Modifies a comment.
          * </p>
@@ -948,7 +948,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Deletes a comment.
          * </p>
@@ -985,7 +985,7 @@ public class Oauth2
         public class Markasspam {
 
             /**
-             * null
+             * 
              * <p>
              * Expresses the caller's opinion that one or more comments should be flagged as spam.
              * </p>
@@ -1023,7 +1023,7 @@ public class Oauth2
         public class Setmoderationstatus {
 
             /**
-             * null
+             * 
              * <p>
              * Sets the moderation status of one or more comments. The API request must be authorized by the owner of the channel or video associated with the comments.
              * </p>
@@ -1070,7 +1070,7 @@ public class Oauth2
     public class Commentthreads {
 
         /**
-         * null
+         * 
          * <p>
          * Returns a list of comment threads that match the API request parameters.
          * </p>
@@ -1145,7 +1145,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Creates a new top-level comment. To add a reply to an existing comment, use the comments.insert method instead.
          * </p>
@@ -1184,7 +1184,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Modifies the top-level comment in a comment thread.
          * </p>
@@ -1226,7 +1226,7 @@ public class Oauth2
     public class Guidecategories {
 
         /**
-         * null
+         * 
          * <p>
          * Returns a list of categories that can be associated with YouTube channels.
          * </p>
@@ -1273,7 +1273,7 @@ public class Oauth2
     public class I18nlanguages {
 
         /**
-         * null
+         * 
          * <p>
          * Returns a list of application languages that the YouTube website supports.
          * </p>
@@ -1314,7 +1314,7 @@ public class Oauth2
     public class I18nregions {
 
         /**
-         * null
+         * 
          * <p>
          * Returns a list of content regions that the YouTube website supports.
          * </p>
@@ -1358,7 +1358,7 @@ public class Oauth2
         public final Oauth2 .Livebroadcasts.Transition transition = new Oauth2 .Livebroadcasts.Transition();
 
         /**
-         * null
+         * 
          * <p>
          * Returns a list of YouTube broadcasts that match the API request parameters.
          * </p>
@@ -1423,7 +1423,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Creates a broadcast.
          * </p>
@@ -1476,7 +1476,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Updates a broadcast. For example, you could modify the broadcast settings defined in the liveBroadcast resource's contentDetails object.
          * </p>
@@ -1531,7 +1531,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Deletes a broadcast.
          * </p>
@@ -1580,7 +1580,7 @@ public class Oauth2
         public class Bind {
 
             /**
-             * null
+             * 
              * <p>
              * Binds a YouTube broadcast to a stream or removes an existing binding between a broadcast and a stream. A broadcast can only be bound to one video stream, though a video stream may be bound to more than one broadcast.
              * </p>
@@ -1636,7 +1636,7 @@ public class Oauth2
         public class Control {
 
             /**
-             * null
+             * 
              * <p>
              * Controls the settings for a slate that can be displayed in the broadcast stream.
              * </p>
@@ -1702,7 +1702,7 @@ public class Oauth2
         public class Transition {
 
             /**
-             * null
+             * 
              * <p>
              * Changes the status of a YouTube live broadcast and initiates any processes associated with the new status. For example, when you transition a broadcast's status to testing, YouTube starts to transmit video to that broadcast's monitor stream. Before calling this method, you should confirm that the value of the status.streamStatus property for the stream bound to your broadcast is active.
              * </p>
@@ -1764,7 +1764,7 @@ public class Oauth2
         public class Bans {
 
             /**
-             * null
+             * 
              * <p>
              * Adds a new ban to the chat.
              * </p>
@@ -1803,7 +1803,7 @@ public class Oauth2
             }
 
             /**
-             * null
+             * 
              * <p>
              * Removes a chat ban.
              * </p>
@@ -1841,7 +1841,7 @@ public class Oauth2
         public class Messages {
 
             /**
-             * null
+             * 
              * <p>
              * Lists live chat messages for a specific chat.
              * </p>
@@ -1893,7 +1893,7 @@ public class Oauth2
             }
 
             /**
-             * null
+             * 
              * <p>
              * Adds a message to a live chat.
              * </p>
@@ -1932,7 +1932,7 @@ public class Oauth2
             }
 
             /**
-             * null
+             * 
              * <p>
              * Deletes a chat message.
              * </p>
@@ -1970,7 +1970,7 @@ public class Oauth2
         public class Moderators {
 
             /**
-             * null
+             * 
              * <p>
              * Lists moderators for a live chat.
              * </p>
@@ -2014,7 +2014,7 @@ public class Oauth2
             }
 
             /**
-             * null
+             * 
              * <p>
              * Adds a new moderator for the chat.
              * </p>
@@ -2053,7 +2053,7 @@ public class Oauth2
             }
 
             /**
-             * null
+             * 
              * <p>
              * Removes a chat moderator.
              * </p>
@@ -2092,7 +2092,7 @@ public class Oauth2
     public class Livestreams {
 
         /**
-         * null
+         * 
          * <p>
          * Returns a list of video streams that match the API request parameters.
          * </p>
@@ -2151,7 +2151,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Creates a video stream. The stream enables you to send your video to YouTube, which can then broadcast the video to your audience.
          * </p>
@@ -2204,7 +2204,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Updates a video stream. If the properties that you want to change cannot be updated, then you need to create a new stream with the proper settings.
          * </p>
@@ -2259,7 +2259,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Deletes a video stream.
          * </p>
@@ -2309,7 +2309,7 @@ public class Oauth2
     public class Members {
 
         /**
-         * null
+         * 
          * <p>
          * Lists members for a channel.
          * </p>
@@ -2359,7 +2359,7 @@ public class Oauth2
     public class Membershipslevels {
 
         /**
-         * null
+         * 
          * <p>
          * Lists pricing levels for a channel.
          * </p>
@@ -2397,7 +2397,7 @@ public class Oauth2
     public class Playlistitems {
 
         /**
-         * null
+         * 
          * <p>
          * Returns a collection of playlist items that match the API request parameters. You can retrieve all of the playlist items in a specified playlist or retrieve one or more playlist items by their unique IDs.
          * </p>
@@ -2454,7 +2454,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Adds a resource to a playlist.
          * </p>
@@ -2498,7 +2498,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Modifies a playlist item. For example, you could update the item's position in the playlist.
          * </p>
@@ -2544,7 +2544,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Deletes a playlist item.
          * </p>
@@ -2587,7 +2587,7 @@ public class Oauth2
     public class Playlists {
 
         /**
-         * null
+         * 
          * <p>
          * Returns a collection of playlists that match the API request parameters. For example, you can retrieve all playlists that the authenticated user owns, or you can retrieve one or more playlists by their unique IDs.
          * </p>
@@ -2654,7 +2654,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Creates a playlist.
          * </p>
@@ -2705,7 +2705,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Modifies a playlist. For example, you could change a playlist's title, description, or privacy status.
          * </p>
@@ -2751,7 +2751,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Deletes a playlist.
          * </p>
@@ -2794,7 +2794,7 @@ public class Oauth2
     public class Search {
 
         /**
-         * null
+         * 
          * <p>
          * Returns a collection of search results that match the query parameters specified in the API request. By default, a search result set identifies matching video, channel, and playlist resources, but you can also configure queries to only retrieve a specific type of resource.
          * </p>
@@ -2936,7 +2936,7 @@ public class Oauth2
     public class Sponsors {
 
         /**
-         * null
+         * 
          * <p>
          * Lists sponsors for a channel.
          * </p>
@@ -2983,7 +2983,7 @@ public class Oauth2
     public class Subscriptions {
 
         /**
-         * null
+         * 
          * <p>
          * Returns subscription resources that match the API request criteria.
          * </p>
@@ -3059,7 +3059,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Adds a subscription for the authenticated user's channel.
          * </p>
@@ -3098,7 +3098,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Deletes a subscription.
          * </p>
@@ -3136,7 +3136,7 @@ public class Oauth2
     public class Superchatevents {
 
         /**
-         * null
+         * 
          * <p>
          * Lists Super Chat events for a channel.
          * </p>
@@ -3188,7 +3188,7 @@ public class Oauth2
         public class Set {
 
             /**
-             * null
+             * 
              * <p>
              * Uploads a custom video thumbnail to YouTube and sets it for a video.
              * </p>
@@ -3232,7 +3232,7 @@ public class Oauth2
     public class Videoabusereportreasons {
 
         /**
-         * null
+         * 
          * <p>
          * Returns a list of abuse reasons that can be used for reporting abusive videos.
          * </p>
@@ -3273,7 +3273,7 @@ public class Oauth2
     public class Videocategories {
 
         /**
-         * null
+         * 
          * <p>
          * Returns a list of categories that can be associated with YouTube videos.
          * </p>
@@ -3323,7 +3323,7 @@ public class Oauth2
         public final Oauth2 .Videos.Reportabuse reportabuse = new Oauth2 .Videos.Reportabuse();
 
         /**
-         * null
+         * 
          * <p>
          * Returns a list of videos that match the API request parameters.
          * </p>
@@ -3404,7 +3404,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Uploads a video to YouTube and optionally sets the video's metadata.
          * </p>
@@ -3466,7 +3466,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Updates a video's metadata.
          * </p>
@@ -3514,7 +3514,7 @@ public class Oauth2
         }
 
         /**
-         * null
+         * 
          * <p>
          * Deletes a YouTube video.
          * </p>
@@ -3556,7 +3556,7 @@ public class Oauth2
         public class Getrating {
 
             /**
-             * null
+             * 
              * <p>
              * Retrieves the ratings that the authorized user gave to a list of specified videos.
              * </p>
@@ -3599,7 +3599,7 @@ public class Oauth2
         public class Rate {
 
             /**
-             * null
+             * 
              * <p>
              * Add a like or dislike rating to a video or remove a rating from a video.
              * </p>
@@ -3640,7 +3640,7 @@ public class Oauth2
         public class Reportabuse {
 
             /**
-             * null
+             * 
              * <p>
              * Report abuse for a video.
              * </p>
@@ -3689,7 +3689,7 @@ public class Oauth2
         public class Set {
 
             /**
-             * null
+             * 
              * <p>
              * Uploads a watermark image to YouTube and sets it for a channel.
              * </p>
@@ -3736,7 +3736,7 @@ public class Oauth2
         public class Unset {
 
             /**
-             * null
+             * 
              * <p>
              * Deletes a channel's watermark image.
              * </p>
