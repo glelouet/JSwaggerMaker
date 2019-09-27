@@ -1,13 +1,14 @@
 package api.github.com.definitions;
 
 import api.github.com.definitions.branch.commit.commit.Author;
+import api.github.com.definitions.tag.Object_;
 
 public class Tag {
     /**
      * String of the tag message.
      */
     public String message;
-    public api.github.com.definitions.tag.Object object;
+    public Object_ object;
     public String sha;
     /**
      * The tag's name. This is typically a version (e.g., "v0.0.1").

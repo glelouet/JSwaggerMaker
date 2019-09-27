@@ -1,17 +1,17 @@
 package petstore.swagger.io.definitions;
 
-import petstore.swagger.io.structures.STATUS;
+import petstore.swagger.io.structures.Status;
 
 public class Pet {
     public long id;
     public Category category;
     public String name;
     public String[] photoUrls;
-    public Category[] tags;
+    public Tag[] tags;
     /**
      * pet status in the store
      */
-    public STATUS status;
+    public Status status;
 
     @Override
     public boolean equals(Object other) {

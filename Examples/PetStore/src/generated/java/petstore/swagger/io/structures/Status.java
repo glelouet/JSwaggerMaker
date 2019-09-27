@@ -2,7 +2,7 @@ package petstore.swagger.io.structures;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public enum STATUS {
+public enum Status {
     @JsonProperty("available")
     available("available"),
     @JsonProperty("pending")
@@ -11,7 +11,7 @@ public enum STATUS {
     sold("sold");
     public final String toString;
 
-    STATUS(String toString) {
+    Status(String toString) {
         this.toString = toString;
     }
 

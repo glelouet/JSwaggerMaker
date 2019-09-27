@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -353,29 +354,38 @@ public class PathTranslation {
 	protected void extractFetchParameters() {
 		for (Parameter p : operation.getParameters()) {
 			String in = p.getIn();
+			String sanitizedName = ClassBridge.sanitizeVarName(p.getName());
 			boolean inField = bridge.options.globals.contains(p.getName());
+			boolean rename = allParams.stream().filter(jv -> jv.name().equals(sanitizedName)).findAny().isPresent();
+			String paramName = sanitizedName;
+			if (rename) {
+				paramName = IntStream.iterate(2, i -> i + 1).mapToObj(i -> sanitizedName + i)
+						.filter(s -> !allParams.stream().filter(jv -> jv.name().equals(s)).findAny().isPresent()).findFirst().get();
+			}
+
+			System.err.println("parameter " + p.getName() + " rename=" + rename + " to " + paramName);
 
 			AbstractJType pt;
 			JVar param;
 			switch (in) {
 			case "path":
-				fetchMeth.javadoc().addParam(p.getName()).add(p.getDescription());
+				fetchMeth.javadoc().addParam(paramName).add(p.getDescription());
 				PathParameter pp = (PathParameter) p;
 				pt = bridge.getExistingClass(pp.getType(), pp.getName(), pp.getFormat(), pp.getEnum());
 				if (!pp.getRequired() && pt.isPrimitive()) {
 					pt = pt.boxify();
 				}
-				param = inField ? bridge.getField(rootHolderClass, p.getName(), pt, p.getDescription())
-						: fetchMeth.param(pt, pp.getName());
+				param = inField ? bridge.getField(rootHolderClass, paramName, pt, p.getDescription())
+						: fetchMeth.param(pt, paramName);
 				pathparameters.add(param);
 				allParams.add(param);
 				break;
 			case "query":
-				fetchMeth.javadoc().addParam(p.getName()).add(p.getDescription());
+				fetchMeth.javadoc().addParam(paramName).add(p.getDescription());
 				QueryParameter qp = (QueryParameter) p;
 				pt = bridge.getExistingClass(qp);
-				param = inField ? bridge.getField(rootHolderClass, p.getName(), pt, p.getDescription())
-						: fetchMeth.param(pt, qp.getName());
+				param = inField ? bridge.getField(rootHolderClass, paramName, pt, p.getDescription())
+						: fetchMeth.param(pt, paramName);
 				queryparameters.add(param);
 				allParams.add(param);
 				break;
@@ -385,20 +395,23 @@ public class PathTranslation {
 				// System.err.println("body parameter " + bp.getName() + " model " +
 				// schema);
 				if (schema instanceof ArrayModel) {
-					fetchMeth.javadoc().addParam(p.getName()).add(p.getDescription());
+					fetchMeth.javadoc().addParam(paramName).add(p.getDescription());
 					pt = bridge.getExistingClass((ArrayModel) schema);
-					param = inField ? bridge.getField(rootHolderClass, p.getName(), pt, p.getDescription())
-							: fetchMeth.param(pt, bp.getName());
+					param = inField ? bridge.getField(rootHolderClass, paramName, pt, p.getDescription())
+							: fetchMeth.param(pt, paramName);
 					bodyparameters.add(param);
 					allParams.add(param);
 				} else if (schema instanceof RefModel) {
-					fetchMeth.javadoc().addParam(p.getName()).add(p.getDescription());
+					fetchMeth.javadoc().addParam(paramName).add(p.getDescription());
 					pt = bridge.translateDefToClass(((RefModel) schema).getSimpleRef());
-					param = inField ? bridge.getField(rootHolderClass, p.getName(), pt, p.getDescription())
-							: fetchMeth.param(pt, bp.getName());
+					param = inField ? bridge.getField(rootHolderClass, paramName, pt, p.getDescription())
+							: fetchMeth.param(pt, paramName);
 					bodyparameters.add(param);
 					allParams.add(param);
 				} else {
+					// if we have a complex type, since we are making a function, we
+					// iterate over the fields of the actual complex type and translate
+					// them to as many additional parameters
 					for (Entry<String, Property> e : schema.getProperties().entrySet()) {
 						fetchMeth.javadoc().addParam(e.getKey()).add(e.getValue().getDescription());
 						AbstractJType type = bridge.translateToClass(e.getValue(), bridge.structurePackage, e.getKey());
@@ -409,12 +422,12 @@ public class PathTranslation {
 				}
 				break;
 			case "header":
-				fetchMeth.javadoc().addParam(p.getName()).add(p.getDescription());
+				fetchMeth.javadoc().addParam(paramName).add(p.getDescription());
 				HeaderParameter hp = (HeaderParameter) p;
-				String newname = ClassBridge.sanitizeVarName(hp.getName());
+				String className = ClassBridge.sanitizeVarName(hp.getName());
 				pt = bridge.getExistingClass(hp);
 				param = inField ? bridge.getField(rootHolderClass, p.getName(), pt, p.getDescription())
-						: fetchMeth.param(bridge.getExistingClass(hp), newname);
+						: fetchMeth.param(bridge.getExistingClass(hp), className);
 				headerParameters.put(hp.getName(), param);
 				allParams.add(param);
 				break;

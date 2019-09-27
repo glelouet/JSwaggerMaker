@@ -1,7 +1,9 @@
 package api.github.com.definitions;
 
+import api.github.com.definitions.refs.Object_;
+
 public class Refs {
-    public api.github.com.definitions.refs.Object object;
+    public Object_ object;
     public String ref;
     public String url;
 

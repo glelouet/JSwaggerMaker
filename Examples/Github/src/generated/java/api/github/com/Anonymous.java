@@ -1972,6 +1972,7 @@ public class Anonymous
              * @param repo
              *     Name of repository.
              * @param path
+             * @param path2
              *     The content path.
              * @param ref
              *     The String name of the Commit/Branch/Tag. Defaults to 'master'.
@@ -1981,10 +1982,10 @@ public class Anonymous
             public Requested<ContentsPath> getByOwnerRepoPath(String owner,
                 String repo,
                 String path,
-                String path,
+                String path2,
                 String ref,
                 String Accept) {
-                String url = ("https://api.github.com//repos/{owner}/{repo}/contents/{path}".replace("{owner}", ""+owner).replace("{repo}", ""+repo).replace("{path}", ""+path)+"?"+(path==null?"":"&path="+flatten(path))+(ref==null?"":"&ref="+flatten(ref)));
+                String url = ("https://api.github.com//repos/{owner}/{repo}/contents/{path}".replace("{owner}", ""+owner).replace("{repo}", ""+repo).replace("{path}", ""+path)+"?"+(path2==null?"":"&path2="+flatten(path2))+(ref==null?"":"&ref="+flatten(ref)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (Accept!= null) {
                     headerProperties.put("Accept", (""+ Accept));

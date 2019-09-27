@@ -1,11 +1,8 @@
-package api.github.com.definitions.tag;
+package api.github.com.definitions.refs;
 
-public class Object {
+public class Object_ {
     public String sha;
-    /**
-     * String of the type of the tagged object. Normally this is a commit but it can also be a tree or a blob.
-     */
-    public Object type;
+    public String type;
     public String url;
 
     @Override
@@ -16,7 +13,7 @@ public class Object {
         if ((other == null)||(other.getClass()!= getClass())) {
             return false;
         }
-        Object othersame = ((Object) other);
+        Object_ othersame = ((Object_) other);
         if ((sha!= othersame.sha)&&((sha == null)||(!sha.equals(othersame.sha)))) {
             return false;
         }

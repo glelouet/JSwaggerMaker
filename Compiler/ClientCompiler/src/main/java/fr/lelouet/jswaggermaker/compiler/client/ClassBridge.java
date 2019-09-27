@@ -458,13 +458,21 @@ public class ClassBridge {
 		return ret;
 	}
 
+	public static Set<String> javaLangClasses = new HashSet<>(
+			Arrays.asList(java.lang.Class.class, java.lang.Enum.class, java.lang.Object.class, java.lang.Package.class)
+			.stream().map(cl -> cl.getSimpleName()).collect(Collectors.toList()));
+
 	public static String normalizeClassName(String s) {
 		if (s == null) {
 			return s;
 		}
 		String ret = Stream.of(s.split("[_-]")).filter(str -> str.length() > 0)
 				.map(str -> str.substring(0, 1).toUpperCase() + str.substring(1)).collect(Collectors.joining());
-		return sanitizeVarName(ret);
+		ret = sanitizeVarName(ret);
+		if (javaLangClasses.contains(ret)) {
+			ret= ret+"_";
+		}
+		return ret;
 	}
 
 	public static String camelcase(String token) {

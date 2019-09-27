@@ -1,6 +1,6 @@
 package petstore.swagger.io.definitions;
 
-import petstore.swagger.io.structures.STATUS;
+import petstore.swagger.io.structures.Status;
 
 public class Order {
     public long id;
@@ -10,7 +10,7 @@ public class Order {
     /**
      * Order Status
      */
-    public STATUS status;
+    public Status status;
     public boolean complete;
 
     @Override
