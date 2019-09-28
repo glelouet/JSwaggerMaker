@@ -19,6 +19,7 @@
 		
 		<module>YoutubeData</module>
 		<module>Github</module>
+		<module>GeoDBCities</module>
 	</modules>
 	<dependencies>
 		<dependency>

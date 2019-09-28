@@ -103,19 +103,19 @@ public class ClassBridge {
 		this.swagger = swagger;
 		this.options = options;
 		if (options.pckg != null) {
-			rootPackage = cm._package(options.pckg);
+			rootPackage = pckg(options.pckg);
 		} else {
-			rootPackage = cm._package(swagger.getHost());
+			rootPackage = pckg(swagger.getHost());
 		}
 
 		propertiesType = cm.ref(HashMap.class).narrow(cm.ref(String.class), cm.ref(String.class));
 
-		responsePackage = rootPackage.subPackage(responsesPackageName);
-		definitionsPackage = rootPackage.subPackage(definitionsPackageName);
-		structurePackage = rootPackage.subPackage(structuresPackageName);
-		keyPackage = rootPackage.subPackage(keysPackageName);
-		connectedPackage = rootPackage.subPackage(connectedPackageName);
-		disconnectedPackage = rootPackage.subPackage(disconnectedPackageName);
+		responsePackage = subPckg(rootPackage, responsesPackageName);
+		definitionsPackage = subPckg(rootPackage, definitionsPackageName);
+		structurePackage = subPckg(rootPackage, structuresPackageName);
+		keyPackage = subPckg(rootPackage, keysPackageName);
+		connectedPackage = subPckg(rootPackage, connectedPackageName);
+		disconnectedPackage = subPckg(rootPackage, disconnectedPackageName);
 
 	}
 
@@ -477,6 +477,38 @@ public class ClassBridge {
 		return ret;
 	}
 
+	/**
+	 * make a package name correct. for each token of the path, replace all
+	 * non-alphanumerical characters with "_" underscore , suffix with "_"
+	 * underscore if the token is a reserved java keyword, and prefix with "_"
+	 * underscore if the token starts with a number. Finally, set the token to
+	 * lower case.
+	 *
+	 * @see https://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html
+	 * @param name
+	 *          a full package name, including the dots or not. eg com.integer.123
+	 *          or simply 123.
+	 * @return the name of the package, ensured to be correct for java class.
+	 */
+	public static String normalizePackageName(String name) {
+		if(name==null) {
+			return name;
+		}
+		List<String> sb = new ArrayList<>();
+		for(String s : name.split("\\.")) {
+			if (keywords.contains(s)) {
+				s = s + "_";
+			} else {
+				s = s.replaceAll("[^A-Za-z0-9]", "_");
+				if (s.charAt(0) >= '0' && s.charAt(0) <= '9') {
+					s = "_" + s;
+				}
+			}
+			sb.add(s.toLowerCase());
+		}
+		return sb.stream().collect(Collectors.joining("."));
+	}
+
 	public static String camelcase(String token) {
 		if (token == null) {
 			return null;
@@ -489,6 +521,32 @@ public class ClassBridge {
 
 	public AbstractJType getExistingClass(ArrayModel model) {
 		return translateToClass(model.getItems(), structurePackage, model.getTitle()).array();
+	}
+
+	/**
+	 * create a package from the /. The package name is normalized to be
+	 * java-compliant
+	 *
+	 * @param packageName
+	 *          name of the package, eg in.my.ass
+	 * @return a correct java package.
+	 */
+	public JPackage pckg(String packageName) {
+		return cm._package(normalizePackageName(packageName));
+	}
+
+	/**
+	 * create a child package in another one . The subpath is normalized to be
+	 * java-compliant
+	 *
+	 * @param root
+	 *          the root package to which append the child, eg "in.your"
+	 * @param packageName
+	 *          the sub path, eg "1337.Brain!"
+	 * @return a correct java subpackage, in this case "in.your._1337.brain_"
+	 */
+	public JPackage subPckg(JPackage root, String packageName) {
+		return root.subPackage(normalizePackageName(packageName));
 	}
 
 	public AbstractJType getExistingClass(QueryParameter pp) {
@@ -567,7 +625,7 @@ public class ClassBridge {
 					if (structName == null) {
 						structName = camelcase(sanitizedPropName);
 					}
-					AbstractJType type = translateToClass(prop, cl.getPackage().subPackage(cl.name().toLowerCase()), structName);
+					AbstractJType type = translateToClass(prop, subPckg(cl.getPackage(), cl.name()), structName);
 					logger.trace("call field for name=" + e.getKey() + " type=" + type);
 					JFieldVar field = cl.field(JMod.PUBLIC, type, sanitizedPropName);
 					field.javadoc().add(prop.getDescription());
