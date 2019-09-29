@@ -19,4 +19,22 @@ public class ClassBridgeTest {
 		Assert.assertEquals(ClassBridge.sanitizeVarName("{player_id}"), "player_id");
 	}
 
+	@Test
+	public void testPackageName() {
+		Assert.assertFalse(ClassBridge.VALID_PACKAGE_NAME.matcher("12abc").matches());
+		Assert.assertTrue(ClassBridge.VALID_PACKAGE_NAME.matcher("_12abc").matches());
+		Assert.assertFalse(ClassBridge.VALID_PACKAGE_NAME.matcher("abc?").matches());
+		Assert.assertTrue(ClassBridge.VALID_PACKAGE_NAME.matcher("abc_").matches());
+	}
+
+	@Test
+	public void testJavaLangNames() {
+		Assert.assertTrue(ClassBridge.isJavaLangClass("Enum"));
+		Assert.assertTrue(ClassBridge.isJavaLangClass("Enum"));
+		Assert.assertTrue(ClassBridge.isJavaLangClass("String"));
+		Assert.assertTrue(ClassBridge.isJavaLangClass("String"));
+		Assert.assertTrue(ClassBridge.isJavaLangClass("Object"));
+		Assert.assertFalse(ClassBridge.isJavaLangClass("Objection"));
+	}
+
 }

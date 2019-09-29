@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -442,17 +443,20 @@ public class ClassBridge {
 	}
 
 	/** java keywords we can't use as a name */
-	public static final Set<String> keywords = Collections.unmodifiableSet(new HashSet<>(
+	public static final Set<String> KEYWORDS = Collections.unmodifiableSet(new HashSet<>(
 			Arrays.asList("abstract", "assert", "boolean", "break", "byte", "case", "catch", "char", "class", "const",
 					"continue", "default", "do", "double", "else", "extends", "false", "final", "finally", "float", "for", "goto",
 					"if", "implements", "import", "instanceof", "int", "interface", "long", "native", "new", "null", "package",
 					"private", "protected", "public", "return", "short", "static", "strictfp", "super", "switch", "synchronized",
 					"this", "throw", "throws", "transient", "true", "try", "void", "volatile", "while")));
 
+	public static final Pattern VALID_PACKAGE_NAME = Pattern.compile("[A-Za-z_][A-Za-z0-9_]*");
+
 	public static String sanitizeVarName(String s) {
-		if (keywords.contains(s)) {
+		if (KEYWORDS.contains(s)) {
 			return "_" + s;
 		}
+
 		String ret = s.replaceAll("[\\{\\}]", "").replaceAll("[- #.\\[\\]]", "_");
 		if (ret.matches("^[0-9].*")) {
 			ret = "_" + ret;
@@ -460,9 +464,29 @@ public class ClassBridge {
 		return ret;
 	}
 
-	public static Set<String> javaLangClasses = new HashSet<>(
-			Arrays.asList(java.lang.Class.class, java.lang.Enum.class, java.lang.Object.class, java.lang.Package.class)
-			.stream().map(cl -> cl.getSimpleName()).collect(Collectors.toList()));
+	private static final HashMap<String, Boolean> resolvedJavaLangNames = new HashMap<>();
+
+	/**
+	 * check if a name already represents a class in the java.lang package. eg
+	 * String should return true, but LeetH4X0R should not.
+	 * 
+	 * @param className
+	 *          name to test
+	 * @return the existence of such a class in the java.lang (cached)
+	 */
+	public static boolean isJavaLangClass(String className) {
+		if (resolvedJavaLangNames.containsKey(className)) {
+			return resolvedJavaLangNames.get(className);
+		}
+		boolean isJavaLang = true;
+		try {
+			Class.forName("java.lang." + className);
+		} catch (Exception e) {
+			isJavaLang = false;
+		}
+		resolvedJavaLangNames.put(className, isJavaLang);
+		return isJavaLang;
+	}
 
 	public static String normalizeClassName(String s) {
 		if (s == null) {
@@ -471,7 +495,7 @@ public class ClassBridge {
 		String ret = Stream.of(s.split("[_-]")).filter(str -> str.length() > 0)
 				.map(str -> str.substring(0, 1).toUpperCase() + str.substring(1)).collect(Collectors.joining());
 		ret = sanitizeVarName(ret);
-		if (javaLangClasses.contains(ret)) {
+		if (isJavaLangClass(ret)) {
 			ret = ret + "_";
 		}
 		return ret;
@@ -496,7 +520,7 @@ public class ClassBridge {
 		}
 		List<String> sb = new ArrayList<>();
 		for(String s : name.split("\\.")) {
-			if (keywords.contains(s)) {
+			if (KEYWORDS.contains(s)) {
 				s = s + "_";
 			} else {
 				s = s.replaceAll("[^A-Za-z0-9]", "_");
