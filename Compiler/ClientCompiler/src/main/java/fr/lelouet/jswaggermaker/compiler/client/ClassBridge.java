@@ -40,11 +40,7 @@ import fr.lelouet.jswaggermaker.client.common.impl.ATransfer;
 import fr.lelouet.jswaggermaker.client.common.impl.securities.APIKey;
 import fr.lelouet.jswaggermaker.client.common.impl.securities.Disconnected;
 import fr.lelouet.jswaggermaker.client.common.impl.securities.Oauth2;
-import io.swagger.models.ArrayModel;
-import io.swagger.models.ComposedModel;
 import io.swagger.models.Model;
-import io.swagger.models.ModelImpl;
-import io.swagger.models.RefModel;
 import io.swagger.models.Swagger;
 import io.swagger.models.auth.ApiKeyAuthDefinition;
 import io.swagger.models.auth.In;
@@ -322,6 +318,15 @@ public class ClassBridge {
 	// translate swagger properties to class
 	////
 
+	public AbstractJType translateToClass(Model m, JPackage pck) {
+		if (m == null) {
+			return cm.VOID;
+		}
+		logger.trace("translate to class model=" + m + " title=" + m.getTitle() + " modelclass="
+				+ m.getClass().getSimpleName() + " package=" + (pck == null ? null : pck.name()));
+		return translateToClass(new PropertyModelConverter().modelToProperty(m), pck, m.getTitle());
+	}
+
 	/**
 	 * translate a property into a JClass . Create it if needed, return any
 	 * already created if exists.
@@ -329,16 +334,17 @@ public class ClassBridge {
 	 * @param p
 	 *          The property to transform
 	 * @param pck
-	 *          the package to create the new class into
+	 *          the package to create the new class into, if required
 	 * @param name
-	 *          the new name of the class
+	 *          the new name of the class to create, if required and can' be
+	 *          deduced
 	 * @return
 	 */
 	public AbstractJType translateToClass(Property p, JPackage pck, String name) {
 		logger.trace("translatetoclass name=" + name + " package=" + (pck == null ? null : pck.name()) + " prop.type="
 				+ (p == null ? null : p.getType()) + " prop.title=" + (p == null ? null : p.getTitle()));
-		if (name == null || p == null) {
-			logger.warn("invalid translation for property=" + p + " package=" + pck + " name=" + name);
+		if (p == null) {
+			logger.warn("return object for property null, name=" + name);
 			return cm.ref(Object.class);
 		}
 		AbstractJType ret = getExistingClass(p.getType(), name, p.getFormat(),
@@ -346,6 +352,7 @@ public class ClassBridge {
 		if (ret != null) {
 			return ret;
 		}
+
 		switch (p.getType()) {
 		case ObjectProperty.TYPE:
 			if (p.getClass() == MapProperty.class) {
@@ -469,7 +476,7 @@ public class ClassBridge {
 	/**
 	 * check if a name already represents a class in the java.lang package. eg
 	 * String should return true, but LeetH4X0R should not.
-	 * 
+	 *
 	 * @param className
 	 *          name to test
 	 * @return the existence of such a class in the java.lang (cached)
@@ -543,10 +550,6 @@ public class ClassBridge {
 		return token.substring(0, 1).toUpperCase() + token.substring(1, token.length()).toLowerCase();
 	}
 
-	public AbstractJType getExistingClass(ArrayModel model) {
-		return translateToClass(model.getItems(), structurePackage, model.getTitle()).array();
-	}
-
 	/**
 	 * create a package from the /. The package name is normalized to be
 	 * java-compliant
@@ -612,13 +615,18 @@ public class ClassBridge {
 
 	protected HashMap<Map<String, String>, JDefinedClass> createdClasses = new HashMap<>();
 
-	protected JDefinedClass translateToClass(ObjectProperty p, JPackage pck, String name) {
+	protected AbstractJType translateToClass(ObjectProperty p, JPackage pck, String name) {
 		logger.trace("translate objectproperty name=" + name + " objectproperty=" + p.getProperties());
 		Map<String, String> classDef = p.getProperties().entrySet().stream()
 				.collect(Collectors.toMap(Entry::getKey, e -> propertyTypeEnumerated(e.getValue())));
 		JDefinedClass createdClass = createdClasses.get(classDef);
 		if (createdClass != null) {
 			return createdClass;
+		}
+		if (name == null || pck == null) {
+			logger.warn("returning Object for class creation pck=" + (pck == null ? null : pck.name()) + " name=" + name
+					+ " propertyclass=" + (p == null ? null : p.getClass()));
+			return cm._ref(Object.class);
 		}
 		try {
 			JDefinedClass cl = pck._class(camelcase(normalizeClassName(name.replaceAll("_ok", ""))));
@@ -698,7 +706,7 @@ public class ClassBridge {
 	protected AbstractJClass translateToClass(MapProperty mp, JPackage pck, String name) {
 		logger.trace("translate mapproperty map=" + mp + " pck=" + pck + " name=" + name);
 		AbstractJType valueType = translateToClass(mp.getAdditionalProperties(), pck, null);
-		return cm.ref(HashMap.class).narrow(String.class).narrow(valueType);
+		return cm.ref(Map.class).narrow(String.class).narrow(valueType);
 	}
 
 	/** cache of existing definitions */
@@ -820,9 +828,10 @@ public class ClassBridge {
 					throw new UnsupportedOperationException("class of objectproperty not handled : " + property.getClass());
 				}
 			case StringProperty.TYPE:
-				return new PartiallyCompiled(convertStringProperty(property));
 			case IntegerProperty.TYPE:
-				return new PartiallyCompiled(convertIntegerProperty(property));
+			case BooleanProperty.TYPE:
+			case DecimalProperty.TYPE:
+				return new PartiallyCompiled(getExistingClass(property));
 			case RefProperty.TYPE:
 				return new PartiallyCompiled(translateDefToClass(((RefProperty) property).getSimpleRef()));
 			default:
@@ -831,73 +840,11 @@ public class ClassBridge {
 		}
 	}
 
-	/**
-	 * convert a property that has a type string.
-	 *
-	 * @param property
-	 * @return
-	 */
-	protected AbstractJType convertStringProperty(Property property) {
-		return cm.ref(String.class);
-	}
-
-	/**
-	 * convert a property that has a type integer.
-	 *
-	 * @param property
-	 * @return
-	 */
-	protected AbstractJType convertIntegerProperty(Property property) {
-		return cm.INT;
-	}
-
-	public AbstractJType translateToClass(Model m, JPackage pck, String name) {
-		logger.trace("translateToClass pck=" + pck.name() + " name=" + name);
-		if (m == null) {
-			return cm.VOID;
-		} else if (m.getClass() == ArrayModel.class) {
-			Property s = ((ArrayModel) m).getItems();
-			return translateToClass(s, pck, s.getTitle()).boxify().array();
-		} else if (m.getClass() == ModelImpl.class) {
-			ModelImpl mi = (ModelImpl) m;
-			return translateToClass(mi, pck, name);
-		} else if (m.getClass() == RefModel.class) {
-			return translateToClass((RefModel) m, pck, name);
-		} else if (m.getClass() == ComposedModel.class) {
-			return translateToClass((ComposedModel) m, pck, name);
-		} else {
-			throw new UnsupportedOperationException("can't translate model class " + m.getClass());
-		}
-	}
-
-	protected AbstractJType translateToClass(ModelImpl mi, JPackage pck, String name) {
-		logger.trace(" translating ModelImpl to class " + name);
-		// if additionnal properties, it's a Map <string, additionnalproperty>
-		if (mi.getAdditionalProperties() != null) {
-			Property s = mi.getAdditionalProperties();
-			AbstractJType resourceFlatType = translateToClass(s, pck, s.getTitle());
-			return cm.ref(Map.class).narrow(cm.ref(String.class), resourceFlatType.boxify());
-		} else {
-			Property s = new PropertyModelConverter().modelToProperty(mi);
-			return translateToClass(s, pck, name);
-		}
-	}
-
-	protected AbstractJType translateToClass(RefModel rf, JPackage pck, String name) {
-		return translateDefToClass(rf.getSimpleRef());
-	}
-
-	protected AbstractJType translateToClass(ComposedModel cm, JPackage pck, String name) {
-		Property s = new PropertyModelConverter().modelToProperty(cm);
-		return translateToClass(s, pck, name);
-	}
-
 	protected AbstractJType translateToClass(ComposedProperty rf, JPackage pck, String name) {
 		if (rf.getAllOf() != null && !rf.getAllOf().isEmpty()) {
 			return translateToClass(rf.getAllOf(), pck, name);
 		}
 		throw new UnsupportedOperationException("can't do " + rf);
-
 	}
 
 	protected AbstractJType translateToClass(List<Property> allOf, JPackage pck, String name) {

@@ -102,9 +102,9 @@ public class PetstoreAuth
              * @param status
              *     Status values that need to be considered for filter
              */
-            public Requested<Object[]> get(String[] status) {
+            public Requested<petstore.swagger.io.definitions.Pet[]> get(String[] status) {
                 String url = ("https://petstore.swagger.io/v2/pet/findByStatus"+"?"+(status==null?"":"&status="+flatten(status)));
-                return requestGet(url, null, Object[].class);
+                return requestGet(url, null, petstore.swagger.io.definitions.Pet[].class);
             }
         }
 
@@ -120,9 +120,9 @@ public class PetstoreAuth
              * @param tags
              *     Tags to filter by
              */
-            public Requested<Object[]> get(String[] tags) {
+            public Requested<petstore.swagger.io.definitions.Pet[]> get(String[] tags) {
                 String url = ("https://petstore.swagger.io/v2/pet/findByTags"+"?"+(tags==null?"":"&tags="+flatten(tags)));
-                return requestGet(url, null, Object[].class);
+                return requestGet(url, null, petstore.swagger.io.definitions.Pet[].class);
             }
         }
 

@@ -1,6 +1,6 @@
 package www.googleapis.com.definitions;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class Channel {
     /**
@@ -42,7 +42,7 @@ public class Channel {
     /**
      * Localizations for different languages
      */
-    public HashMap<String, Object> localizations;
+    public Map<String, ChannelLocalization> localizations;
     /**
      * The snippet object contains basic details about the channel, such as its title, description, and thumbnail images.
      */

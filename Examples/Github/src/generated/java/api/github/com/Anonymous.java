@@ -2959,7 +2959,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public Requested<Issue> getByOwnerRepoNumber(String owner,
+            public Requested<Issue> getByOwnerRepoNumber_(String owner,
                 String repo,
                 long number,
                 String Accept) {
@@ -3077,7 +3077,7 @@ public class Anonymous
                  * @param Accept
                  *     Is used to set specified media type.
                  */
-                public Requested<IssuesComments[]> getByOwnerRepoNumber(String owner,
+                public Requested<IssuesComments[]> getByOwnerRepoNumber_(String owner,
                     String repo,
                     long number,
                     String Accept) {
@@ -3105,7 +3105,7 @@ public class Anonymous
                  *     Is used to set specified media type.
                  * @param body
                  */
-                public Requested<IssuesComment> postByOwnerRepoNumber(String owner,
+                public Requested<IssuesComment> postByOwnerRepoNumber_(String owner,
                     String repo,
                     long number,
                     String Accept,
@@ -3187,7 +3187,7 @@ public class Anonymous
                  * @param Accept
                  *     Is used to set specified media type.
                  */
-                public Requested<IssueEvent[]> getByOwnerRepoNumber(String owner,
+                public Requested<IssueEvent[]> getByOwnerRepoNumber_(String owner,
                     String repo,
                     long number,
                     String Accept) {
@@ -3217,7 +3217,7 @@ public class Anonymous
                  * @param Accept
                  *     Is used to set specified media type.
                  */
-                public Requested<api.github.com.definitions.Labels[]> getByOwnerRepoNumber(String owner,
+                public Requested<api.github.com.definitions.Labels[]> getByOwnerRepoNumber_(String owner,
                     String repo,
                     long number,
                     String Accept) {
@@ -3245,7 +3245,7 @@ public class Anonymous
                  *     Is used to set specified media type.
                  * @param body
                  */
-                public Requested<Label> postByOwnerRepoNumber(String owner,
+                public Requested<Label> postByOwnerRepoNumber_(String owner,
                     String repo,
                     long number,
                     String Accept,
@@ -3277,7 +3277,7 @@ public class Anonymous
                  *     Is used to set specified media type.
                  * @param body
                  */
-                public Requested<Label> putByOwnerRepoNumber(String owner,
+                public Requested<Label> putByOwnerRepoNumber_(String owner,
                     String repo,
                     long number,
                     String Accept,
@@ -3307,7 +3307,7 @@ public class Anonymous
                  * @param Accept
                  *     Is used to set specified media type.
                  */
-                public void deleteByOwnerRepoNumber(String owner,
+                public void deleteByOwnerRepoNumber_(String owner,
                     String repo,
                     long number,
                     String Accept) {
@@ -3336,7 +3336,7 @@ public class Anonymous
                  * @param Accept
                  *     Is used to set specified media type.
                  */
-                public void deleteByOwnerRepoNumberName(String owner,
+                public void deleteByOwnerRepoNumber_Name(String owner,
                     String repo,
                     long number,
                     String name,
@@ -3582,13 +3582,13 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public Requested<Map<String, Integer>> getByOwnerRepo(String owner, String repo, String Accept) {
+            public Requested<Map<String, Long>> getByOwnerRepo(String owner, String repo, String Accept) {
                 String url = ("https://api.github.com//repos/{owner}/{repo}/languages".replace("{owner}", ""+owner).replace("{repo}", ""+repo));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (Accept!= null) {
                     headerProperties.put("Accept", (""+ Accept));
                 }
-                return requestGetMap(url, headerProperties, Integer.class);
+                return requestGetMap(url, headerProperties, Long.class);
             }
         }
 
@@ -3702,7 +3702,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public Requested<Milestone> getByOwnerRepoNumber(String owner,
+            public Requested<Milestone> getByOwnerRepoNumber_(String owner,
                 String repo,
                 long number,
                 String Accept) {
@@ -3729,7 +3729,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public void deleteByOwnerRepoNumber(String owner,
+            public void deleteByOwnerRepoNumber_(String owner,
                 String repo,
                 long number,
                 String Accept) {
@@ -3758,7 +3758,7 @@ public class Anonymous
                  * @param Accept
                  *     Is used to set specified media type.
                  */
-                public Requested<api.github.com.definitions.Labels[]> getByOwnerRepoNumber(String owner,
+                public Requested<api.github.com.definitions.Labels[]> getByOwnerRepoNumber_(String owner,
                     String repo,
                     long number,
                     String Accept) {
@@ -3927,7 +3927,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public Requested<PullRequest> getByOwnerRepoNumber(String owner,
+            public Requested<PullRequest> getByOwnerRepoNumber_(String owner,
                 String repo,
                 long number,
                 String Accept) {
@@ -4046,7 +4046,7 @@ public class Anonymous
                  * @param Accept
                  *     Is used to set specified media type.
                  */
-                public Requested<PullsComment> getByOwnerRepoNumber(String owner,
+                public Requested<PullsComment> getByOwnerRepoNumber_(String owner,
                     String repo,
                     long number,
                     String Accept) {
@@ -4083,7 +4083,7 @@ public class Anonymous
                  *     Is used to set specified media type.
                  * @param body
                  */
-                public Requested<PullsComment> postByOwnerRepoNumber(String owner,
+                public Requested<PullsComment> postByOwnerRepoNumber_(String owner,
                     String repo,
                     long number,
                     String Accept,
@@ -4116,7 +4116,7 @@ public class Anonymous
                  * @param Accept
                  *     Is used to set specified media type.
                  */
-                public Requested<api.github.com.definitions.Commits[]> getByOwnerRepoNumber(String owner,
+                public Requested<api.github.com.definitions.Commits[]> getByOwnerRepoNumber_(String owner,
                     String repo,
                     long number,
                     String Accept) {
@@ -4146,7 +4146,7 @@ public class Anonymous
                  * @param Accept
                  *     Is used to set specified media type.
                  */
-                public Requested<api.github.com.definitions.Pulls[]> getByOwnerRepoNumber(String owner,
+                public Requested<api.github.com.definitions.Pulls[]> getByOwnerRepoNumber_(String owner,
                     String repo,
                     long number,
                     String Accept) {
@@ -4176,7 +4176,7 @@ public class Anonymous
                  * @param Accept
                  *     Is used to set specified media type.
                  */
-                public void getByOwnerRepoNumber(String owner,
+                public void getByOwnerRepoNumber_(String owner,
                     String repo,
                     long number,
                     String Accept) {
@@ -4204,7 +4204,7 @@ public class Anonymous
                  *     Is used to set specified media type.
                  * @param body
                  */
-                public Requested<api.github.com.definitions.Merge> putByOwnerRepoNumber(String owner,
+                public Requested<api.github.com.definitions.Merge> putByOwnerRepoNumber_(String owner,
                     String repo,
                     long number,
                     String Accept,
@@ -4489,13 +4489,13 @@ public class Anonymous
                  * @param Accept
                  *     Is used to set specified media type.
                  */
-                public Requested<int[]> getByOwnerRepo(String owner, String repo, String Accept) {
+                public Requested<long[]> getByOwnerRepo(String owner, String repo, String Accept) {
                     String url = ("https://api.github.com//repos/{owner}/{repo}/stats/code_frequency".replace("{owner}", ""+owner).replace("{repo}", ""+repo));
                     HashMap<String, String> headerProperties = new HashMap<String, String>();
                     if (Accept!= null) {
                         headerProperties.put("Accept", (""+ Accept));
                     }
-                    return requestGet(url, headerProperties, int[].class);
+                    return requestGet(url, headerProperties, long[].class);
                 }
             }
 
@@ -4598,13 +4598,13 @@ public class Anonymous
                  * @param Accept
                  *     Is used to set specified media type.
                  */
-                public Requested<int[]> getByOwnerRepo(String owner, String repo, String Accept) {
+                public Requested<long[]> getByOwnerRepo(String owner, String repo, String Accept) {
                     String url = ("https://api.github.com//repos/{owner}/{repo}/stats/punch_card".replace("{owner}", ""+owner).replace("{repo}", ""+repo));
                     HashMap<String, String> headerProperties = new HashMap<String, String>();
                     if (Accept!= null) {
                         headerProperties.put("Accept", (""+ Accept));
                     }
-                    return requestGet(url, headerProperties, int[].class);
+                    return requestGet(url, headerProperties, long[].class);
                 }
             }
         }

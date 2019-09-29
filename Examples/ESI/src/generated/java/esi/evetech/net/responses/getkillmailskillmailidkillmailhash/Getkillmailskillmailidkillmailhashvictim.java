@@ -1,6 +1,6 @@
 package esi.evetech.net.responses.getkillmailskillmailidkillmailhash;
 
-import esi.evetech.net.responses.getcorporationscorporationidbookmarks200.Getcorporationscorporationidbookmarkscoordinates;
+import esi.evetech.net.responses.getcorporationscorporationidbookmarks.Getcorporationscorporationidbookmarkscoordinates;
 import esi.evetech.net.responses.getkillmailskillmailidkillmailhash.getkillmailskillmailidkillmailhashvictim.Getkillmailskillmailidkillmailhashitems;
 
 public class Getkillmailskillmailidkillmailhashvictim {

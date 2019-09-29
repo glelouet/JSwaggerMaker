@@ -1,6 +1,6 @@
 package esi.evetech.net.responses;
 
-import esi.evetech.net.responses.getcorporationscorporationidbookmarks200.Getcorporationscorporationidbookmarkscoordinates;
+import esi.evetech.net.responses.getcorporationscorporationidbookmarks.Getcorporationscorporationidbookmarkscoordinates;
 import esi.evetech.net.responses.getuniversestargatesstargateid.Getuniversestargatesstargateiddestination;
 
 public class Getuniversestargatesstargateid {

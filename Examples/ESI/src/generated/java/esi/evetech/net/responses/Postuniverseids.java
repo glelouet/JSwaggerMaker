@@ -1,6 +1,6 @@
 package esi.evetech.net.responses;
 
-import esi.evetech.net.responses.getfleetsfleetidwings200.Getfleetsfleetidwingssquads;
+import esi.evetech.net.responses.getfleetsfleetidwings.Getfleetsfleetidwingssquads;
 
 public class Postuniverseids {
     /**

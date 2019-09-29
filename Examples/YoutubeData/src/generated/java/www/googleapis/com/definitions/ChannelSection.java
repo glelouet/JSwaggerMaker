@@ -1,6 +1,6 @@
 package www.googleapis.com.definitions;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class ChannelSection {
     /**
@@ -22,7 +22,7 @@ public class ChannelSection {
     /**
      * Localizations for different languages
      */
-    public HashMap<String, Object> localizations;
+    public Map<String, ChannelSectionLocalization> localizations;
     /**
      * The snippet object contains basic details about the channel section, such as its type, style and title.
      */

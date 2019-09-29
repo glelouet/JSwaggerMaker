@@ -1,6 +1,6 @@
 package esi.evetech.net.responses;
 
-import esi.evetech.net.responses.getcharacterscharacteridmail200.Getcharacterscharacteridmailrecipients;
+import esi.evetech.net.responses.getcharacterscharacteridmail.Getcharacterscharacteridmailrecipients;
 
 public class Getcharacterscharacteridmailmailid {
     /**

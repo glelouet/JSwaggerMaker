@@ -10663,13 +10663,13 @@ public class Anonymous
              * @param group_names
              * @param custom_message
              */
-            public Requested<Object> post(String email, String group_names, String custom_message) {
+            public Requested<String> post(String email, String group_names, String custom_message) {
                 String url = ("https://discourse.example.com//invites/link");
                 Map<String, Object> content = new HashMap<>();
                 content.put("email", email);
                 content.put("group_names", group_names);
                 content.put("custom_message", custom_message);
-                return requestPost(url, null, content, Object.class);
+                return requestPost(url, null, content, String.class);
             }
         }
     }

@@ -1,6 +1,6 @@
 package www.googleapis.com.definitions;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class Playlist {
     /**
@@ -22,7 +22,7 @@ public class Playlist {
     /**
      * Localizations for different languages
      */
-    public HashMap<String, Object> localizations;
+    public Map<String, PlaylistLocalization> localizations;
     /**
      * The player object contains information that you would use to play the playlist in an embedded player.
      */

@@ -150,7 +150,7 @@ public class Anonymous
              * @param body
              *     List of user object
              */
-            public void post(Object[] body) {
+            public void post(petstore.swagger.io.definitions.User[] body) {
                 String url = ("https://petstore.swagger.io/v2/user/createWithArray");
                 Map<String, Object> content = new HashMap<>();
                 content.put("body", body);
@@ -169,7 +169,7 @@ public class Anonymous
              * @param body
              *     List of user object
              */
-            public void post(Object[] body) {
+            public void post(petstore.swagger.io.definitions.User[] body) {
                 String url = ("https://petstore.swagger.io/v2/user/createWithList");
                 Map<String, Object> content = new HashMap<>();
                 content.put("body", body);
@@ -190,9 +190,9 @@ public class Anonymous
              * @param password
              *     The password for login in clear text
              */
-            public Requested<Object> get(String username, String password) {
+            public Requested<String> get(String username, String password) {
                 String url = ("https://petstore.swagger.io/v2/user/login"+"?"+(username==null?"":"&username="+flatten(username))+(password==null?"":"&password="+flatten(password)));
-                return requestGet(url, null, Object.class);
+                return requestGet(url, null, String.class);
             }
         }
 

@@ -1,6 +1,6 @@
 package www.googleapis.com.definitions;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class Video {
     /**
@@ -34,7 +34,7 @@ public class Video {
     /**
      * List with all localizations.
      */
-    public HashMap<String, Object> localizations;
+    public Map<String, VideoLocalization> localizations;
     /**
      * The monetizationDetails object encapsulates information about the monetization status of the video.
      */

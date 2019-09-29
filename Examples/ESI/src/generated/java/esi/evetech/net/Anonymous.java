@@ -4,63 +4,63 @@ import java.util.HashMap;
 import esi.evetech.net.responses.Getalliancesallianceid;
 import esi.evetech.net.responses.Getalliancesallianceidicons;
 import esi.evetech.net.responses.Getcharacterscharacterid;
-import esi.evetech.net.responses.Getcharacterscharacteridcorporationhistory200;
-import esi.evetech.net.responses.Getcharacterscharacteridkillmailsrecent200;
+import esi.evetech.net.responses.Getcharacterscharacteridcorporationhistory;
+import esi.evetech.net.responses.Getcharacterscharacteridkillmailsrecent;
 import esi.evetech.net.responses.Getcharacterscharacteridportrait;
-import esi.evetech.net.responses.Getcontractspublicbidscontractid200;
-import esi.evetech.net.responses.Getcontractspublicitemscontractid200;
-import esi.evetech.net.responses.Getcontractspublicregionid200;
+import esi.evetech.net.responses.Getcontractspublicbidscontractid;
+import esi.evetech.net.responses.Getcontractspublicitemscontractid;
+import esi.evetech.net.responses.Getcontractspublicregionid;
 import esi.evetech.net.responses.Getcorporationscorporationid;
-import esi.evetech.net.responses.Getcorporationscorporationidalliancehistory200;
+import esi.evetech.net.responses.Getcorporationscorporationidalliancehistory;
 import esi.evetech.net.responses.Getcorporationscorporationidicons;
 import esi.evetech.net.responses.Getdogmaattributesattributeid;
 import esi.evetech.net.responses.Getdogmadynamicitemstypeiditemid;
 import esi.evetech.net.responses.Getdogmaeffectseffectid;
 import esi.evetech.net.responses.Getfwleaderboards;
-import esi.evetech.net.responses.Getfwstats200;
-import esi.evetech.net.responses.Getfwsystems200;
-import esi.evetech.net.responses.Getfwwars200;
-import esi.evetech.net.responses.Getincursions200;
-import esi.evetech.net.responses.Getindustryfacilities200;
-import esi.evetech.net.responses.Getindustrysystems200;
-import esi.evetech.net.responses.Getinsuranceprices200;
+import esi.evetech.net.responses.Getfwstats;
+import esi.evetech.net.responses.Getfwsystems;
+import esi.evetech.net.responses.Getfwwars;
+import esi.evetech.net.responses.Getincursions;
+import esi.evetech.net.responses.Getindustryfacilities;
+import esi.evetech.net.responses.Getindustrysystems;
+import esi.evetech.net.responses.Getinsuranceprices;
 import esi.evetech.net.responses.Getkillmailskillmailidkillmailhash;
-import esi.evetech.net.responses.Getloyaltystorescorporationidoffers200;
+import esi.evetech.net.responses.Getloyaltystorescorporationidoffers;
 import esi.evetech.net.responses.Getmarketsgroupsmarketgroupid;
-import esi.evetech.net.responses.Getmarketsprices200;
-import esi.evetech.net.responses.Getmarketsregionidhistory200;
-import esi.evetech.net.responses.Getmarketsregionidorders200;
+import esi.evetech.net.responses.Getmarketsprices;
+import esi.evetech.net.responses.Getmarketsregionidhistory;
+import esi.evetech.net.responses.Getmarketsregionidorders;
 import esi.evetech.net.responses.Getopportunitiesgroupsgroupid;
 import esi.evetech.net.responses.Getopportunitiestaskstaskid;
 import esi.evetech.net.responses.Getsearch;
-import esi.evetech.net.responses.Getsovereigntycampaigns200;
-import esi.evetech.net.responses.Getsovereigntymap200;
-import esi.evetech.net.responses.Getsovereigntystructures200;
+import esi.evetech.net.responses.Getsovereigntycampaigns;
+import esi.evetech.net.responses.Getsovereigntymap;
+import esi.evetech.net.responses.Getsovereigntystructures;
 import esi.evetech.net.responses.Getstatus;
-import esi.evetech.net.responses.Getuniverseancestries200;
+import esi.evetech.net.responses.Getuniverseancestries;
 import esi.evetech.net.responses.Getuniverseasteroidbeltsasteroidbeltid;
-import esi.evetech.net.responses.Getuniversebloodlines200;
+import esi.evetech.net.responses.Getuniversebloodlines;
 import esi.evetech.net.responses.Getuniversecategoriescategoryid;
 import esi.evetech.net.responses.Getuniverseconstellationsconstellationid;
-import esi.evetech.net.responses.Getuniversefactions200;
+import esi.evetech.net.responses.Getuniversefactions;
 import esi.evetech.net.responses.Getuniversegraphicsgraphicid;
 import esi.evetech.net.responses.Getuniversegroupsgroupid;
 import esi.evetech.net.responses.Getuniversemoonsmoonid;
 import esi.evetech.net.responses.Getuniverseplanetsplanetid;
-import esi.evetech.net.responses.Getuniverseraces200;
+import esi.evetech.net.responses.Getuniverseraces;
 import esi.evetech.net.responses.Getuniverseregionsregionid;
 import esi.evetech.net.responses.Getuniverseschematicsschematicid;
 import esi.evetech.net.responses.Getuniversestargatesstargateid;
 import esi.evetech.net.responses.Getuniversestarsstarid;
 import esi.evetech.net.responses.Getuniversestationsstationid;
-import esi.evetech.net.responses.Getuniversesystemjumps200;
-import esi.evetech.net.responses.Getuniversesystemkills200;
+import esi.evetech.net.responses.Getuniversesystemjumps;
+import esi.evetech.net.responses.Getuniversesystemkills;
 import esi.evetech.net.responses.Getuniversesystemssystemid;
 import esi.evetech.net.responses.Getuniversetypestypeid;
 import esi.evetech.net.responses.Getwarswarid;
-import esi.evetech.net.responses.Postcharactersaffiliation200;
+import esi.evetech.net.responses.Postcharactersaffiliation;
 import esi.evetech.net.responses.Postuniverseids;
-import esi.evetech.net.responses.Postuniversenames200;
+import esi.evetech.net.responses.Postuniversenames;
 import fr.lelouet.jswaggermaker.client.common.impl.securities.Disconnected;
 import fr.lelouet.jswaggermaker.client.common.interfaces.Requested;
 
@@ -112,13 +112,13 @@ public class Anonymous
          * @param If_None_Match
          *     ETag from a previous request. A 304 will be returned if this matches the current ETag
          */
-        public Requested<Integer[]> get(String If_None_Match) {
+        public Requested<int[]> get(String If_None_Match) {
             String url = ("https://esi.evetech.net/v1/alliances/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
             HashMap<String, String> headerProperties = new HashMap<String, String>();
             if (If_None_Match!= null) {
                 headerProperties.put("If-None-Match", (""+ If_None_Match));
             }
-            return requestGet(url, headerProperties, Integer[].class);
+            return requestGet(url, headerProperties, int[].class);
         }
 
         /**
@@ -162,13 +162,13 @@ public class Anonymous
              * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<Integer[]> getByAllianceid(int alliance_id, String If_None_Match) {
+            public Requested<int[]> getByAllianceid(int alliance_id, String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/alliances/{alliance_id}/corporations/".replace("{alliance_id}", ""+alliance_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Integer[].class);
+                return requestGet(url, headerProperties, int[].class);
             }
         }
 
@@ -244,11 +244,11 @@ public class Anonymous
              * @param datasource
              *     The server name you would like data from
              */
-            public Requested<Postcharactersaffiliation200 []> post(int[] characters) {
+            public Requested<Postcharactersaffiliation[]> post(int[] characters) {
                 String url = ("https://esi.evetech.net/v1/characters/affiliation/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 java.util.Map<String, Object> content = new HashMap<>();
                 content.put("characters", characters);
-                return requestPost(url, null, content, Postcharactersaffiliation200 [].class);
+                return requestPost(url, null, content, Postcharactersaffiliation[].class);
             }
         }
 
@@ -269,13 +269,13 @@ public class Anonymous
              * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<Getcharacterscharacteridcorporationhistory200 []> getByCharacterid(int character_id, String If_None_Match) {
+            public Requested<Getcharacterscharacteridcorporationhistory[]> getByCharacterid(int character_id, String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/characters/{character_id}/corporationhistory/".replace("{character_id}", ""+character_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Getcharacterscharacteridcorporationhistory200 [].class);
+                return requestGet(url, headerProperties, Getcharacterscharacteridcorporationhistory[].class);
             }
         }
 
@@ -331,13 +331,13 @@ public class Anonymous
              * @param region_id
              *     An EVE region id
              */
-            public Requested<Getcontractspublicregionid200 []> getByRegionid(String If_None_Match, Integer page, int region_id) {
+            public Requested<Getcontractspublicregionid[]> getByRegionid(String If_None_Match, Integer page, int region_id) {
                 String url = ("https://esi.evetech.net/v1/contracts/public/{region_id}/".replace("{region_id}", ""+region_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Getcontractspublicregionid200 [].class);
+                return requestGet(url, headerProperties, Getcontractspublicregionid[].class);
             }
 
             public class Bids {
@@ -359,13 +359,13 @@ public class Anonymous
                  * @param page
                  *     Which page of results to return
                  */
-                public Requested<Getcontractspublicbidscontractid200 []> getByContractid(int contract_id, String If_None_Match, Integer page) {
+                public Requested<Getcontractspublicbidscontractid[]> getByContractid(int contract_id, String If_None_Match, Integer page) {
                     String url = ("https://esi.evetech.net/v1/contracts/public/bids/{contract_id}/".replace("{contract_id}", ""+contract_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page)));
                     HashMap<String, String> headerProperties = new HashMap<String, String>();
                     if (If_None_Match!= null) {
                         headerProperties.put("If-None-Match", (""+ If_None_Match));
                     }
-                    return requestGet(url, headerProperties, Getcontractspublicbidscontractid200 [].class);
+                    return requestGet(url, headerProperties, Getcontractspublicbidscontractid[].class);
                 }
             }
 
@@ -388,13 +388,13 @@ public class Anonymous
                  * @param page
                  *     Which page of results to return
                  */
-                public Requested<Getcontractspublicitemscontractid200 []> getByContractid(int contract_id, String If_None_Match, Integer page) {
+                public Requested<Getcontractspublicitemscontractid[]> getByContractid(int contract_id, String If_None_Match, Integer page) {
                     String url = ("https://esi.evetech.net/v1/contracts/public/items/{contract_id}/".replace("{contract_id}", ""+contract_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page)));
                     HashMap<String, String> headerProperties = new HashMap<String, String>();
                     if (If_None_Match!= null) {
                         headerProperties.put("If-None-Match", (""+ If_None_Match));
                     }
-                    return requestGet(url, headerProperties, Getcontractspublicitemscontractid200 [].class);
+                    return requestGet(url, headerProperties, Getcontractspublicitemscontractid[].class);
                 }
             }
         }
@@ -446,13 +446,13 @@ public class Anonymous
              * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<Getcorporationscorporationidalliancehistory200 []> getByCorporationid(int corporation_id, String If_None_Match) {
+            public Requested<Getcorporationscorporationidalliancehistory[]> getByCorporationid(int corporation_id, String If_None_Match) {
                 String url = ("https://esi.evetech.net/v2/corporations/{corporation_id}/alliancehistory/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Getcorporationscorporationidalliancehistory200 [].class);
+                return requestGet(url, headerProperties, Getcorporationscorporationidalliancehistory[].class);
             }
         }
 
@@ -498,13 +498,13 @@ public class Anonymous
              * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<Integer[]> get(String If_None_Match) {
+            public Requested<int[]> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/corporations/npccorps/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Integer[].class);
+                return requestGet(url, headerProperties, int[].class);
             }
         }
     }
@@ -529,13 +529,13 @@ public class Anonymous
              * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<Integer[]> get(String If_None_Match) {
+            public Requested<int[]> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/dogma/attributes/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Integer[].class);
+                return requestGet(url, headerProperties, int[].class);
             }
 
             /**
@@ -611,13 +611,13 @@ public class Anonymous
              * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<Integer[]> get(String If_None_Match) {
+            public Requested<int[]> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/dogma/effects/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Integer[].class);
+                return requestGet(url, headerProperties, int[].class);
             }
 
             /**
@@ -744,13 +744,13 @@ public class Anonymous
              * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<Getfwstats200 []> get(String If_None_Match) {
+            public Requested<Getfwstats[]> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/fw/stats/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Getfwstats200 [].class);
+                return requestGet(url, headerProperties, Getfwstats[].class);
             }
         }
 
@@ -769,13 +769,13 @@ public class Anonymous
              * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<Getfwsystems200 []> get(String If_None_Match) {
+            public Requested<Getfwsystems[]> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v2/fw/systems/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Getfwsystems200 [].class);
+                return requestGet(url, headerProperties, Getfwsystems[].class);
             }
         }
 
@@ -794,13 +794,13 @@ public class Anonymous
              * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<Getfwwars200 []> get(String If_None_Match) {
+            public Requested<Getfwwars[]> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/fw/wars/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Getfwwars200 [].class);
+                return requestGet(url, headerProperties, Getfwwars[].class);
             }
         }
     }
@@ -820,13 +820,13 @@ public class Anonymous
          * @param If_None_Match
          *     ETag from a previous request. A 304 will be returned if this matches the current ETag
          */
-        public Requested<Getincursions200 []> get(String If_None_Match) {
+        public Requested<Getincursions[]> get(String If_None_Match) {
             String url = ("https://esi.evetech.net/v1/incursions/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
             HashMap<String, String> headerProperties = new HashMap<String, String>();
             if (If_None_Match!= null) {
                 headerProperties.put("If-None-Match", (""+ If_None_Match));
             }
-            return requestGet(url, headerProperties, Getincursions200 [].class);
+            return requestGet(url, headerProperties, Getincursions[].class);
         }
     }
 
@@ -849,13 +849,13 @@ public class Anonymous
              * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<Getindustryfacilities200 []> get(String If_None_Match) {
+            public Requested<Getindustryfacilities[]> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/industry/facilities/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Getindustryfacilities200 [].class);
+                return requestGet(url, headerProperties, Getindustryfacilities[].class);
             }
         }
 
@@ -874,13 +874,13 @@ public class Anonymous
              * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<Getindustrysystems200 []> get(String If_None_Match) {
+            public Requested<Getindustrysystems[]> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/industry/systems/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Getindustrysystems200 [].class);
+                return requestGet(url, headerProperties, Getindustrysystems[].class);
             }
         }
     }
@@ -907,7 +907,7 @@ public class Anonymous
              * @param language
              *     Language to use in the response, takes precedence over Accept-Language
              */
-            public Requested<Getinsuranceprices200 []> get(esi.evetech.net.structures.Accept_Language Accept_Language, String If_None_Match, esi.evetech.net.structures.language language) {
+            public Requested<Getinsuranceprices[]> get(esi.evetech.net.structures.Accept_Language Accept_Language, String If_None_Match, esi.evetech.net.structures.language language) {
                 String url = ("https://esi.evetech.net/v1/insurance/prices/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(language==null?"":"&language="+flatten(language)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
@@ -916,7 +916,7 @@ public class Anonymous
                 if (Accept_Language!= null) {
                     headerProperties.put("Accept-Language", (""+ Accept_Language));
                 }
-                return requestGet(url, headerProperties, Getinsuranceprices200 [].class);
+                return requestGet(url, headerProperties, Getinsuranceprices[].class);
             }
         }
     }
@@ -973,13 +973,13 @@ public class Anonymous
                  * @param If_None_Match
                  *     ETag from a previous request. A 304 will be returned if this matches the current ETag
                  */
-                public Requested<Getloyaltystorescorporationidoffers200 []> getByCorporationid(int corporation_id, String If_None_Match) {
+                public Requested<Getloyaltystorescorporationidoffers[]> getByCorporationid(int corporation_id, String If_None_Match) {
                     String url = ("https://esi.evetech.net/v1/loyalty/stores/{corporation_id}/offers/".replace("{corporation_id}", ""+corporation_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                     HashMap<String, String> headerProperties = new HashMap<String, String>();
                     if (If_None_Match!= null) {
                         headerProperties.put("If-None-Match", (""+ If_None_Match));
                     }
-                    return requestGet(url, headerProperties, Getloyaltystorescorporationidoffers200 [].class);
+                    return requestGet(url, headerProperties, Getloyaltystorescorporationidoffers[].class);
                 }
             }
         }
@@ -1007,13 +1007,13 @@ public class Anonymous
              * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<Integer[]> get(String If_None_Match) {
+            public Requested<int[]> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/markets/groups/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Integer[].class);
+                return requestGet(url, headerProperties, int[].class);
             }
 
             /**
@@ -1070,13 +1070,13 @@ public class Anonymous
              * @param type_id
              *     Return statistics for this type
              */
-            public Requested<Getmarketsregionidhistory200 []> getByRegionid(String If_None_Match, int region_id, int type_id) {
+            public Requested<Getmarketsregionidhistory[]> getByRegionid(String If_None_Match, int region_id, int type_id) {
                 String url = ("https://esi.evetech.net/v1/markets/{region_id}/history/".replace("{region_id}", ""+region_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+"&type_id="+flatten(type_id));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Getmarketsregionidhistory200 [].class);
+                return requestGet(url, headerProperties, Getmarketsregionidhistory[].class);
             }
         }
 
@@ -1103,7 +1103,7 @@ public class Anonymous
              * @param type_id
              *     Return orders only for this type
              */
-            public Requested<Getmarketsregionidorders200 []> getByRegionid(String If_None_Match,
+            public Requested<Getmarketsregionidorders[]> getByRegionid(String If_None_Match,
                 esi.evetech.net.structures.order_type order_type,
                 Integer page,
                 int region_id,
@@ -1113,7 +1113,7 @@ public class Anonymous
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Getmarketsregionidorders200 [].class);
+                return requestGet(url, headerProperties, Getmarketsregionidorders[].class);
             }
         }
 
@@ -1132,13 +1132,13 @@ public class Anonymous
              * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<Getmarketsprices200 []> get(String If_None_Match) {
+            public Requested<Getmarketsprices[]> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/markets/prices/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Getmarketsprices200 [].class);
+                return requestGet(url, headerProperties, Getmarketsprices[].class);
             }
         }
 
@@ -1161,13 +1161,13 @@ public class Anonymous
              * @param region_id
              *     Return statistics in this region
              */
-            public Requested<Integer[]> getByRegionid(String If_None_Match, Integer page, int region_id) {
+            public Requested<int[]> getByRegionid(String If_None_Match, Integer page, int region_id) {
                 String url = ("https://esi.evetech.net/v1/markets/{region_id}/types/".replace("{region_id}", ""+region_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Integer[].class);
+                return requestGet(url, headerProperties, int[].class);
             }
         }
     }
@@ -1191,13 +1191,13 @@ public class Anonymous
              * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<Integer[]> get(String If_None_Match) {
+            public Requested<int[]> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/opportunities/groups/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Integer[].class);
+                return requestGet(url, headerProperties, int[].class);
             }
 
             /**
@@ -1250,13 +1250,13 @@ public class Anonymous
              * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<Integer[]> get(String If_None_Match) {
+            public Requested<int[]> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/opportunities/tasks/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Integer[].class);
+                return requestGet(url, headerProperties, int[].class);
             }
 
             /**
@@ -1310,7 +1310,7 @@ public class Anonymous
          * @param origin
          *     origin solar system ID
          */
-        public Requested<Integer[]> getByOriginDestination(int[] avoid,
+        public Requested<int[]> getByOriginDestination(int[] avoid,
             int[][] connections,
             int destination,
             esi.evetech.net.structures.flag flag,
@@ -1321,7 +1321,7 @@ public class Anonymous
             if (If_None_Match!= null) {
                 headerProperties.put("If-None-Match", (""+ If_None_Match));
             }
-            return requestGet(url, headerProperties, Integer[].class);
+            return requestGet(url, headerProperties, int[].class);
         }
     }
 
@@ -1388,13 +1388,13 @@ public class Anonymous
              * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<Getsovereigntycampaigns200 []> get(String If_None_Match) {
+            public Requested<Getsovereigntycampaigns[]> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/sovereignty/campaigns/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Getsovereigntycampaigns200 [].class);
+                return requestGet(url, headerProperties, Getsovereigntycampaigns[].class);
             }
         }
 
@@ -1413,13 +1413,13 @@ public class Anonymous
              * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<Getsovereigntymap200 []> get(String If_None_Match) {
+            public Requested<Getsovereigntymap[]> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/sovereignty/map/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Getsovereigntymap200 [].class);
+                return requestGet(url, headerProperties, Getsovereigntymap[].class);
             }
         }
 
@@ -1438,13 +1438,13 @@ public class Anonymous
              * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<Getsovereigntystructures200 []> get(String If_None_Match) {
+            public Requested<Getsovereigntystructures[]> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/sovereignty/structures/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Getsovereigntystructures200 [].class);
+                return requestGet(url, headerProperties, Getsovereigntystructures[].class);
             }
         }
     }
@@ -1518,7 +1518,7 @@ public class Anonymous
              * @param language
              *     Language to use in the response, takes precedence over Accept-Language
              */
-            public Requested<Getuniverseancestries200 []> get(esi.evetech.net.structures.Accept_Language Accept_Language, String If_None_Match, esi.evetech.net.structures.language language) {
+            public Requested<Getuniverseancestries[]> get(esi.evetech.net.structures.Accept_Language Accept_Language, String If_None_Match, esi.evetech.net.structures.language language) {
                 String url = ("https://esi.evetech.net/v1/universe/ancestries/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(language==null?"":"&language="+flatten(language)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
@@ -1527,7 +1527,7 @@ public class Anonymous
                 if (Accept_Language!= null) {
                     headerProperties.put("Accept-Language", (""+ Accept_Language));
                 }
-                return requestGet(url, headerProperties, Getuniverseancestries200 [].class);
+                return requestGet(url, headerProperties, Getuniverseancestries[].class);
             }
         }
 
@@ -1577,7 +1577,7 @@ public class Anonymous
              * @param language
              *     Language to use in the response, takes precedence over Accept-Language
              */
-            public Requested<Getuniversebloodlines200 []> get(esi.evetech.net.structures.Accept_Language Accept_Language, String If_None_Match, esi.evetech.net.structures.language language) {
+            public Requested<Getuniversebloodlines[]> get(esi.evetech.net.structures.Accept_Language Accept_Language, String If_None_Match, esi.evetech.net.structures.language language) {
                 String url = ("https://esi.evetech.net/v1/universe/bloodlines/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(language==null?"":"&language="+flatten(language)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
@@ -1586,7 +1586,7 @@ public class Anonymous
                 if (Accept_Language!= null) {
                     headerProperties.put("Accept-Language", (""+ Accept_Language));
                 }
-                return requestGet(url, headerProperties, Getuniversebloodlines200 [].class);
+                return requestGet(url, headerProperties, Getuniversebloodlines[].class);
             }
         }
 
@@ -1605,13 +1605,13 @@ public class Anonymous
              * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<Integer[]> get(String If_None_Match) {
+            public Requested<int[]> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/universe/categories/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Integer[].class);
+                return requestGet(url, headerProperties, int[].class);
             }
 
             /**
@@ -1664,13 +1664,13 @@ public class Anonymous
              * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<Integer[]> get(String If_None_Match) {
+            public Requested<int[]> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/universe/constellations/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Integer[].class);
+                return requestGet(url, headerProperties, int[].class);
             }
 
             /**
@@ -1727,7 +1727,7 @@ public class Anonymous
              * @param language
              *     Language to use in the response, takes precedence over Accept-Language
              */
-            public Requested<Getuniversefactions200 []> get(esi.evetech.net.structures.Accept_Language Accept_Language, String If_None_Match, esi.evetech.net.structures.language language) {
+            public Requested<Getuniversefactions[]> get(esi.evetech.net.structures.Accept_Language Accept_Language, String If_None_Match, esi.evetech.net.structures.language language) {
                 String url = ("https://esi.evetech.net/v2/universe/factions/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(language==null?"":"&language="+flatten(language)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
@@ -1736,7 +1736,7 @@ public class Anonymous
                 if (Accept_Language!= null) {
                     headerProperties.put("Accept-Language", (""+ Accept_Language));
                 }
-                return requestGet(url, headerProperties, Getuniversefactions200 [].class);
+                return requestGet(url, headerProperties, Getuniversefactions[].class);
             }
         }
 
@@ -1755,13 +1755,13 @@ public class Anonymous
              * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<Integer[]> get(String If_None_Match) {
+            public Requested<int[]> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/universe/graphics/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Integer[].class);
+                return requestGet(url, headerProperties, int[].class);
             }
 
             /**
@@ -1806,13 +1806,13 @@ public class Anonymous
              * @param page
              *     Which page of results to return
              */
-            public Requested<Integer[]> get(String If_None_Match, Integer page) {
+            public Requested<int[]> get(String If_None_Match, Integer page) {
                 String url = ("https://esi.evetech.net/v1/universe/groups/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Integer[].class);
+                return requestGet(url, headerProperties, int[].class);
             }
 
             /**
@@ -1921,11 +1921,11 @@ public class Anonymous
              * @param ids
              *     The ids to resolve
              */
-            public Requested<Postuniversenames200 []> post(int[] ids) {
+            public Requested<Postuniversenames[]> post(int[] ids) {
                 String url = ("https://esi.evetech.net/v3/universe/names/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 java.util.Map<String, Object> content = new HashMap<>();
                 content.put("ids", ids);
-                return requestPost(url, null, content, Postuniversenames200 [].class);
+                return requestPost(url, null, content, Postuniversenames[].class);
             }
         }
 
@@ -1975,7 +1975,7 @@ public class Anonymous
              * @param language
              *     Language to use in the response, takes precedence over Accept-Language
              */
-            public Requested<Getuniverseraces200 []> get(esi.evetech.net.structures.Accept_Language Accept_Language, String If_None_Match, esi.evetech.net.structures.language language) {
+            public Requested<Getuniverseraces[]> get(esi.evetech.net.structures.Accept_Language Accept_Language, String If_None_Match, esi.evetech.net.structures.language language) {
                 String url = ("https://esi.evetech.net/v1/universe/races/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(language==null?"":"&language="+flatten(language)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
@@ -1984,7 +1984,7 @@ public class Anonymous
                 if (Accept_Language!= null) {
                     headerProperties.put("Accept-Language", (""+ Accept_Language));
                 }
-                return requestGet(url, headerProperties, Getuniverseraces200 [].class);
+                return requestGet(url, headerProperties, Getuniverseraces[].class);
             }
         }
 
@@ -2003,13 +2003,13 @@ public class Anonymous
              * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<Integer[]> get(String If_None_Match) {
+            public Requested<int[]> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/universe/regions/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Integer[].class);
+                return requestGet(url, headerProperties, int[].class);
             }
 
             /**
@@ -2172,13 +2172,13 @@ public class Anonymous
              * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<Long[]> get(esi.evetech.net.structures.filter filter, String If_None_Match) {
+            public Requested<long[]> get(esi.evetech.net.structures.filter filter, String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/universe/structures/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(filter==null?"":"&filter="+flatten(filter)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Long[].class);
+                return requestGet(url, headerProperties, long[].class);
             }
         }
 
@@ -2197,13 +2197,13 @@ public class Anonymous
              * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<Getuniversesystemjumps200 []> get(String If_None_Match) {
+            public Requested<Getuniversesystemjumps[]> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/universe/system_jumps/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Getuniversesystemjumps200 [].class);
+                return requestGet(url, headerProperties, Getuniversesystemjumps[].class);
             }
         }
 
@@ -2222,13 +2222,13 @@ public class Anonymous
              * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<Getuniversesystemkills200 []> get(String If_None_Match) {
+            public Requested<Getuniversesystemkills[]> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v2/universe/system_kills/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Getuniversesystemkills200 [].class);
+                return requestGet(url, headerProperties, Getuniversesystemkills[].class);
             }
         }
 
@@ -2247,13 +2247,13 @@ public class Anonymous
              * @param If_None_Match
              *     ETag from a previous request. A 304 will be returned if this matches the current ETag
              */
-            public Requested<Integer[]> get(String If_None_Match) {
+            public Requested<int[]> get(String If_None_Match) {
                 String url = ("https://esi.evetech.net/v1/universe/systems/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Integer[].class);
+                return requestGet(url, headerProperties, int[].class);
             }
 
             /**
@@ -2308,13 +2308,13 @@ public class Anonymous
              * @param page
              *     Which page of results to return
              */
-            public Requested<Integer[]> get(String If_None_Match, Integer page) {
+            public Requested<int[]> get(String If_None_Match, Integer page) {
                 String url = ("https://esi.evetech.net/v1/universe/types/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Integer[].class);
+                return requestGet(url, headerProperties, int[].class);
             }
 
             /**
@@ -2371,13 +2371,13 @@ public class Anonymous
          * @param max_war_id
          *     Only return wars with ID smaller than this
          */
-        public Requested<Integer[]> get(String If_None_Match, Integer max_war_id) {
+        public Requested<int[]> get(String If_None_Match, Integer max_war_id) {
             String url = ("https://esi.evetech.net/v1/wars/"+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(max_war_id==null?"":"&max_war_id="+flatten(max_war_id)));
             HashMap<String, String> headerProperties = new HashMap<String, String>();
             if (If_None_Match!= null) {
                 headerProperties.put("If-None-Match", (""+ If_None_Match));
             }
-            return requestGet(url, headerProperties, Integer[].class);
+            return requestGet(url, headerProperties, int[].class);
         }
 
         /**
@@ -2423,13 +2423,13 @@ public class Anonymous
              * @param war_id
              *     A valid war ID
              */
-            public Requested<Getcharacterscharacteridkillmailsrecent200 []> getByWarid(String If_None_Match, Integer page, int war_id) {
+            public Requested<Getcharacterscharacteridkillmailsrecent[]> getByWarid(String If_None_Match, Integer page, int war_id) {
                 String url = ("https://esi.evetech.net/v1/wars/{war_id}/killmails/".replace("{war_id}", ""+war_id)+"?"+(datasource==null?"":"&datasource="+flatten(datasource))+(page==null?"":"&page="+flatten(page)));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (If_None_Match!= null) {
                     headerProperties.put("If-None-Match", (""+ If_None_Match));
                 }
-                return requestGet(url, headerProperties, Getcharacterscharacteridkillmailsrecent200 [].class);
+                return requestGet(url, headerProperties, Getcharacterscharacteridkillmailsrecent[].class);
             }
         }
     }

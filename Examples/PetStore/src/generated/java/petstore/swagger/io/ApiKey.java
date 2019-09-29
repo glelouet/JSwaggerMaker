@@ -50,9 +50,9 @@ public class ApiKey
              * Returns a map of status codes to quantities
              * </p>
              */
-            public Requested<Map<String, Object>> get() {
+            public Requested<Map<String, Integer>> get() {
                 String url = ("https://petstore.swagger.io/v2/store/inventory");
-                return requestGetMap(url, null, Object.class);
+                return requestGetMap(url, null, Integer.class);
             }
         }
     }
