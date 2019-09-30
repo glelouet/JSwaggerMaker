@@ -1,7 +1,5 @@
 package api.github.com.definitions;
 
-import api.github.com.definitions.repo.Parent;
-import api.github.com.definitions.repo.Source;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Repo {
@@ -30,7 +28,7 @@ public class Repo {
     public long open_issues_count;
     public Organization organization;
     public Actor owner;
-    public Parent parent;
+    public Repo parent;
     @JsonProperty("private")
     public boolean _private;
     /**
@@ -38,7 +36,7 @@ public class Repo {
      */
     public String pushed_at;
     public long size;
-    public Source source;
+    public Repo source;
     public String ssh_url;
     public String svn_url;
     /**

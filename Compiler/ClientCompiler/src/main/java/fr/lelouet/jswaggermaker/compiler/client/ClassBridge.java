@@ -522,11 +522,11 @@ public class ClassBridge {
 	 * @return the name of the package, ensured to be correct for java class.
 	 */
 	public static String normalizePackageName(String name) {
-		if(name==null) {
+		if (name == null) {
 			return name;
 		}
 		List<String> sb = new ArrayList<>();
-		for(String s : name.split("\\.")) {
+		for (String s : name.split("\\.")) {
 			if (KEYWORDS.contains(s)) {
 				s = s + "_";
 			} else {
@@ -645,30 +645,7 @@ public class ClassBridge {
 	 * @param prop
 	 */
 	protected void makeClass(JDefinedClass cl, Property property) {
-		if (property.getClass() == ObjectProperty.class) {
-			ObjectProperty p = (ObjectProperty) property;
-			if (p.getProperties() != null) {
-				for (Entry<String, Property> e : p.getProperties().entrySet()) {
-					String propName = e.getKey();
-					logger.trace("making field for property " + propName);
-					String sanitizedPropName = sanitizeVarName(propName);
-					Property prop = e.getValue();
-					String structName = prop.getTitle();
-					if (structName == null) {
-						structName = camelcase(sanitizedPropName);
-					}
-					AbstractJType type = translateToClass(prop, subPckg(cl.getPackage(), cl.name()), structName);
-					logger.trace("call field for name=" + e.getKey() + " type=" + type);
-					JFieldVar field = cl.field(JMod.PUBLIC, type, sanitizedPropName);
-					field.javadoc().add(prop.getDescription());
-					if (!sanitizedPropName.equals(propName)) {
-						field.annotate(JsonProperty.class).param("value", propName);
-					}
-				}
-			}
-		} else {
-			throw new UnsupportedOperationException("can't create class data from property class " + property.getClass());
-		}
+		createFields(cl, property);
 		createEquals(cl);
 		createHashCode(cl);
 	}
@@ -847,29 +824,98 @@ public class ClassBridge {
 		throw new UnsupportedOperationException("can't do " + rf);
 	}
 
+	private HashMap<Set<Property>, AbstractJType> composedTypes = new HashMap<>();
+
 	protected AbstractJType translateToClass(List<Property> allOf, JPackage pck, String name) {
 		logger.trace("creating merged item for class name " + name);
-		AbstractJType ret = cm._getClass(pck + "." + name);
+
+		JDefinedClass ret = cm._getClass(pck + "." + name);
 		if (ret != null) {
 			logger.trace("return existing class pck=" + pck.name() + " name=" + name);
 			return ret;
 		}
+		HashSet<Property> allOfSet = new HashSet<>(allOf);
+		// remove all the properties that don't add data (null and
+		// untypedproperties)
+		allOfSet.removeIf(p -> p == null || p.getType() == null);
+		AbstractJType typeret = composedTypes.get(allOfSet);
+		if (typeret != null) {
+			logger.trace("return existing composite pck=" + pck.name() + " name=" + name + " allof=" + allOfSet);
+			return typeret;
+		} else {
+			logger.trace("need to create composite type for pck=" + pck.name() + " name=" + name + " allof=" + allOfSet);
+			logger.trace("existing composite are " + composedTypes);
+		}
+		// if only one type remains after removal of the useless ones, and this
+		// property is a ref, use that ref instead
+		if (allOfSet.size() == 1) {
+			Property prop = allOfSet.iterator().next();
+			if (prop.getType() == RefProperty.TYPE) {
+				String refName = ((RefProperty) prop).getSimpleRef();
+				typeret = translateDefToClass(refName);
+				logger.trace("replaced one-ref composite type name=" + name + " wiith reference type=" + typeret);
+				composedTypes.put(allOfSet, typeret);
+				return typeret;
+			}
+		}
 		try {
 			ret = cm._class(JMod.PUBLIC, pck.name() + "." + name);
-			logger.trace("created class for composite " + ret.fullName());
+			logger.trace("created class for composite " + allOfSet);
 		} catch (JClassAlreadyExistsException e) {
 			throw new UnsupportedOperationException("catch this", e);
 		}
+		composedTypes.put(allOfSet, ret);
 		for (Property prop : allOf) {
-			if (prop.getClass() == Property.class) {
-				logger.warn("unimplemented allof over property " + prop);
-			} else if (prop.getClass() == RefProperty.class) {
-				logger.warn("unimplemented allof over property " + prop);
-			} else {
-				logger.debug("can't add model class " + prop.getClass() + " to a class");
-			}
+			createFields(ret, prop);
 		}
+		createEquals(ret);
+		createHashCode(ret);
 		return ret;
+	}
+
+	/**
+	 * create the fields in a class, following a property. If the property is
+	 * array, or map type, throws an exception
+	 */
+	public void createFields(JDefinedClass cl, Property property) {
+		logger.trace("create fields in class=" + cl + " prop=" + property);
+		// if it is a ref, we get the property of the ref and recursively call it
+		if (property.getType() == null) {
+			logger.trace("got untyped property name=" + property.getName() + " desc=" + property.getDescription() + " format="
+					+ property.getFormat());
+		} else if (property.getType().equals(RefProperty.TYPE)) {
+			RefProperty rp = (RefProperty) property;
+			Model refModel = swagger.getDefinitions().get(rp.getSimpleRef());
+			if (refModel == null) {
+				throw new UnsupportedOperationException(
+						"got no model for definition " + rp.getSimpleRef() + " existing are " + swagger.getDefinitions().keySet());
+			}
+			createFields(cl, new PropertyModelConverter().modelToProperty(refModel));
+		} else if (property.getType().equals(ObjectProperty.TYPE)) {
+			ObjectProperty p = (ObjectProperty) property;
+			if (p.getProperties() != null) {
+				for (Entry<String, Property> e : p.getProperties().entrySet()) {
+					String propName = e.getKey();
+					logger.trace("making field for property " + propName);
+					String sanitizedPropName = sanitizeVarName(propName);
+					Property prop = e.getValue();
+					String structName = prop.getTitle();
+					if (structName == null) {
+						structName = camelcase(sanitizedPropName);
+					}
+					AbstractJType type = translateToClass(prop, subPckg(cl.getPackage(), cl.name()), structName);
+					logger.trace("call field for name=" + e.getKey() + " type=" + type);
+					JFieldVar field = cl.field(JMod.PUBLIC, type, sanitizedPropName);
+					field.javadoc().add(prop.getDescription());
+					if (!sanitizedPropName.equals(propName)) {
+						field.annotate(JsonProperty.class).param("value", propName);
+					}
+				}
+			}
+		} else {
+			throw new UnsupportedOperationException("can't create class data from property class " + property.getClass());
+		}
+
 	}
 
 	public void createEquals(JDefinedClass cl) {
