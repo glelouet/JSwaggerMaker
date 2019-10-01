@@ -13,13 +13,13 @@
 	<description>meta module of example projects</description>
 	<packaging>pom</packaging>
 	<modules>
-		<module>PetStore</module>
-		<module>ESI</module>
+		<module>APIsGuru</module>
 		<module>Discourse</module>
-		
-		<module>YoutubeData</module>
-		<module>Github</module>
+		<module>ESI</module>
 		<module>GeoDBCities</module>
+		<module>Github</module>
+		<module>PetStore</module>
+		<module>YoutubeData</module>
 	</modules>
 	<dependencies>
 		<dependency>

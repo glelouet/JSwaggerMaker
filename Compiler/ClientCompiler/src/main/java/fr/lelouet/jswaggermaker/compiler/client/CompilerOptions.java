@@ -8,19 +8,57 @@ import java.util.HashSet;
 
 public class CompilerOptions {
 
-	public static final String SWAGGERURLPREFIX = "url=";
+	/**
+	 * cache strategy to use. default no cache
+	 */
+	public static final String CACHEPREFIX = "cache=";
 
-	public String swaggerURL;
+	public String cache = null;
 
-	public static final String OUTDIRPREFIX = "folder=";
-
-	public String outDir = "compiled/";
-
+	/**
+	 * set to false to NOT clear the destination folder prior to creating the
+	 * classes. default is true.
+	 */
 	public static final String CLEARFOLDERPREFIX = "clear=";
 
 	public Boolean clearFolder = true;
 
+	/**
+	 * destination folder. default is compiled/
+	 */
+	public static final String OUTDIRPREFIX = "folder=";
+
+	public String outDir = "compiled/";
+
+	/**
+	 * globals are parameter names that are pushed at the connection level. eg
+	 * language, datasets to work on, etc. If an anonymous connection has global
+	 * parameters, it can't be singleton.
+	 */
+	public static final String GLOBALPARAMSPREFIX = "globals=";
+
+	public HashSet<String> globals = new HashSet<>();
+
+	/**
+	 * request to load a specific file for the parameters. This file must be a
+	 * text file containing a series of parameters to send to the Compiler.
+	 */
 	public static final String LOADPREFIX = "load=";
+
+	/**
+	 * root package of the definitions. Default is null, so deducted from the
+	 * server URL.
+	 */
+	public static final String PACKAGEPREFIX = "package=";
+
+	public String pckg = null;
+
+	/**
+	 * where to load the swagger from.
+	 */
+	public static final String SWAGGERURLPREFIX = "url=";
+
+	public String swaggerURL;
 
 	public CompilerOptions(String... args) {
 		if (args != null) {
@@ -29,18 +67,6 @@ public class CompilerOptions {
 			}
 		}
 	}
-
-	public static final String PACKAGEPREFIX = "package=";
-
-	public String pckg = null;
-
-	public static final String GLOBALPARAMSPREFIX = "globals=";
-
-	public HashSet<String> globals = new HashSet<>();
-
-	public static final String CACHEPREFIX = "cache=";
-
-	public String cache = null;
 
 	private void load(String arg) {
 		if (arg.startsWith(CACHEPREFIX)) {

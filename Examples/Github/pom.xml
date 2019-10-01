@@ -7,7 +7,7 @@
   </parent>
   <groupId>fr.lelouet.jswaggermaker.examples</groupId>
   <artifactId>Github</artifactId>
-  <name>GithubExample</name>
+  <name>Github Example</name>
   <description>example of compiling jswaggermaker against https://api.apis.guru/v2/specs/github.com/v3/swagger.json</description>
 	<build>
 		<plugins>
