@@ -4,13 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>JSwaggerMaker</artifactId>
 	<name>JSwaggerMaker</name>
-	<dependencies>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.8.0-beta2</version>
-		</dependency>
-	</dependencies>
+
+	<parent>
+		<groupId>fr.lelouet</groupId>
+		<artifactId>common-maven</artifactId>
+		<version>0.0.5</version>
+	</parent>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -39,21 +38,6 @@
 				<version>3.2.4</version>
 			</dependency>
 			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-simple</artifactId>
-				<version>1.8.0-beta2</version>
-			</dependency>
-			<dependency>
-				<groupId>ch.qos.logback</groupId>
-				<artifactId>logback-classic</artifactId>
-				<version>1.3.0-alpha4</version>
-			</dependency>
-			<dependency>
-				<groupId>org.testng</groupId>
-				<artifactId>testng</artifactId>
-				<version>6.14.3</version>
-			</dependency>
-			<dependency>
 				<groupId>org.openjfx</groupId>
 				<artifactId>javafx-graphics</artifactId>
 				<version>${openjfx-version}</version>
@@ -75,7 +59,6 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	<groupId>fr.lelouet</groupId>
 	<packaging>pom</packaging>
 	<scm>
 		<url>https://github.com/glelouet/JSwaggerMaker</url>
@@ -117,10 +100,6 @@
 	</distributionManagement>
 
 	<properties>
-		<java.version>11</java.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.javadoc.skip>true</maven.javadoc.skip>
-		<openjfx-version>11.0.2</openjfx-version>
 		<jackson-version>2.9.10</jackson-version>
 	</properties>
 	<build>
