@@ -1,7 +1,8 @@
 package wft_geo_db.p.mashape.com;
 
-import fr.lelouet.jswaggermaker.client.common.impl.securities.Disconnected;
+import fr.lelouet.jswaggermaker.client.common.impl.securities.APIKey;
 import fr.lelouet.jswaggermaker.client.common.interfaces.Requested;
+import io.swagger.models.auth.In;
 import wft_geo_db.p.mashape.com.definitions.CountriesResponse;
 import wft_geo_db.p.mashape.com.definitions.CountryResponse;
 import wft_geo_db.p.mashape.com.definitions.CurrenciesResponse;
@@ -18,26 +19,31 @@ import wft_geo_db.p.mashape.com.definitions.TimeZonesResponse;
 
 
 /**
- * access wft-geo-db.p.mashape.com with no authorization.
+ * access wft-geo-db.p.mashape.com with authorization type apiKey.
  */
-public class Anonymous
-    extends Disconnected
+public class UserSecurity
+    extends APIKey
 {
-    public final Anonymous.V1 v1 = new Anonymous.V1();
+    public static final String[] SCOPES = new String[] { };
+    public final UserSecurity.V1 v1 = new UserSecurity.V1();
+
+    public UserSecurity(String key) {
+        super(key, "X-Mashape-Key", In.HEADER);
+    }
 
     public class V1 {
-        public final Anonymous.V1 .Geo geo = new Anonymous.V1 .Geo();
-        public final Anonymous.V1 .Locale locale = new Anonymous.V1 .Locale();
+        public final UserSecurity.V1 .Geo geo = new UserSecurity.V1 .Geo();
+        public final UserSecurity.V1 .Locale locale = new UserSecurity.V1 .Locale();
 
         public class Geo {
-            public final Anonymous.V1 .Geo.Admindivisions admindivisions = new Anonymous.V1 .Geo.Admindivisions();
-            public final Anonymous.V1 .Geo.Cities cities = new Anonymous.V1 .Geo.Cities();
-            public final Anonymous.V1 .Geo.Countries countries = new Anonymous.V1 .Geo.Countries();
-            public final Anonymous.V1 .Geo.Locations locations = new Anonymous.V1 .Geo.Locations();
+            public final UserSecurity.V1 .Geo.Admindivisions admindivisions = new UserSecurity.V1 .Geo.Admindivisions();
+            public final UserSecurity.V1 .Geo.Cities cities = new UserSecurity.V1 .Geo.Cities();
+            public final UserSecurity.V1 .Geo.Countries countries = new UserSecurity.V1 .Geo.Countries();
+            public final UserSecurity.V1 .Geo.Locations locations = new UserSecurity.V1 .Geo.Locations();
 
             public class Admindivisions {
-                public final Anonymous.V1 .Geo.Admindivisions.Nearbycities nearbycities = new Anonymous.V1 .Geo.Admindivisions.Nearbycities();
-                public final Anonymous.V1 .Geo.Admindivisions.Nearbydivisions nearbydivisions = new Anonymous.V1 .Geo.Admindivisions.Nearbydivisions();
+                public final UserSecurity.V1 .Geo.Admindivisions.Nearbycities nearbycities = new UserSecurity.V1 .Geo.Admindivisions.Nearbycities();
+                public final UserSecurity.V1 .Geo.Admindivisions.Nearbydivisions nearbydivisions = new UserSecurity.V1 .Geo.Admindivisions.Nearbydivisions();
 
                 /**
                  * Find administrative divisions
@@ -240,10 +246,10 @@ public class Anonymous
             }
 
             public class Cities {
-                public final Anonymous.V1 .Geo.Cities.Datetime datetime = new Anonymous.V1 .Geo.Cities.Datetime();
-                public final Anonymous.V1 .Geo.Cities.Distance distance = new Anonymous.V1 .Geo.Cities.Distance();
-                public final Anonymous.V1 .Geo.Cities.Nearbycities nearbycities = new Anonymous.V1 .Geo.Cities.Nearbycities();
-                public final Anonymous.V1 .Geo.Cities.Time time = new Anonymous.V1 .Geo.Cities.Time();
+                public final UserSecurity.V1 .Geo.Cities.Datetime datetime = new UserSecurity.V1 .Geo.Cities.Datetime();
+                public final UserSecurity.V1 .Geo.Cities.Distance distance = new UserSecurity.V1 .Geo.Cities.Distance();
+                public final UserSecurity.V1 .Geo.Cities.Nearbycities nearbycities = new UserSecurity.V1 .Geo.Cities.Nearbycities();
+                public final UserSecurity.V1 .Geo.Cities.Time time = new UserSecurity.V1 .Geo.Cities.Time();
 
                 /**
                  * Find cities
@@ -447,7 +453,7 @@ public class Anonymous
             }
 
             public class Countries {
-                public final Anonymous.V1 .Geo.Countries.Regions regions = new Anonymous.V1 .Geo.Countries.Regions();
+                public final UserSecurity.V1 .Geo.Countries.Regions regions = new UserSecurity.V1 .Geo.Countries.Regions();
 
                 /**
                  * Find countries
@@ -502,8 +508,8 @@ public class Anonymous
                 }
 
                 public class Regions {
-                    public final Anonymous.V1 .Geo.Countries.Regions.Admindivisions admindivisions = new Anonymous.V1 .Geo.Countries.Regions.Admindivisions();
-                    public final Anonymous.V1 .Geo.Countries.Regions.Cities cities = new Anonymous.V1 .Geo.Countries.Regions.Cities();
+                    public final UserSecurity.V1 .Geo.Countries.Regions.Admindivisions admindivisions = new UserSecurity.V1 .Geo.Countries.Regions.Admindivisions();
+                    public final UserSecurity.V1 .Geo.Countries.Regions.Cities cities = new UserSecurity.V1 .Geo.Countries.Regions.Cities();
 
                     /**
                      * Find country regions
@@ -670,8 +676,8 @@ public class Anonymous
             }
 
             public class Locations {
-                public final Anonymous.V1 .Geo.Locations.Nearbycities nearbycities = new Anonymous.V1 .Geo.Locations.Nearbycities();
-                public final Anonymous.V1 .Geo.Locations.Nearbydivisions nearbydivisions = new Anonymous.V1 .Geo.Locations.Nearbydivisions();
+                public final UserSecurity.V1 .Geo.Locations.Nearbycities nearbycities = new UserSecurity.V1 .Geo.Locations.Nearbycities();
+                public final UserSecurity.V1 .Geo.Locations.Nearbydivisions nearbydivisions = new UserSecurity.V1 .Geo.Locations.Nearbydivisions();
 
                 public class Nearbycities {
 
@@ -799,10 +805,10 @@ public class Anonymous
         }
 
         public class Locale {
-            public final Anonymous.V1 .Locale.Currencies currencies = new Anonymous.V1 .Locale.Currencies();
-            public final Anonymous.V1 .Locale.Languages languages = new Anonymous.V1 .Locale.Languages();
-            public final Anonymous.V1 .Locale.Locales locales = new Anonymous.V1 .Locale.Locales();
-            public final Anonymous.V1 .Locale.Timezones timezones = new Anonymous.V1 .Locale.Timezones();
+            public final UserSecurity.V1 .Locale.Currencies currencies = new UserSecurity.V1 .Locale.Currencies();
+            public final UserSecurity.V1 .Locale.Languages languages = new UserSecurity.V1 .Locale.Languages();
+            public final UserSecurity.V1 .Locale.Locales locales = new UserSecurity.V1 .Locale.Locales();
+            public final UserSecurity.V1 .Locale.Timezones timezones = new UserSecurity.V1 .Locale.Timezones();
 
             public class Currencies {
 
@@ -876,8 +882,8 @@ public class Anonymous
             }
 
             public class Timezones {
-                public final Anonymous.V1 .Locale.Timezones.Datetime datetime = new Anonymous.V1 .Locale.Timezones.Datetime();
-                public final Anonymous.V1 .Locale.Timezones.Time time = new Anonymous.V1 .Locale.Timezones.Time();
+                public final UserSecurity.V1 .Locale.Timezones.Datetime datetime = new UserSecurity.V1 .Locale.Timezones.Datetime();
+                public final UserSecurity.V1 .Locale.Timezones.Time time = new UserSecurity.V1 .Locale.Timezones.Time();
 
                 /**
                  * Get time-zones

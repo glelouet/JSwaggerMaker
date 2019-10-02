@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.function.BiConsumer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +26,7 @@ import io.swagger.models.Model;
 import io.swagger.models.Operation;
 import io.swagger.models.Path;
 import io.swagger.models.Response;
+import io.swagger.models.SecurityRequirement;
 import io.swagger.models.Swagger;
 import io.swagger.models.properties.ArrayProperty;
 import io.swagger.models.properties.ObjectProperty;
@@ -105,22 +107,44 @@ public class SwaggerCompiler {
 				if (op == null) {
 					continue;
 				}
-				// first remake the map securityName -> scopes
+				// remake the map securityName -> scopes
+
 				Map<String, Set<String>> mapSec = new HashMap<>();
+
+				// add a security name, and its scopes, that make available this
+				// resource
+				BiConsumer<String, List<String>> addSecReq = (name, scopes) -> {
+					Set<String> set = mapSec.get(name);
+					if (set == null) {
+						set = new HashSet<>();
+						mapSec.put(name, set);
+					}
+					set.addAll(scopes);
+				};
+				// if the path does not declare a security, we use the root security ;
+				// if no root security, we add the null security (anonymous)
+
 				if (op.getSecurity() == null || op.getSecurity().isEmpty()) {
-					mapSec.put(null, null);
+					// path does not declare its own security specifications
+					if (swagger.getSecurity() == null || swagger.getSecurity().isEmpty()) {
+						// no root security specification : use anonymous
+						mapSec.put(null, null);
+					} else {
+						// root security definition
+						for (SecurityRequirement sr : swagger.getSecurity()) {
+							for (Entry<String, List<String>> secEntry : sr.getRequirements().entrySet()) {
+								addSecReq.accept(secEntry.getKey(), secEntry.getValue());
+							}
+						}
+					}
 				} else {
+					// path declares its own security requirements
 					for (Map<String, List<String>> sec : op.getSecurity()) {
 						if (sec == null || sec.isEmpty()) {
 							mapSec.put(null, null);
 						}
 						for (Entry<String, List<String>> secEntry : sec.entrySet()) {
-							Set<String> set = mapSec.get(secEntry.getKey());
-							if (set == null) {
-								set = new HashSet<>();
-								mapSec.put(secEntry.getKey(), set);
-							}
-							set.addAll(secEntry.getValue());
+							addSecReq.accept(secEntry.getKey(), secEntry.getValue());
 						}
 					}
 				}
