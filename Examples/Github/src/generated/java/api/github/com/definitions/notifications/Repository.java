@@ -12,7 +12,7 @@ public class Repository {
     public String name;
     public Actor owner;
     @JsonProperty("private")
-    public boolean _private;
+    public boolean private_;
     public String url;
 
     @Override
@@ -45,7 +45,7 @@ public class Repository {
         if ((owner!= othersame.owner)&&((owner == null)||(!owner.equals(othersame.owner)))) {
             return false;
         }
-        if (_private!= othersame._private) {
+        if (private_!= othersame.private_) {
             return false;
         }
         if ((url!= othersame.url)&&((url == null)||(!url.equals(othersame.url)))) {
@@ -55,6 +55,6 @@ public class Repository {
     }
 
     public int hashCode() {
-        return ((((((((((description == null)? 0 :description.hashCode())+ Boolean.hashCode(fork))+((full_name == null)? 0 :full_name.hashCode()))+((html_url == null)? 0 :html_url.hashCode()))+ Long.hashCode(id))+((name == null)? 0 :name.hashCode()))+((owner == null)? 0 :owner.hashCode()))+ Boolean.hashCode(_private))+((url == null)? 0 :url.hashCode()));
+        return ((((((((((description == null)? 0 :description.hashCode())+ Boolean.hashCode(fork))+((full_name == null)? 0 :full_name.hashCode()))+((html_url == null)? 0 :html_url.hashCode()))+ Long.hashCode(id))+((name == null)? 0 :name.hashCode()))+((owner == null)? 0 :owner.hashCode()))+ Boolean.hashCode(private_))+((url == null)? 0 :url.hashCode()));
     }
 }

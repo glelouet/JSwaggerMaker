@@ -14,7 +14,7 @@ public class Gists {
     public String html_url;
     public String id;
     @JsonProperty("public")
-    public boolean _public;
+    public boolean public_;
     public String url;
     public User user;
 
@@ -54,7 +54,7 @@ public class Gists {
         if ((id!= othersame.id)&&((id == null)||(!id.equals(othersame.id)))) {
             return false;
         }
-        if (_public!= othersame._public) {
+        if (public_!= othersame.public_) {
             return false;
         }
         if ((url!= othersame.url)&&((url == null)||(!url.equals(othersame.url)))) {
@@ -67,6 +67,6 @@ public class Gists {
     }
 
     public int hashCode() {
-        return (((((((((((Long.hashCode(comments)+((comments_url == null)? 0 :comments_url.hashCode()))+((created_at == null)? 0 :created_at.hashCode()))+((description == null)? 0 :description.hashCode()))+((files == null)? 0 :files.hashCode()))+((git_pull_url == null)? 0 :git_pull_url.hashCode()))+((git_push_url == null)? 0 :git_push_url.hashCode()))+((html_url == null)? 0 :html_url.hashCode()))+((id == null)? 0 :id.hashCode()))+ Boolean.hashCode(_public))+((url == null)? 0 :url.hashCode()))+((user == null)? 0 :user.hashCode()));
+        return (((((((((((Long.hashCode(comments)+((comments_url == null)? 0 :comments_url.hashCode()))+((created_at == null)? 0 :created_at.hashCode()))+((description == null)? 0 :description.hashCode()))+((files == null)? 0 :files.hashCode()))+((git_pull_url == null)? 0 :git_pull_url.hashCode()))+((git_push_url == null)? 0 :git_push_url.hashCode()))+((html_url == null)? 0 :html_url.hashCode()))+((id == null)? 0 :id.hashCode()))+ Boolean.hashCode(public_))+((url == null)? 0 :url.hashCode()))+((user == null)? 0 :user.hashCode()));
     }
 }

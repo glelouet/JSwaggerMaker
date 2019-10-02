@@ -7,24 +7,24 @@ public class ClassBridgeTest {
 
 	@Test
 	public void testNormalizeClass() {
-		Assert.assertEquals(ClassBridge.normalizeClassName("api_key"), "ApiKey");
-		Assert.assertEquals(ClassBridge.normalizeClassName("api-key"), "ApiKey");
-		Assert.assertEquals(ClassBridge.normalizeClassName("api--_key"), "ApiKey");
-		Assert.assertEquals(ClassBridge.normalizeClassName("apiKey"), "ApiKey");
+		Assert.assertEquals(ClassBridge.makeJavaTypeIdentifier("api_key"), "ApiKey");
+		Assert.assertEquals(ClassBridge.makeJavaTypeIdentifier("api-key"), "ApiKey");
+		Assert.assertEquals(ClassBridge.makeJavaTypeIdentifier("api--_key"), "ApiKey");
+		Assert.assertEquals(ClassBridge.makeJavaTypeIdentifier("apiKey"), "ApiKey");
 	}
 
 	@Test
 	public void testSanitize() {
-		Assert.assertEquals(ClassBridge.sanitizeVarName("bla-a"), "bla_a");
-		Assert.assertEquals(ClassBridge.sanitizeVarName("{player_id}"), "player_id");
+		Assert.assertEquals(ClassBridge.makeJavaIdentifier("bla-a"), "bla_a");
+		Assert.assertEquals(ClassBridge.makeJavaIdentifier("{player_id}"), "_player_id_");
 	}
 
 	@Test
 	public void testPackageName() {
-		Assert.assertFalse(ClassBridge.VALID_PACKAGE_NAME.matcher("12abc").matches());
-		Assert.assertTrue(ClassBridge.VALID_PACKAGE_NAME.matcher("_12abc").matches());
-		Assert.assertFalse(ClassBridge.VALID_PACKAGE_NAME.matcher("abc?").matches());
-		Assert.assertTrue(ClassBridge.VALID_PACKAGE_NAME.matcher("abc_").matches());
+		Assert.assertFalse(ClassBridge.VALID_IDENTIFIER_NAME.matcher("12abc").matches());
+		Assert.assertTrue(ClassBridge.VALID_IDENTIFIER_NAME.matcher("_12abc").matches());
+		Assert.assertFalse(ClassBridge.VALID_IDENTIFIER_NAME.matcher("abc?").matches());
+		Assert.assertTrue(ClassBridge.VALID_IDENTIFIER_NAME.matcher("abc_").matches());
 	}
 
 	@Test

@@ -176,7 +176,7 @@ public class Anonymous
     }
 
     public class Gists {
-        public final Anonymous.Gists.Public _public = new Anonymous.Gists.Public();
+        public final Anonymous.Gists.Public public_ = new Anonymous.Gists.Public();
         public final Anonymous.Gists.Starred starred = new Anonymous.Gists.Starred();
         public final Anonymous.Gists.Comments comments = new Anonymous.Gists.Comments();
         public final Anonymous.Gists.Forks forks = new Anonymous.Gists.Forks();
@@ -6197,7 +6197,7 @@ public class Anonymous
         }
 
         public class Receivedevents {
-            public final Anonymous.Users.Receivedevents.Public _public = new Anonymous.Users.Receivedevents.Public();
+            public final Anonymous.Users.Receivedevents.Public public_ = new Anonymous.Users.Receivedevents.Public();
 
             /**
              * 

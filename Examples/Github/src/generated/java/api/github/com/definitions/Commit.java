@@ -1,7 +1,7 @@
 package api.github.com.definitions;
 
 import api.github.com.definitions.commit.Files;
-import api.github.com.definitions.gist.history.Changestatus;
+import api.github.com.definitions.gist.history.ChangeStatus;
 
 public class Commit {
     public User author;
@@ -10,7 +10,7 @@ public class Commit {
     public Files[] files;
     public api.github.com.definitions.branches.Commit[] parents;
     public String sha;
-    public Changestatus stats;
+    public ChangeStatus stats;
     public String url;
 
     @Override

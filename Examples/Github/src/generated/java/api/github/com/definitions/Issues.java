@@ -2,7 +2,7 @@ package api.github.com.definitions;
 
 import api.github.com.definitions.issues.Labels;
 import api.github.com.definitions.issues.Milestone;
-import api.github.com.definitions.issues.Pullrequest;
+import api.github.com.definitions.issues.PullRequest;
 
 public class Issues {
     public User assignee;
@@ -20,7 +20,7 @@ public class Issues {
     public Labels[] labels;
     public Milestone milestone;
     public long number;
-    public Pullrequest pull_request;
+    public PullRequest pull_request;
     public Object state;
     public String title;
     /**

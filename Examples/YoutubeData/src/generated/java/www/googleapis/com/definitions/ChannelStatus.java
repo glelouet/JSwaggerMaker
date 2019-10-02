@@ -1,7 +1,7 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.Longuploadsstatus;
-import www.googleapis.com.structures.Privacystatus;
+import www.googleapis.com.structures.LongUploadsStatus;
+import www.googleapis.com.structures.PrivacyStatus;
 
 public class ChannelStatus {
     /**
@@ -11,11 +11,11 @@ public class ChannelStatus {
     /**
      * The long uploads status of this channel. See
      */
-    public Longuploadsstatus longUploadsStatus;
+    public LongUploadsStatus longUploadsStatus;
     /**
      * Privacy status of the channel.
      */
-    public Privacystatus privacyStatus;
+    public PrivacyStatus privacyStatus;
 
     @Override
     public boolean equals(Object other) {

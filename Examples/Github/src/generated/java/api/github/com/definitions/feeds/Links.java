@@ -1,14 +1,14 @@
 package api.github.com.definitions.feeds;
 
-import api.github.com.definitions.feeds.links.Currentuser;
+import api.github.com.definitions.feeds.links.CurrentUser;
 
 public class Links {
-    public Currentuser current_user;
-    public Currentuser current_user_actor;
-    public Currentuser current_user_organization;
-    public Currentuser current_user_public;
-    public Currentuser timeline;
-    public Currentuser user;
+    public CurrentUser current_user;
+    public CurrentUser current_user_actor;
+    public CurrentUser current_user_organization;
+    public CurrentUser current_user_public;
+    public CurrentUser timeline;
+    public CurrentUser user;
 
     @Override
     public boolean equals(Object other) {

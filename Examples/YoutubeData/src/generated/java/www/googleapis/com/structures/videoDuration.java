@@ -6,11 +6,11 @@ public enum videoDuration {
     @JsonProperty("any")
     any("any"),
     @JsonProperty("long")
-    _long("long"),
+    long_("long"),
     @JsonProperty("medium")
     medium("medium"),
     @JsonProperty("short")
-    _short("short");
+    short_("short");
     public final String toString;
 
     videoDuration(String toString) {

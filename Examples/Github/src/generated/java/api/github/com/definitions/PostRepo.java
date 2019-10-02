@@ -30,7 +30,7 @@ public class PostRepo {
      * True to create a private repository, false to create a public one. Creating private repositories requires a paid GitHub account.
      */
     @JsonProperty("private")
-    public boolean _private;
+    public boolean private_;
     /**
      * The id of the team that will be granted access to this repository. This is only valid when creating a repo in an organization.
      */
@@ -69,7 +69,7 @@ public class PostRepo {
         if ((name!= othersame.name)&&((name == null)||(!name.equals(othersame.name)))) {
             return false;
         }
-        if (_private!= othersame._private) {
+        if (private_!= othersame.private_) {
             return false;
         }
         if (team_id!= othersame.team_id) {
@@ -79,6 +79,6 @@ public class PostRepo {
     }
 
     public int hashCode() {
-        return (((((((((Boolean.hashCode(auto_init)+((description == null)? 0 :description.hashCode()))+((gitignore_template == null)? 0 :gitignore_template.hashCode()))+ Boolean.hashCode(has_downloads))+ Boolean.hashCode(has_issues))+ Boolean.hashCode(has_wiki))+((homepage == null)? 0 :homepage.hashCode()))+((name == null)? 0 :name.hashCode()))+ Boolean.hashCode(_private))+ Long.hashCode(team_id));
+        return (((((((((Boolean.hashCode(auto_init)+((description == null)? 0 :description.hashCode()))+((gitignore_template == null)? 0 :gitignore_template.hashCode()))+ Boolean.hashCode(has_downloads))+ Boolean.hashCode(has_issues))+ Boolean.hashCode(has_wiki))+((homepage == null)? 0 :homepage.hashCode()))+((name == null)? 0 :name.hashCode()))+ Boolean.hashCode(private_))+ Long.hashCode(team_id));
     }
 }

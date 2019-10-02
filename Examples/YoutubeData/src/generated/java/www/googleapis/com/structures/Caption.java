@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum Caption {
     @JsonProperty("false")
-    _false("false"),
+    false_("false"),
     @JsonProperty("true")
-    _true("true");
+    true_("true");
     public final String toString;
 
     Caption(String toString) {

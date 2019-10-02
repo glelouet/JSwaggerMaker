@@ -1,10 +1,10 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.Failurereason;
+import www.googleapis.com.structures.FailureReason;
 import www.googleapis.com.structures.License;
-import www.googleapis.com.structures.Privacystatus;
-import www.googleapis.com.structures.Rejectionreason;
-import www.googleapis.com.structures.Uploadstatus;
+import www.googleapis.com.structures.PrivacyStatus;
+import www.googleapis.com.structures.RejectionReason;
+import www.googleapis.com.structures.UploadStatus;
 
 public class VideoStatus {
     /**
@@ -14,7 +14,7 @@ public class VideoStatus {
     /**
      * This value explains why a video failed to upload. This property is only present if the uploadStatus property indicates that the upload failed.
      */
-    public Failurereason failureReason;
+    public FailureReason failureReason;
     /**
      * The video's license.
      */
@@ -22,7 +22,7 @@ public class VideoStatus {
     /**
      * The video's privacy status.
      */
-    public Privacystatus privacyStatus;
+    public PrivacyStatus privacyStatus;
     /**
      * This value indicates if the extended video statistics on the watch page can be viewed by everyone. Note that the view count, likes, etc will still be visible if this is disabled.
      */
@@ -34,11 +34,11 @@ public class VideoStatus {
     /**
      * This value explains why YouTube rejected an uploaded video. This property is only present if the uploadStatus property indicates that the upload was rejected.
      */
-    public Rejectionreason rejectionReason;
+    public RejectionReason rejectionReason;
     /**
      * The status of the uploaded video.
      */
-    public Uploadstatus uploadStatus;
+    public UploadStatus uploadStatus;
 
     @Override
     public boolean equals(Object other) {

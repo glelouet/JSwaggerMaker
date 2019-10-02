@@ -6,7 +6,7 @@ public enum top_menu {
     @JsonProperty("latest")
     latest("latest"),
     @JsonProperty("new")
-    _new("new"),
+    new_("new"),
     @JsonProperty("unread")
     unread("unread"),
     @JsonProperty("top")

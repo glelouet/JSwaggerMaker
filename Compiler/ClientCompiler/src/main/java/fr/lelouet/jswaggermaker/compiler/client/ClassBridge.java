@@ -132,14 +132,14 @@ public class ClassBridge {
 		logger.trace("getting fetcher for security " + securityName + " for subpaths " + subPaths);
 		JDefinedClass theclass = getFetcherClass(securityName);
 		for (String subPath : subPaths) {
-			theclass = subClass(theclass, normalizeClassName(subPath));
+			theclass = subClass(theclass, makeJavaTypeIdentifier(subPath));
 		}
 		return theclass;
 	}
 
 	protected JDefinedClass subClass(JDefinedClass theclass, String subPath) {
 		logger.trace("creating class for path=" + subPath + " in " + theclass);
-		String fieldName = sanitizeVarName(subPath.toLowerCase());
+		String fieldName = makeJavaIdentifier(subPath.toLowerCase());
 		JFieldVar field = theclass.fields().get(fieldName);
 		if (field != null) {
 			if (field.type() instanceof JDefinedClass) {
@@ -157,7 +157,7 @@ public class ClassBridge {
 
 	/** create a subclass in a class */
 	private JDefinedClass createSubClass(JDefinedClass theclass, String subPath) {
-		String newname = camelcase(normalizeClassName(subPath));
+		String newname = camelcase(makeJavaTypeIdentifier(subPath));
 		logger.trace("creating class " + newname + " in " + theclass);
 		try {
 			return theclass._class(newname);
@@ -239,7 +239,7 @@ public class ClassBridge {
 		}
 		try {
 
-			JDefinedClass ret = rootPackage._class(normalizeClassName(secName))._extends(parent);
+			JDefinedClass ret = rootPackage._class(makeJavaTypeIdentifier(secName))._extends(parent);
 			ret.javadoc().add("access " + swagger.getHost() + " with authorization type " + secDef.getType() + ".");
 			// if the parent class has a constructor to call, we create the same
 			// constructor
@@ -423,7 +423,7 @@ public class ClassBridge {
 		logger.trace("create string enum " + name + " values " + enums);
 		JDefinedClass ret = null;
 		try {
-			name = sanitizeVarName(name);
+			name = makeJavaIdentifier(name);
 			ret = structurePackage._enum(JMod.PUBLIC, name);
 			JFieldVar toStringf = ret.field(JMod.PUBLIC | JMod.FINAL, cm.ref(String.class), "toString");
 			JMethod constr = ret.constructor(0);
@@ -433,7 +433,7 @@ public class ClassBridge {
 			toStringm.body()._return(toStringf);
 			toStringm.annotate(Override.class);
 			for (String s : enums) {
-				JEnumConstant enumcst = ret.enumConstant(sanitizeVarName(s)).arg(JExpr.lit(s));
+				JEnumConstant enumcst = ret.enumConstant(makeJavaIdentifier(s)).arg(JExpr.lit(s));
 				enumcst.annotate(JsonProperty.class).param("value", s);
 			}
 			// logger.info("created enum " + name + " with values " + enums);
@@ -449,28 +449,60 @@ public class ClassBridge {
 		}
 	}
 
-	/** java keywords we can't use as a name */
-	public static final Set<String> KEYWORDS = Collections.unmodifiableSet(new HashSet<>(
+	/**
+	 * java reserved keywords we can't use as a name
+	 * https://docs.oracle.com/javase/specs/jls/se12/html/jls-3.html#jls-Identifier
+	 */
+	public static final Set<String> RESERVED_JAVA_KEYWORDS = Collections.unmodifiableSet(new HashSet<>(
 			Arrays.asList("abstract", "assert", "boolean", "break", "byte", "case", "catch", "char", "class", "const",
-					"continue", "default", "do", "double", "else", "extends", "false", "final", "finally", "float", "for", "goto",
-					"if", "implements", "import", "instanceof", "int", "interface", "long", "native", "new", "null", "package",
+					"continue", "default", "do", "double", "else", "extends", "final", "finally", "float", "for", "goto", "if",
+					"implements", "import", "instanceof", "int", "interface", "long", "native", "new", "package",
 					"private", "protected", "public", "return", "short", "static", "strictfp", "super", "switch", "synchronized",
-					"this", "throw", "throws", "transient", "true", "try", "void", "volatile", "while")));
+					"this", "throw", "throws", "transient", "try", "void", "volatile", "while", "_")));
 
-	public static final Pattern VALID_PACKAGE_NAME = Pattern.compile("[A-Za-z_][A-Za-z0-9_]*");
+	/**
+	 * java literals we can't use as an identifier
+	 * https://docs.oracle.com/javase/specs/jls/se12/html/jls-3.html#jls-Identifier
+	 */
+	public static final Set<String> RESERVED_JAVA_LITERALS = Collections
+			.unmodifiableSet(new HashSet<>(Arrays.asList("false", "null", "true")));
 
-	public static String sanitizeVarName(String s) {
-		if (KEYWORDS.contains(s)) {
-			return "_" + s;
+	/**
+	 * names that java does not specifically allow as a class name
+	 * https://docs.oracle.com/javase/specs/jls/se12/html/jls-3.html#jls-3.8
+	 */
+	public static final Set<String> FORBIDDEN_CLASS_NAMES = Collections
+			.unmodifiableSet(new HashSet<>(Arrays.asList("var")));
+
+	public static final Pattern VALID_IDENTIFIER_NAME = Pattern.compile("[A-Za-z_][A-Za-z0-9_]*");
+
+	/**
+	 * make a correct string to use for identifiers.
+	 * <ol>
+	 * <li>if it is a reserved keyword or a reserved literal, suffix it with
+	 * underscore</li>
+	 * <li>remove all the non-alphanum characters except underscore and
+	 * dollar</li>
+	 * <li>if starts with a number, prefix it with underscore</li> </om>
+	 *
+	 * @param s
+	 * @return
+	 */
+	public static String makeJavaIdentifier(String s) {
+		if (RESERVED_JAVA_KEYWORDS.contains(s) || RESERVED_JAVA_LITERALS.contains(s)) {
+			s = s + "_";
 		}
-
-		String ret = s.replaceAll("[\\{\\}]", "").replaceAll("[- #.\\[\\]]", "_");
+		String ret = s.replaceAll("[^A-Za-z0-9$_]", "_");
 		if (ret.matches("^[0-9].*")) {
 			ret = "_" + ret;
 		}
 		return ret;
 	}
 
+	/**
+	 * cache of the java classes names we now or not if they are in the java.lang
+	 * package.
+	 */
 	private static final HashMap<String, Boolean> resolvedJavaLangNames = new HashMap<>();
 
 	/**
@@ -495,25 +527,36 @@ public class ClassBridge {
 		return isJavaLang;
 	}
 
-	public static String normalizeClassName(String s) {
+	/**
+	 * Make a correct string for use of Type identifier (class name)
+	 * <ol>
+	 * <li>split the name by underscore, hyphen, space and uppercase the first
+	 * character of each token : my-b becomes MyB</li>
+	 * <li>suffix with underscore if the name is a forbidden type identifier</li>
+	 * <li>sanitize the identifier to remove all non-alphanum characters and be
+	 * sure the name is correct.</li>
+	 * </ol>
+	 *
+	 * @param s
+	 *          the name for the class, excludingthe package. Eg MyClass, or
+	 *          1337Class or idontknowwhatnametochoose.
+	 * @return
+	 */
+	public static String makeJavaTypeIdentifier(String s) {
 		if (s == null) {
 			return s;
 		}
-		String ret = Stream.of(s.split("[_-]")).filter(str -> str.length() > 0)
-				.map(str -> str.substring(0, 1).toUpperCase() + str.substring(1)).collect(Collectors.joining());
-		ret = sanitizeVarName(ret);
-		if (isJavaLangClass(ret)) {
-			ret = ret + "_";
+		String ret = Stream.of(s.split("[ _-]")).filter(str -> str.length() > 0)
+				.map(str -> camelcase(str)).collect(Collectors.joining());
+		if (FORBIDDEN_CLASS_NAMES.contains(ret) || isJavaLangClass(ret)) {
+			ret=ret+"_";
 		}
-		return ret;
+		return makeJavaIdentifier(ret);
 	}
 
 	/**
-	 * make a package name correct. for each token of the path, replace all
-	 * non-alphanumerical characters with "_" underscore , suffix with "_"
-	 * underscore if the token is a reserved java keyword, and prefix with "_"
-	 * underscore if the token starts with a number. Finally, set the token to
-	 * lower case.
+	 * make a package name correct. for each token of the path, sanitize the
+	 * token.
 	 *
 	 * @see https://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html
 	 * @param name
@@ -521,21 +564,13 @@ public class ClassBridge {
 	 *          or simply 123.
 	 * @return the name of the package, ensured to be correct for java class.
 	 */
-	public static String normalizePackageName(String name) {
+	public static String makePackageName(String name) {
 		if (name == null) {
 			return name;
 		}
 		List<String> sb = new ArrayList<>();
 		for (String s : name.split("\\.")) {
-			if (KEYWORDS.contains(s)) {
-				s = s + "_";
-			} else {
-				s = s.replaceAll("[^A-Za-z0-9]", "_");
-				if (s.charAt(0) >= '0' && s.charAt(0) <= '9') {
-					s = "_" + s;
-				}
-			}
-			sb.add(s.toLowerCase());
+			sb.add(makeJavaIdentifier(s.toLowerCase()));
 		}
 		return sb.stream().collect(Collectors.joining("."));
 	}
@@ -559,7 +594,7 @@ public class ClassBridge {
 	 * @return a correct java package.
 	 */
 	public JPackage pckg(String packageName) {
-		return cm._package(normalizePackageName(packageName));
+		return cm._package(makePackageName(packageName));
 	}
 
 	/**
@@ -573,7 +608,7 @@ public class ClassBridge {
 	 * @return a correct java subpackage, in this case "in.your._1337.brain_"
 	 */
 	public JPackage subPckg(JPackage root, String packageName) {
-		return root.subPackage(normalizePackageName(packageName));
+		return root.subPackage(makePackageName(packageName));
 	}
 
 	public AbstractJType getExistingClass(QueryParameter pp) {
@@ -629,7 +664,7 @@ public class ClassBridge {
 			return cm._ref(Object.class);
 		}
 		try {
-			JDefinedClass cl = pck._class(camelcase(normalizeClassName(name.replaceAll("_ok", ""))));
+			JDefinedClass cl = pck._class(makeJavaTypeIdentifier(name.replaceAll("_ok", "")));
 			createdClasses.put(classDef, cl);
 			makeClass(cl, p);
 			return cl;
@@ -719,7 +754,7 @@ public class ClassBridge {
 								"got no model for definition " + defName + " existing are " + swagger.getDefinitions().keySet());
 					}
 					PartiallyCompiled pc = partCompile(new PropertyModelConverter().modelToProperty(m), definitionsPackage,
-							normalizeClassName(defName));
+							makeJavaTypeIdentifier(defName));
 					ret = pc.returned;
 					tobuild = pc.toCompile;
 					compilation = pc.compilationProperties;
@@ -897,17 +932,14 @@ public class ClassBridge {
 				for (Entry<String, Property> e : p.getProperties().entrySet()) {
 					String propName = e.getKey();
 					logger.trace("making field for property " + propName);
-					String sanitizedPropName = sanitizeVarName(propName);
+					String propFieldName = makeJavaIdentifier(propName);
 					Property prop = e.getValue();
-					String structName = prop.getTitle();
-					if (structName == null) {
-						structName = camelcase(sanitizedPropName);
-					}
-					AbstractJType type = translateToClass(prop, subPckg(cl.getPackage(), cl.name()), structName);
+					String propClassName = makeJavaTypeIdentifier(prop.getTitle() == null ? propFieldName : prop.getTitle());
+					AbstractJType type = translateToClass(prop, subPckg(cl.getPackage(), cl.name()), propClassName);
 					logger.trace("call field for name=" + e.getKey() + " type=" + type);
-					JFieldVar field = cl.field(JMod.PUBLIC, type, sanitizedPropName);
+					JFieldVar field = cl.field(JMod.PUBLIC, type, propFieldName);
 					field.javadoc().add(prop.getDescription());
-					if (!sanitizedPropName.equals(propName)) {
+					if (!propFieldName.equals(propName)) {
 						field.annotate(JsonProperty.class).param("value", propName);
 					}
 				}
@@ -995,7 +1027,7 @@ public class ClassBridge {
 
 	/** create a field or retrieve it in a class */
 	public JVar getField(JDefinedClass fetcherClass, String name, AbstractJType pt, String description) {
-		String fieldName = sanitizeVarName(name);
+		String fieldName = makeJavaIdentifier(name);
 		JFieldVar ret = fetcherClass.fields().get(fieldName);
 		if (ret == null) {
 			ret = fetcherClass.field(JMod.PUBLIC, pt, fieldName);

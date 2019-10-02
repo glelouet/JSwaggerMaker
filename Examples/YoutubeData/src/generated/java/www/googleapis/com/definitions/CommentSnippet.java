@@ -1,7 +1,7 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.Moderationstatus;
-import www.googleapis.com.structures.Viewerrating;
+import www.googleapis.com.structures.ModerationStatus;
+import www.googleapis.com.structures.ViewerRating;
 
 public class CommentSnippet {
     /**
@@ -35,7 +35,7 @@ public class CommentSnippet {
     /**
      * The comment's moderation status. Will not be set if the comments were requested through the id filter.
      */
-    public Moderationstatus moderationStatus;
+    public ModerationStatus moderationStatus;
     /**
      * The unique id of the parent comment, only set for replies.
      */
@@ -63,7 +63,7 @@ public class CommentSnippet {
     /**
      * The rating the viewer has given to this comment. For the time being this will never return RATE_TYPE_DISLIKE and instead return RATE_TYPE_NONE. This may change in the future.
      */
-    public Viewerrating viewerRating;
+    public ViewerRating viewerRating;
 
     @Override
     public boolean equals(Object other) {

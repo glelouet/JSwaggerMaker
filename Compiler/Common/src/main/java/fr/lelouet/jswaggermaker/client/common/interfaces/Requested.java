@@ -20,18 +20,34 @@ public interface Requested<T> {
 
 	public String getURL();
 
+	/**
+	 *
+	 * @return true if the response code is 2xx
+	 */
 	public default boolean isSuccess() {
 		return getResponseCode() / 100 == 2;
 	}
 
+	/**
+	 *
+	 * @return true if the response code is 3xx
+	 */
 	public default boolean isRedirect() {
 		return getResponseCode() / 100 == 3;
 	}
 
+	/**
+	 *
+	 * @return true if the response code is 4xx
+	 */
 	public default boolean isClientError() {
 		return getResponseCode() / 100 == 4;
 	}
 
+	/**
+	 *
+	 * @return true if the response code is 5xx
+	 */
 	public default boolean isServerError() {
 		return getResponseCode() / 100 == 5;
 	}

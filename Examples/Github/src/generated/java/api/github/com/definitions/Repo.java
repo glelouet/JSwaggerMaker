@@ -30,7 +30,7 @@ public class Repo {
     public Actor owner;
     public Repo parent;
     @JsonProperty("private")
-    public boolean _private;
+    public boolean private_;
     /**
      * ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ
      */
@@ -125,7 +125,7 @@ public class Repo {
         if ((parent!= othersame.parent)&&((parent == null)||(!parent.equals(othersame.parent)))) {
             return false;
         }
-        if (_private!= othersame._private) {
+        if (private_!= othersame.private_) {
             return false;
         }
         if ((pushed_at!= othersame.pushed_at)&&((pushed_at == null)||(!pushed_at.equals(othersame.pushed_at)))) {
@@ -159,6 +159,6 @@ public class Repo {
     }
 
     public int hashCode() {
-        return ((((((((((((((((((((((((((((((((((clone_url == null)? 0 :clone_url.hashCode())+((created_at == null)? 0 :created_at.hashCode()))+((description == null)? 0 :description.hashCode()))+ Boolean.hashCode(fork))+ Long.hashCode(forks))+ Long.hashCode(forks_count))+((full_name == null)? 0 :full_name.hashCode()))+((git_url == null)? 0 :git_url.hashCode()))+ Boolean.hashCode(has_downloads))+ Boolean.hashCode(has_issues))+ Boolean.hashCode(has_wiki))+((homepage == null)? 0 :homepage.hashCode()))+((html_url == null)? 0 :html_url.hashCode()))+ Long.hashCode(id))+((language == null)? 0 :language.hashCode()))+((master_branch == null)? 0 :master_branch.hashCode()))+((mirror_url == null)? 0 :mirror_url.hashCode()))+((name == null)? 0 :name.hashCode()))+ Long.hashCode(open_issues))+ Long.hashCode(open_issues_count))+((organization == null)? 0 :organization.hashCode()))+((owner == null)? 0 :owner.hashCode()))+((parent == null)? 0 :parent.hashCode()))+ Boolean.hashCode(_private))+((pushed_at == null)? 0 :pushed_at.hashCode()))+ Long.hashCode(size))+((source == null)? 0 :source.hashCode()))+((ssh_url == null)? 0 :ssh_url.hashCode()))+((svn_url == null)? 0 :svn_url.hashCode()))+((updated_at == null)? 0 :updated_at.hashCode()))+((url == null)? 0 :url.hashCode()))+ Long.hashCode(watchers))+ Long.hashCode(watchers_count));
+        return ((((((((((((((((((((((((((((((((((clone_url == null)? 0 :clone_url.hashCode())+((created_at == null)? 0 :created_at.hashCode()))+((description == null)? 0 :description.hashCode()))+ Boolean.hashCode(fork))+ Long.hashCode(forks))+ Long.hashCode(forks_count))+((full_name == null)? 0 :full_name.hashCode()))+((git_url == null)? 0 :git_url.hashCode()))+ Boolean.hashCode(has_downloads))+ Boolean.hashCode(has_issues))+ Boolean.hashCode(has_wiki))+((homepage == null)? 0 :homepage.hashCode()))+((html_url == null)? 0 :html_url.hashCode()))+ Long.hashCode(id))+((language == null)? 0 :language.hashCode()))+((master_branch == null)? 0 :master_branch.hashCode()))+((mirror_url == null)? 0 :mirror_url.hashCode()))+((name == null)? 0 :name.hashCode()))+ Long.hashCode(open_issues))+ Long.hashCode(open_issues_count))+((organization == null)? 0 :organization.hashCode()))+((owner == null)? 0 :owner.hashCode()))+((parent == null)? 0 :parent.hashCode()))+ Boolean.hashCode(private_))+((pushed_at == null)? 0 :pushed_at.hashCode()))+ Long.hashCode(size))+((source == null)? 0 :source.hashCode()))+((ssh_url == null)? 0 :ssh_url.hashCode()))+((svn_url == null)? 0 :svn_url.hashCode()))+((updated_at == null)? 0 :updated_at.hashCode()))+((url == null)? 0 :url.hashCode()))+ Long.hashCode(watchers))+ Long.hashCode(watchers_count));
     }
 }

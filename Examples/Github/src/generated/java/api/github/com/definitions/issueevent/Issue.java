@@ -3,7 +3,7 @@ package api.github.com.definitions.issueevent;
 import api.github.com.definitions.User;
 import api.github.com.definitions.issues.Labels;
 import api.github.com.definitions.issues.Milestone;
-import api.github.com.definitions.issues.Pullrequest;
+import api.github.com.definitions.issues.PullRequest;
 
 public class Issue {
     public User assignee;
@@ -21,7 +21,7 @@ public class Issue {
     public Labels[] labels;
     public Milestone milestone;
     public long number;
-    public Pullrequest pull_request;
+    public PullRequest pull_request;
     public Object state;
     public String title;
     /**

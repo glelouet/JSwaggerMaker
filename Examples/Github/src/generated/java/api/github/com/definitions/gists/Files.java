@@ -1,11 +1,11 @@
 package api.github.com.definitions.gists;
 
-import api.github.com.definitions.gists.files.Ringerl;
+import api.github.com.definitions.gists.files.RingErl;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Files {
     @JsonProperty("ring.erl")
-    public Ringerl ring_erl;
+    public RingErl ring_erl;
 
     @Override
     public boolean equals(Object other) {

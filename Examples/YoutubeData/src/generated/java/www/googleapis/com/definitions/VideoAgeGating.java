@@ -1,6 +1,6 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.Videogamerating;
+import www.googleapis.com.structures.VideoGameRating;
 
 public class VideoAgeGating {
     /**
@@ -14,7 +14,7 @@ public class VideoAgeGating {
     /**
      * Video game rating, if any.
      */
-    public Videogamerating videoGameRating;
+    public VideoGameRating videoGameRating;
 
     @Override
     public boolean equals(Object other) {

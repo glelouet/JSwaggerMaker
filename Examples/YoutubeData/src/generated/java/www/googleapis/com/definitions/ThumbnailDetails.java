@@ -7,7 +7,7 @@ public class ThumbnailDetails {
      * The default image for this resource.
      */
     @JsonProperty("default")
-    public Thumbnail _default;
+    public Thumbnail default_;
     /**
      * The high quality image for this resource.
      */
@@ -34,7 +34,7 @@ public class ThumbnailDetails {
             return false;
         }
         ThumbnailDetails othersame = ((ThumbnailDetails) other);
-        if ((_default!= othersame._default)&&((_default == null)||(!_default.equals(othersame._default)))) {
+        if ((default_!= othersame.default_)&&((default_ == null)||(!default_.equals(othersame.default_)))) {
             return false;
         }
         if ((high!= othersame.high)&&((high == null)||(!high.equals(othersame.high)))) {
@@ -53,6 +53,6 @@ public class ThumbnailDetails {
     }
 
     public int hashCode() {
-        return ((((((_default == null)? 0 :_default.hashCode())+((high == null)? 0 :high.hashCode()))+((maxres == null)? 0 :maxres.hashCode()))+((medium == null)? 0 :medium.hashCode()))+((standard == null)? 0 :standard.hashCode()));
+        return ((((((default_ == null)? 0 :default_.hashCode())+((high == null)? 0 :high.hashCode()))+((maxres == null)? 0 :maxres.hashCode()))+((medium == null)? 0 :medium.hashCode()))+((standard == null)? 0 :standard.hashCode()));
     }
 }

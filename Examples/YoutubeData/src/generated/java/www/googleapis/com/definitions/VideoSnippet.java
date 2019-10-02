@@ -1,6 +1,6 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.Livebroadcastcontent;
+import www.googleapis.com.structures.LiveBroadcastContent;
 
 public class VideoSnippet {
     /**
@@ -30,7 +30,7 @@ public class VideoSnippet {
     /**
      * Indicates if the video is an upcoming/active live broadcast. Or it's "none" if the video is not an upcoming/active live broadcast.
      */
-    public Livebroadcastcontent liveBroadcastContent;
+    public LiveBroadcastContent liveBroadcastContent;
     /**
      * Localized snippet selected with the hl parameter. If no such localization exists, this field is populated with the default snippet. (Read-only)
      */

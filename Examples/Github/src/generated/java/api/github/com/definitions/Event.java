@@ -10,7 +10,7 @@ public class Event {
     public Organization org;
     public Object payload;
     @JsonProperty("public")
-    public boolean _public;
+    public boolean public_;
     public Repo repo;
     public String type;
 
@@ -38,7 +38,7 @@ public class Event {
         if ((payload!= othersame.payload)&&((payload == null)||(!payload.equals(othersame.payload)))) {
             return false;
         }
-        if (_public!= othersame._public) {
+        if (public_!= othersame.public_) {
             return false;
         }
         if ((repo!= othersame.repo)&&((repo == null)||(!repo.equals(othersame.repo)))) {
@@ -51,6 +51,6 @@ public class Event {
     }
 
     public int hashCode() {
-        return (((((((((actor == null)? 0 :actor.hashCode())+((created_at == null)? 0 :created_at.hashCode()))+ Long.hashCode(id))+((org == null)? 0 :org.hashCode()))+((payload == null)? 0 :payload.hashCode()))+ Boolean.hashCode(_public))+((repo == null)? 0 :repo.hashCode()))+((type == null)? 0 :type.hashCode()));
+        return (((((((((actor == null)? 0 :actor.hashCode())+((created_at == null)? 0 :created_at.hashCode()))+ Long.hashCode(id))+((org == null)? 0 :org.hashCode()))+((payload == null)? 0 :payload.hashCode()))+ Boolean.hashCode(public_))+((repo == null)? 0 :repo.hashCode()))+((type == null)? 0 :type.hashCode()));
     }
 }

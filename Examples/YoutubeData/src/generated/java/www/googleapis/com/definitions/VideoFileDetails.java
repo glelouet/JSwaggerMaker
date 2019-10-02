@@ -1,6 +1,6 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.Filetype;
+import www.googleapis.com.structures.FileType;
 
 public class VideoFileDetails {
     /**
@@ -37,7 +37,7 @@ public class VideoFileDetails {
     /**
      * The uploaded file's type as detected by YouTube's video processing engine. Currently, YouTube only processes video files, but this field is present whether a video file or another type of file was uploaded.
      */
-    public Filetype fileType;
+    public FileType fileType;
     /**
      * A list of video streams contained in the uploaded video file. Each item in the list contains detailed metadata about a video stream.
      */

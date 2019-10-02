@@ -7,7 +7,7 @@ public class PostGist {
     public String description;
     public Files files;
     @JsonProperty("public")
-    public boolean _public;
+    public boolean public_;
 
     @Override
     public boolean equals(Object other) {
@@ -24,13 +24,13 @@ public class PostGist {
         if ((files!= othersame.files)&&((files == null)||(!files.equals(othersame.files)))) {
             return false;
         }
-        if (_public!= othersame._public) {
+        if (public_!= othersame.public_) {
             return false;
         }
         return true;
     }
 
     public int hashCode() {
-        return ((((description == null)? 0 :description.hashCode())+((files == null)? 0 :files.hashCode()))+ Boolean.hashCode(_public));
+        return ((((description == null)? 0 :description.hashCode())+((files == null)? 0 :files.hashCode()))+ Boolean.hashCode(public_));
     }
 }

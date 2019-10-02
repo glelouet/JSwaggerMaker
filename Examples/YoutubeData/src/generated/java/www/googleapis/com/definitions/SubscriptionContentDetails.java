@@ -1,12 +1,12 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.Activitytype;
+import www.googleapis.com.structures.ActivityType;
 
 public class SubscriptionContentDetails {
     /**
      * The type of activity this subscription is for (only uploads, everything).
      */
-    public Activitytype activityType;
+    public ActivityType activityType;
     /**
      * The number of new items in the subscription since its content was last read.
      */

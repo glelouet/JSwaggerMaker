@@ -1,9 +1,9 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.Closedcaptionstype;
-import www.googleapis.com.structures.Latencypreference;
+import www.googleapis.com.structures.ClosedCaptionsType;
+import www.googleapis.com.structures.LatencyPreference;
 import www.googleapis.com.structures.Projection;
-import www.googleapis.com.structures.Stereolayout;
+import www.googleapis.com.structures.StereoLayout;
 
 public class LiveBroadcastContentDetails {
     /**
@@ -14,7 +14,7 @@ public class LiveBroadcastContentDetails {
      * The date and time that the live stream referenced by boundStreamId was last updated.
      */
     public String boundStreamLastUpdateTimeMs;
-    public Closedcaptionstype closedCaptionsType;
+    public ClosedCaptionsType closedCaptionsType;
     /**
      * This setting indicates whether auto start is enabled for this broadcast.
      */
@@ -46,7 +46,7 @@ public class LiveBroadcastContentDetails {
     /**
      * If both this and enable_low_latency are set, they must match. LATENCY_NORMAL should match enable_low_latency=false LATENCY_LOW should match enable_low_latency=true LATENCY_ULTRA_LOW should have enable_low_latency omitted.
      */
-    public Latencypreference latencyPreference;
+    public LatencyPreference latencyPreference;
     public String mesh;
     /**
      * The monitorStream object contains information about the monitor stream, which the broadcaster can use to review the event content before the broadcast stream is shown publicly.
@@ -68,7 +68,7 @@ public class LiveBroadcastContentDetails {
      * This setting indicates whether the broadcast should automatically begin with an in-stream slate when you update the broadcast's status to live. After updating the status, you then need to send a liveCuepoints.insert request that sets the cuepoint's eventState to end to remove the in-stream slate and make your broadcast stream visible to viewers.
      */
     public boolean startWithSlate;
-    public Stereolayout stereoLayout;
+    public StereoLayout stereoLayout;
 
     @Override
     public boolean equals(Object other) {

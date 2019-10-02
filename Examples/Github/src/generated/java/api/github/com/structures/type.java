@@ -6,9 +6,9 @@ public enum type {
     @JsonProperty("all")
     all("all"),
     @JsonProperty("public")
-    _public("public"),
+    public_("public"),
     @JsonProperty("private")
-    _private("private"),
+    private_("private"),
     @JsonProperty("forks")
     forks("forks"),
     @JsonProperty("sources")

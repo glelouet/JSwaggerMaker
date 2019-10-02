@@ -1,7 +1,7 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.Framerate;
-import www.googleapis.com.structures.Ingestiontype;
+import www.googleapis.com.structures.FrameRate;
+import www.googleapis.com.structures.IngestionType;
 import www.googleapis.com.structures.Resolution;
 
 public class CdnSettings {
@@ -12,7 +12,7 @@ public class CdnSettings {
     /**
      * The frame rate of the inbound video data.
      */
-    public Framerate frameRate;
+    public FrameRate frameRate;
     /**
      * The ingestionInfo object contains information that YouTube provides that you need to transmit your RTMP or HTTP stream to YouTube.
      */
@@ -20,7 +20,7 @@ public class CdnSettings {
     /**
      * The method or protocol used to transmit the video stream.
      */
-    public Ingestiontype ingestionType;
+    public IngestionType ingestionType;
     /**
      * The resolution of the inbound video data.
      */

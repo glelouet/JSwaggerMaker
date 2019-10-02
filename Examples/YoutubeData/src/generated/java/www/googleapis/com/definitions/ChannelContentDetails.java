@@ -1,9 +1,9 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.definitions.channelcontentdetails.Relatedplaylists;
+import www.googleapis.com.definitions.channelcontentdetails.RelatedPlaylists;
 
 public class ChannelContentDetails {
-    public Relatedplaylists relatedPlaylists;
+    public RelatedPlaylists relatedPlaylists;
 
     @Override
     public boolean equals(Object other) {

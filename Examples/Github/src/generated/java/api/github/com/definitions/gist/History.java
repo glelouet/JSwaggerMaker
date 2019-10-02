@@ -1,10 +1,10 @@
 package api.github.com.definitions.gist;
 
 import api.github.com.definitions.User;
-import api.github.com.definitions.gist.history.Changestatus;
+import api.github.com.definitions.gist.history.ChangeStatus;
 
 public class History {
-    public Changestatus change_status;
+    public ChangeStatus change_status;
     /**
      * Timestamp in ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.
      */

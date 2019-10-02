@@ -167,7 +167,7 @@ public class PathTranslation {
 			if (!alternateRoute.contains(pathToken)) {
 				if (pathToken.length() > 0) {
 					if( pathToken.startsWith("{")) {
-						pathsParams.add(ClassBridge.sanitizeVarName(pathToken));
+						pathsParams.add(ClassBridge.makeJavaTypeIdentifier(pathToken));
 					} else {
 						pathsNoParam.add(pathToken.toLowerCase());
 					}
@@ -260,7 +260,7 @@ public class PathTranslation {
 		String fetchMethName = optype.name();
 		if (pathsParams.size() > 0) {
 			fetchMethName+= "By"
-					+ pathsParams.stream().map(token -> ClassBridge.camelcase(ClassBridge.normalizeClassName(token)))
+					+ pathsParams.stream().map(token -> ClassBridge.camelcase(ClassBridge.makeJavaTypeIdentifier(token)))
 					.collect(Collectors.joining());
 		}
 
@@ -356,7 +356,7 @@ public class PathTranslation {
 	public List<JVar> allParams = new ArrayList<>();
 
 	protected String nameForParameter(String name) {
-		String sanitizedName = ClassBridge.sanitizeVarName(name);
+		String sanitizedName = ClassBridge.makeJavaIdentifier(name);
 		boolean rename = allParams.stream().filter(jv -> jv.name().equals(name)).findAny().isPresent();
 		String paramName = sanitizedName;
 		if (rename) {
@@ -436,7 +436,7 @@ public class PathTranslation {
 			case "header":
 				fetchMeth.javadoc().addParam(paramName).add(p.getDescription());
 				HeaderParameter hp = (HeaderParameter) p;
-				String className = ClassBridge.sanitizeVarName(hp.getName());
+				String className = ClassBridge.makeJavaIdentifier(hp.getName());
 				pathType = bridge.getExistingClass(hp);
 				param = inField ? bridge.getField(rootHolderClass, p.getName(), pathType, p.getDescription())
 						: fetchMeth.param(bridge.getExistingClass(hp), className);

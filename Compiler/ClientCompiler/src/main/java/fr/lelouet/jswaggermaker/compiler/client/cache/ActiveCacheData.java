@@ -90,7 +90,7 @@ public class ActiveCacheData {
 			cacheMethName = "get";
 		}
 
-		if (ClassBridge.KEYWORDS.contains(cacheMethName)) {
+		if (ClassBridge.RESERVED_JAVA_KEYWORDS.contains(cacheMethName)) {
 			cacheMethName = "get" + cacheMethName;
 		}
 

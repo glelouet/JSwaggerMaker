@@ -1,13 +1,13 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.Cornerposition;
+import www.googleapis.com.structures.CornerPosition;
 import www.googleapis.com.structures.Type;
 
 public class InvideoPosition {
     /**
      * Describes in which corner of the video the visual widget will appear.
      */
-    public Cornerposition cornerPosition;
+    public CornerPosition cornerPosition;
     /**
      * Defines the position type.
      */

@@ -1,6 +1,6 @@
 package www.googleapis.com.definitions;
 
-import www.googleapis.com.structures.Broadcasttype;
+import www.googleapis.com.structures.BroadcastType;
 
 public class LiveBroadcastSnippet {
     /**
@@ -11,7 +11,7 @@ public class LiveBroadcastSnippet {
      * The date and time that the broadcast actually started. This information is only available once the broadcast's state is live. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
      */
     public String actualStartTime;
-    public Broadcasttype broadcastType;
+    public BroadcastType broadcastType;
     /**
      * The ID that YouTube uses to uniquely identify the channel that is publishing the broadcast.
      */

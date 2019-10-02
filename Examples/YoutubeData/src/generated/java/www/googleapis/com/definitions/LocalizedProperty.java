@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class LocalizedProperty {
     @JsonProperty("default")
-    public String _default;
+    public String default_;
     /**
      * The language of the default property.
      */
@@ -20,7 +20,7 @@ public class LocalizedProperty {
             return false;
         }
         LocalizedProperty othersame = ((LocalizedProperty) other);
-        if ((_default!= othersame._default)&&((_default == null)||(!_default.equals(othersame._default)))) {
+        if ((default_!= othersame.default_)&&((default_ == null)||(!default_.equals(othersame.default_)))) {
             return false;
         }
         if ((defaultLanguage!= othersame.defaultLanguage)&&((defaultLanguage == null)||(!defaultLanguage.equals(othersame.defaultLanguage)))) {
@@ -33,6 +33,6 @@ public class LocalizedProperty {
     }
 
     public int hashCode() {
-        return ((((_default == null)? 0 :_default.hashCode())+((defaultLanguage == null)? 0 :defaultLanguage.hashCode()))+((localized == null)? 0 :localized.hashCode()));
+        return ((((default_ == null)? 0 :default_.hashCode())+((defaultLanguage == null)? 0 :defaultLanguage.hashCode()))+((localized == null)? 0 :localized.hashCode()));
     }
 }

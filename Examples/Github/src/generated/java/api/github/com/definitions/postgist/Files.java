@@ -1,11 +1,11 @@
 package api.github.com.definitions.postgist;
 
-import api.github.com.definitions.postgist.files.File1txt;
+import api.github.com.definitions.postgist.files.File1Txt;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Files {
     @JsonProperty("file1.txt")
-    public File1txt file1_txt;
+    public File1Txt file1_txt;
 
     @Override
     public boolean equals(Object other) {

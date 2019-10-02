@@ -6,7 +6,7 @@ public enum flag {
     @JsonProperty("active")
     active("active"),
     @JsonProperty("new")
-    _new("new"),
+    new_("new"),
     @JsonProperty("staff")
     staff("staff"),
     @JsonProperty("suspended")
