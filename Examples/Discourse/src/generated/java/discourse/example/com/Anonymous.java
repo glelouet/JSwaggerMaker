@@ -355,7 +355,7 @@ public class Anonymous
              * @param action
              * @param offset
              */
-            public Requested<Object[]> getByActionJson(discourse.example.com.structures.action action, long offset) {
+            public Requested<Object[]> getByAction(discourse.example.com.structures.action action, long offset) {
                 String url = ("https://discourse.example.com//admin/emails/{action}.json".replace("{action}", ""+action).replace("{offset}", ""+offset));
                 return requestGet(url, null, Object[].class);
             }
@@ -372,7 +372,7 @@ public class Anonymous
              * @param type
              * @param offset
              */
-            public Requested<Object> getByTypeJson(discourse.example.com.structures.type type, long offset) {
+            public Requested<Object> getByType(discourse.example.com.structures.type type, long offset) {
                 String url = ("https://discourse.example.com//admin/flags/{type}.json".replace("{type}", ""+type).replace("{offset}", ""+offset));
                 return requestGet(url, null, Object.class);
             }
@@ -401,7 +401,7 @@ public class Anonymous
              * Delete a group
              * </p>
              */
-            public Requested<Object> deleteByGroupIdJson() {
+            public Requested<Object> deleteByGroupId() {
                 String url = ("https://discourse.example.com//admin/groups/{group_id}.json");
                 return requestDel(url, null, Object.class);
             }
@@ -10172,7 +10172,7 @@ public class Anonymous
              * 
              * @param id
              */
-            public Requested<Object> getByIdJson(long id) {
+            public Requested<Object> getById(long id) {
                 String url = ("https://discourse.example.com//admin/users/{id}.json".replace("{id}", ""+id));
                 return requestGet(url, null, Object.class);
             }
@@ -10189,7 +10189,7 @@ public class Anonymous
              * @param block_urls
              * @param block_ip
              */
-            public Requested<Object> deleteByIdJson(long id,
+            public Requested<Object> deleteById(long id,
                 boolean delete_posts,
                 boolean block_email,
                 boolean block_urls,
@@ -10295,7 +10295,7 @@ public class Anonymous
                  * @param page
                  * @param show_emails
                  */
-                public Requested<Object[]> getByFlagJson(discourse.example.com.structures.flag flag,
+                public Requested<Object[]> getByFlag(discourse.example.com.structures.flag flag,
                     discourse.example.com.structures.order order,
                     Boolean ascending,
                     Long page,
@@ -10416,7 +10416,7 @@ public class Anonymous
          * @param id
          * @param page
          */
-        public Requested<Object> getByIdJson(long id, Long page) {
+        public Requested<Object> getById(long id, Long page) {
             String url = ("https://discourse.example.com//c/{id}.json".replace("{id}", ""+id)+"?"+(page==null?"":"&page="+flatten(page)));
             return requestGet(url, null, Object.class);
         }
@@ -10544,7 +10544,7 @@ public class Anonymous
          * Get a specific group
          * </p>
          */
-        public Requested<Object> getByNameJson() {
+        public Requested<Object> getByName() {
             String url = ("https://discourse.example.com//groups/{name}.json");
             return requestGet(url, null, Object.class);
         }
@@ -10555,7 +10555,7 @@ public class Anonymous
          * Update a group
          * </p>
          */
-        public Requested<Object> putByNameJson() {
+        public Requested<Object> putByName() {
             String url = ("https://discourse.example.com//groups/{name}.json");
             return requestPut(url, null, null, Object.class);
         }
@@ -10827,7 +10827,7 @@ public class Anonymous
          * 
          * @param id
          */
-        public Requested<Object> getByIdJson(long id) {
+        public Requested<Object> getById(long id) {
             String url = ("https://discourse.example.com//posts/{id}.json".replace("{id}", ""+id));
             return requestGet(url, null, Object.class);
         }
@@ -10844,7 +10844,7 @@ public class Anonymous
          * @param post_edit_reason_
          * @param post_cooked_
          */
-        public Requested<Object> putByIdJson(long id,
+        public Requested<Object> putById(long id,
             String post_raw_,
             String post_raw_old_,
             String post_edit_reason_,
@@ -11003,7 +11003,7 @@ public class Anonymous
          * @param print
          *     Will return up to 1000 posts in a topic
          */
-        public Requested<Object> getByIdJson(long id, Boolean print) {
+        public Requested<Object> getById(long id, Boolean print) {
             String url = ("https://discourse.example.com//t/{id}.json".replace("{id}", ""+id)+"?"+(print==null?"":"&print="+flatten(print)));
             return requestGet(url, null, Object.class);
         }
@@ -11016,7 +11016,7 @@ public class Anonymous
          * 
          * @param id
          */
-        public void deleteByIdJson(long id) {
+        public void deleteById(long id) {
             String url = ("https://discourse.example.com//t/{id}.json".replace("{id}", ""+id));
             requestDel(url, null, Void.class);
         }
@@ -11033,7 +11033,7 @@ public class Anonymous
          * @param title
          * @param category_id
          */
-        public Requested<Object> putBySlugIdJson(String slug,
+        public Requested<Object> putBySlugId(String slug,
             long id,
             String title,
             long category_id) {
@@ -11202,7 +11202,7 @@ public class Anonymous
          * 
          * @param id
          */
-        public Requested<Object> getByIdJson(long id) {
+        public Requested<Object> getById(long id) {
             String url = ("https://discourse.example.com//tag_groups/{id}.json".replace("{id}", ""+id));
             return requestGet(url, null, Object.class);
         }
@@ -11217,7 +11217,7 @@ public class Anonymous
          * @param name
          * @param tag_names
          */
-        public Requested<Object> putByIdJson(long id, String name, String[] tag_names) {
+        public Requested<Object> putById(long id, String name, String[] tag_names) {
             String url = ("https://discourse.example.com//tag_groups/{id}.json".replace("{id}", ""+id));
             Map<String, Object> content = new HashMap<>();
             content.put("name", name);
@@ -11294,7 +11294,7 @@ public class Anonymous
          * 
          * @param flag
          */
-        public void getByFlagJson(discourse.example.com.structures.flag flag) {
+        public void getByFlag(discourse.example.com.structures.flag flag) {
             String url = ("https://discourse.example.com//top/{flag}.json".replace("{flag}", ""+flag));
             requestGet(url, null, Void.class);
         }
@@ -11312,7 +11312,7 @@ public class Anonymous
              * Get a list of private messages for a user
              * </p>
              */
-            public Requested<Object> getByUsernameJson() {
+            public Requested<Object> getByUsername() {
                 String url = ("https://discourse.example.com//topics/private-messages/{username}.json");
                 return requestGet(url, null, Object.class);
             }
@@ -11326,7 +11326,7 @@ public class Anonymous
              * Get a list of private messages sent
              * </p>
              */
-            public Requested<Object> getByUsernameJson() {
+            public Requested<Object> getByUsername() {
                 String url = ("https://discourse.example.com//topics/private-messages-sent/{username}.json");
                 return requestGet(url, null, Object.class);
             }
@@ -11360,7 +11360,7 @@ public class Anonymous
              * 
              * @param external_id
              */
-            public Requested<Object> getByExternalIdJson(long external_id) {
+            public Requested<Object> getByExternalId(long external_id) {
                 String url = ("https://discourse.example.com//u/by-external/{external_id}.json".replace("{external_id}", ""+external_id));
                 return requestGet(url, null, Object.class);
             }
@@ -11439,7 +11439,7 @@ public class Anonymous
          * get a list of badges assigned to a user
          * </p>
          */
-        public Requested<Object> getByUsernameJson() {
+        public Requested<Object> getByUsername() {
             String url = ("https://discourse.example.com//user-badges/{username}.json");
             return requestGet(url, null, Object.class);
         }
@@ -11492,7 +11492,7 @@ public class Anonymous
          * 
          * @param username
          */
-        public Requested<Object> getByUsernameJson(String username) {
+        public Requested<Object> getByUsername(String username) {
             String url = ("https://discourse.example.com//users/{username}.json".replace("{username}", ""+username));
             return requestGet(url, null, Object.class);
         }

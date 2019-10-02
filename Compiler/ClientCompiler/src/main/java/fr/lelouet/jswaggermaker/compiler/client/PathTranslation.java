@@ -146,7 +146,16 @@ public class PathTranslation {
 
 	public List<String> requiredRoles;
 
+	/**
+	 * parts of the resource path that are parameters. <br/>
+	 * eg for path= /names/{charid} should contain charid
+	 */
 	protected ArrayList<String> pathsParams = new ArrayList<>();
+
+	/**
+	 * parts of the resource path that are not parameters. <br/>
+	 * eg for path= /names/{charid} should contain names
+	 */
 	protected ArrayList<String> pathsNoParam = new ArrayList<>();
 
 	public void apply() {
@@ -166,14 +175,20 @@ public class PathTranslation {
 		for (String pathToken : path.split("\\?")[0].split("/")) {
 			if (!alternateRoute.contains(pathToken)) {
 				if (pathToken.length() > 0) {
-					if( pathToken.startsWith("{")) {
-						pathsParams.add(ClassBridge.makeJavaTypeIdentifier(pathToken));
+					// some token can have several params, eg {itemid}of{charid}
+					if (pathToken.startsWith("{")) {
+						for (String subtoken : pathToken.split("\\{")) {
+							if (subtoken.length() > 0) {
+								pathsParams.add(subtoken.split("\\}")[0]);
+							}
+						}
 					} else {
 						pathsNoParam.add(pathToken.toLowerCase());
 					}
 				}
 			}
 		}
+		logger.trace("path=" + path + " params=" + pathsParams);
 		fetcherClass = bridge.getFetcherClass(securityName, pathsNoParam);
 		rootHolderClass = bridge.getFetcherClass(securityName);
 		makeFetchMethInit();
@@ -187,7 +202,7 @@ public class PathTranslation {
 				JInvocation putcall = propsParamVar.invoke("put").arg(headerParamEntry.getKey()).arg(JExpr.lit("").plus(param));
 				if (param.type().isPrimitive()) {
 					fetchMeth.body().add(putcall);
-				}else {
+				} else {
 					fetchMeth.body()._if(param.neNull())._then().add(putcall);
 				}
 			}
@@ -259,16 +274,15 @@ public class PathTranslation {
 	protected void makeFetchMethInit() {
 		String fetchMethName = optype.name();
 		if (pathsParams.size() > 0) {
-			fetchMethName+= "By"
-					+ pathsParams.stream().map(token -> ClassBridge.camelcase(ClassBridge.makeJavaTypeIdentifier(token)))
-					.collect(Collectors.joining());
+			fetchMethName += "By" + pathsParams.stream()
+			.map(token -> ClassBridge.camelcase(ClassBridge.makeJavaTypeIdentifier(token))).collect(Collectors.joining());
 		}
 
 		/** rename the method in case of existingone already. */
 		String fFetchName = fetchMethName;
 		String renamed = Stream
-				.concat(Stream.of(fetchMethName), IntStream.iterate(2, i -> i + 1).mapToObj(i -> fFetchName + i)).filter(
-						name -> !fetcherClass.methods().stream().filter(meth -> meth.name().equals(name)).findAny().isPresent())
+				.concat(Stream.of(fetchMethName), IntStream.iterate(2, i -> i + 1).mapToObj(i -> fFetchName + i))
+				.filter(name -> !fetcherClass.methods().stream().filter(meth -> meth.name().equals(name)).findAny().isPresent())
 				.findFirst().orElse(null);
 
 		makeFetchRetType();
