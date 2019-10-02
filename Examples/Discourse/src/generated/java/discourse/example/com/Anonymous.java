@@ -12,42 +12,42 @@ import fr.lelouet.jswaggermaker.client.common.interfaces.Requested;
 public class Anonymous
     extends Disconnected
 {
-    public final Anonymous.Categoriesjson categories_json = new Anonymous.Categoriesjson();
+    public final Anonymous.CategoriesJson categories_json = new Anonymous.CategoriesJson();
     public final Anonymous.C c = new Anonymous.C();
     public final Anonymous.Categories categories = new Anonymous.Categories();
-    public final Anonymous.Postsjson posts_json = new Anonymous.Postsjson();
+    public final Anonymous.PostsJson posts_json = new Anonymous.PostsJson();
     public final Anonymous.Posts posts = new Anonymous.Posts();
-    public final Anonymous.Postactions postactions = new Anonymous.Postactions();
+    public final Anonymous.PostActions postactions = new Anonymous.PostActions();
     public final Anonymous.T t = new Anonymous.T();
     public final Anonymous.Topics topics = new Anonymous.Topics();
-    public final Anonymous.Notificationsjson notifications_json = new Anonymous.Notificationsjson();
+    public final Anonymous.NotificationsJson notifications_json = new Anonymous.NotificationsJson();
     public final Anonymous.Notifications notifications = new Anonymous.Notifications();
     public final Anonymous.Invites invites = new Anonymous.Invites();
-    public final Anonymous.Taggroupsjson taggroups_json = new Anonymous.Taggroupsjson();
-    public final Anonymous.Taggroups taggroups = new Anonymous.Taggroups();
+    public final Anonymous.TagGroupsJson taggroups_json = new Anonymous.TagGroupsJson();
+    public final Anonymous.TagGroups taggroups = new Anonymous.TagGroups();
     public final Anonymous.Users users = new Anonymous.Users();
     public final Anonymous.U u = new Anonymous.U();
-    public final Anonymous.Uploadsjson uploads_json = new Anonymous.Uploadsjson();
-    public final Anonymous.Directoryitemsjson directoryitems_json = new Anonymous.Directoryitemsjson();
+    public final Anonymous.UploadsJson uploads_json = new Anonymous.UploadsJson();
+    public final Anonymous.DirectoryItemsJson directoryitems_json = new Anonymous.DirectoryItemsJson();
     public final Anonymous.Tags tags = new Anonymous.Tags();
     public final Anonymous.Search search = new Anonymous.Search();
     public final Anonymous.Admin admin = new Anonymous.Admin();
-    public final Anonymous.Groupsjson groups_json = new Anonymous.Groupsjson();
+    public final Anonymous.GroupsJson groups_json = new Anonymous.GroupsJson();
     public final Anonymous.Groups groups = new Anonymous.Groups();
-    public final Anonymous.Latestjson latest_json = new Anonymous.Latestjson();
-    public final Anonymous.Topjson top_json = new Anonymous.Topjson();
+    public final Anonymous.LatestJson latest_json = new Anonymous.LatestJson();
+    public final Anonymous.TopJson top_json = new Anonymous.TopJson();
     public final Anonymous.Top top = new Anonymous.Top();
     public final Anonymous.Session session = new Anonymous.Session();
-    public final Anonymous.Userbadges userbadges = new Anonymous.Userbadges();
-    public final Anonymous.Userbadgesjson userbadges_json = new Anonymous.Userbadgesjson();
-    public final Anonymous.Useractionsjson useractions_json = new Anonymous.Useractionsjson();
-    public final Anonymous.Aboutjson about_json = new Anonymous.Aboutjson();
+    public final Anonymous.UserBadges userbadges = new Anonymous.UserBadges();
+    public final Anonymous.UserBadgesJson userbadges_json = new Anonymous.UserBadgesJson();
+    public final Anonymous.UserActionsJson useractions_json = new Anonymous.UserActionsJson();
+    public final Anonymous.AboutJson about_json = new Anonymous.AboutJson();
     public final Anonymous.Polls polls = new Anonymous.Polls();
-    public final Anonymous.Pageviewtotalreqs pageviewtotalreqs = new Anonymous.Pageviewtotalreqs();
-    public final Anonymous.Exportcsv exportcsv = new Anonymous.Exportcsv();
-    public final Anonymous.Useravatar useravatar = new Anonymous.Useravatar();
+    public final Anonymous.PageViewTotalReqs pageviewtotalreqs = new Anonymous.PageViewTotalReqs();
+    public final Anonymous.ExportCsv exportcsv = new Anonymous.ExportCsv();
+    public final Anonymous.UserAvatar useravatar = new Anonymous.UserAvatar();
 
-    public class Aboutjson {
+    public class AboutJson {
 
         /**
          * 
@@ -62,25 +62,25 @@ public class Anonymous
     }
 
     public class Admin {
-        public final Anonymous.Admin.Emailjson email_json = new Anonymous.Admin.Emailjson();
+        public final Anonymous.Admin.EmailJson email_json = new Anonymous.Admin.EmailJson();
         public final Anonymous.Admin.Customize customize = new Anonymous.Admin.Customize();
         public final Anonymous.Admin.Users users = new Anonymous.Admin.Users();
         public final Anonymous.Admin.Groups groups = new Anonymous.Admin.Groups();
-        public final Anonymous.Admin.Sitesettingsjson sitesettings_json = new Anonymous.Admin.Sitesettingsjson();
-        public final Anonymous.Admin.Sitesettings sitesettings = new Anonymous.Admin.Sitesettings();
+        public final Anonymous.Admin.SiteSettingsJson sitesettings_json = new Anonymous.Admin.SiteSettingsJson();
+        public final Anonymous.Admin.SiteSettings sitesettings = new Anonymous.Admin.SiteSettings();
         public final Anonymous.Admin.Plugins plugins = new Anonymous.Admin.Plugins();
-        public final Anonymous.Admin.Backupsjson backups_json = new Anonymous.Admin.Backupsjson();
+        public final Anonymous.Admin.BackupsJson backups_json = new Anonymous.Admin.BackupsJson();
         public final Anonymous.Admin.Backups backups = new Anonymous.Admin.Backups();
         public final Anonymous.Admin.Emails emails = new Anonymous.Admin.Emails();
         public final Anonymous.Admin.Flags flags = new Anonymous.Admin.Flags();
-        public final Anonymous.Admin.Badgesjson badges_json = new Anonymous.Admin.Badgesjson();
+        public final Anonymous.Admin.BadgesJson badges_json = new Anonymous.Admin.BadgesJson();
         public final Anonymous.Admin.Api api = new Anonymous.Admin.Api();
         public final Anonymous.Admin.Logs logs = new Anonymous.Admin.Logs();
 
         public class Api {
-            public final Anonymous.Admin.Api.Webhooks webhooks = new Anonymous.Admin.Api.Webhooks();
+            public final Anonymous.Admin.Api.WebHooks webhooks = new Anonymous.Admin.Api.WebHooks();
 
-            public class Webhooks {
+            public class WebHooks {
 
                 /**
                  * 
@@ -159,7 +159,7 @@ public class Anonymous
             }
         }
 
-        public class Backupsjson {
+        public class BackupsJson {
 
             /**
              * 
@@ -188,7 +188,7 @@ public class Anonymous
             }
         }
 
-        public class Badgesjson {
+        public class BadgesJson {
 
             /**
              * 
@@ -257,11 +257,11 @@ public class Anonymous
         }
 
         public class Customize {
-            public final Anonymous.Admin.Customize.Emailtemplatesjson emailtemplates_json = new Anonymous.Admin.Customize.Emailtemplatesjson();
-            public final Anonymous.Admin.Customize.Userfieldsjson userfields_json = new Anonymous.Admin.Customize.Userfieldsjson();
-            public final Anonymous.Admin.Customize.Userfields userfields = new Anonymous.Admin.Customize.Userfields();
+            public final Anonymous.Admin.Customize.EmailTemplatesJson emailtemplates_json = new Anonymous.Admin.Customize.EmailTemplatesJson();
+            public final Anonymous.Admin.Customize.UserFieldsJson userfields_json = new Anonymous.Admin.Customize.UserFieldsJson();
+            public final Anonymous.Admin.Customize.UserFields userfields = new Anonymous.Admin.Customize.UserFields();
 
-            public class Emailtemplatesjson {
+            public class EmailTemplatesJson {
 
                 /**
                  * 
@@ -275,7 +275,7 @@ public class Anonymous
                 }
             }
 
-            public class Userfields {
+            public class UserFields {
 
                 /**
                  * 
@@ -291,7 +291,7 @@ public class Anonymous
                 }
             }
 
-            public class Userfieldsjson {
+            public class UserFieldsJson {
 
                 /**
                  * 
@@ -330,7 +330,7 @@ public class Anonymous
             }
         }
 
-        public class Emailjson {
+        public class EmailJson {
 
             /**
              * 
@@ -355,7 +355,7 @@ public class Anonymous
              * @param action
              * @param offset
              */
-            public Requested<Object[]> getByActionjson(discourse.example.com.structures.action action, long offset) {
+            public Requested<Object[]> getByActionJson(discourse.example.com.structures.action action, long offset) {
                 String url = ("https://discourse.example.com//admin/emails/{action}.json".replace("{action}", ""+action).replace("{offset}", ""+offset));
                 return requestGet(url, null, Object[].class);
             }
@@ -372,7 +372,7 @@ public class Anonymous
              * @param type
              * @param offset
              */
-            public Requested<Object> getByTypejson(discourse.example.com.structures.type type, long offset) {
+            public Requested<Object> getByTypeJson(discourse.example.com.structures.type type, long offset) {
                 String url = ("https://discourse.example.com//admin/flags/{type}.json".replace("{type}", ""+type).replace("{offset}", ""+offset));
                 return requestGet(url, null, Object.class);
             }
@@ -401,16 +401,16 @@ public class Anonymous
              * Delete a group
              * </p>
              */
-            public Requested<Object> deleteByGroupidjson() {
+            public Requested<Object> deleteByGroupIdJson() {
                 String url = ("https://discourse.example.com//admin/groups/{group_id}.json");
                 return requestDel(url, null, Object.class);
             }
         }
 
         public class Logs {
-            public final Anonymous.Admin.Logs.Staffactionlogsjson staffactionlogs_json = new Anonymous.Admin.Logs.Staffactionlogsjson();
+            public final Anonymous.Admin.Logs.StaffActionLogsJson staffactionlogs_json = new Anonymous.Admin.Logs.StaffActionLogsJson();
 
-            public class Staffactionlogsjson {
+            public class StaffActionLogsJson {
 
                 /**
                  * 
@@ -442,492 +442,492 @@ public class Anonymous
             }
         }
 
-        public class Sitesettings {
-            public final Anonymous.Admin.Sitesettings.Title title = new Anonymous.Admin.Sitesettings.Title();
-            public final Anonymous.Admin.Sitesettings.Sitedescription sitedescription = new Anonymous.Admin.Sitesettings.Sitedescription();
-            public final Anonymous.Admin.Sitesettings.Contactemail contactemail = new Anonymous.Admin.Sitesettings.Contactemail();
-            public final Anonymous.Admin.Sitesettings.Contacturl contacturl = new Anonymous.Admin.Sitesettings.Contacturl();
-            public final Anonymous.Admin.Sitesettings.Notificationemail notificationemail = new Anonymous.Admin.Sitesettings.Notificationemail();
-            public final Anonymous.Admin.Sitesettings.Sitecontactusername sitecontactusername = new Anonymous.Admin.Sitesettings.Sitecontactusername();
-            public final Anonymous.Admin.Sitesettings.Logourl logourl = new Anonymous.Admin.Sitesettings.Logourl();
-            public final Anonymous.Admin.Sitesettings.Logosmallurl logosmallurl = new Anonymous.Admin.Sitesettings.Logosmallurl();
-            public final Anonymous.Admin.Sitesettings.Digestlogourl digestlogourl = new Anonymous.Admin.Sitesettings.Digestlogourl();
-            public final Anonymous.Admin.Sitesettings.Mobilelogourl mobilelogourl = new Anonymous.Admin.Sitesettings.Mobilelogourl();
-            public final Anonymous.Admin.Sitesettings.Faviconurl faviconurl = new Anonymous.Admin.Sitesettings.Faviconurl();
-            public final Anonymous.Admin.Sitesettings.Appletouchiconurl appletouchiconurl = new Anonymous.Admin.Sitesettings.Appletouchiconurl();
-            public final Anonymous.Admin.Sitesettings.Defaultopengraphimageurl defaultopengraphimageurl = new Anonymous.Admin.Sitesettings.Defaultopengraphimageurl();
-            public final Anonymous.Admin.Sitesettings.Twittersummarylargeimageurl twittersummarylargeimageurl = new Anonymous.Admin.Sitesettings.Twittersummarylargeimageurl();
-            public final Anonymous.Admin.Sitesettings.Excluderelnofollowdomains excluderelnofollowdomains = new Anonymous.Admin.Sitesettings.Excluderelnofollowdomains();
-            public final Anonymous.Admin.Sitesettings.Companyshortname companyshortname = new Anonymous.Admin.Sitesettings.Companyshortname();
-            public final Anonymous.Admin.Sitesettings.Companyfullname companyfullname = new Anonymous.Admin.Sitesettings.Companyfullname();
-            public final Anonymous.Admin.Sitesettings.Companydomain companydomain = new Anonymous.Admin.Sitesettings.Companydomain();
-            public final Anonymous.Admin.Sitesettings.Defaultlocale defaultlocale = new Anonymous.Admin.Sitesettings.Defaultlocale();
-            public final Anonymous.Admin.Sitesettings.Allowuserlocale allowuserlocale = new Anonymous.Admin.Sitesettings.Allowuserlocale();
-            public final Anonymous.Admin.Sitesettings.Setlocalefromacceptlanguageheader setlocalefromacceptlanguageheader = new Anonymous.Admin.Sitesettings.Setlocalefromacceptlanguageheader();
-            public final Anonymous.Admin.Sitesettings.Categoriestopics categoriestopics = new Anonymous.Admin.Sitesettings.Categoriestopics();
-            public final Anonymous.Admin.Sitesettings.Suggestedtopics suggestedtopics = new Anonymous.Admin.Sitesettings.Suggestedtopics();
-            public final Anonymous.Admin.Sitesettings.Limitsuggestedtocategory limitsuggestedtocategory = new Anonymous.Admin.Sitesettings.Limitsuggestedtocategory();
-            public final Anonymous.Admin.Sitesettings.Suggestedtopicsmaxdaysold suggestedtopicsmaxdaysold = new Anonymous.Admin.Sitesettings.Suggestedtopicsmaxdaysold();
-            public final Anonymous.Admin.Sitesettings.Trackexternalrightclicks trackexternalrightclicks = new Anonymous.Admin.Sitesettings.Trackexternalrightclicks();
-            public final Anonymous.Admin.Sitesettings.Gauniversaltrackingcode gauniversaltrackingcode = new Anonymous.Admin.Sitesettings.Gauniversaltrackingcode();
-            public final Anonymous.Admin.Sitesettings.Gauniversaldomainname gauniversaldomainname = new Anonymous.Admin.Sitesettings.Gauniversaldomainname();
-            public final Anonymous.Admin.Sitesettings.Gatrackingcode gatrackingcode = new Anonymous.Admin.Sitesettings.Gatrackingcode();
-            public final Anonymous.Admin.Sitesettings.Gadomainname gadomainname = new Anonymous.Admin.Sitesettings.Gadomainname();
-            public final Anonymous.Admin.Sitesettings.Gtmcontainerid gtmcontainerid = new Anonymous.Admin.Sitesettings.Gtmcontainerid();
-            public final Anonymous.Admin.Sitesettings.Topmenu topmenu = new Anonymous.Admin.Sitesettings.Topmenu();
-            public final Anonymous.Admin.Sitesettings.Postmenu postmenu = new Anonymous.Admin.Sitesettings.Postmenu();
-            public final Anonymous.Admin.Sitesettings.Postmenuhiddenitems postmenuhiddenitems = new Anonymous.Admin.Sitesettings.Postmenuhiddenitems();
-            public final Anonymous.Admin.Sitesettings.Desktopcategorypagestyle desktopcategorypagestyle = new Anonymous.Admin.Sitesettings.Desktopcategorypagestyle();
-            public final Anonymous.Admin.Sitesettings.Categorycolors categorycolors = new Anonymous.Admin.Sitesettings.Categorycolors();
-            public final Anonymous.Admin.Sitesettings.Categorystyle categorystyle = new Anonymous.Admin.Sitesettings.Categorystyle();
-            public final Anonymous.Admin.Sitesettings.Enablemobiletheme enablemobiletheme = new Anonymous.Admin.Sitesettings.Enablemobiletheme();
-            public final Anonymous.Admin.Sitesettings.Relativedateduration relativedateduration = new Anonymous.Admin.Sitesettings.Relativedateduration();
-            public final Anonymous.Admin.Sitesettings.Fixedcategorypositions fixedcategorypositions = new Anonymous.Admin.Sitesettings.Fixedcategorypositions();
-            public final Anonymous.Admin.Sitesettings.Fixedcategorypositionsoncreate fixedcategorypositionsoncreate = new Anonymous.Admin.Sitesettings.Fixedcategorypositionsoncreate();
-            public final Anonymous.Admin.Sitesettings.Showsubcategorylist showsubcategorylist = new Anonymous.Admin.Sitesettings.Showsubcategorylist();
-            public final Anonymous.Admin.Sitesettings.Enablebadges enablebadges = new Anonymous.Admin.Sitesettings.Enablebadges();
-            public final Anonymous.Admin.Sitesettings.Enablewhispers enablewhispers = new Anonymous.Admin.Sitesettings.Enablewhispers();
-            public final Anonymous.Admin.Sitesettings.Inviteonly inviteonly = new Anonymous.Admin.Sitesettings.Inviteonly();
-            public final Anonymous.Admin.Sitesettings.Loginrequired loginrequired = new Anonymous.Admin.Sitesettings.Loginrequired();
-            public final Anonymous.Admin.Sitesettings.Mustapproveusers mustapproveusers = new Anonymous.Admin.Sitesettings.Mustapproveusers();
-            public final Anonymous.Admin.Sitesettings.Enablelocallogins enablelocallogins = new Anonymous.Admin.Sitesettings.Enablelocallogins();
-            public final Anonymous.Admin.Sitesettings.Allownewregistrations allownewregistrations = new Anonymous.Admin.Sitesettings.Allownewregistrations();
-            public final Anonymous.Admin.Sitesettings.Enablesignupcta enablesignupcta = new Anonymous.Admin.Sitesettings.Enablesignupcta();
-            public final Anonymous.Admin.Sitesettings.Enablegoogleoauth2logins enablegoogleoauth2logins = new Anonymous.Admin.Sitesettings.Enablegoogleoauth2logins();
-            public final Anonymous.Admin.Sitesettings.Googleoath2clientid googleoath2clientid = new Anonymous.Admin.Sitesettings.Googleoath2clientid();
-            public final Anonymous.Admin.Sitesettings.Googleoath2clientsecret googleoath2clientsecret = new Anonymous.Admin.Sitesettings.Googleoath2clientsecret();
-            public final Anonymous.Admin.Sitesettings.Enableyahoologins enableyahoologins = new Anonymous.Admin.Sitesettings.Enableyahoologins();
-            public final Anonymous.Admin.Sitesettings.Enabletwitterlogins enabletwitterlogins = new Anonymous.Admin.Sitesettings.Enabletwitterlogins();
-            public final Anonymous.Admin.Sitesettings.Twitterconsumerkey twitterconsumerkey = new Anonymous.Admin.Sitesettings.Twitterconsumerkey();
-            public final Anonymous.Admin.Sitesettings.Twitterconsumersecret twitterconsumersecret = new Anonymous.Admin.Sitesettings.Twitterconsumersecret();
-            public final Anonymous.Admin.Sitesettings.Enableinstagramlogins enableinstagramlogins = new Anonymous.Admin.Sitesettings.Enableinstagramlogins();
-            public final Anonymous.Admin.Sitesettings.Instagramconsumerkey instagramconsumerkey = new Anonymous.Admin.Sitesettings.Instagramconsumerkey();
-            public final Anonymous.Admin.Sitesettings.Instagramconsumersecret instagramconsumersecret = new Anonymous.Admin.Sitesettings.Instagramconsumersecret();
-            public final Anonymous.Admin.Sitesettings.Enablefacebooklogins enablefacebooklogins = new Anonymous.Admin.Sitesettings.Enablefacebooklogins();
-            public final Anonymous.Admin.Sitesettings.Facebookappid facebookappid = new Anonymous.Admin.Sitesettings.Facebookappid();
-            public final Anonymous.Admin.Sitesettings.Facebookappsecret facebookappsecret = new Anonymous.Admin.Sitesettings.Facebookappsecret();
-            public final Anonymous.Admin.Sitesettings.Facebookrequestextraprofiledetails facebookrequestextraprofiledetails = new Anonymous.Admin.Sitesettings.Facebookrequestextraprofiledetails();
-            public final Anonymous.Admin.Sitesettings.Enablegithublogins enablegithublogins = new Anonymous.Admin.Sitesettings.Enablegithublogins();
-            public final Anonymous.Admin.Sitesettings.Githubclientid githubclientid = new Anonymous.Admin.Sitesettings.Githubclientid();
-            public final Anonymous.Admin.Sitesettings.Githubclientsecret githubclientsecret = new Anonymous.Admin.Sitesettings.Githubclientsecret();
-            public final Anonymous.Admin.Sitesettings.Enablesso enablesso = new Anonymous.Admin.Sitesettings.Enablesso();
-            public final Anonymous.Admin.Sitesettings.Ssoallowsallreturnpaths ssoallowsallreturnpaths = new Anonymous.Admin.Sitesettings.Ssoallowsallreturnpaths();
-            public final Anonymous.Admin.Sitesettings.Enablessoprovider enablessoprovider = new Anonymous.Admin.Sitesettings.Enablessoprovider();
-            public final Anonymous.Admin.Sitesettings.Verbosessologging verbosessologging = new Anonymous.Admin.Sitesettings.Verbosessologging();
-            public final Anonymous.Admin.Sitesettings.Ssourl ssourl = new Anonymous.Admin.Sitesettings.Ssourl();
-            public final Anonymous.Admin.Sitesettings.Ssosecret ssosecret = new Anonymous.Admin.Sitesettings.Ssosecret();
-            public final Anonymous.Admin.Sitesettings.Ssooverridesbio ssooverridesbio = new Anonymous.Admin.Sitesettings.Ssooverridesbio();
-            public final Anonymous.Admin.Sitesettings.Ssooverridesemail ssooverridesemail = new Anonymous.Admin.Sitesettings.Ssooverridesemail();
-            public final Anonymous.Admin.Sitesettings.Ssooverridesusername ssooverridesusername = new Anonymous.Admin.Sitesettings.Ssooverridesusername();
-            public final Anonymous.Admin.Sitesettings.Ssooverridesname ssooverridesname = new Anonymous.Admin.Sitesettings.Ssooverridesname();
-            public final Anonymous.Admin.Sitesettings.Ssooverridesavatar ssooverridesavatar = new Anonymous.Admin.Sitesettings.Ssooverridesavatar();
-            public final Anonymous.Admin.Sitesettings.Ssonotapprovedurl ssonotapprovedurl = new Anonymous.Admin.Sitesettings.Ssonotapprovedurl();
-            public final Anonymous.Admin.Sitesettings.Emaildomainsblacklist emaildomainsblacklist = new Anonymous.Admin.Sitesettings.Emaildomainsblacklist();
-            public final Anonymous.Admin.Sitesettings.Emaildomainswhitelist emaildomainswhitelist = new Anonymous.Admin.Sitesettings.Emaildomainswhitelist();
-            public final Anonymous.Admin.Sitesettings.Forgotpasswordstrict forgotpasswordstrict = new Anonymous.Admin.Sitesettings.Forgotpasswordstrict();
-            public final Anonymous.Admin.Sitesettings.Logoutstrict logoutstrict = new Anonymous.Admin.Sitesettings.Logoutstrict();
-            public final Anonymous.Admin.Sitesettings.Pendingusersreminderdelay pendingusersreminderdelay = new Anonymous.Admin.Sitesettings.Pendingusersreminderdelay();
-            public final Anonymous.Admin.Sitesettings.Maximumsessionage maximumsessionage = new Anonymous.Admin.Sitesettings.Maximumsessionage();
-            public final Anonymous.Admin.Sitesettings.Minusernamelength minusernamelength = new Anonymous.Admin.Sitesettings.Minusernamelength();
-            public final Anonymous.Admin.Sitesettings.Maxusernamelength maxusernamelength = new Anonymous.Admin.Sitesettings.Maxusernamelength();
-            public final Anonymous.Admin.Sitesettings.Reservedusernames reservedusernames = new Anonymous.Admin.Sitesettings.Reservedusernames();
-            public final Anonymous.Admin.Sitesettings.Minpasswordlength minpasswordlength = new Anonymous.Admin.Sitesettings.Minpasswordlength();
-            public final Anonymous.Admin.Sitesettings.Minadminpasswordlength minadminpasswordlength = new Anonymous.Admin.Sitesettings.Minadminpasswordlength();
-            public final Anonymous.Admin.Sitesettings.Blockcommonpasswords blockcommonpasswords = new Anonymous.Admin.Sitesettings.Blockcommonpasswords();
-            public final Anonymous.Admin.Sitesettings.Usernamechangeperiod usernamechangeperiod = new Anonymous.Admin.Sitesettings.Usernamechangeperiod();
-            public final Anonymous.Admin.Sitesettings.Emaileditable emaileditable = new Anonymous.Admin.Sitesettings.Emaileditable();
-            public final Anonymous.Admin.Sitesettings.Logoutredirect logoutredirect = new Anonymous.Admin.Sitesettings.Logoutredirect();
-            public final Anonymous.Admin.Sitesettings.Fullnamerequired fullnamerequired = new Anonymous.Admin.Sitesettings.Fullnamerequired();
-            public final Anonymous.Admin.Sitesettings.Enablenames enablenames = new Anonymous.Admin.Sitesettings.Enablenames();
-            public final Anonymous.Admin.Sitesettings.Inviteexpirydays inviteexpirydays = new Anonymous.Admin.Sitesettings.Inviteexpirydays();
-            public final Anonymous.Admin.Sitesettings.Invitepassthroughhours invitepassthroughhours = new Anonymous.Admin.Sitesettings.Invitepassthroughhours();
-            public final Anonymous.Admin.Sitesettings.Invitesperpage invitesperpage = new Anonymous.Admin.Sitesettings.Invitesperpage();
-            public final Anonymous.Admin.Sitesettings.Deleteusermaxpostage deleteusermaxpostage = new Anonymous.Admin.Sitesettings.Deleteusermaxpostage();
-            public final Anonymous.Admin.Sitesettings.Deleteallpostsmax deleteallpostsmax = new Anonymous.Admin.Sitesettings.Deleteallpostsmax();
-            public final Anonymous.Admin.Sitesettings.Redirectuserstotoppage redirectuserstotoppage = new Anonymous.Admin.Sitesettings.Redirectuserstotoppage();
-            public final Anonymous.Admin.Sitesettings.Showemailonprofile showemailonprofile = new Anonymous.Admin.Sitesettings.Showemailonprofile();
-            public final Anonymous.Admin.Sitesettings.Prioritizeusernameinux prioritizeusernameinux = new Anonymous.Admin.Sitesettings.Prioritizeusernameinux();
-            public final Anonymous.Admin.Sitesettings.Emailtokenvalidhours emailtokenvalidhours = new Anonymous.Admin.Sitesettings.Emailtokenvalidhours();
-            public final Anonymous.Admin.Sitesettings.Purgeunactivatedusersgraceperioddays purgeunactivatedusersgraceperioddays = new Anonymous.Admin.Sitesettings.Purgeunactivatedusersgraceperioddays();
-            public final Anonymous.Admin.Sitesettings.Publicusercustomfields publicusercustomfields = new Anonymous.Admin.Sitesettings.Publicusercustomfields();
-            public final Anonymous.Admin.Sitesettings.Staffuserscustomfields staffuserscustomfields = new Anonymous.Admin.Sitesettings.Staffuserscustomfields();
-            public final Anonymous.Admin.Sitesettings.Enableuserdirectory enableuserdirectory = new Anonymous.Admin.Sitesettings.Enableuserdirectory();
-            public final Anonymous.Admin.Sitesettings.Allowanonymousposting allowanonymousposting = new Anonymous.Admin.Sitesettings.Allowanonymousposting();
-            public final Anonymous.Admin.Sitesettings.Anonymouspostingmintrustlevel anonymouspostingmintrustlevel = new Anonymous.Admin.Sitesettings.Anonymouspostingmintrustlevel();
-            public final Anonymous.Admin.Sitesettings.Anonymousaccountdurationminutes anonymousaccountdurationminutes = new Anonymous.Admin.Sitesettings.Anonymousaccountdurationminutes();
-            public final Anonymous.Admin.Sitesettings.Hideuserprofilesfrompublic hideuserprofilesfrompublic = new Anonymous.Admin.Sitesettings.Hideuserprofilesfrompublic();
-            public final Anonymous.Admin.Sitesettings.Minpostlength minpostlength = new Anonymous.Admin.Sitesettings.Minpostlength();
-            public final Anonymous.Admin.Sitesettings.Minfirstpostlength minfirstpostlength = new Anonymous.Admin.Sitesettings.Minfirstpostlength();
-            public final Anonymous.Admin.Sitesettings.Minprivatemessagepostlength minprivatemessagepostlength = new Anonymous.Admin.Sitesettings.Minprivatemessagepostlength();
-            public final Anonymous.Admin.Sitesettings.Maxpostlength maxpostlength = new Anonymous.Admin.Sitesettings.Maxpostlength();
-            public final Anonymous.Admin.Sitesettings.Topicfeaturedlinkenabled topicfeaturedlinkenabled = new Anonymous.Admin.Sitesettings.Topicfeaturedlinkenabled();
-            public final Anonymous.Admin.Sitesettings.Bodyminentropy bodyminentropy = new Anonymous.Admin.Sitesettings.Bodyminentropy();
-            public final Anonymous.Admin.Sitesettings.Mintopictitlelength mintopictitlelength = new Anonymous.Admin.Sitesettings.Mintopictitlelength();
-            public final Anonymous.Admin.Sitesettings.Maxtopictitlelength maxtopictitlelength = new Anonymous.Admin.Sitesettings.Maxtopictitlelength();
-            public final Anonymous.Admin.Sitesettings.Titleminentropy titleminentropy = new Anonymous.Admin.Sitesettings.Titleminentropy();
-            public final Anonymous.Admin.Sitesettings.Allowuppercaseposts allowuppercaseposts = new Anonymous.Admin.Sitesettings.Allowuppercaseposts();
-            public final Anonymous.Admin.Sitesettings.Titleprettify titleprettify = new Anonymous.Admin.Sitesettings.Titleprettify();
-            public final Anonymous.Admin.Sitesettings.Titlefancyentities titlefancyentities = new Anonymous.Admin.Sitesettings.Titlefancyentities();
-            public final Anonymous.Admin.Sitesettings.Minprivatemessagetitlelength minprivatemessagetitlelength = new Anonymous.Admin.Sitesettings.Minprivatemessagetitlelength();
-            public final Anonymous.Admin.Sitesettings.Allowuncategorizedtopics allowuncategorizedtopics = new Anonymous.Admin.Sitesettings.Allowuncategorizedtopics();
-            public final Anonymous.Admin.Sitesettings.Allowduplicatetopictitles allowduplicatetopictitles = new Anonymous.Admin.Sitesettings.Allowduplicatetopictitles();
-            public final Anonymous.Admin.Sitesettings.Mintitlesimilarlength mintitlesimilarlength = new Anonymous.Admin.Sitesettings.Mintitlesimilarlength();
-            public final Anonymous.Admin.Sitesettings.Minbodytitlelength minbodytitlelength = new Anonymous.Admin.Sitesettings.Minbodytitlelength();
-            public final Anonymous.Admin.Sitesettings.Enableprivatemessages enableprivatemessages = new Anonymous.Admin.Sitesettings.Enableprivatemessages();
-            public final Anonymous.Admin.Sitesettings.Editinggraceperiod editinggraceperiod = new Anonymous.Admin.Sitesettings.Editinggraceperiod();
-            public final Anonymous.Admin.Sitesettings.Postedittimelimit postedittimelimit = new Anonymous.Admin.Sitesettings.Postedittimelimit();
-            public final Anonymous.Admin.Sitesettings.Edithistoryvisibletopublic edithistoryvisibletopublic = new Anonymous.Admin.Sitesettings.Edithistoryvisibletopublic();
-            public final Anonymous.Admin.Sitesettings.Deleteremovedpostsafter deleteremovedpostsafter = new Anonymous.Admin.Sitesettings.Deleteremovedpostsafter();
-            public final Anonymous.Admin.Sitesettings.Traditionalmarkdownlinebreaks traditionalmarkdownlinebreaks = new Anonymous.Admin.Sitesettings.Traditionalmarkdownlinebreaks();
-            public final Anonymous.Admin.Sitesettings.Allowhtmltables allowhtmltables = new Anonymous.Admin.Sitesettings.Allowhtmltables();
-            public final Anonymous.Admin.Sitesettings.Suppressreplydirectlybelow suppressreplydirectlybelow = new Anonymous.Admin.Sitesettings.Suppressreplydirectlybelow();
-            public final Anonymous.Admin.Sitesettings.Suppressreplydirectlyabove suppressreplydirectlyabove = new Anonymous.Admin.Sitesettings.Suppressreplydirectlyabove();
-            public final Anonymous.Admin.Sitesettings.Suppressreplywhenquoting suppressreplywhenquoting = new Anonymous.Admin.Sitesettings.Suppressreplywhenquoting();
-            public final Anonymous.Admin.Sitesettings.Maxreplyhistory maxreplyhistory = new Anonymous.Admin.Sitesettings.Maxreplyhistory();
-            public final Anonymous.Admin.Sitesettings.Postundoactionwindowmins postundoactionwindowmins = new Anonymous.Admin.Sitesettings.Postundoactionwindowmins();
-            public final Anonymous.Admin.Sitesettings.Maxmentionsperpost maxmentionsperpost = new Anonymous.Admin.Sitesettings.Maxmentionsperpost();
-            public final Anonymous.Admin.Sitesettings.Maxusersnotifiedpergroupmention maxusersnotifiedpergroupmention = new Anonymous.Admin.Sitesettings.Maxusersnotifiedpergroupmention();
-            public final Anonymous.Admin.Sitesettings.Newusermaxrepliespertopic newusermaxrepliespertopic = new Anonymous.Admin.Sitesettings.Newusermaxrepliespertopic();
-            public final Anonymous.Admin.Sitesettings.Newusermaxmentionsperpost newusermaxmentionsperpost = new Anonymous.Admin.Sitesettings.Newusermaxmentionsperpost();
-            public final Anonymous.Admin.Sitesettings.Titlemaxwordlength titlemaxwordlength = new Anonymous.Admin.Sitesettings.Titlemaxwordlength();
-            public final Anonymous.Admin.Sitesettings.Newusermaxlinks newusermaxlinks = new Anonymous.Admin.Sitesettings.Newusermaxlinks();
-            public final Anonymous.Admin.Sitesettings.Newusermaximages newusermaximages = new Anonymous.Admin.Sitesettings.Newusermaximages();
-            public final Anonymous.Admin.Sitesettings.Newusermaxattachments newusermaxattachments = new Anonymous.Admin.Sitesettings.Newusermaxattachments();
-            public final Anonymous.Admin.Sitesettings.Postexcerptmaxlength postexcerptmaxlength = new Anonymous.Admin.Sitesettings.Postexcerptmaxlength();
-            public final Anonymous.Admin.Sitesettings.Showpinnedexcerptmobile showpinnedexcerptmobile = new Anonymous.Admin.Sitesettings.Showpinnedexcerptmobile();
-            public final Anonymous.Admin.Sitesettings.Showpinnedexcerptdesktop showpinnedexcerptdesktop = new Anonymous.Admin.Sitesettings.Showpinnedexcerptdesktop();
-            public final Anonymous.Admin.Sitesettings.Displaynameonposts displaynameonposts = new Anonymous.Admin.Sitesettings.Displaynameonposts();
-            public final Anonymous.Admin.Sitesettings.Showtimegapdays showtimegapdays = new Anonymous.Admin.Sitesettings.Showtimegapdays();
-            public final Anonymous.Admin.Sitesettings.Shortprogresstextthreshold shortprogresstextthreshold = new Anonymous.Admin.Sitesettings.Shortprogresstextthreshold();
-            public final Anonymous.Admin.Sitesettings.Defaultcodelang defaultcodelang = new Anonymous.Admin.Sitesettings.Defaultcodelang();
-            public final Anonymous.Admin.Sitesettings.Warnrevivingoldtopicage warnrevivingoldtopicage = new Anonymous.Admin.Sitesettings.Warnrevivingoldtopicage();
-            public final Anonymous.Admin.Sitesettings.Autohighlightallcode autohighlightallcode = new Anonymous.Admin.Sitesettings.Autohighlightallcode();
-            public final Anonymous.Admin.Sitesettings.Highlightedlanguages highlightedlanguages = new Anonymous.Admin.Sitesettings.Highlightedlanguages();
-            public final Anonymous.Admin.Sitesettings.Deleteoldhiddenposts deleteoldhiddenposts = new Anonymous.Admin.Sitesettings.Deleteoldhiddenposts();
-            public final Anonymous.Admin.Sitesettings.Censoredwords censoredwords = new Anonymous.Admin.Sitesettings.Censoredwords();
-            public final Anonymous.Admin.Sitesettings.Censoredpattern censoredpattern = new Anonymous.Admin.Sitesettings.Censoredpattern();
-            public final Anonymous.Admin.Sitesettings.Enableemoji enableemoji = new Anonymous.Admin.Sitesettings.Enableemoji();
-            public final Anonymous.Admin.Sitesettings.Emojiset emojiset = new Anonymous.Admin.Sitesettings.Emojiset();
-            public final Anonymous.Admin.Sitesettings.Enforcesquareemoji enforcesquareemoji = new Anonymous.Admin.Sitesettings.Enforcesquareemoji();
-            public final Anonymous.Admin.Sitesettings.Approvepostcount approvepostcount = new Anonymous.Admin.Sitesettings.Approvepostcount();
-            public final Anonymous.Admin.Sitesettings.Approveunlesstrustlevel approveunlesstrustlevel = new Anonymous.Admin.Sitesettings.Approveunlesstrustlevel();
-            public final Anonymous.Admin.Sitesettings.Approvenewtopicsunlesstrustlevel approvenewtopicsunlesstrustlevel = new Anonymous.Admin.Sitesettings.Approvenewtopicsunlesstrustlevel();
-            public final Anonymous.Admin.Sitesettings.Notifyaboutqueuedpostsafter notifyaboutqueuedpostsafter = new Anonymous.Admin.Sitesettings.Notifyaboutqueuedpostsafter();
-            public final Anonymous.Admin.Sitesettings.Autoclosemessagespostcount autoclosemessagespostcount = new Anonymous.Admin.Sitesettings.Autoclosemessagespostcount();
-            public final Anonymous.Admin.Sitesettings.Autoclosetopicspostcount autoclosetopicspostcount = new Anonymous.Admin.Sitesettings.Autoclosetopicspostcount();
-            public final Anonymous.Admin.Sitesettings.Codeformattingstyle codeformattingstyle = new Anonymous.Admin.Sitesettings.Codeformattingstyle();
-            public final Anonymous.Admin.Sitesettings.Embedtruncate embedtruncate = new Anonymous.Admin.Sitesettings.Embedtruncate();
-            public final Anonymous.Admin.Sitesettings.Allowedhrefschemes allowedhrefschemes = new Anonymous.Admin.Sitesettings.Allowedhrefschemes();
-            public final Anonymous.Admin.Sitesettings.Emailtimewindowmins emailtimewindowmins = new Anonymous.Admin.Sitesettings.Emailtimewindowmins();
-            public final Anonymous.Admin.Sitesettings.Privateemailtimewindowseconds privateemailtimewindowseconds = new Anonymous.Admin.Sitesettings.Privateemailtimewindowseconds();
-            public final Anonymous.Admin.Sitesettings.Emailpostscontext emailpostscontext = new Anonymous.Admin.Sitesettings.Emailpostscontext();
-            public final Anonymous.Admin.Sitesettings.Digestminexcerptlength digestminexcerptlength = new Anonymous.Admin.Sitesettings.Digestminexcerptlength();
-            public final Anonymous.Admin.Sitesettings.Digesttopics digesttopics = new Anonymous.Admin.Sitesettings.Digesttopics();
-            public final Anonymous.Admin.Sitesettings.Digestposts digestposts = new Anonymous.Admin.Sitesettings.Digestposts();
-            public final Anonymous.Admin.Sitesettings.Digestothertopics digestothertopics = new Anonymous.Admin.Sitesettings.Digestothertopics();
-            public final Anonymous.Admin.Sitesettings.Deletedigestemailafterdays deletedigestemailafterdays = new Anonymous.Admin.Sitesettings.Deletedigestemailafterdays();
-            public final Anonymous.Admin.Sitesettings.Digestsuppresscategories digestsuppresscategories = new Anonymous.Admin.Sitesettings.Digestsuppresscategories();
-            public final Anonymous.Admin.Sitesettings.Disabledigestemails disabledigestemails = new Anonymous.Admin.Sitesettings.Disabledigestemails();
-            public final Anonymous.Admin.Sitesettings.Emailaccentbgcolor emailaccentbgcolor = new Anonymous.Admin.Sitesettings.Emailaccentbgcolor();
-            public final Anonymous.Admin.Sitesettings.Emailaccentfgcolor emailaccentfgcolor = new Anonymous.Admin.Sitesettings.Emailaccentfgcolor();
-            public final Anonymous.Admin.Sitesettings.Emaillinkcolor emaillinkcolor = new Anonymous.Admin.Sitesettings.Emaillinkcolor();
-            public final Anonymous.Admin.Sitesettings.Showtopicfeaturedlinkindigest showtopicfeaturedlinkindigest = new Anonymous.Admin.Sitesettings.Showtopicfeaturedlinkindigest();
-            public final Anonymous.Admin.Sitesettings.Emailcustomheaders emailcustomheaders = new Anonymous.Admin.Sitesettings.Emailcustomheaders();
-            public final Anonymous.Admin.Sitesettings.Emailsubject emailsubject = new Anonymous.Admin.Sitesettings.Emailsubject();
-            public final Anonymous.Admin.Sitesettings.Replybyemailenabled replybyemailenabled = new Anonymous.Admin.Sitesettings.Replybyemailenabled();
-            public final Anonymous.Admin.Sitesettings.Replybyemailaddress replybyemailaddress = new Anonymous.Admin.Sitesettings.Replybyemailaddress();
-            public final Anonymous.Admin.Sitesettings.Alternativereplybyemailaddresses alternativereplybyemailaddresses = new Anonymous.Admin.Sitesettings.Alternativereplybyemailaddresses();
-            public final Anonymous.Admin.Sitesettings.Manualpollingenabled manualpollingenabled = new Anonymous.Admin.Sitesettings.Manualpollingenabled();
-            public final Anonymous.Admin.Sitesettings.Pop3pollingenabled pop3pollingenabled = new Anonymous.Admin.Sitesettings.Pop3pollingenabled();
-            public final Anonymous.Admin.Sitesettings.Pop3pollingssl pop3pollingssl = new Anonymous.Admin.Sitesettings.Pop3pollingssl();
-            public final Anonymous.Admin.Sitesettings.Pop3pollingopensslverify pop3pollingopensslverify = new Anonymous.Admin.Sitesettings.Pop3pollingopensslverify();
-            public final Anonymous.Admin.Sitesettings.Pop3pollingperiodmins pop3pollingperiodmins = new Anonymous.Admin.Sitesettings.Pop3pollingperiodmins();
-            public final Anonymous.Admin.Sitesettings.Pop3pollinghost pop3pollinghost = new Anonymous.Admin.Sitesettings.Pop3pollinghost();
-            public final Anonymous.Admin.Sitesettings.Pop3pollingport pop3pollingport = new Anonymous.Admin.Sitesettings.Pop3pollingport();
-            public final Anonymous.Admin.Sitesettings.Pop3pollingusername pop3pollingusername = new Anonymous.Admin.Sitesettings.Pop3pollingusername();
-            public final Anonymous.Admin.Sitesettings.Pop3pollingpassword pop3pollingpassword = new Anonymous.Admin.Sitesettings.Pop3pollingpassword();
-            public final Anonymous.Admin.Sitesettings.Logmailprocessingfailures logmailprocessingfailures = new Anonymous.Admin.Sitesettings.Logmailprocessingfailures();
-            public final Anonymous.Admin.Sitesettings.Incomingemailpreferhtml incomingemailpreferhtml = new Anonymous.Admin.Sitesettings.Incomingemailpreferhtml();
-            public final Anonymous.Admin.Sitesettings.Emailin emailin = new Anonymous.Admin.Sitesettings.Emailin();
-            public final Anonymous.Admin.Sitesettings.Emailinmintrust emailinmintrust = new Anonymous.Admin.Sitesettings.Emailinmintrust();
-            public final Anonymous.Admin.Sitesettings.Emailprefix emailprefix = new Anonymous.Admin.Sitesettings.Emailprefix();
-            public final Anonymous.Admin.Sitesettings.Emailsitetitle emailsitetitle = new Anonymous.Admin.Sitesettings.Emailsitetitle();
-            public final Anonymous.Admin.Sitesettings.Disableemails disableemails = new Anonymous.Admin.Sitesettings.Disableemails();
-            public final Anonymous.Admin.Sitesettings.Stripimagesfromshortemails stripimagesfromshortemails = new Anonymous.Admin.Sitesettings.Stripimagesfromshortemails();
-            public final Anonymous.Admin.Sitesettings.Shortemaillength shortemaillength = new Anonymous.Admin.Sitesettings.Shortemaillength();
-            public final Anonymous.Admin.Sitesettings.Displaynameonemailfrom displaynameonemailfrom = new Anonymous.Admin.Sitesettings.Displaynameonemailfrom();
-            public final Anonymous.Admin.Sitesettings.Unsubscribeviaemail unsubscribeviaemail = new Anonymous.Admin.Sitesettings.Unsubscribeviaemail();
-            public final Anonymous.Admin.Sitesettings.Unsubscribeviaemailfooter unsubscribeviaemailfooter = new Anonymous.Admin.Sitesettings.Unsubscribeviaemailfooter();
-            public final Anonymous.Admin.Sitesettings.Deleteemaillogsafterdays deleteemaillogsafterdays = new Anonymous.Admin.Sitesettings.Deleteemaillogsafterdays();
-            public final Anonymous.Admin.Sitesettings.Maxemailsperdayperuser maxemailsperdayperuser = new Anonymous.Admin.Sitesettings.Maxemailsperdayperuser();
-            public final Anonymous.Admin.Sitesettings.Enablestagedusers enablestagedusers = new Anonymous.Admin.Sitesettings.Enablestagedusers();
-            public final Anonymous.Admin.Sitesettings.Maximumstagedusersperemail maximumstagedusersperemail = new Anonymous.Admin.Sitesettings.Maximumstagedusersperemail();
-            public final Anonymous.Admin.Sitesettings.Autogeneratedwhitelist autogeneratedwhitelist = new Anonymous.Admin.Sitesettings.Autogeneratedwhitelist();
-            public final Anonymous.Admin.Sitesettings.Blockautogeneratedemails blockautogeneratedemails = new Anonymous.Admin.Sitesettings.Blockautogeneratedemails();
-            public final Anonymous.Admin.Sitesettings.Ignorebytitle ignorebytitle = new Anonymous.Admin.Sitesettings.Ignorebytitle();
-            public final Anonymous.Admin.Sitesettings.Mailgunapikey mailgunapikey = new Anonymous.Admin.Sitesettings.Mailgunapikey();
-            public final Anonymous.Admin.Sitesettings.Bouncescorethreshold bouncescorethreshold = new Anonymous.Admin.Sitesettings.Bouncescorethreshold();
-            public final Anonymous.Admin.Sitesettings.Bouncescorethresholddeactivate bouncescorethresholddeactivate = new Anonymous.Admin.Sitesettings.Bouncescorethresholddeactivate();
-            public final Anonymous.Admin.Sitesettings.Softbouncescore softbouncescore = new Anonymous.Admin.Sitesettings.Softbouncescore();
-            public final Anonymous.Admin.Sitesettings.Hardbouncescore hardbouncescore = new Anonymous.Admin.Sitesettings.Hardbouncescore();
-            public final Anonymous.Admin.Sitesettings.Resetbouncescoreafterdays resetbouncescoreafterdays = new Anonymous.Admin.Sitesettings.Resetbouncescoreafterdays();
-            public final Anonymous.Admin.Sitesettings.Attachmentcontenttypeblacklist attachmentcontenttypeblacklist = new Anonymous.Admin.Sitesettings.Attachmentcontenttypeblacklist();
-            public final Anonymous.Admin.Sitesettings.Attachmentfilenameblacklist attachmentfilenameblacklist = new Anonymous.Admin.Sitesettings.Attachmentfilenameblacklist();
-            public final Anonymous.Admin.Sitesettings.Enableforwardedemails enableforwardedemails = new Anonymous.Admin.Sitesettings.Enableforwardedemails();
-            public final Anonymous.Admin.Sitesettings.Alwaysshowtrimmedcontent alwaysshowtrimmedcontent = new Anonymous.Admin.Sitesettings.Alwaysshowtrimmedcontent();
-            public final Anonymous.Admin.Sitesettings.Maximagesizekb maximagesizekb = new Anonymous.Admin.Sitesettings.Maximagesizekb();
-            public final Anonymous.Admin.Sitesettings.Maxattachmentsizekb maxattachmentsizekb = new Anonymous.Admin.Sitesettings.Maxattachmentsizekb();
-            public final Anonymous.Admin.Sitesettings.Maximagemegapixels maximagemegapixels = new Anonymous.Admin.Sitesettings.Maximagemegapixels();
-            public final Anonymous.Admin.Sitesettings.Authorizedextensions authorizedextensions = new Anonymous.Admin.Sitesettings.Authorizedextensions();
-            public final Anonymous.Admin.Sitesettings.Crawlimages crawlimages = new Anonymous.Admin.Sitesettings.Crawlimages();
-            public final Anonymous.Admin.Sitesettings.Maximagewidth maximagewidth = new Anonymous.Admin.Sitesettings.Maximagewidth();
-            public final Anonymous.Admin.Sitesettings.Maximageheight maximageheight = new Anonymous.Admin.Sitesettings.Maximageheight();
-            public final Anonymous.Admin.Sitesettings.Downloadremoteimagestolocal downloadremoteimagestolocal = new Anonymous.Admin.Sitesettings.Downloadremoteimagestolocal();
-            public final Anonymous.Admin.Sitesettings.Downloadremoteimagesthreshold downloadremoteimagesthreshold = new Anonymous.Admin.Sitesettings.Downloadremoteimagesthreshold();
-            public final Anonymous.Admin.Sitesettings.Downloadremoteimagesmaxdaysold downloadremoteimagesmaxdaysold = new Anonymous.Admin.Sitesettings.Downloadremoteimagesmaxdaysold();
-            public final Anonymous.Admin.Sitesettings.Disabledimagedownloaddomains disabledimagedownloaddomains = new Anonymous.Admin.Sitesettings.Disabledimagedownloaddomains();
-            public final Anonymous.Admin.Sitesettings.Createthumbnails createthumbnails = new Anonymous.Admin.Sitesettings.Createthumbnails();
-            public final Anonymous.Admin.Sitesettings.Cleanupuploads cleanupuploads = new Anonymous.Admin.Sitesettings.Cleanupuploads();
-            public final Anonymous.Admin.Sitesettings.Cleanorphanuploadsgraceperiodhours cleanorphanuploadsgraceperiodhours = new Anonymous.Admin.Sitesettings.Cleanorphanuploadsgraceperiodhours();
-            public final Anonymous.Admin.Sitesettings.Purgedeleteduploadsgraceperioddays purgedeleteduploadsgraceperioddays = new Anonymous.Admin.Sitesettings.Purgedeleteduploadsgraceperioddays();
-            public final Anonymous.Admin.Sitesettings.Preventanonsfromdownloadingfiles preventanonsfromdownloadingfiles = new Anonymous.Admin.Sitesettings.Preventanonsfromdownloadingfiles();
-            public final Anonymous.Admin.Sitesettings.Enables3uploads enables3uploads = new Anonymous.Admin.Sitesettings.Enables3uploads();
-            public final Anonymous.Admin.Sitesettings.S3useiamprofile s3useiamprofile = new Anonymous.Admin.Sitesettings.S3useiamprofile();
-            public final Anonymous.Admin.Sitesettings.S3accesskeyid s3accesskeyid = new Anonymous.Admin.Sitesettings.S3accesskeyid();
-            public final Anonymous.Admin.Sitesettings.S3secretaccesskey s3secretaccesskey = new Anonymous.Admin.Sitesettings.S3secretaccesskey();
-            public final Anonymous.Admin.Sitesettings.S3region s3region = new Anonymous.Admin.Sitesettings.S3region();
-            public final Anonymous.Admin.Sitesettings.S3uploadbucket s3uploadbucket = new Anonymous.Admin.Sitesettings.S3uploadbucket();
-            public final Anonymous.Admin.Sitesettings.S3cdnurl s3cdnurl = new Anonymous.Admin.Sitesettings.S3cdnurl();
-            public final Anonymous.Admin.Sitesettings.Allowprofilebackgrounds allowprofilebackgrounds = new Anonymous.Admin.Sitesettings.Allowprofilebackgrounds();
-            public final Anonymous.Admin.Sitesettings.Automaticallydownloadgravatars automaticallydownloadgravatars = new Anonymous.Admin.Sitesettings.Automaticallydownloadgravatars();
-            public final Anonymous.Admin.Sitesettings.Allowuploadedavatars allowuploadedavatars = new Anonymous.Admin.Sitesettings.Allowuploadedavatars();
-            public final Anonymous.Admin.Sitesettings.Allowanimatedavatars allowanimatedavatars = new Anonymous.Admin.Sitesettings.Allowanimatedavatars();
-            public final Anonymous.Admin.Sitesettings.Allowanimatedthumbnails allowanimatedthumbnails = new Anonymous.Admin.Sitesettings.Allowanimatedthumbnails();
-            public final Anonymous.Admin.Sitesettings.Defaultavatars defaultavatars = new Anonymous.Admin.Sitesettings.Defaultavatars();
-            public final Anonymous.Admin.Sitesettings.Avatarsizes avatarsizes = new Anonymous.Admin.Sitesettings.Avatarsizes();
-            public final Anonymous.Admin.Sitesettings.Externalsystemavatarsenabled externalsystemavatarsenabled = new Anonymous.Admin.Sitesettings.Externalsystemavatarsenabled();
-            public final Anonymous.Admin.Sitesettings.Externalsystemavatarsurl externalsystemavatarsurl = new Anonymous.Admin.Sitesettings.Externalsystemavatarsurl();
-            public final Anonymous.Admin.Sitesettings.Allowallattachmentsforgroupmessages allowallattachmentsforgroupmessages = new Anonymous.Admin.Sitesettings.Allowallattachmentsforgroupmessages();
-            public final Anonymous.Admin.Sitesettings.Convertpastedimagestohqjpg convertpastedimagestohqjpg = new Anonymous.Admin.Sitesettings.Convertpastedimagestohqjpg();
-            public final Anonymous.Admin.Sitesettings.Convertpastedimagesquality convertpastedimagesquality = new Anonymous.Admin.Sitesettings.Convertpastedimagesquality();
-            public final Anonymous.Admin.Sitesettings.Defaulttrustlevel defaulttrustlevel = new Anonymous.Admin.Sitesettings.Defaulttrustlevel();
-            public final Anonymous.Admin.Sitesettings.Defaultinviteetrustlevel defaultinviteetrustlevel = new Anonymous.Admin.Sitesettings.Defaultinviteetrustlevel();
-            public final Anonymous.Admin.Sitesettings.Mintrusttocreatetopic mintrusttocreatetopic = new Anonymous.Admin.Sitesettings.Mintrusttocreatetopic();
-            public final Anonymous.Admin.Sitesettings.Mintrusttoeditwikipost mintrusttoeditwikipost = new Anonymous.Admin.Sitesettings.Mintrusttoeditwikipost();
-            public final Anonymous.Admin.Sitesettings.Mintrusttoeditpost mintrusttoeditpost = new Anonymous.Admin.Sitesettings.Mintrusttoeditpost();
-            public final Anonymous.Admin.Sitesettings.Mintrusttoallowselfwiki mintrusttoallowselfwiki = new Anonymous.Admin.Sitesettings.Mintrusttoallowselfwiki();
-            public final Anonymous.Admin.Sitesettings.Mintrusttosendmessages mintrusttosendmessages = new Anonymous.Admin.Sitesettings.Mintrusttosendmessages();
-            public final Anonymous.Admin.Sitesettings.Tl1requirestopicsentered tl1requirestopicsentered = new Anonymous.Admin.Sitesettings.Tl1requirestopicsentered();
-            public final Anonymous.Admin.Sitesettings.Tl1requiresreadposts tl1requiresreadposts = new Anonymous.Admin.Sitesettings.Tl1requiresreadposts();
-            public final Anonymous.Admin.Sitesettings.Tl1requirestimespentmins tl1requirestimespentmins = new Anonymous.Admin.Sitesettings.Tl1requirestimespentmins();
-            public final Anonymous.Admin.Sitesettings.Tl2requirestopicsentered tl2requirestopicsentered = new Anonymous.Admin.Sitesettings.Tl2requirestopicsentered();
-            public final Anonymous.Admin.Sitesettings.Tl2requiresreadposts tl2requiresreadposts = new Anonymous.Admin.Sitesettings.Tl2requiresreadposts();
-            public final Anonymous.Admin.Sitesettings.Tl2requirestimespentmins tl2requirestimespentmins = new Anonymous.Admin.Sitesettings.Tl2requirestimespentmins();
-            public final Anonymous.Admin.Sitesettings.Tl2requiresdaysvisited tl2requiresdaysvisited = new Anonymous.Admin.Sitesettings.Tl2requiresdaysvisited();
-            public final Anonymous.Admin.Sitesettings.Tl2requireslikesreceived tl2requireslikesreceived = new Anonymous.Admin.Sitesettings.Tl2requireslikesreceived();
-            public final Anonymous.Admin.Sitesettings.Tl2requireslikesgiven tl2requireslikesgiven = new Anonymous.Admin.Sitesettings.Tl2requireslikesgiven();
-            public final Anonymous.Admin.Sitesettings.Tl2requirestopicreplycount tl2requirestopicreplycount = new Anonymous.Admin.Sitesettings.Tl2requirestopicreplycount();
-            public final Anonymous.Admin.Sitesettings.Tl3timeperiod tl3timeperiod = new Anonymous.Admin.Sitesettings.Tl3timeperiod();
-            public final Anonymous.Admin.Sitesettings.Tl3requiresdaysvisited tl3requiresdaysvisited = new Anonymous.Admin.Sitesettings.Tl3requiresdaysvisited();
-            public final Anonymous.Admin.Sitesettings.Tl3requirestopicsrepliedto tl3requirestopicsrepliedto = new Anonymous.Admin.Sitesettings.Tl3requirestopicsrepliedto();
-            public final Anonymous.Admin.Sitesettings.Tl3requirestopicsviewed tl3requirestopicsviewed = new Anonymous.Admin.Sitesettings.Tl3requirestopicsviewed();
-            public final Anonymous.Admin.Sitesettings.Tl3requirestopicsviewedcap tl3requirestopicsviewedcap = new Anonymous.Admin.Sitesettings.Tl3requirestopicsviewedcap();
-            public final Anonymous.Admin.Sitesettings.Tl3requirespostsread tl3requirespostsread = new Anonymous.Admin.Sitesettings.Tl3requirespostsread();
-            public final Anonymous.Admin.Sitesettings.Tl3requirespostsreadcap tl3requirespostsreadcap = new Anonymous.Admin.Sitesettings.Tl3requirespostsreadcap();
-            public final Anonymous.Admin.Sitesettings.Tl3requirestopicsviewedalltime tl3requirestopicsviewedalltime = new Anonymous.Admin.Sitesettings.Tl3requirestopicsviewedalltime();
-            public final Anonymous.Admin.Sitesettings.Tl3requirespostsreadalltime tl3requirespostsreadalltime = new Anonymous.Admin.Sitesettings.Tl3requirespostsreadalltime();
-            public final Anonymous.Admin.Sitesettings.Tl3requiresmaxflagged tl3requiresmaxflagged = new Anonymous.Admin.Sitesettings.Tl3requiresmaxflagged();
-            public final Anonymous.Admin.Sitesettings.Tl3promotionminduration tl3promotionminduration = new Anonymous.Admin.Sitesettings.Tl3promotionminduration();
-            public final Anonymous.Admin.Sitesettings.Tl3requireslikesgiven tl3requireslikesgiven = new Anonymous.Admin.Sitesettings.Tl3requireslikesgiven();
-            public final Anonymous.Admin.Sitesettings.Tl3requireslikesreceived tl3requireslikesreceived = new Anonymous.Admin.Sitesettings.Tl3requireslikesreceived();
-            public final Anonymous.Admin.Sitesettings.Tl3linksnofollow tl3linksnofollow = new Anonymous.Admin.Sitesettings.Tl3linksnofollow();
-            public final Anonymous.Admin.Sitesettings.Forcehttps forcehttps = new Anonymous.Admin.Sitesettings.Forcehttps();
-            public final Anonymous.Admin.Sitesettings.Enableescapedfragments enableescapedfragments = new Anonymous.Admin.Sitesettings.Enableescapedfragments();
-            public final Anonymous.Admin.Sitesettings.Allowindexinrobotstxt allowindexinrobotstxt = new Anonymous.Admin.Sitesettings.Allowindexinrobotstxt();
-            public final Anonymous.Admin.Sitesettings.Enablenoscriptsupport enablenoscriptsupport = new Anonymous.Admin.Sitesettings.Enablenoscriptsupport();
-            public final Anonymous.Admin.Sitesettings.Allowmoderatorstocreatecategories allowmoderatorstocreatecategories = new Anonymous.Admin.Sitesettings.Allowmoderatorstocreatecategories();
-            public final Anonymous.Admin.Sitesettings.Corsorigins corsorigins = new Anonymous.Admin.Sitesettings.Corsorigins();
-            public final Anonymous.Admin.Sitesettings.Useadminipwhitelist useadminipwhitelist = new Anonymous.Admin.Sitesettings.Useadminipwhitelist();
-            public final Anonymous.Admin.Sitesettings.Enableflashvideoonebox enableflashvideoonebox = new Anonymous.Admin.Sitesettings.Enableflashvideoonebox();
-            public final Anonymous.Admin.Sitesettings.Postoneboxmaxlength postoneboxmaxlength = new Anonymous.Admin.Sitesettings.Postoneboxmaxlength();
-            public final Anonymous.Admin.Sitesettings.Oneboxdomainsblacklist oneboxdomainsblacklist = new Anonymous.Admin.Sitesettings.Oneboxdomainsblacklist();
-            public final Anonymous.Admin.Sitesettings.Maxoneboxesperpost maxoneboxesperpost = new Anonymous.Admin.Sitesettings.Maxoneboxesperpost();
-            public final Anonymous.Admin.Sitesettings.Addrelnofollowtousercontent addrelnofollowtousercontent = new Anonymous.Admin.Sitesettings.Addrelnofollowtousercontent();
-            public final Anonymous.Admin.Sitesettings.Flagsrequiredtohidepost flagsrequiredtohidepost = new Anonymous.Admin.Sitesettings.Flagsrequiredtohidepost();
-            public final Anonymous.Admin.Sitesettings.Cooldownminutesafterhidingposts cooldownminutesafterhidingposts = new Anonymous.Admin.Sitesettings.Cooldownminutesafterhidingposts();
-            public final Anonymous.Admin.Sitesettings.Numspamflagstoblocknewuser numspamflagstoblocknewuser = new Anonymous.Admin.Sitesettings.Numspamflagstoblocknewuser();
-            public final Anonymous.Admin.Sitesettings.Numuserstoblocknewuser numuserstoblocknewuser = new Anonymous.Admin.Sitesettings.Numuserstoblocknewuser();
-            public final Anonymous.Admin.Sitesettings.Numtl3flagstoblocknewuser numtl3flagstoblocknewuser = new Anonymous.Admin.Sitesettings.Numtl3flagstoblocknewuser();
-            public final Anonymous.Admin.Sitesettings.Numtl3userstoblocknewuser numtl3userstoblocknewuser = new Anonymous.Admin.Sitesettings.Numtl3userstoblocknewuser();
-            public final Anonymous.Admin.Sitesettings.Notifymodswhenuserblocked notifymodswhenuserblocked = new Anonymous.Admin.Sitesettings.Notifymodswhenuserblocked();
-            public final Anonymous.Admin.Sitesettings.Flagsockpuppets flagsockpuppets = new Anonymous.Admin.Sitesettings.Flagsockpuppets();
-            public final Anonymous.Admin.Sitesettings.Newuserspamhostthreshold newuserspamhostthreshold = new Anonymous.Admin.Sitesettings.Newuserspamhostthreshold();
-            public final Anonymous.Admin.Sitesettings.Whitelistedspamhostdomains whitelistedspamhostdomains = new Anonymous.Admin.Sitesettings.Whitelistedspamhostdomains();
-            public final Anonymous.Admin.Sitesettings.Levenshteindistancespammeremails levenshteindistancespammeremails = new Anonymous.Admin.Sitesettings.Levenshteindistancespammeremails();
-            public final Anonymous.Admin.Sitesettings.Maxnewaccountsperregistrationip maxnewaccountsperregistrationip = new Anonymous.Admin.Sitesettings.Maxnewaccountsperregistrationip();
-            public final Anonymous.Admin.Sitesettings.Minbanentriesforrollup minbanentriesforrollup = new Anonymous.Admin.Sitesettings.Minbanentriesforrollup();
-            public final Anonymous.Admin.Sitesettings.Maxageunmatchedemails maxageunmatchedemails = new Anonymous.Admin.Sitesettings.Maxageunmatchedemails();
-            public final Anonymous.Admin.Sitesettings.Maxageunmatchedips maxageunmatchedips = new Anonymous.Admin.Sitesettings.Maxageunmatchedips();
-            public final Anonymous.Admin.Sitesettings.Numflaggerstoclosetopic numflaggerstoclosetopic = new Anonymous.Admin.Sitesettings.Numflaggerstoclosetopic();
-            public final Anonymous.Admin.Sitesettings.Numflagstoclosetopic numflagstoclosetopic = new Anonymous.Admin.Sitesettings.Numflagstoclosetopic();
-            public final Anonymous.Admin.Sitesettings.Autorespondtoflagactions autorespondtoflagactions = new Anonymous.Admin.Sitesettings.Autorespondtoflagactions();
-            public final Anonymous.Admin.Sitesettings.Minfirstposttypingtime minfirstposttypingtime = new Anonymous.Admin.Sitesettings.Minfirstposttypingtime();
-            public final Anonymous.Admin.Sitesettings.Autoblockfasttypersonfirstpost autoblockfasttypersonfirstpost = new Anonymous.Admin.Sitesettings.Autoblockfasttypersonfirstpost();
-            public final Anonymous.Admin.Sitesettings.Autoblockfasttypersmaxtrustlevel autoblockfasttypersmaxtrustlevel = new Anonymous.Admin.Sitesettings.Autoblockfasttypersmaxtrustlevel();
-            public final Anonymous.Admin.Sitesettings.Autoblockfirstpostregex autoblockfirstpostregex = new Anonymous.Admin.Sitesettings.Autoblockfirstpostregex();
-            public final Anonymous.Admin.Sitesettings.Uniquepostsmin uniquepostsmin = new Anonymous.Admin.Sitesettings.Uniquepostsmin();
-            public final Anonymous.Admin.Sitesettings.Ratelimitcreatetopic ratelimitcreatetopic = new Anonymous.Admin.Sitesettings.Ratelimitcreatetopic();
-            public final Anonymous.Admin.Sitesettings.Ratelimitcreatepost ratelimitcreatepost = new Anonymous.Admin.Sitesettings.Ratelimitcreatepost();
-            public final Anonymous.Admin.Sitesettings.Ratelimitnewusercreatetopic ratelimitnewusercreatetopic = new Anonymous.Admin.Sitesettings.Ratelimitnewusercreatetopic();
-            public final Anonymous.Admin.Sitesettings.Ratelimitnewusercreatepost ratelimitnewusercreatepost = new Anonymous.Admin.Sitesettings.Ratelimitnewusercreatepost();
-            public final Anonymous.Admin.Sitesettings.Maxtopicsperday maxtopicsperday = new Anonymous.Admin.Sitesettings.Maxtopicsperday();
-            public final Anonymous.Admin.Sitesettings.Maxprivatemessagesperday maxprivatemessagesperday = new Anonymous.Admin.Sitesettings.Maxprivatemessagesperday();
-            public final Anonymous.Admin.Sitesettings.Maxlikesperday maxlikesperday = new Anonymous.Admin.Sitesettings.Maxlikesperday();
-            public final Anonymous.Admin.Sitesettings.Maxbookmarksperday maxbookmarksperday = new Anonymous.Admin.Sitesettings.Maxbookmarksperday();
-            public final Anonymous.Admin.Sitesettings.Maxflagsperday maxflagsperday = new Anonymous.Admin.Sitesettings.Maxflagsperday();
-            public final Anonymous.Admin.Sitesettings.Maxeditsperday maxeditsperday = new Anonymous.Admin.Sitesettings.Maxeditsperday();
-            public final Anonymous.Admin.Sitesettings.Maxinvitesperday maxinvitesperday = new Anonymous.Admin.Sitesettings.Maxinvitesperday();
-            public final Anonymous.Admin.Sitesettings.Maxtopicinvitationsperday maxtopicinvitationsperday = new Anonymous.Admin.Sitesettings.Maxtopicinvitationsperday();
-            public final Anonymous.Admin.Sitesettings.Maxtopicsinfirstday maxtopicsinfirstday = new Anonymous.Admin.Sitesettings.Maxtopicsinfirstday();
-            public final Anonymous.Admin.Sitesettings.Maxrepliesinfirstday maxrepliesinfirstday = new Anonymous.Admin.Sitesettings.Maxrepliesinfirstday();
-            public final Anonymous.Admin.Sitesettings.Tl2additionallikesperdaymultiplier tl2additionallikesperdaymultiplier = new Anonymous.Admin.Sitesettings.Tl2additionallikesperdaymultiplier();
-            public final Anonymous.Admin.Sitesettings.Tl3additionallikesperdaymultiplier tl3additionallikesperdaymultiplier = new Anonymous.Admin.Sitesettings.Tl3additionallikesperdaymultiplier();
-            public final Anonymous.Admin.Sitesettings.Tl4additionallikesperdaymultiplier tl4additionallikesperdaymultiplier = new Anonymous.Admin.Sitesettings.Tl4additionallikesperdaymultiplier();
-            public final Anonymous.Admin.Sitesettings.Alertadminsiferrorsperminute alertadminsiferrorsperminute = new Anonymous.Admin.Sitesettings.Alertadminsiferrorsperminute();
-            public final Anonymous.Admin.Sitesettings.Alertadminsiferrorsperhour alertadminsiferrorsperhour = new Anonymous.Admin.Sitesettings.Alertadminsiferrorsperhour();
-            public final Anonymous.Admin.Sitesettings.Maxprintsperhourperuser maxprintsperhourperuser = new Anonymous.Admin.Sitesettings.Maxprintsperhourperuser();
-            public final Anonymous.Admin.Sitesettings.Forcehostname forcehostname = new Anonymous.Admin.Sitesettings.Forcehostname();
-            public final Anonymous.Admin.Sitesettings.Port port = new Anonymous.Admin.Sitesettings.Port();
-            public final Anonymous.Admin.Sitesettings.Queuejobs queuejobs = new Anonymous.Admin.Sitesettings.Queuejobs();
-            public final Anonymous.Admin.Sitesettings.Enablelongpolling enablelongpolling = new Anonymous.Admin.Sitesettings.Enablelongpolling();
-            public final Anonymous.Admin.Sitesettings.Longpollinginterval longpollinginterval = new Anonymous.Admin.Sitesettings.Longpollinginterval();
-            public final Anonymous.Admin.Sitesettings.Longpollingbaseurl longpollingbaseurl = new Anonymous.Admin.Sitesettings.Longpollingbaseurl();
-            public final Anonymous.Admin.Sitesettings.Backgroundpollinginterval backgroundpollinginterval = new Anonymous.Admin.Sitesettings.Backgroundpollinginterval();
-            public final Anonymous.Admin.Sitesettings.Pollinginterval pollinginterval = new Anonymous.Admin.Sitesettings.Pollinginterval();
-            public final Anonymous.Admin.Sitesettings.Anonpollinginterval anonpollinginterval = new Anonymous.Admin.Sitesettings.Anonpollinginterval();
-            public final Anonymous.Admin.Sitesettings.Flushtimingssecs flushtimingssecs = new Anonymous.Admin.Sitesettings.Flushtimingssecs();
-            public final Anonymous.Admin.Sitesettings.Activeuserratelimitsecs activeuserratelimitsecs = new Anonymous.Admin.Sitesettings.Activeuserratelimitsecs();
-            public final Anonymous.Admin.Sitesettings.Verboselocalization verboselocalization = new Anonymous.Admin.Sitesettings.Verboselocalization();
-            public final Anonymous.Admin.Sitesettings.Toptopicsformulalogviewsmultiplier toptopicsformulalogviewsmultiplier = new Anonymous.Admin.Sitesettings.Toptopicsformulalogviewsmultiplier();
-            public final Anonymous.Admin.Sitesettings.Toptopicsformulafirstpostlikesmultiplier toptopicsformulafirstpostlikesmultiplier = new Anonymous.Admin.Sitesettings.Toptopicsformulafirstpostlikesmultiplier();
-            public final Anonymous.Admin.Sitesettings.Rebakeoldpostscount rebakeoldpostscount = new Anonymous.Admin.Sitesettings.Rebakeoldpostscount();
-            public final Anonymous.Admin.Sitesettings.Tosurl tosurl = new Anonymous.Admin.Sitesettings.Tosurl();
-            public final Anonymous.Admin.Sitesettings.Privacypolicyurl privacypolicyurl = new Anonymous.Admin.Sitesettings.Privacypolicyurl();
-            public final Anonymous.Admin.Sitesettings.Fagurl fagurl = new Anonymous.Admin.Sitesettings.Fagurl();
-            public final Anonymous.Admin.Sitesettings.Readonlymodeduringbackup readonlymodeduringbackup = new Anonymous.Admin.Sitesettings.Readonlymodeduringbackup();
-            public final Anonymous.Admin.Sitesettings.Allowrestore allowrestore = new Anonymous.Admin.Sitesettings.Allowrestore();
-            public final Anonymous.Admin.Sitesettings.Maximumbackups maximumbackups = new Anonymous.Admin.Sitesettings.Maximumbackups();
-            public final Anonymous.Admin.Sitesettings.Automaticbackupsenabled automaticbackupsenabled = new Anonymous.Admin.Sitesettings.Automaticbackupsenabled();
-            public final Anonymous.Admin.Sitesettings.Backupfrequency backupfrequency = new Anonymous.Admin.Sitesettings.Backupfrequency();
-            public final Anonymous.Admin.Sitesettings.Enables3backups enables3backups = new Anonymous.Admin.Sitesettings.Enables3backups();
-            public final Anonymous.Admin.Sitesettings.S3backupbucket s3backupbucket = new Anonymous.Admin.Sitesettings.S3backupbucket();
-            public final Anonymous.Admin.Sitesettings.S3disablecleanup s3disablecleanup = new Anonymous.Admin.Sitesettings.S3disablecleanup();
-            public final Anonymous.Admin.Sitesettings.Backuptimeofday backuptimeofday = new Anonymous.Admin.Sitesettings.Backuptimeofday();
-            public final Anonymous.Admin.Sitesettings.Backupwithuploads backupwithuploads = new Anonymous.Admin.Sitesettings.Backupwithuploads();
-            public final Anonymous.Admin.Sitesettings.Minsearchtermlength minsearchtermlength = new Anonymous.Admin.Sitesettings.Minsearchtermlength();
-            public final Anonymous.Admin.Sitesettings.Searchtokenizechinesejapanesekorean searchtokenizechinesejapanesekorean = new Anonymous.Admin.Sitesettings.Searchtokenizechinesejapanesekorean();
-            public final Anonymous.Admin.Sitesettings.Searchpreferrecentposts searchpreferrecentposts = new Anonymous.Admin.Sitesettings.Searchpreferrecentposts();
-            public final Anonymous.Admin.Sitesettings.Searchrecentpostssize searchrecentpostssize = new Anonymous.Admin.Sitesettings.Searchrecentpostssize();
-            public final Anonymous.Admin.Sitesettings.Versionchecks versionchecks = new Anonymous.Admin.Sitesettings.Versionchecks();
-            public final Anonymous.Admin.Sitesettings.Newversionemails newversionemails = new Anonymous.Admin.Sitesettings.Newversionemails();
-            public final Anonymous.Admin.Sitesettings.Sendwelcomemessage sendwelcomemessage = new Anonymous.Admin.Sitesettings.Sendwelcomemessage();
-            public final Anonymous.Admin.Sitesettings.Suppressuncategorizedbadge suppressuncategorizedbadge = new Anonymous.Admin.Sitesettings.Suppressuncategorizedbadge();
-            public final Anonymous.Admin.Sitesettings.Sluggenerationmethod sluggenerationmethod = new Anonymous.Admin.Sitesettings.Sluggenerationmethod();
-            public final Anonymous.Admin.Sitesettings.Permalinknormalizations permalinknormalizations = new Anonymous.Admin.Sitesettings.Permalinknormalizations();
-            public final Anonymous.Admin.Sitesettings.Maxsimilarresults maxsimilarresults = new Anonymous.Admin.Sitesettings.Maxsimilarresults();
-            public final Anonymous.Admin.Sitesettings.Minimumtopicssimilar minimumtopicssimilar = new Anonymous.Admin.Sitesettings.Minimumtopicssimilar();
-            public final Anonymous.Admin.Sitesettings.Previousvisittimeouthours previousvisittimeouthours = new Anonymous.Admin.Sitesettings.Previousvisittimeouthours();
-            public final Anonymous.Admin.Sitesettings.Stafflikeweight stafflikeweight = new Anonymous.Admin.Sitesettings.Stafflikeweight();
-            public final Anonymous.Admin.Sitesettings.Topicviewdurationhours topicviewdurationhours = new Anonymous.Admin.Sitesettings.Topicviewdurationhours();
-            public final Anonymous.Admin.Sitesettings.Userprofileviewdurationhours userprofileviewdurationhours = new Anonymous.Admin.Sitesettings.Userprofileviewdurationhours();
-            public final Anonymous.Admin.Sitesettings.Summaryscorethreshold summaryscorethreshold = new Anonymous.Admin.Sitesettings.Summaryscorethreshold();
-            public final Anonymous.Admin.Sitesettings.Summarypostsrequired summarypostsrequired = new Anonymous.Admin.Sitesettings.Summarypostsrequired();
-            public final Anonymous.Admin.Sitesettings.Summarylikesrequired summarylikesrequired = new Anonymous.Admin.Sitesettings.Summarylikesrequired();
-            public final Anonymous.Admin.Sitesettings.Summarypercentfilter summarypercentfilter = new Anonymous.Admin.Sitesettings.Summarypercentfilter();
-            public final Anonymous.Admin.Sitesettings.Summarymaxresults summarymaxresults = new Anonymous.Admin.Sitesettings.Summarymaxresults();
-            public final Anonymous.Admin.Sitesettings.Topicviewsheatlow topicviewsheatlow = new Anonymous.Admin.Sitesettings.Topicviewsheatlow();
-            public final Anonymous.Admin.Sitesettings.Topicviewsheatmedium topicviewsheatmedium = new Anonymous.Admin.Sitesettings.Topicviewsheatmedium();
-            public final Anonymous.Admin.Sitesettings.Topicviewsheathigh topicviewsheathigh = new Anonymous.Admin.Sitesettings.Topicviewsheathigh();
-            public final Anonymous.Admin.Sitesettings.Topicpostlikeheatlow topicpostlikeheatlow = new Anonymous.Admin.Sitesettings.Topicpostlikeheatlow();
-            public final Anonymous.Admin.Sitesettings.Topicpostlikeheatmedium topicpostlikeheatmedium = new Anonymous.Admin.Sitesettings.Topicpostlikeheatmedium();
-            public final Anonymous.Admin.Sitesettings.Topicpostlikeheathigh topicpostlikeheathigh = new Anonymous.Admin.Sitesettings.Topicpostlikeheathigh();
-            public final Anonymous.Admin.Sitesettings.Historyhourslow historyhourslow = new Anonymous.Admin.Sitesettings.Historyhourslow();
-            public final Anonymous.Admin.Sitesettings.Historyhoursmedium historyhoursmedium = new Anonymous.Admin.Sitesettings.Historyhoursmedium();
-            public final Anonymous.Admin.Sitesettings.Historyhourshigh historyhourshigh = new Anonymous.Admin.Sitesettings.Historyhourshigh();
-            public final Anonymous.Admin.Sitesettings.Coldagedayslow coldagedayslow = new Anonymous.Admin.Sitesettings.Coldagedayslow();
-            public final Anonymous.Admin.Sitesettings.Coldagedaysmedium coldagedaysmedium = new Anonymous.Admin.Sitesettings.Coldagedaysmedium();
-            public final Anonymous.Admin.Sitesettings.Coldagedayshigh coldagedayshigh = new Anonymous.Admin.Sitesettings.Coldagedayshigh();
-            public final Anonymous.Admin.Sitesettings.Educateuntilposts educateuntilposts = new Anonymous.Admin.Sitesettings.Educateuntilposts();
-            public final Anonymous.Admin.Sitesettings.Sequentialrepliesthreshold sequentialrepliesthreshold = new Anonymous.Admin.Sitesettings.Sequentialrepliesthreshold();
-            public final Anonymous.Admin.Sitesettings.Dominatingtopicminimumpercent dominatingtopicminimumpercent = new Anonymous.Admin.Sitesettings.Dominatingtopicminimumpercent();
-            public final Anonymous.Admin.Sitesettings.Disableavatareducationmessage disableavatareducationmessage = new Anonymous.Admin.Sitesettings.Disableavatareducationmessage();
-            public final Anonymous.Admin.Sitesettings.Globalnotice globalnotice = new Anonymous.Admin.Sitesettings.Globalnotice();
-            public final Anonymous.Admin.Sitesettings.Notifyaboutflagsafter notifyaboutflagsafter = new Anonymous.Admin.Sitesettings.Notifyaboutflagsafter();
-            public final Anonymous.Admin.Sitesettings.Showcreatetopicsnotice showcreatetopicsnotice = new Anonymous.Admin.Sitesettings.Showcreatetopicsnotice();
-            public final Anonymous.Admin.Sitesettings.Disableeditnotifications disableeditnotifications = new Anonymous.Admin.Sitesettings.Disableeditnotifications();
-            public final Anonymous.Admin.Sitesettings.Vacuumdbdays vacuumdbdays = new Anonymous.Admin.Sitesettings.Vacuumdbdays();
-            public final Anonymous.Admin.Sitesettings.Deletedraftsolderthanndays deletedraftsolderthanndays = new Anonymous.Admin.Sitesettings.Deletedraftsolderthanndays();
-            public final Anonymous.Admin.Sitesettings.Bootstrapmodeminusers bootstrapmodeminusers = new Anonymous.Admin.Sitesettings.Bootstrapmodeminusers();
-            public final Anonymous.Admin.Sitesettings.Automaticallyunpintopics automaticallyunpintopics = new Anonymous.Admin.Sitesettings.Automaticallyunpintopics();
-            public final Anonymous.Admin.Sitesettings.Readtimewordcount readtimewordcount = new Anonymous.Admin.Sitesettings.Readtimewordcount();
-            public final Anonymous.Admin.Sitesettings.Topicpagetitleincludescategory topicpagetitleincludescategory = new Anonymous.Admin.Sitesettings.Topicpagetitleincludescategory();
-            public final Anonymous.Admin.Sitesettings.Nativeappinstallbanner nativeappinstallbanner = new Anonymous.Admin.Sitesettings.Nativeappinstallbanner();
-            public final Anonymous.Admin.Sitesettings.Defaultemaildigestfrequency defaultemaildigestfrequency = new Anonymous.Admin.Sitesettings.Defaultemaildigestfrequency();
-            public final Anonymous.Admin.Sitesettings.Defaultincludetl0indigests defaultincludetl0indigests = new Anonymous.Admin.Sitesettings.Defaultincludetl0indigests();
-            public final Anonymous.Admin.Sitesettings.Defaultemailprivatemessages defaultemailprivatemessages = new Anonymous.Admin.Sitesettings.Defaultemailprivatemessages();
-            public final Anonymous.Admin.Sitesettings.Defaultemaildirect defaultemaildirect = new Anonymous.Admin.Sitesettings.Defaultemaildirect();
-            public final Anonymous.Admin.Sitesettings.Defaultemailmailinglistmode defaultemailmailinglistmode = new Anonymous.Admin.Sitesettings.Defaultemailmailinglistmode();
-            public final Anonymous.Admin.Sitesettings.Defaultemailmailinglistmodefrequency defaultemailmailinglistmodefrequency = new Anonymous.Admin.Sitesettings.Defaultemailmailinglistmodefrequency();
-            public final Anonymous.Admin.Sitesettings.Disablemailinglistmode disablemailinglistmode = new Anonymous.Admin.Sitesettings.Disablemailinglistmode();
-            public final Anonymous.Admin.Sitesettings.Defaultemailalways defaultemailalways = new Anonymous.Admin.Sitesettings.Defaultemailalways();
-            public final Anonymous.Admin.Sitesettings.Defaultemailpreviousreplies defaultemailpreviousreplies = new Anonymous.Admin.Sitesettings.Defaultemailpreviousreplies();
-            public final Anonymous.Admin.Sitesettings.Defaultemailinreplyto defaultemailinreplyto = new Anonymous.Admin.Sitesettings.Defaultemailinreplyto();
-            public final Anonymous.Admin.Sitesettings.Defaultothernewtopicdurationminutes defaultothernewtopicdurationminutes = new Anonymous.Admin.Sitesettings.Defaultothernewtopicdurationminutes();
-            public final Anonymous.Admin.Sitesettings.Defaultotherautotracktopicaftermsecs defaultotherautotracktopicaftermsecs = new Anonymous.Admin.Sitesettings.Defaultotherautotracktopicaftermsecs();
-            public final Anonymous.Admin.Sitesettings.Defaultothernotificationlevelwhenreplying defaultothernotificationlevelwhenreplying = new Anonymous.Admin.Sitesettings.Defaultothernotificationlevelwhenreplying();
-            public final Anonymous.Admin.Sitesettings.Defaultotherexternallinksinnewtab defaultotherexternallinksinnewtab = new Anonymous.Admin.Sitesettings.Defaultotherexternallinksinnewtab();
-            public final Anonymous.Admin.Sitesettings.Defaultotherenablequoting defaultotherenablequoting = new Anonymous.Admin.Sitesettings.Defaultotherenablequoting();
-            public final Anonymous.Admin.Sitesettings.Defaultotherdynamicfavicon defaultotherdynamicfavicon = new Anonymous.Admin.Sitesettings.Defaultotherdynamicfavicon();
-            public final Anonymous.Admin.Sitesettings.Defaultotherdisablejumpreply defaultotherdisablejumpreply = new Anonymous.Admin.Sitesettings.Defaultotherdisablejumpreply();
-            public final Anonymous.Admin.Sitesettings.Defaultotherlikenotificationfrequency defaultotherlikenotificationfrequency = new Anonymous.Admin.Sitesettings.Defaultotherlikenotificationfrequency();
-            public final Anonymous.Admin.Sitesettings.Defaulttopicsautomaticunpin defaulttopicsautomaticunpin = new Anonymous.Admin.Sitesettings.Defaulttopicsautomaticunpin();
-            public final Anonymous.Admin.Sitesettings.Defaultcategoriestracking defaultcategoriestracking = new Anonymous.Admin.Sitesettings.Defaultcategoriestracking();
-            public final Anonymous.Admin.Sitesettings.Defaultcategoriesmuted defaultcategoriesmuted = new Anonymous.Admin.Sitesettings.Defaultcategoriesmuted();
-            public final Anonymous.Admin.Sitesettings.Defaultcategorieswatchingfirstpost defaultcategorieswatchingfirstpost = new Anonymous.Admin.Sitesettings.Defaultcategorieswatchingfirstpost();
-            public final Anonymous.Admin.Sitesettings.Maxuserapireqsperday maxuserapireqsperday = new Anonymous.Admin.Sitesettings.Maxuserapireqsperday();
-            public final Anonymous.Admin.Sitesettings.Maxuserapireqsperminute maxuserapireqsperminute = new Anonymous.Admin.Sitesettings.Maxuserapireqsperminute();
-            public final Anonymous.Admin.Sitesettings.Allowuserapikeys allowuserapikeys = new Anonymous.Admin.Sitesettings.Allowuserapikeys();
-            public final Anonymous.Admin.Sitesettings.Allowuserapikeyscopes allowuserapikeyscopes = new Anonymous.Admin.Sitesettings.Allowuserapikeyscopes();
-            public final Anonymous.Admin.Sitesettings.Maxapikeysperuser maxapikeysperuser = new Anonymous.Admin.Sitesettings.Maxapikeysperuser();
-            public final Anonymous.Admin.Sitesettings.Mintrustlevelforuserapikey mintrustlevelforuserapikey = new Anonymous.Admin.Sitesettings.Mintrustlevelforuserapikey();
-            public final Anonymous.Admin.Sitesettings.Alloweduserapipushurls alloweduserapipushurls = new Anonymous.Admin.Sitesettings.Alloweduserapipushurls();
-            public final Anonymous.Admin.Sitesettings.Alloweduserapiauthredirects alloweduserapiauthredirects = new Anonymous.Admin.Sitesettings.Alloweduserapiauthredirects();
-            public final Anonymous.Admin.Sitesettings.Taggingenabled taggingenabled = new Anonymous.Admin.Sitesettings.Taggingenabled();
-            public final Anonymous.Admin.Sitesettings.Tagstyle tagstyle = new Anonymous.Admin.Sitesettings.Tagstyle();
-            public final Anonymous.Admin.Sitesettings.Maxtagspertopic maxtagspertopic = new Anonymous.Admin.Sitesettings.Maxtagspertopic();
-            public final Anonymous.Admin.Sitesettings.Maxtaglength maxtaglength = new Anonymous.Admin.Sitesettings.Maxtaglength();
-            public final Anonymous.Admin.Sitesettings.Mintrusttocreatetag mintrusttocreatetag = new Anonymous.Admin.Sitesettings.Mintrusttocreatetag();
-            public final Anonymous.Admin.Sitesettings.Mintrustleveltotagtopics mintrustleveltotagtopics = new Anonymous.Admin.Sitesettings.Mintrustleveltotagtopics();
-            public final Anonymous.Admin.Sitesettings.Maxtagsearchresults maxtagsearchresults = new Anonymous.Admin.Sitesettings.Maxtagsearchresults();
-            public final Anonymous.Admin.Sitesettings.Showfilterbytag showfilterbytag = new Anonymous.Admin.Sitesettings.Showfilterbytag();
-            public final Anonymous.Admin.Sitesettings.Maxtagsinfilterlist maxtagsinfilterlist = new Anonymous.Admin.Sitesettings.Maxtagsinfilterlist();
-            public final Anonymous.Admin.Sitesettings.Tagssortalphabetically tagssortalphabetically = new Anonymous.Admin.Sitesettings.Tagssortalphabetically();
-            public final Anonymous.Admin.Sitesettings.Stafftags stafftags = new Anonymous.Admin.Sitesettings.Stafftags();
-            public final Anonymous.Admin.Sitesettings.Suppressoverlappingtagsinlist suppressoverlappingtagsinlist = new Anonymous.Admin.Sitesettings.Suppressoverlappingtagsinlist();
-            public final Anonymous.Admin.Sitesettings.Removemutedtagsfromlatest removemutedtagsfromlatest = new Anonymous.Admin.Sitesettings.Removemutedtagsfromlatest();
-            public final Anonymous.Admin.Sitesettings.Detailsenabled detailsenabled = new Anonymous.Admin.Sitesettings.Detailsenabled();
-            public final Anonymous.Admin.Sitesettings.Dailyperformancereport dailyperformancereport = new Anonymous.Admin.Sitesettings.Dailyperformancereport();
-            public final Anonymous.Admin.Sitesettings.Pollenabled pollenabled = new Anonymous.Admin.Sitesettings.Pollenabled();
-            public final Anonymous.Admin.Sitesettings.Pollmaximumoptions pollmaximumoptions = new Anonymous.Admin.Sitesettings.Pollmaximumoptions();
-            public final Anonymous.Admin.Sitesettings.Polleditwindowmins polleditwindowmins = new Anonymous.Admin.Sitesettings.Polleditwindowmins();
-            public final Anonymous.Admin.Sitesettings.Discoursenarrativebotenabled discoursenarrativebotenabled = new Anonymous.Admin.Sitesettings.Discoursenarrativebotenabled();
-            public final Anonymous.Admin.Sitesettings.Disablediscoursenarrativebotwelcomepost disablediscoursenarrativebotwelcomepost = new Anonymous.Admin.Sitesettings.Disablediscoursenarrativebotwelcomepost();
-            public final Anonymous.Admin.Sitesettings.Discoursenarrativebotdisablepublicreplies discoursenarrativebotdisablepublicreplies = new Anonymous.Admin.Sitesettings.Discoursenarrativebotdisablepublicreplies();
-            public final Anonymous.Admin.Sitesettings.Discoursenarrativebotignoredusernames discoursenarrativebotignoredusernames = new Anonymous.Admin.Sitesettings.Discoursenarrativebotignoredusernames();
-            public final Anonymous.Admin.Sitesettings.Discoursenarrativebotwelcomepostdelay discoursenarrativebotwelcomepostdelay = new Anonymous.Admin.Sitesettings.Discoursenarrativebotwelcomepostdelay();
-            public final Anonymous.Admin.Sitesettings.Discoursenarrativebotwelcomeposttype discoursenarrativebotwelcomeposttype = new Anonymous.Admin.Sitesettings.Discoursenarrativebotwelcomeposttype();
+        public class SiteSettings {
+            public final Anonymous.Admin.SiteSettings.Title title = new Anonymous.Admin.SiteSettings.Title();
+            public final Anonymous.Admin.SiteSettings.SiteDescription sitedescription = new Anonymous.Admin.SiteSettings.SiteDescription();
+            public final Anonymous.Admin.SiteSettings.ContactEmail contactemail = new Anonymous.Admin.SiteSettings.ContactEmail();
+            public final Anonymous.Admin.SiteSettings.ContactUrl contacturl = new Anonymous.Admin.SiteSettings.ContactUrl();
+            public final Anonymous.Admin.SiteSettings.NotificationEmail notificationemail = new Anonymous.Admin.SiteSettings.NotificationEmail();
+            public final Anonymous.Admin.SiteSettings.SiteContactUsername sitecontactusername = new Anonymous.Admin.SiteSettings.SiteContactUsername();
+            public final Anonymous.Admin.SiteSettings.LogoUrl logourl = new Anonymous.Admin.SiteSettings.LogoUrl();
+            public final Anonymous.Admin.SiteSettings.LogoSmallUrl logosmallurl = new Anonymous.Admin.SiteSettings.LogoSmallUrl();
+            public final Anonymous.Admin.SiteSettings.DigestLogoUrl digestlogourl = new Anonymous.Admin.SiteSettings.DigestLogoUrl();
+            public final Anonymous.Admin.SiteSettings.MobileLogoUrl mobilelogourl = new Anonymous.Admin.SiteSettings.MobileLogoUrl();
+            public final Anonymous.Admin.SiteSettings.FaviconUrl faviconurl = new Anonymous.Admin.SiteSettings.FaviconUrl();
+            public final Anonymous.Admin.SiteSettings.AppleTouchIconUrl appletouchiconurl = new Anonymous.Admin.SiteSettings.AppleTouchIconUrl();
+            public final Anonymous.Admin.SiteSettings.DefaultOpengraphImageUrl defaultopengraphimageurl = new Anonymous.Admin.SiteSettings.DefaultOpengraphImageUrl();
+            public final Anonymous.Admin.SiteSettings.TwitterSummaryLargeImageUrl twittersummarylargeimageurl = new Anonymous.Admin.SiteSettings.TwitterSummaryLargeImageUrl();
+            public final Anonymous.Admin.SiteSettings.ExcludeRelNofollowDomains excluderelnofollowdomains = new Anonymous.Admin.SiteSettings.ExcludeRelNofollowDomains();
+            public final Anonymous.Admin.SiteSettings.CompanyShortName companyshortname = new Anonymous.Admin.SiteSettings.CompanyShortName();
+            public final Anonymous.Admin.SiteSettings.CompanyFullName companyfullname = new Anonymous.Admin.SiteSettings.CompanyFullName();
+            public final Anonymous.Admin.SiteSettings.CompanyDomain companydomain = new Anonymous.Admin.SiteSettings.CompanyDomain();
+            public final Anonymous.Admin.SiteSettings.DefaultLocale defaultlocale = new Anonymous.Admin.SiteSettings.DefaultLocale();
+            public final Anonymous.Admin.SiteSettings.AllowUserLocale allowuserlocale = new Anonymous.Admin.SiteSettings.AllowUserLocale();
+            public final Anonymous.Admin.SiteSettings.SetLocaleFromAcceptLanguageHeader setlocalefromacceptlanguageheader = new Anonymous.Admin.SiteSettings.SetLocaleFromAcceptLanguageHeader();
+            public final Anonymous.Admin.SiteSettings.CategoriesTopics categoriestopics = new Anonymous.Admin.SiteSettings.CategoriesTopics();
+            public final Anonymous.Admin.SiteSettings.SuggestedTopics suggestedtopics = new Anonymous.Admin.SiteSettings.SuggestedTopics();
+            public final Anonymous.Admin.SiteSettings.LimitSuggestedToCategory limitsuggestedtocategory = new Anonymous.Admin.SiteSettings.LimitSuggestedToCategory();
+            public final Anonymous.Admin.SiteSettings.SuggestedTopicsMaxDaysOld suggestedtopicsmaxdaysold = new Anonymous.Admin.SiteSettings.SuggestedTopicsMaxDaysOld();
+            public final Anonymous.Admin.SiteSettings.TrackExternalRightClicks trackexternalrightclicks = new Anonymous.Admin.SiteSettings.TrackExternalRightClicks();
+            public final Anonymous.Admin.SiteSettings.GaUniversalTrackingCode gauniversaltrackingcode = new Anonymous.Admin.SiteSettings.GaUniversalTrackingCode();
+            public final Anonymous.Admin.SiteSettings.GaUniversalDomainName gauniversaldomainname = new Anonymous.Admin.SiteSettings.GaUniversalDomainName();
+            public final Anonymous.Admin.SiteSettings.GaTrackingCode gatrackingcode = new Anonymous.Admin.SiteSettings.GaTrackingCode();
+            public final Anonymous.Admin.SiteSettings.GaDomainName gadomainname = new Anonymous.Admin.SiteSettings.GaDomainName();
+            public final Anonymous.Admin.SiteSettings.GtmContainerId gtmcontainerid = new Anonymous.Admin.SiteSettings.GtmContainerId();
+            public final Anonymous.Admin.SiteSettings.TopMenu topmenu = new Anonymous.Admin.SiteSettings.TopMenu();
+            public final Anonymous.Admin.SiteSettings.PostMenu postmenu = new Anonymous.Admin.SiteSettings.PostMenu();
+            public final Anonymous.Admin.SiteSettings.PostMenuHiddenItems postmenuhiddenitems = new Anonymous.Admin.SiteSettings.PostMenuHiddenItems();
+            public final Anonymous.Admin.SiteSettings.DesktopCategoryPageStyle desktopcategorypagestyle = new Anonymous.Admin.SiteSettings.DesktopCategoryPageStyle();
+            public final Anonymous.Admin.SiteSettings.CategoryColors categorycolors = new Anonymous.Admin.SiteSettings.CategoryColors();
+            public final Anonymous.Admin.SiteSettings.CategoryStyle categorystyle = new Anonymous.Admin.SiteSettings.CategoryStyle();
+            public final Anonymous.Admin.SiteSettings.EnableMobileTheme enablemobiletheme = new Anonymous.Admin.SiteSettings.EnableMobileTheme();
+            public final Anonymous.Admin.SiteSettings.RelativeDateDuration relativedateduration = new Anonymous.Admin.SiteSettings.RelativeDateDuration();
+            public final Anonymous.Admin.SiteSettings.FixedCategoryPositions fixedcategorypositions = new Anonymous.Admin.SiteSettings.FixedCategoryPositions();
+            public final Anonymous.Admin.SiteSettings.FixedCategoryPositionsOnCreate fixedcategorypositionsoncreate = new Anonymous.Admin.SiteSettings.FixedCategoryPositionsOnCreate();
+            public final Anonymous.Admin.SiteSettings.ShowSubcategoryList showsubcategorylist = new Anonymous.Admin.SiteSettings.ShowSubcategoryList();
+            public final Anonymous.Admin.SiteSettings.EnableBadges enablebadges = new Anonymous.Admin.SiteSettings.EnableBadges();
+            public final Anonymous.Admin.SiteSettings.EnableWhispers enablewhispers = new Anonymous.Admin.SiteSettings.EnableWhispers();
+            public final Anonymous.Admin.SiteSettings.InviteOnly inviteonly = new Anonymous.Admin.SiteSettings.InviteOnly();
+            public final Anonymous.Admin.SiteSettings.LoginRequired loginrequired = new Anonymous.Admin.SiteSettings.LoginRequired();
+            public final Anonymous.Admin.SiteSettings.MustApproveUsers mustapproveusers = new Anonymous.Admin.SiteSettings.MustApproveUsers();
+            public final Anonymous.Admin.SiteSettings.EnableLocalLogins enablelocallogins = new Anonymous.Admin.SiteSettings.EnableLocalLogins();
+            public final Anonymous.Admin.SiteSettings.AllowNewRegistrations allownewregistrations = new Anonymous.Admin.SiteSettings.AllowNewRegistrations();
+            public final Anonymous.Admin.SiteSettings.EnableSignupCta enablesignupcta = new Anonymous.Admin.SiteSettings.EnableSignupCta();
+            public final Anonymous.Admin.SiteSettings.EnableGoogleOauth2Logins enablegoogleoauth2logins = new Anonymous.Admin.SiteSettings.EnableGoogleOauth2Logins();
+            public final Anonymous.Admin.SiteSettings.GoogleOath2ClientId googleoath2clientid = new Anonymous.Admin.SiteSettings.GoogleOath2ClientId();
+            public final Anonymous.Admin.SiteSettings.GoogleOath2ClientSecret googleoath2clientsecret = new Anonymous.Admin.SiteSettings.GoogleOath2ClientSecret();
+            public final Anonymous.Admin.SiteSettings.EnableYahooLogins enableyahoologins = new Anonymous.Admin.SiteSettings.EnableYahooLogins();
+            public final Anonymous.Admin.SiteSettings.EnableTwitterLogins enabletwitterlogins = new Anonymous.Admin.SiteSettings.EnableTwitterLogins();
+            public final Anonymous.Admin.SiteSettings.TwitterConsumerKey twitterconsumerkey = new Anonymous.Admin.SiteSettings.TwitterConsumerKey();
+            public final Anonymous.Admin.SiteSettings.TwitterConsumerSecret twitterconsumersecret = new Anonymous.Admin.SiteSettings.TwitterConsumerSecret();
+            public final Anonymous.Admin.SiteSettings.EnableInstagramLogins enableinstagramlogins = new Anonymous.Admin.SiteSettings.EnableInstagramLogins();
+            public final Anonymous.Admin.SiteSettings.InstagramConsumerKey instagramconsumerkey = new Anonymous.Admin.SiteSettings.InstagramConsumerKey();
+            public final Anonymous.Admin.SiteSettings.InstagramConsumerSecret instagramconsumersecret = new Anonymous.Admin.SiteSettings.InstagramConsumerSecret();
+            public final Anonymous.Admin.SiteSettings.EnableFacebookLogins enablefacebooklogins = new Anonymous.Admin.SiteSettings.EnableFacebookLogins();
+            public final Anonymous.Admin.SiteSettings.FacebookAppId facebookappid = new Anonymous.Admin.SiteSettings.FacebookAppId();
+            public final Anonymous.Admin.SiteSettings.FacebookAppSecret facebookappsecret = new Anonymous.Admin.SiteSettings.FacebookAppSecret();
+            public final Anonymous.Admin.SiteSettings.FacebookRequestExtraProfileDetails facebookrequestextraprofiledetails = new Anonymous.Admin.SiteSettings.FacebookRequestExtraProfileDetails();
+            public final Anonymous.Admin.SiteSettings.EnableGithubLogins enablegithublogins = new Anonymous.Admin.SiteSettings.EnableGithubLogins();
+            public final Anonymous.Admin.SiteSettings.GithubClientId githubclientid = new Anonymous.Admin.SiteSettings.GithubClientId();
+            public final Anonymous.Admin.SiteSettings.GithubClientSecret githubclientsecret = new Anonymous.Admin.SiteSettings.GithubClientSecret();
+            public final Anonymous.Admin.SiteSettings.EnableSso enablesso = new Anonymous.Admin.SiteSettings.EnableSso();
+            public final Anonymous.Admin.SiteSettings.SsoAllowsAllReturnPaths ssoallowsallreturnpaths = new Anonymous.Admin.SiteSettings.SsoAllowsAllReturnPaths();
+            public final Anonymous.Admin.SiteSettings.EnableSsoProvider enablessoprovider = new Anonymous.Admin.SiteSettings.EnableSsoProvider();
+            public final Anonymous.Admin.SiteSettings.VerboseSsoLogging verbosessologging = new Anonymous.Admin.SiteSettings.VerboseSsoLogging();
+            public final Anonymous.Admin.SiteSettings.SsoUrl ssourl = new Anonymous.Admin.SiteSettings.SsoUrl();
+            public final Anonymous.Admin.SiteSettings.SsoSecret ssosecret = new Anonymous.Admin.SiteSettings.SsoSecret();
+            public final Anonymous.Admin.SiteSettings.SsoOverridesBio ssooverridesbio = new Anonymous.Admin.SiteSettings.SsoOverridesBio();
+            public final Anonymous.Admin.SiteSettings.SsoOverridesEmail ssooverridesemail = new Anonymous.Admin.SiteSettings.SsoOverridesEmail();
+            public final Anonymous.Admin.SiteSettings.SsoOverridesUsername ssooverridesusername = new Anonymous.Admin.SiteSettings.SsoOverridesUsername();
+            public final Anonymous.Admin.SiteSettings.SsoOverridesName ssooverridesname = new Anonymous.Admin.SiteSettings.SsoOverridesName();
+            public final Anonymous.Admin.SiteSettings.SsoOverridesAvatar ssooverridesavatar = new Anonymous.Admin.SiteSettings.SsoOverridesAvatar();
+            public final Anonymous.Admin.SiteSettings.SsoNotApprovedUrl ssonotapprovedurl = new Anonymous.Admin.SiteSettings.SsoNotApprovedUrl();
+            public final Anonymous.Admin.SiteSettings.EmailDomainsBlacklist emaildomainsblacklist = new Anonymous.Admin.SiteSettings.EmailDomainsBlacklist();
+            public final Anonymous.Admin.SiteSettings.EmailDomainsWhitelist emaildomainswhitelist = new Anonymous.Admin.SiteSettings.EmailDomainsWhitelist();
+            public final Anonymous.Admin.SiteSettings.ForgotPasswordStrict forgotpasswordstrict = new Anonymous.Admin.SiteSettings.ForgotPasswordStrict();
+            public final Anonymous.Admin.SiteSettings.LogOutStrict logoutstrict = new Anonymous.Admin.SiteSettings.LogOutStrict();
+            public final Anonymous.Admin.SiteSettings.PendingUsersReminderDelay pendingusersreminderdelay = new Anonymous.Admin.SiteSettings.PendingUsersReminderDelay();
+            public final Anonymous.Admin.SiteSettings.MaximumSessionAge maximumsessionage = new Anonymous.Admin.SiteSettings.MaximumSessionAge();
+            public final Anonymous.Admin.SiteSettings.MinUsernameLength minusernamelength = new Anonymous.Admin.SiteSettings.MinUsernameLength();
+            public final Anonymous.Admin.SiteSettings.MaxUsernameLength maxusernamelength = new Anonymous.Admin.SiteSettings.MaxUsernameLength();
+            public final Anonymous.Admin.SiteSettings.ReservedUsernames reservedusernames = new Anonymous.Admin.SiteSettings.ReservedUsernames();
+            public final Anonymous.Admin.SiteSettings.MinPasswordLength minpasswordlength = new Anonymous.Admin.SiteSettings.MinPasswordLength();
+            public final Anonymous.Admin.SiteSettings.MinAdminPasswordLength minadminpasswordlength = new Anonymous.Admin.SiteSettings.MinAdminPasswordLength();
+            public final Anonymous.Admin.SiteSettings.BlockCommonPasswords blockcommonpasswords = new Anonymous.Admin.SiteSettings.BlockCommonPasswords();
+            public final Anonymous.Admin.SiteSettings.UsernameChangePeriod usernamechangeperiod = new Anonymous.Admin.SiteSettings.UsernameChangePeriod();
+            public final Anonymous.Admin.SiteSettings.EmailEditable emaileditable = new Anonymous.Admin.SiteSettings.EmailEditable();
+            public final Anonymous.Admin.SiteSettings.LogoutRedirect logoutredirect = new Anonymous.Admin.SiteSettings.LogoutRedirect();
+            public final Anonymous.Admin.SiteSettings.FullNameRequired fullnamerequired = new Anonymous.Admin.SiteSettings.FullNameRequired();
+            public final Anonymous.Admin.SiteSettings.EnableNames enablenames = new Anonymous.Admin.SiteSettings.EnableNames();
+            public final Anonymous.Admin.SiteSettings.InviteExpiryDays inviteexpirydays = new Anonymous.Admin.SiteSettings.InviteExpiryDays();
+            public final Anonymous.Admin.SiteSettings.InvitePassthroughHours invitepassthroughhours = new Anonymous.Admin.SiteSettings.InvitePassthroughHours();
+            public final Anonymous.Admin.SiteSettings.InvitesPerPage invitesperpage = new Anonymous.Admin.SiteSettings.InvitesPerPage();
+            public final Anonymous.Admin.SiteSettings.DeleteUserMaxPostAge deleteusermaxpostage = new Anonymous.Admin.SiteSettings.DeleteUserMaxPostAge();
+            public final Anonymous.Admin.SiteSettings.DeleteAllPostsMax deleteallpostsmax = new Anonymous.Admin.SiteSettings.DeleteAllPostsMax();
+            public final Anonymous.Admin.SiteSettings.RedirectUsersToTopPage redirectuserstotoppage = new Anonymous.Admin.SiteSettings.RedirectUsersToTopPage();
+            public final Anonymous.Admin.SiteSettings.ShowEmailOnProfile showemailonprofile = new Anonymous.Admin.SiteSettings.ShowEmailOnProfile();
+            public final Anonymous.Admin.SiteSettings.PrioritizeUsernameInUx prioritizeusernameinux = new Anonymous.Admin.SiteSettings.PrioritizeUsernameInUx();
+            public final Anonymous.Admin.SiteSettings.EmailTokenValidHours emailtokenvalidhours = new Anonymous.Admin.SiteSettings.EmailTokenValidHours();
+            public final Anonymous.Admin.SiteSettings.PurgeUnactivatedUsersGracePeriodDays purgeunactivatedusersgraceperioddays = new Anonymous.Admin.SiteSettings.PurgeUnactivatedUsersGracePeriodDays();
+            public final Anonymous.Admin.SiteSettings.PublicUserCustomFields publicusercustomfields = new Anonymous.Admin.SiteSettings.PublicUserCustomFields();
+            public final Anonymous.Admin.SiteSettings.StaffUsersCustomFields staffuserscustomfields = new Anonymous.Admin.SiteSettings.StaffUsersCustomFields();
+            public final Anonymous.Admin.SiteSettings.EnableUserDirectory enableuserdirectory = new Anonymous.Admin.SiteSettings.EnableUserDirectory();
+            public final Anonymous.Admin.SiteSettings.AllowAnonymousPosting allowanonymousposting = new Anonymous.Admin.SiteSettings.AllowAnonymousPosting();
+            public final Anonymous.Admin.SiteSettings.AnonymousPostingMinTrustLevel anonymouspostingmintrustlevel = new Anonymous.Admin.SiteSettings.AnonymousPostingMinTrustLevel();
+            public final Anonymous.Admin.SiteSettings.AnonymousAccountDurationMinutes anonymousaccountdurationminutes = new Anonymous.Admin.SiteSettings.AnonymousAccountDurationMinutes();
+            public final Anonymous.Admin.SiteSettings.HideUserProfilesFromPublic hideuserprofilesfrompublic = new Anonymous.Admin.SiteSettings.HideUserProfilesFromPublic();
+            public final Anonymous.Admin.SiteSettings.MinPostLength minpostlength = new Anonymous.Admin.SiteSettings.MinPostLength();
+            public final Anonymous.Admin.SiteSettings.MinFirstPostLength minfirstpostlength = new Anonymous.Admin.SiteSettings.MinFirstPostLength();
+            public final Anonymous.Admin.SiteSettings.MinPrivateMessagePostLength minprivatemessagepostlength = new Anonymous.Admin.SiteSettings.MinPrivateMessagePostLength();
+            public final Anonymous.Admin.SiteSettings.MaxPostLength maxpostlength = new Anonymous.Admin.SiteSettings.MaxPostLength();
+            public final Anonymous.Admin.SiteSettings.TopicFeaturedLinkEnabled topicfeaturedlinkenabled = new Anonymous.Admin.SiteSettings.TopicFeaturedLinkEnabled();
+            public final Anonymous.Admin.SiteSettings.BodyMinEntropy bodyminentropy = new Anonymous.Admin.SiteSettings.BodyMinEntropy();
+            public final Anonymous.Admin.SiteSettings.MinTopicTitleLength mintopictitlelength = new Anonymous.Admin.SiteSettings.MinTopicTitleLength();
+            public final Anonymous.Admin.SiteSettings.MaxTopicTitleLength maxtopictitlelength = new Anonymous.Admin.SiteSettings.MaxTopicTitleLength();
+            public final Anonymous.Admin.SiteSettings.TitleMinEntropy titleminentropy = new Anonymous.Admin.SiteSettings.TitleMinEntropy();
+            public final Anonymous.Admin.SiteSettings.AllowUppercasePosts allowuppercaseposts = new Anonymous.Admin.SiteSettings.AllowUppercasePosts();
+            public final Anonymous.Admin.SiteSettings.TitlePrettify titleprettify = new Anonymous.Admin.SiteSettings.TitlePrettify();
+            public final Anonymous.Admin.SiteSettings.TitleFancyEntities titlefancyentities = new Anonymous.Admin.SiteSettings.TitleFancyEntities();
+            public final Anonymous.Admin.SiteSettings.MinPrivateMessageTitleLength minprivatemessagetitlelength = new Anonymous.Admin.SiteSettings.MinPrivateMessageTitleLength();
+            public final Anonymous.Admin.SiteSettings.AllowUncategorizedTopics allowuncategorizedtopics = new Anonymous.Admin.SiteSettings.AllowUncategorizedTopics();
+            public final Anonymous.Admin.SiteSettings.AllowDuplicateTopicTitles allowduplicatetopictitles = new Anonymous.Admin.SiteSettings.AllowDuplicateTopicTitles();
+            public final Anonymous.Admin.SiteSettings.MinTitleSimilarLength mintitlesimilarlength = new Anonymous.Admin.SiteSettings.MinTitleSimilarLength();
+            public final Anonymous.Admin.SiteSettings.MinBodyTitleLength minbodytitlelength = new Anonymous.Admin.SiteSettings.MinBodyTitleLength();
+            public final Anonymous.Admin.SiteSettings.EnablePrivateMessages enableprivatemessages = new Anonymous.Admin.SiteSettings.EnablePrivateMessages();
+            public final Anonymous.Admin.SiteSettings.EditingGracePeriod editinggraceperiod = new Anonymous.Admin.SiteSettings.EditingGracePeriod();
+            public final Anonymous.Admin.SiteSettings.PostEditTimeLimit postedittimelimit = new Anonymous.Admin.SiteSettings.PostEditTimeLimit();
+            public final Anonymous.Admin.SiteSettings.EditHistoryVisibleToPublic edithistoryvisibletopublic = new Anonymous.Admin.SiteSettings.EditHistoryVisibleToPublic();
+            public final Anonymous.Admin.SiteSettings.DeleteRemovedPostsAfter deleteremovedpostsafter = new Anonymous.Admin.SiteSettings.DeleteRemovedPostsAfter();
+            public final Anonymous.Admin.SiteSettings.TraditionalMarkdownLinebreaks traditionalmarkdownlinebreaks = new Anonymous.Admin.SiteSettings.TraditionalMarkdownLinebreaks();
+            public final Anonymous.Admin.SiteSettings.AllowHtmlTables allowhtmltables = new Anonymous.Admin.SiteSettings.AllowHtmlTables();
+            public final Anonymous.Admin.SiteSettings.SuppressReplyDirectlyBelow suppressreplydirectlybelow = new Anonymous.Admin.SiteSettings.SuppressReplyDirectlyBelow();
+            public final Anonymous.Admin.SiteSettings.SuppressReplyDirectlyAbove suppressreplydirectlyabove = new Anonymous.Admin.SiteSettings.SuppressReplyDirectlyAbove();
+            public final Anonymous.Admin.SiteSettings.SuppressReplyWhenQuoting suppressreplywhenquoting = new Anonymous.Admin.SiteSettings.SuppressReplyWhenQuoting();
+            public final Anonymous.Admin.SiteSettings.MaxReplyHistory maxreplyhistory = new Anonymous.Admin.SiteSettings.MaxReplyHistory();
+            public final Anonymous.Admin.SiteSettings.PostUndoActionWindowMins postundoactionwindowmins = new Anonymous.Admin.SiteSettings.PostUndoActionWindowMins();
+            public final Anonymous.Admin.SiteSettings.MaxMentionsPerPost maxmentionsperpost = new Anonymous.Admin.SiteSettings.MaxMentionsPerPost();
+            public final Anonymous.Admin.SiteSettings.MaxUsersNotifiedPerGroupMention maxusersnotifiedpergroupmention = new Anonymous.Admin.SiteSettings.MaxUsersNotifiedPerGroupMention();
+            public final Anonymous.Admin.SiteSettings.NewuserMaxRepliesPerTopic newusermaxrepliespertopic = new Anonymous.Admin.SiteSettings.NewuserMaxRepliesPerTopic();
+            public final Anonymous.Admin.SiteSettings.NewuserMaxMentionsPerPost newusermaxmentionsperpost = new Anonymous.Admin.SiteSettings.NewuserMaxMentionsPerPost();
+            public final Anonymous.Admin.SiteSettings.TitleMaxWordLength titlemaxwordlength = new Anonymous.Admin.SiteSettings.TitleMaxWordLength();
+            public final Anonymous.Admin.SiteSettings.NewuserMaxLinks newusermaxlinks = new Anonymous.Admin.SiteSettings.NewuserMaxLinks();
+            public final Anonymous.Admin.SiteSettings.NewuserMaxImages newusermaximages = new Anonymous.Admin.SiteSettings.NewuserMaxImages();
+            public final Anonymous.Admin.SiteSettings.NewuserMaxAttachments newusermaxattachments = new Anonymous.Admin.SiteSettings.NewuserMaxAttachments();
+            public final Anonymous.Admin.SiteSettings.PostExcerptMaxlength postexcerptmaxlength = new Anonymous.Admin.SiteSettings.PostExcerptMaxlength();
+            public final Anonymous.Admin.SiteSettings.ShowPinnedExcerptMobile showpinnedexcerptmobile = new Anonymous.Admin.SiteSettings.ShowPinnedExcerptMobile();
+            public final Anonymous.Admin.SiteSettings.ShowPinnedExcerptDesktop showpinnedexcerptdesktop = new Anonymous.Admin.SiteSettings.ShowPinnedExcerptDesktop();
+            public final Anonymous.Admin.SiteSettings.DisplayNameOnPosts displaynameonposts = new Anonymous.Admin.SiteSettings.DisplayNameOnPosts();
+            public final Anonymous.Admin.SiteSettings.ShowTimeGapDays showtimegapdays = new Anonymous.Admin.SiteSettings.ShowTimeGapDays();
+            public final Anonymous.Admin.SiteSettings.ShortProgressTextThreshold shortprogresstextthreshold = new Anonymous.Admin.SiteSettings.ShortProgressTextThreshold();
+            public final Anonymous.Admin.SiteSettings.DefaultCodeLang defaultcodelang = new Anonymous.Admin.SiteSettings.DefaultCodeLang();
+            public final Anonymous.Admin.SiteSettings.WarnRevivingOldTopicAge warnrevivingoldtopicage = new Anonymous.Admin.SiteSettings.WarnRevivingOldTopicAge();
+            public final Anonymous.Admin.SiteSettings.AutohighlightAllCode autohighlightallcode = new Anonymous.Admin.SiteSettings.AutohighlightAllCode();
+            public final Anonymous.Admin.SiteSettings.HighlightedLanguages highlightedlanguages = new Anonymous.Admin.SiteSettings.HighlightedLanguages();
+            public final Anonymous.Admin.SiteSettings.DeleteOldHiddenPosts deleteoldhiddenposts = new Anonymous.Admin.SiteSettings.DeleteOldHiddenPosts();
+            public final Anonymous.Admin.SiteSettings.CensoredWords censoredwords = new Anonymous.Admin.SiteSettings.CensoredWords();
+            public final Anonymous.Admin.SiteSettings.CensoredPattern censoredpattern = new Anonymous.Admin.SiteSettings.CensoredPattern();
+            public final Anonymous.Admin.SiteSettings.EnableEmoji enableemoji = new Anonymous.Admin.SiteSettings.EnableEmoji();
+            public final Anonymous.Admin.SiteSettings.EmojiSet emojiset = new Anonymous.Admin.SiteSettings.EmojiSet();
+            public final Anonymous.Admin.SiteSettings.EnforceSquareEmoji enforcesquareemoji = new Anonymous.Admin.SiteSettings.EnforceSquareEmoji();
+            public final Anonymous.Admin.SiteSettings.ApprovePostCount approvepostcount = new Anonymous.Admin.SiteSettings.ApprovePostCount();
+            public final Anonymous.Admin.SiteSettings.ApproveUnlessTrustLevel approveunlesstrustlevel = new Anonymous.Admin.SiteSettings.ApproveUnlessTrustLevel();
+            public final Anonymous.Admin.SiteSettings.ApproveNewTopicsUnlessTrustLevel approvenewtopicsunlesstrustlevel = new Anonymous.Admin.SiteSettings.ApproveNewTopicsUnlessTrustLevel();
+            public final Anonymous.Admin.SiteSettings.NotifyAboutQueuedPostsAfter notifyaboutqueuedpostsafter = new Anonymous.Admin.SiteSettings.NotifyAboutQueuedPostsAfter();
+            public final Anonymous.Admin.SiteSettings.AutoCloseMessagesPostCount autoclosemessagespostcount = new Anonymous.Admin.SiteSettings.AutoCloseMessagesPostCount();
+            public final Anonymous.Admin.SiteSettings.AutoCloseTopicsPostCount autoclosetopicspostcount = new Anonymous.Admin.SiteSettings.AutoCloseTopicsPostCount();
+            public final Anonymous.Admin.SiteSettings.CodeFormattingStyle codeformattingstyle = new Anonymous.Admin.SiteSettings.CodeFormattingStyle();
+            public final Anonymous.Admin.SiteSettings.EmbedTruncate embedtruncate = new Anonymous.Admin.SiteSettings.EmbedTruncate();
+            public final Anonymous.Admin.SiteSettings.AllowedHrefSchemes allowedhrefschemes = new Anonymous.Admin.SiteSettings.AllowedHrefSchemes();
+            public final Anonymous.Admin.SiteSettings.EmailTimeWindowMins emailtimewindowmins = new Anonymous.Admin.SiteSettings.EmailTimeWindowMins();
+            public final Anonymous.Admin.SiteSettings.PrivateEmailTimeWindowSeconds privateemailtimewindowseconds = new Anonymous.Admin.SiteSettings.PrivateEmailTimeWindowSeconds();
+            public final Anonymous.Admin.SiteSettings.EmailPostsContext emailpostscontext = new Anonymous.Admin.SiteSettings.EmailPostsContext();
+            public final Anonymous.Admin.SiteSettings.DigestMinExcerptLength digestminexcerptlength = new Anonymous.Admin.SiteSettings.DigestMinExcerptLength();
+            public final Anonymous.Admin.SiteSettings.DigestTopics digesttopics = new Anonymous.Admin.SiteSettings.DigestTopics();
+            public final Anonymous.Admin.SiteSettings.DigestPosts digestposts = new Anonymous.Admin.SiteSettings.DigestPosts();
+            public final Anonymous.Admin.SiteSettings.DigestOtherTopics digestothertopics = new Anonymous.Admin.SiteSettings.DigestOtherTopics();
+            public final Anonymous.Admin.SiteSettings.DeleteDigestEmailAfterDays deletedigestemailafterdays = new Anonymous.Admin.SiteSettings.DeleteDigestEmailAfterDays();
+            public final Anonymous.Admin.SiteSettings.DigestSuppressCategories digestsuppresscategories = new Anonymous.Admin.SiteSettings.DigestSuppressCategories();
+            public final Anonymous.Admin.SiteSettings.DisableDigestEmails disabledigestemails = new Anonymous.Admin.SiteSettings.DisableDigestEmails();
+            public final Anonymous.Admin.SiteSettings.EmailAccentBgColor emailaccentbgcolor = new Anonymous.Admin.SiteSettings.EmailAccentBgColor();
+            public final Anonymous.Admin.SiteSettings.EmailAccentFgColor emailaccentfgcolor = new Anonymous.Admin.SiteSettings.EmailAccentFgColor();
+            public final Anonymous.Admin.SiteSettings.EmailLinkColor emaillinkcolor = new Anonymous.Admin.SiteSettings.EmailLinkColor();
+            public final Anonymous.Admin.SiteSettings.ShowTopicFeaturedLinkInDigest showtopicfeaturedlinkindigest = new Anonymous.Admin.SiteSettings.ShowTopicFeaturedLinkInDigest();
+            public final Anonymous.Admin.SiteSettings.EmailCustomHeaders emailcustomheaders = new Anonymous.Admin.SiteSettings.EmailCustomHeaders();
+            public final Anonymous.Admin.SiteSettings.EmailSubject emailsubject = new Anonymous.Admin.SiteSettings.EmailSubject();
+            public final Anonymous.Admin.SiteSettings.ReplyByEmailEnabled replybyemailenabled = new Anonymous.Admin.SiteSettings.ReplyByEmailEnabled();
+            public final Anonymous.Admin.SiteSettings.ReplyByEmailAddress replybyemailaddress = new Anonymous.Admin.SiteSettings.ReplyByEmailAddress();
+            public final Anonymous.Admin.SiteSettings.AlternativeReplyByEmailAddresses alternativereplybyemailaddresses = new Anonymous.Admin.SiteSettings.AlternativeReplyByEmailAddresses();
+            public final Anonymous.Admin.SiteSettings.ManualPollingEnabled manualpollingenabled = new Anonymous.Admin.SiteSettings.ManualPollingEnabled();
+            public final Anonymous.Admin.SiteSettings.Pop3PollingEnabled pop3pollingenabled = new Anonymous.Admin.SiteSettings.Pop3PollingEnabled();
+            public final Anonymous.Admin.SiteSettings.Pop3PollingSsl pop3pollingssl = new Anonymous.Admin.SiteSettings.Pop3PollingSsl();
+            public final Anonymous.Admin.SiteSettings.Pop3PollingOpensslVerify pop3pollingopensslverify = new Anonymous.Admin.SiteSettings.Pop3PollingOpensslVerify();
+            public final Anonymous.Admin.SiteSettings.Pop3PollingPeriodMins pop3pollingperiodmins = new Anonymous.Admin.SiteSettings.Pop3PollingPeriodMins();
+            public final Anonymous.Admin.SiteSettings.Pop3PollingHost pop3pollinghost = new Anonymous.Admin.SiteSettings.Pop3PollingHost();
+            public final Anonymous.Admin.SiteSettings.Pop3PollingPort pop3pollingport = new Anonymous.Admin.SiteSettings.Pop3PollingPort();
+            public final Anonymous.Admin.SiteSettings.Pop3PollingUsername pop3pollingusername = new Anonymous.Admin.SiteSettings.Pop3PollingUsername();
+            public final Anonymous.Admin.SiteSettings.Pop3PollingPassword pop3pollingpassword = new Anonymous.Admin.SiteSettings.Pop3PollingPassword();
+            public final Anonymous.Admin.SiteSettings.LogMailProcessingFailures logmailprocessingfailures = new Anonymous.Admin.SiteSettings.LogMailProcessingFailures();
+            public final Anonymous.Admin.SiteSettings.IncomingEmailPreferHtml incomingemailpreferhtml = new Anonymous.Admin.SiteSettings.IncomingEmailPreferHtml();
+            public final Anonymous.Admin.SiteSettings.EmailIn emailin = new Anonymous.Admin.SiteSettings.EmailIn();
+            public final Anonymous.Admin.SiteSettings.EmailInMinTrust emailinmintrust = new Anonymous.Admin.SiteSettings.EmailInMinTrust();
+            public final Anonymous.Admin.SiteSettings.EmailPrefix emailprefix = new Anonymous.Admin.SiteSettings.EmailPrefix();
+            public final Anonymous.Admin.SiteSettings.EmailSiteTitle emailsitetitle = new Anonymous.Admin.SiteSettings.EmailSiteTitle();
+            public final Anonymous.Admin.SiteSettings.DisableEmails disableemails = new Anonymous.Admin.SiteSettings.DisableEmails();
+            public final Anonymous.Admin.SiteSettings.StripImagesFromShortEmails stripimagesfromshortemails = new Anonymous.Admin.SiteSettings.StripImagesFromShortEmails();
+            public final Anonymous.Admin.SiteSettings.ShortEmailLength shortemaillength = new Anonymous.Admin.SiteSettings.ShortEmailLength();
+            public final Anonymous.Admin.SiteSettings.DisplayNameOnEmailFrom displaynameonemailfrom = new Anonymous.Admin.SiteSettings.DisplayNameOnEmailFrom();
+            public final Anonymous.Admin.SiteSettings.UnsubscribeViaEmail unsubscribeviaemail = new Anonymous.Admin.SiteSettings.UnsubscribeViaEmail();
+            public final Anonymous.Admin.SiteSettings.UnsubscribeViaEmailFooter unsubscribeviaemailfooter = new Anonymous.Admin.SiteSettings.UnsubscribeViaEmailFooter();
+            public final Anonymous.Admin.SiteSettings.DeleteEmailLogsAfterDays deleteemaillogsafterdays = new Anonymous.Admin.SiteSettings.DeleteEmailLogsAfterDays();
+            public final Anonymous.Admin.SiteSettings.MaxEmailsPerDayPerUser maxemailsperdayperuser = new Anonymous.Admin.SiteSettings.MaxEmailsPerDayPerUser();
+            public final Anonymous.Admin.SiteSettings.EnableStagedUsers enablestagedusers = new Anonymous.Admin.SiteSettings.EnableStagedUsers();
+            public final Anonymous.Admin.SiteSettings.MaximumStagedUsersPerEmail maximumstagedusersperemail = new Anonymous.Admin.SiteSettings.MaximumStagedUsersPerEmail();
+            public final Anonymous.Admin.SiteSettings.AutoGeneratedWhitelist autogeneratedwhitelist = new Anonymous.Admin.SiteSettings.AutoGeneratedWhitelist();
+            public final Anonymous.Admin.SiteSettings.BlockAutoGeneratedEmails blockautogeneratedemails = new Anonymous.Admin.SiteSettings.BlockAutoGeneratedEmails();
+            public final Anonymous.Admin.SiteSettings.IgnoreByTitle ignorebytitle = new Anonymous.Admin.SiteSettings.IgnoreByTitle();
+            public final Anonymous.Admin.SiteSettings.MailgunApiKey mailgunapikey = new Anonymous.Admin.SiteSettings.MailgunApiKey();
+            public final Anonymous.Admin.SiteSettings.BounceScoreThreshold bouncescorethreshold = new Anonymous.Admin.SiteSettings.BounceScoreThreshold();
+            public final Anonymous.Admin.SiteSettings.BounceScoreThresholdDeactivate bouncescorethresholddeactivate = new Anonymous.Admin.SiteSettings.BounceScoreThresholdDeactivate();
+            public final Anonymous.Admin.SiteSettings.SoftBounceScore softbouncescore = new Anonymous.Admin.SiteSettings.SoftBounceScore();
+            public final Anonymous.Admin.SiteSettings.HardBounceScore hardbouncescore = new Anonymous.Admin.SiteSettings.HardBounceScore();
+            public final Anonymous.Admin.SiteSettings.ResetBounceScoreAfterDays resetbouncescoreafterdays = new Anonymous.Admin.SiteSettings.ResetBounceScoreAfterDays();
+            public final Anonymous.Admin.SiteSettings.AttachmentContentTypeBlacklist attachmentcontenttypeblacklist = new Anonymous.Admin.SiteSettings.AttachmentContentTypeBlacklist();
+            public final Anonymous.Admin.SiteSettings.AttachmentFilenameBlacklist attachmentfilenameblacklist = new Anonymous.Admin.SiteSettings.AttachmentFilenameBlacklist();
+            public final Anonymous.Admin.SiteSettings.EnableForwardedEmails enableforwardedemails = new Anonymous.Admin.SiteSettings.EnableForwardedEmails();
+            public final Anonymous.Admin.SiteSettings.AlwaysShowTrimmedContent alwaysshowtrimmedcontent = new Anonymous.Admin.SiteSettings.AlwaysShowTrimmedContent();
+            public final Anonymous.Admin.SiteSettings.MaxImageSizeKb maximagesizekb = new Anonymous.Admin.SiteSettings.MaxImageSizeKb();
+            public final Anonymous.Admin.SiteSettings.MaxAttachmentSizeKb maxattachmentsizekb = new Anonymous.Admin.SiteSettings.MaxAttachmentSizeKb();
+            public final Anonymous.Admin.SiteSettings.MaxImageMegapixels maximagemegapixels = new Anonymous.Admin.SiteSettings.MaxImageMegapixels();
+            public final Anonymous.Admin.SiteSettings.AuthorizedExtensions authorizedextensions = new Anonymous.Admin.SiteSettings.AuthorizedExtensions();
+            public final Anonymous.Admin.SiteSettings.CrawlImages crawlimages = new Anonymous.Admin.SiteSettings.CrawlImages();
+            public final Anonymous.Admin.SiteSettings.MaxImageWidth maximagewidth = new Anonymous.Admin.SiteSettings.MaxImageWidth();
+            public final Anonymous.Admin.SiteSettings.MaxImageHeight maximageheight = new Anonymous.Admin.SiteSettings.MaxImageHeight();
+            public final Anonymous.Admin.SiteSettings.DownloadRemoteImagesToLocal downloadremoteimagestolocal = new Anonymous.Admin.SiteSettings.DownloadRemoteImagesToLocal();
+            public final Anonymous.Admin.SiteSettings.DownloadRemoteImagesThreshold downloadremoteimagesthreshold = new Anonymous.Admin.SiteSettings.DownloadRemoteImagesThreshold();
+            public final Anonymous.Admin.SiteSettings.DownloadRemoteImagesMaxDaysOld downloadremoteimagesmaxdaysold = new Anonymous.Admin.SiteSettings.DownloadRemoteImagesMaxDaysOld();
+            public final Anonymous.Admin.SiteSettings.DisabledImageDownloadDomains disabledimagedownloaddomains = new Anonymous.Admin.SiteSettings.DisabledImageDownloadDomains();
+            public final Anonymous.Admin.SiteSettings.CreateThumbnails createthumbnails = new Anonymous.Admin.SiteSettings.CreateThumbnails();
+            public final Anonymous.Admin.SiteSettings.CleanUpUploads cleanupuploads = new Anonymous.Admin.SiteSettings.CleanUpUploads();
+            public final Anonymous.Admin.SiteSettings.CleanOrphanUploadsGracePeriodHours cleanorphanuploadsgraceperiodhours = new Anonymous.Admin.SiteSettings.CleanOrphanUploadsGracePeriodHours();
+            public final Anonymous.Admin.SiteSettings.PurgeDeletedUploadsGracePeriodDays purgedeleteduploadsgraceperioddays = new Anonymous.Admin.SiteSettings.PurgeDeletedUploadsGracePeriodDays();
+            public final Anonymous.Admin.SiteSettings.PreventAnonsFromDownloadingFiles preventanonsfromdownloadingfiles = new Anonymous.Admin.SiteSettings.PreventAnonsFromDownloadingFiles();
+            public final Anonymous.Admin.SiteSettings.EnableS3Uploads enables3uploads = new Anonymous.Admin.SiteSettings.EnableS3Uploads();
+            public final Anonymous.Admin.SiteSettings.S3UseIamProfile s3useiamprofile = new Anonymous.Admin.SiteSettings.S3UseIamProfile();
+            public final Anonymous.Admin.SiteSettings.S3AccessKeyId s3accesskeyid = new Anonymous.Admin.SiteSettings.S3AccessKeyId();
+            public final Anonymous.Admin.SiteSettings.S3SecretAccessKey s3secretaccesskey = new Anonymous.Admin.SiteSettings.S3SecretAccessKey();
+            public final Anonymous.Admin.SiteSettings.S3Region s3region = new Anonymous.Admin.SiteSettings.S3Region();
+            public final Anonymous.Admin.SiteSettings.S3UploadBucket s3uploadbucket = new Anonymous.Admin.SiteSettings.S3UploadBucket();
+            public final Anonymous.Admin.SiteSettings.S3CdnUrl s3cdnurl = new Anonymous.Admin.SiteSettings.S3CdnUrl();
+            public final Anonymous.Admin.SiteSettings.AllowProfileBackgrounds allowprofilebackgrounds = new Anonymous.Admin.SiteSettings.AllowProfileBackgrounds();
+            public final Anonymous.Admin.SiteSettings.AutomaticallyDownloadGravatars automaticallydownloadgravatars = new Anonymous.Admin.SiteSettings.AutomaticallyDownloadGravatars();
+            public final Anonymous.Admin.SiteSettings.AllowUploadedAvatars allowuploadedavatars = new Anonymous.Admin.SiteSettings.AllowUploadedAvatars();
+            public final Anonymous.Admin.SiteSettings.AllowAnimatedAvatars allowanimatedavatars = new Anonymous.Admin.SiteSettings.AllowAnimatedAvatars();
+            public final Anonymous.Admin.SiteSettings.AllowAnimatedThumbnails allowanimatedthumbnails = new Anonymous.Admin.SiteSettings.AllowAnimatedThumbnails();
+            public final Anonymous.Admin.SiteSettings.DefaultAvatars defaultavatars = new Anonymous.Admin.SiteSettings.DefaultAvatars();
+            public final Anonymous.Admin.SiteSettings.AvatarSizes avatarsizes = new Anonymous.Admin.SiteSettings.AvatarSizes();
+            public final Anonymous.Admin.SiteSettings.ExternalSystemAvatarsEnabled externalsystemavatarsenabled = new Anonymous.Admin.SiteSettings.ExternalSystemAvatarsEnabled();
+            public final Anonymous.Admin.SiteSettings.ExternalSystemAvatarsUrl externalsystemavatarsurl = new Anonymous.Admin.SiteSettings.ExternalSystemAvatarsUrl();
+            public final Anonymous.Admin.SiteSettings.AllowAllAttachmentsForGroupMessages allowallattachmentsforgroupmessages = new Anonymous.Admin.SiteSettings.AllowAllAttachmentsForGroupMessages();
+            public final Anonymous.Admin.SiteSettings.ConvertPastedImagesToHqJpg convertpastedimagestohqjpg = new Anonymous.Admin.SiteSettings.ConvertPastedImagesToHqJpg();
+            public final Anonymous.Admin.SiteSettings.ConvertPastedImagesQuality convertpastedimagesquality = new Anonymous.Admin.SiteSettings.ConvertPastedImagesQuality();
+            public final Anonymous.Admin.SiteSettings.DefaultTrustLevel defaulttrustlevel = new Anonymous.Admin.SiteSettings.DefaultTrustLevel();
+            public final Anonymous.Admin.SiteSettings.DefaultInviteeTrustLevel defaultinviteetrustlevel = new Anonymous.Admin.SiteSettings.DefaultInviteeTrustLevel();
+            public final Anonymous.Admin.SiteSettings.MinTrustToCreateTopic mintrusttocreatetopic = new Anonymous.Admin.SiteSettings.MinTrustToCreateTopic();
+            public final Anonymous.Admin.SiteSettings.MinTrustToEditWikiPost mintrusttoeditwikipost = new Anonymous.Admin.SiteSettings.MinTrustToEditWikiPost();
+            public final Anonymous.Admin.SiteSettings.MinTrustToEditPost mintrusttoeditpost = new Anonymous.Admin.SiteSettings.MinTrustToEditPost();
+            public final Anonymous.Admin.SiteSettings.MinTrustToAllowSelfWiki mintrusttoallowselfwiki = new Anonymous.Admin.SiteSettings.MinTrustToAllowSelfWiki();
+            public final Anonymous.Admin.SiteSettings.MinTrustToSendMessages mintrusttosendmessages = new Anonymous.Admin.SiteSettings.MinTrustToSendMessages();
+            public final Anonymous.Admin.SiteSettings.Tl1RequiresTopicsEntered tl1requirestopicsentered = new Anonymous.Admin.SiteSettings.Tl1RequiresTopicsEntered();
+            public final Anonymous.Admin.SiteSettings.Tl1RequiresReadPosts tl1requiresreadposts = new Anonymous.Admin.SiteSettings.Tl1RequiresReadPosts();
+            public final Anonymous.Admin.SiteSettings.Tl1RequiresTimeSpentMins tl1requirestimespentmins = new Anonymous.Admin.SiteSettings.Tl1RequiresTimeSpentMins();
+            public final Anonymous.Admin.SiteSettings.Tl2RequiresTopicsEntered tl2requirestopicsentered = new Anonymous.Admin.SiteSettings.Tl2RequiresTopicsEntered();
+            public final Anonymous.Admin.SiteSettings.Tl2RequiresReadPosts tl2requiresreadposts = new Anonymous.Admin.SiteSettings.Tl2RequiresReadPosts();
+            public final Anonymous.Admin.SiteSettings.Tl2RequiresTimeSpentMins tl2requirestimespentmins = new Anonymous.Admin.SiteSettings.Tl2RequiresTimeSpentMins();
+            public final Anonymous.Admin.SiteSettings.Tl2RequiresDaysVisited tl2requiresdaysvisited = new Anonymous.Admin.SiteSettings.Tl2RequiresDaysVisited();
+            public final Anonymous.Admin.SiteSettings.Tl2RequiresLikesReceived tl2requireslikesreceived = new Anonymous.Admin.SiteSettings.Tl2RequiresLikesReceived();
+            public final Anonymous.Admin.SiteSettings.Tl2RequiresLikesGiven tl2requireslikesgiven = new Anonymous.Admin.SiteSettings.Tl2RequiresLikesGiven();
+            public final Anonymous.Admin.SiteSettings.Tl2RequiresTopicReplyCount tl2requirestopicreplycount = new Anonymous.Admin.SiteSettings.Tl2RequiresTopicReplyCount();
+            public final Anonymous.Admin.SiteSettings.Tl3TimePeriod tl3timeperiod = new Anonymous.Admin.SiteSettings.Tl3TimePeriod();
+            public final Anonymous.Admin.SiteSettings.Tl3RequiresDaysVisited tl3requiresdaysvisited = new Anonymous.Admin.SiteSettings.Tl3RequiresDaysVisited();
+            public final Anonymous.Admin.SiteSettings.Tl3RequiresTopicsRepliedTo tl3requirestopicsrepliedto = new Anonymous.Admin.SiteSettings.Tl3RequiresTopicsRepliedTo();
+            public final Anonymous.Admin.SiteSettings.Tl3RequiresTopicsViewed tl3requirestopicsviewed = new Anonymous.Admin.SiteSettings.Tl3RequiresTopicsViewed();
+            public final Anonymous.Admin.SiteSettings.Tl3RequiresTopicsViewedCap tl3requirestopicsviewedcap = new Anonymous.Admin.SiteSettings.Tl3RequiresTopicsViewedCap();
+            public final Anonymous.Admin.SiteSettings.Tl3RequiresPostsRead tl3requirespostsread = new Anonymous.Admin.SiteSettings.Tl3RequiresPostsRead();
+            public final Anonymous.Admin.SiteSettings.Tl3RequiresPostsReadCap tl3requirespostsreadcap = new Anonymous.Admin.SiteSettings.Tl3RequiresPostsReadCap();
+            public final Anonymous.Admin.SiteSettings.Tl3RequiresTopicsViewedAllTime tl3requirestopicsviewedalltime = new Anonymous.Admin.SiteSettings.Tl3RequiresTopicsViewedAllTime();
+            public final Anonymous.Admin.SiteSettings.Tl3RequiresPostsReadAllTime tl3requirespostsreadalltime = new Anonymous.Admin.SiteSettings.Tl3RequiresPostsReadAllTime();
+            public final Anonymous.Admin.SiteSettings.Tl3RequiresMaxFlagged tl3requiresmaxflagged = new Anonymous.Admin.SiteSettings.Tl3RequiresMaxFlagged();
+            public final Anonymous.Admin.SiteSettings.Tl3PromotionMinDuration tl3promotionminduration = new Anonymous.Admin.SiteSettings.Tl3PromotionMinDuration();
+            public final Anonymous.Admin.SiteSettings.Tl3RequiresLikesGiven tl3requireslikesgiven = new Anonymous.Admin.SiteSettings.Tl3RequiresLikesGiven();
+            public final Anonymous.Admin.SiteSettings.Tl3RequiresLikesReceived tl3requireslikesreceived = new Anonymous.Admin.SiteSettings.Tl3RequiresLikesReceived();
+            public final Anonymous.Admin.SiteSettings.Tl3LinksNoFollow tl3linksnofollow = new Anonymous.Admin.SiteSettings.Tl3LinksNoFollow();
+            public final Anonymous.Admin.SiteSettings.ForceHttps forcehttps = new Anonymous.Admin.SiteSettings.ForceHttps();
+            public final Anonymous.Admin.SiteSettings.EnableEscapedFragments enableescapedfragments = new Anonymous.Admin.SiteSettings.EnableEscapedFragments();
+            public final Anonymous.Admin.SiteSettings.AllowIndexInRobotsTxt allowindexinrobotstxt = new Anonymous.Admin.SiteSettings.AllowIndexInRobotsTxt();
+            public final Anonymous.Admin.SiteSettings.EnableNoscriptSupport enablenoscriptsupport = new Anonymous.Admin.SiteSettings.EnableNoscriptSupport();
+            public final Anonymous.Admin.SiteSettings.AllowModeratorsToCreateCategories allowmoderatorstocreatecategories = new Anonymous.Admin.SiteSettings.AllowModeratorsToCreateCategories();
+            public final Anonymous.Admin.SiteSettings.CorsOrigins corsorigins = new Anonymous.Admin.SiteSettings.CorsOrigins();
+            public final Anonymous.Admin.SiteSettings.UseAdminIpWhitelist useadminipwhitelist = new Anonymous.Admin.SiteSettings.UseAdminIpWhitelist();
+            public final Anonymous.Admin.SiteSettings.EnableFlashVideoOnebox enableflashvideoonebox = new Anonymous.Admin.SiteSettings.EnableFlashVideoOnebox();
+            public final Anonymous.Admin.SiteSettings.PostOneboxMaxlength postoneboxmaxlength = new Anonymous.Admin.SiteSettings.PostOneboxMaxlength();
+            public final Anonymous.Admin.SiteSettings.OneboxDomainsBlacklist oneboxdomainsblacklist = new Anonymous.Admin.SiteSettings.OneboxDomainsBlacklist();
+            public final Anonymous.Admin.SiteSettings.MaxOneboxesPerPost maxoneboxesperpost = new Anonymous.Admin.SiteSettings.MaxOneboxesPerPost();
+            public final Anonymous.Admin.SiteSettings.AddRelNofollowToUserContent addrelnofollowtousercontent = new Anonymous.Admin.SiteSettings.AddRelNofollowToUserContent();
+            public final Anonymous.Admin.SiteSettings.FlagsRequiredToHidePost flagsrequiredtohidepost = new Anonymous.Admin.SiteSettings.FlagsRequiredToHidePost();
+            public final Anonymous.Admin.SiteSettings.CooldownMinutesAfterHidingPosts cooldownminutesafterhidingposts = new Anonymous.Admin.SiteSettings.CooldownMinutesAfterHidingPosts();
+            public final Anonymous.Admin.SiteSettings.NumSpamFlagsToBlockNewUser numspamflagstoblocknewuser = new Anonymous.Admin.SiteSettings.NumSpamFlagsToBlockNewUser();
+            public final Anonymous.Admin.SiteSettings.NumUsersToBlockNewUser numuserstoblocknewuser = new Anonymous.Admin.SiteSettings.NumUsersToBlockNewUser();
+            public final Anonymous.Admin.SiteSettings.NumTl3FlagsToBlockNewUser numtl3flagstoblocknewuser = new Anonymous.Admin.SiteSettings.NumTl3FlagsToBlockNewUser();
+            public final Anonymous.Admin.SiteSettings.NumTl3UsersToBlockNewUser numtl3userstoblocknewuser = new Anonymous.Admin.SiteSettings.NumTl3UsersToBlockNewUser();
+            public final Anonymous.Admin.SiteSettings.NotifyModsWhenUserBlocked notifymodswhenuserblocked = new Anonymous.Admin.SiteSettings.NotifyModsWhenUserBlocked();
+            public final Anonymous.Admin.SiteSettings.FlagSockpuppets flagsockpuppets = new Anonymous.Admin.SiteSettings.FlagSockpuppets();
+            public final Anonymous.Admin.SiteSettings.NewuserSpamHostThreshold newuserspamhostthreshold = new Anonymous.Admin.SiteSettings.NewuserSpamHostThreshold();
+            public final Anonymous.Admin.SiteSettings.WhiteListedSpamHostDomains whitelistedspamhostdomains = new Anonymous.Admin.SiteSettings.WhiteListedSpamHostDomains();
+            public final Anonymous.Admin.SiteSettings.LevenshteinDistanceSpammerEmails levenshteindistancespammeremails = new Anonymous.Admin.SiteSettings.LevenshteinDistanceSpammerEmails();
+            public final Anonymous.Admin.SiteSettings.MaxNewAccountsPerRegistrationIp maxnewaccountsperregistrationip = new Anonymous.Admin.SiteSettings.MaxNewAccountsPerRegistrationIp();
+            public final Anonymous.Admin.SiteSettings.MinBanEntriesForRollUp minbanentriesforrollup = new Anonymous.Admin.SiteSettings.MinBanEntriesForRollUp();
+            public final Anonymous.Admin.SiteSettings.MaxAgeUnmatchedEmails maxageunmatchedemails = new Anonymous.Admin.SiteSettings.MaxAgeUnmatchedEmails();
+            public final Anonymous.Admin.SiteSettings.MaxAgeUnmatchedIps maxageunmatchedips = new Anonymous.Admin.SiteSettings.MaxAgeUnmatchedIps();
+            public final Anonymous.Admin.SiteSettings.NumFlaggersToCloseTopic numflaggerstoclosetopic = new Anonymous.Admin.SiteSettings.NumFlaggersToCloseTopic();
+            public final Anonymous.Admin.SiteSettings.NumFlagsToCloseTopic numflagstoclosetopic = new Anonymous.Admin.SiteSettings.NumFlagsToCloseTopic();
+            public final Anonymous.Admin.SiteSettings.AutoRespondToFlagActions autorespondtoflagactions = new Anonymous.Admin.SiteSettings.AutoRespondToFlagActions();
+            public final Anonymous.Admin.SiteSettings.MinFirstPostTypingTime minfirstposttypingtime = new Anonymous.Admin.SiteSettings.MinFirstPostTypingTime();
+            public final Anonymous.Admin.SiteSettings.AutoBlockFastTypersOnFirstPost autoblockfasttypersonfirstpost = new Anonymous.Admin.SiteSettings.AutoBlockFastTypersOnFirstPost();
+            public final Anonymous.Admin.SiteSettings.AutoBlockFastTypersMaxTrustLevel autoblockfasttypersmaxtrustlevel = new Anonymous.Admin.SiteSettings.AutoBlockFastTypersMaxTrustLevel();
+            public final Anonymous.Admin.SiteSettings.AutoBlockFirstPostRegex autoblockfirstpostregex = new Anonymous.Admin.SiteSettings.AutoBlockFirstPostRegex();
+            public final Anonymous.Admin.SiteSettings.UniquePostsMin uniquepostsmin = new Anonymous.Admin.SiteSettings.UniquePostsMin();
+            public final Anonymous.Admin.SiteSettings.RateLimitCreateTopic ratelimitcreatetopic = new Anonymous.Admin.SiteSettings.RateLimitCreateTopic();
+            public final Anonymous.Admin.SiteSettings.RateLimitCreatePost ratelimitcreatepost = new Anonymous.Admin.SiteSettings.RateLimitCreatePost();
+            public final Anonymous.Admin.SiteSettings.RateLimitNewUserCreateTopic ratelimitnewusercreatetopic = new Anonymous.Admin.SiteSettings.RateLimitNewUserCreateTopic();
+            public final Anonymous.Admin.SiteSettings.RateLimitNewUserCreatePost ratelimitnewusercreatepost = new Anonymous.Admin.SiteSettings.RateLimitNewUserCreatePost();
+            public final Anonymous.Admin.SiteSettings.MaxTopicsPerDay maxtopicsperday = new Anonymous.Admin.SiteSettings.MaxTopicsPerDay();
+            public final Anonymous.Admin.SiteSettings.MaxPrivateMessagesPerDay maxprivatemessagesperday = new Anonymous.Admin.SiteSettings.MaxPrivateMessagesPerDay();
+            public final Anonymous.Admin.SiteSettings.MaxLikesPerDay maxlikesperday = new Anonymous.Admin.SiteSettings.MaxLikesPerDay();
+            public final Anonymous.Admin.SiteSettings.MaxBookmarksPerDay maxbookmarksperday = new Anonymous.Admin.SiteSettings.MaxBookmarksPerDay();
+            public final Anonymous.Admin.SiteSettings.MaxFlagsPerDay maxflagsperday = new Anonymous.Admin.SiteSettings.MaxFlagsPerDay();
+            public final Anonymous.Admin.SiteSettings.MaxEditsPerDay maxeditsperday = new Anonymous.Admin.SiteSettings.MaxEditsPerDay();
+            public final Anonymous.Admin.SiteSettings.MaxInvitesPerDay maxinvitesperday = new Anonymous.Admin.SiteSettings.MaxInvitesPerDay();
+            public final Anonymous.Admin.SiteSettings.MaxTopicInvitationsPerDay maxtopicinvitationsperday = new Anonymous.Admin.SiteSettings.MaxTopicInvitationsPerDay();
+            public final Anonymous.Admin.SiteSettings.MaxTopicsInFirstDay maxtopicsinfirstday = new Anonymous.Admin.SiteSettings.MaxTopicsInFirstDay();
+            public final Anonymous.Admin.SiteSettings.MaxRepliesInFirstDay maxrepliesinfirstday = new Anonymous.Admin.SiteSettings.MaxRepliesInFirstDay();
+            public final Anonymous.Admin.SiteSettings.Tl2AdditionalLikesPerDayMultiplier tl2additionallikesperdaymultiplier = new Anonymous.Admin.SiteSettings.Tl2AdditionalLikesPerDayMultiplier();
+            public final Anonymous.Admin.SiteSettings.Tl3AdditionalLikesPerDayMultiplier tl3additionallikesperdaymultiplier = new Anonymous.Admin.SiteSettings.Tl3AdditionalLikesPerDayMultiplier();
+            public final Anonymous.Admin.SiteSettings.Tl4AdditionalLikesPerDayMultiplier tl4additionallikesperdaymultiplier = new Anonymous.Admin.SiteSettings.Tl4AdditionalLikesPerDayMultiplier();
+            public final Anonymous.Admin.SiteSettings.AlertAdminsIfErrorsPerMinute alertadminsiferrorsperminute = new Anonymous.Admin.SiteSettings.AlertAdminsIfErrorsPerMinute();
+            public final Anonymous.Admin.SiteSettings.AlertAdminsIfErrorsPerHour alertadminsiferrorsperhour = new Anonymous.Admin.SiteSettings.AlertAdminsIfErrorsPerHour();
+            public final Anonymous.Admin.SiteSettings.MaxPrintsPerHourPerUser maxprintsperhourperuser = new Anonymous.Admin.SiteSettings.MaxPrintsPerHourPerUser();
+            public final Anonymous.Admin.SiteSettings.ForceHostname forcehostname = new Anonymous.Admin.SiteSettings.ForceHostname();
+            public final Anonymous.Admin.SiteSettings.Port port = new Anonymous.Admin.SiteSettings.Port();
+            public final Anonymous.Admin.SiteSettings.QueueJobs queuejobs = new Anonymous.Admin.SiteSettings.QueueJobs();
+            public final Anonymous.Admin.SiteSettings.EnableLongPolling enablelongpolling = new Anonymous.Admin.SiteSettings.EnableLongPolling();
+            public final Anonymous.Admin.SiteSettings.LongPollingInterval longpollinginterval = new Anonymous.Admin.SiteSettings.LongPollingInterval();
+            public final Anonymous.Admin.SiteSettings.LongPollingBaseUrl longpollingbaseurl = new Anonymous.Admin.SiteSettings.LongPollingBaseUrl();
+            public final Anonymous.Admin.SiteSettings.BackgroundPollingInterval backgroundpollinginterval = new Anonymous.Admin.SiteSettings.BackgroundPollingInterval();
+            public final Anonymous.Admin.SiteSettings.PollingInterval pollinginterval = new Anonymous.Admin.SiteSettings.PollingInterval();
+            public final Anonymous.Admin.SiteSettings.AnonPollingInterval anonpollinginterval = new Anonymous.Admin.SiteSettings.AnonPollingInterval();
+            public final Anonymous.Admin.SiteSettings.FlushTimingsSecs flushtimingssecs = new Anonymous.Admin.SiteSettings.FlushTimingsSecs();
+            public final Anonymous.Admin.SiteSettings.ActiveUserRateLimitSecs activeuserratelimitsecs = new Anonymous.Admin.SiteSettings.ActiveUserRateLimitSecs();
+            public final Anonymous.Admin.SiteSettings.VerboseLocalization verboselocalization = new Anonymous.Admin.SiteSettings.VerboseLocalization();
+            public final Anonymous.Admin.SiteSettings.TopTopicsFormulaLogViewsMultiplier toptopicsformulalogviewsmultiplier = new Anonymous.Admin.SiteSettings.TopTopicsFormulaLogViewsMultiplier();
+            public final Anonymous.Admin.SiteSettings.TopTopicsFormulaFirstPostLikesMultiplier toptopicsformulafirstpostlikesmultiplier = new Anonymous.Admin.SiteSettings.TopTopicsFormulaFirstPostLikesMultiplier();
+            public final Anonymous.Admin.SiteSettings.RebakeOldPostsCount rebakeoldpostscount = new Anonymous.Admin.SiteSettings.RebakeOldPostsCount();
+            public final Anonymous.Admin.SiteSettings.TosUrl tosurl = new Anonymous.Admin.SiteSettings.TosUrl();
+            public final Anonymous.Admin.SiteSettings.PrivacyPolicyUrl privacypolicyurl = new Anonymous.Admin.SiteSettings.PrivacyPolicyUrl();
+            public final Anonymous.Admin.SiteSettings.FagUrl fagurl = new Anonymous.Admin.SiteSettings.FagUrl();
+            public final Anonymous.Admin.SiteSettings.ReadonlyModeDuringBackup readonlymodeduringbackup = new Anonymous.Admin.SiteSettings.ReadonlyModeDuringBackup();
+            public final Anonymous.Admin.SiteSettings.AllowRestore allowrestore = new Anonymous.Admin.SiteSettings.AllowRestore();
+            public final Anonymous.Admin.SiteSettings.MaximumBackups maximumbackups = new Anonymous.Admin.SiteSettings.MaximumBackups();
+            public final Anonymous.Admin.SiteSettings.AutomaticBackupsEnabled automaticbackupsenabled = new Anonymous.Admin.SiteSettings.AutomaticBackupsEnabled();
+            public final Anonymous.Admin.SiteSettings.BackupFrequency backupfrequency = new Anonymous.Admin.SiteSettings.BackupFrequency();
+            public final Anonymous.Admin.SiteSettings.EnableS3Backups enables3backups = new Anonymous.Admin.SiteSettings.EnableS3Backups();
+            public final Anonymous.Admin.SiteSettings.S3BackupBucket s3backupbucket = new Anonymous.Admin.SiteSettings.S3BackupBucket();
+            public final Anonymous.Admin.SiteSettings.S3DisableCleanup s3disablecleanup = new Anonymous.Admin.SiteSettings.S3DisableCleanup();
+            public final Anonymous.Admin.SiteSettings.BackupTimeOfDay backuptimeofday = new Anonymous.Admin.SiteSettings.BackupTimeOfDay();
+            public final Anonymous.Admin.SiteSettings.BackupWithUploads backupwithuploads = new Anonymous.Admin.SiteSettings.BackupWithUploads();
+            public final Anonymous.Admin.SiteSettings.MinSearchTermLength minsearchtermlength = new Anonymous.Admin.SiteSettings.MinSearchTermLength();
+            public final Anonymous.Admin.SiteSettings.SearchTokenizeChineseJapaneseKorean searchtokenizechinesejapanesekorean = new Anonymous.Admin.SiteSettings.SearchTokenizeChineseJapaneseKorean();
+            public final Anonymous.Admin.SiteSettings.SearchPreferRecentPosts searchpreferrecentposts = new Anonymous.Admin.SiteSettings.SearchPreferRecentPosts();
+            public final Anonymous.Admin.SiteSettings.SearchRecentPostsSize searchrecentpostssize = new Anonymous.Admin.SiteSettings.SearchRecentPostsSize();
+            public final Anonymous.Admin.SiteSettings.VersionChecks versionchecks = new Anonymous.Admin.SiteSettings.VersionChecks();
+            public final Anonymous.Admin.SiteSettings.NewVersionEmails newversionemails = new Anonymous.Admin.SiteSettings.NewVersionEmails();
+            public final Anonymous.Admin.SiteSettings.SendWelcomeMessage sendwelcomemessage = new Anonymous.Admin.SiteSettings.SendWelcomeMessage();
+            public final Anonymous.Admin.SiteSettings.SuppressUncategorizedBadge suppressuncategorizedbadge = new Anonymous.Admin.SiteSettings.SuppressUncategorizedBadge();
+            public final Anonymous.Admin.SiteSettings.SlugGenerationMethod sluggenerationmethod = new Anonymous.Admin.SiteSettings.SlugGenerationMethod();
+            public final Anonymous.Admin.SiteSettings.PermalinkNormalizations permalinknormalizations = new Anonymous.Admin.SiteSettings.PermalinkNormalizations();
+            public final Anonymous.Admin.SiteSettings.MaxSimilarResults maxsimilarresults = new Anonymous.Admin.SiteSettings.MaxSimilarResults();
+            public final Anonymous.Admin.SiteSettings.MinimumTopicsSimilar minimumtopicssimilar = new Anonymous.Admin.SiteSettings.MinimumTopicsSimilar();
+            public final Anonymous.Admin.SiteSettings.PreviousVisitTimeoutHours previousvisittimeouthours = new Anonymous.Admin.SiteSettings.PreviousVisitTimeoutHours();
+            public final Anonymous.Admin.SiteSettings.StaffLikeWeight stafflikeweight = new Anonymous.Admin.SiteSettings.StaffLikeWeight();
+            public final Anonymous.Admin.SiteSettings.TopicViewDurationHours topicviewdurationhours = new Anonymous.Admin.SiteSettings.TopicViewDurationHours();
+            public final Anonymous.Admin.SiteSettings.UserProfileViewDurationHours userprofileviewdurationhours = new Anonymous.Admin.SiteSettings.UserProfileViewDurationHours();
+            public final Anonymous.Admin.SiteSettings.SummaryScoreThreshold summaryscorethreshold = new Anonymous.Admin.SiteSettings.SummaryScoreThreshold();
+            public final Anonymous.Admin.SiteSettings.SummaryPostsRequired summarypostsrequired = new Anonymous.Admin.SiteSettings.SummaryPostsRequired();
+            public final Anonymous.Admin.SiteSettings.SummaryLikesRequired summarylikesrequired = new Anonymous.Admin.SiteSettings.SummaryLikesRequired();
+            public final Anonymous.Admin.SiteSettings.SummaryPercentFilter summarypercentfilter = new Anonymous.Admin.SiteSettings.SummaryPercentFilter();
+            public final Anonymous.Admin.SiteSettings.SummaryMaxResults summarymaxresults = new Anonymous.Admin.SiteSettings.SummaryMaxResults();
+            public final Anonymous.Admin.SiteSettings.TopicViewsHeatLow topicviewsheatlow = new Anonymous.Admin.SiteSettings.TopicViewsHeatLow();
+            public final Anonymous.Admin.SiteSettings.TopicViewsHeatMedium topicviewsheatmedium = new Anonymous.Admin.SiteSettings.TopicViewsHeatMedium();
+            public final Anonymous.Admin.SiteSettings.TopicViewsHeatHigh topicviewsheathigh = new Anonymous.Admin.SiteSettings.TopicViewsHeatHigh();
+            public final Anonymous.Admin.SiteSettings.TopicPostLikeHeatLow topicpostlikeheatlow = new Anonymous.Admin.SiteSettings.TopicPostLikeHeatLow();
+            public final Anonymous.Admin.SiteSettings.TopicPostLikeHeatMedium topicpostlikeheatmedium = new Anonymous.Admin.SiteSettings.TopicPostLikeHeatMedium();
+            public final Anonymous.Admin.SiteSettings.TopicPostLikeHeatHigh topicpostlikeheathigh = new Anonymous.Admin.SiteSettings.TopicPostLikeHeatHigh();
+            public final Anonymous.Admin.SiteSettings.HistoryHoursLow historyhourslow = new Anonymous.Admin.SiteSettings.HistoryHoursLow();
+            public final Anonymous.Admin.SiteSettings.HistoryHoursMedium historyhoursmedium = new Anonymous.Admin.SiteSettings.HistoryHoursMedium();
+            public final Anonymous.Admin.SiteSettings.HistoryHoursHigh historyhourshigh = new Anonymous.Admin.SiteSettings.HistoryHoursHigh();
+            public final Anonymous.Admin.SiteSettings.ColdAgeDaysLow coldagedayslow = new Anonymous.Admin.SiteSettings.ColdAgeDaysLow();
+            public final Anonymous.Admin.SiteSettings.ColdAgeDaysMedium coldagedaysmedium = new Anonymous.Admin.SiteSettings.ColdAgeDaysMedium();
+            public final Anonymous.Admin.SiteSettings.ColdAgeDaysHigh coldagedayshigh = new Anonymous.Admin.SiteSettings.ColdAgeDaysHigh();
+            public final Anonymous.Admin.SiteSettings.EducateUntilPosts educateuntilposts = new Anonymous.Admin.SiteSettings.EducateUntilPosts();
+            public final Anonymous.Admin.SiteSettings.SequentialRepliesThreshold sequentialrepliesthreshold = new Anonymous.Admin.SiteSettings.SequentialRepliesThreshold();
+            public final Anonymous.Admin.SiteSettings.DominatingTopicMinimumPercent dominatingtopicminimumpercent = new Anonymous.Admin.SiteSettings.DominatingTopicMinimumPercent();
+            public final Anonymous.Admin.SiteSettings.DisableAvatarEducationMessage disableavatareducationmessage = new Anonymous.Admin.SiteSettings.DisableAvatarEducationMessage();
+            public final Anonymous.Admin.SiteSettings.GlobalNotice globalnotice = new Anonymous.Admin.SiteSettings.GlobalNotice();
+            public final Anonymous.Admin.SiteSettings.NotifyAboutFlagsAfter notifyaboutflagsafter = new Anonymous.Admin.SiteSettings.NotifyAboutFlagsAfter();
+            public final Anonymous.Admin.SiteSettings.ShowCreateTopicsNotice showcreatetopicsnotice = new Anonymous.Admin.SiteSettings.ShowCreateTopicsNotice();
+            public final Anonymous.Admin.SiteSettings.DisableEditNotifications disableeditnotifications = new Anonymous.Admin.SiteSettings.DisableEditNotifications();
+            public final Anonymous.Admin.SiteSettings.VacuumDbDays vacuumdbdays = new Anonymous.Admin.SiteSettings.VacuumDbDays();
+            public final Anonymous.Admin.SiteSettings.DeleteDraftsOlderThanNDays deletedraftsolderthanndays = new Anonymous.Admin.SiteSettings.DeleteDraftsOlderThanNDays();
+            public final Anonymous.Admin.SiteSettings.BootstrapModeMinUsers bootstrapmodeminusers = new Anonymous.Admin.SiteSettings.BootstrapModeMinUsers();
+            public final Anonymous.Admin.SiteSettings.AutomaticallyUnpinTopics automaticallyunpintopics = new Anonymous.Admin.SiteSettings.AutomaticallyUnpinTopics();
+            public final Anonymous.Admin.SiteSettings.ReadTimeWordCount readtimewordcount = new Anonymous.Admin.SiteSettings.ReadTimeWordCount();
+            public final Anonymous.Admin.SiteSettings.TopicPageTitleIncludesCategory topicpagetitleincludescategory = new Anonymous.Admin.SiteSettings.TopicPageTitleIncludesCategory();
+            public final Anonymous.Admin.SiteSettings.NativeAppInstallBanner nativeappinstallbanner = new Anonymous.Admin.SiteSettings.NativeAppInstallBanner();
+            public final Anonymous.Admin.SiteSettings.DefaultEmailDigestFrequency defaultemaildigestfrequency = new Anonymous.Admin.SiteSettings.DefaultEmailDigestFrequency();
+            public final Anonymous.Admin.SiteSettings.DefaultIncludeTl0InDigests defaultincludetl0indigests = new Anonymous.Admin.SiteSettings.DefaultIncludeTl0InDigests();
+            public final Anonymous.Admin.SiteSettings.DefaultEmailPrivateMessages defaultemailprivatemessages = new Anonymous.Admin.SiteSettings.DefaultEmailPrivateMessages();
+            public final Anonymous.Admin.SiteSettings.DefaultEmailDirect defaultemaildirect = new Anonymous.Admin.SiteSettings.DefaultEmailDirect();
+            public final Anonymous.Admin.SiteSettings.DefaultEmailMailingListMode defaultemailmailinglistmode = new Anonymous.Admin.SiteSettings.DefaultEmailMailingListMode();
+            public final Anonymous.Admin.SiteSettings.DefaultEmailMailingListModeFrequency defaultemailmailinglistmodefrequency = new Anonymous.Admin.SiteSettings.DefaultEmailMailingListModeFrequency();
+            public final Anonymous.Admin.SiteSettings.DisableMailingListMode disablemailinglistmode = new Anonymous.Admin.SiteSettings.DisableMailingListMode();
+            public final Anonymous.Admin.SiteSettings.DefaultEmailAlways defaultemailalways = new Anonymous.Admin.SiteSettings.DefaultEmailAlways();
+            public final Anonymous.Admin.SiteSettings.DefaultEmailPreviousReplies defaultemailpreviousreplies = new Anonymous.Admin.SiteSettings.DefaultEmailPreviousReplies();
+            public final Anonymous.Admin.SiteSettings.DefaultEmailInReplyTo defaultemailinreplyto = new Anonymous.Admin.SiteSettings.DefaultEmailInReplyTo();
+            public final Anonymous.Admin.SiteSettings.DefaultOtherNewTopicDurationMinutes defaultothernewtopicdurationminutes = new Anonymous.Admin.SiteSettings.DefaultOtherNewTopicDurationMinutes();
+            public final Anonymous.Admin.SiteSettings.DefaultOtherAutoTrackTopicAfterMsecs defaultotherautotracktopicaftermsecs = new Anonymous.Admin.SiteSettings.DefaultOtherAutoTrackTopicAfterMsecs();
+            public final Anonymous.Admin.SiteSettings.DefaultOtherNotificationLevelWhenReplying defaultothernotificationlevelwhenreplying = new Anonymous.Admin.SiteSettings.DefaultOtherNotificationLevelWhenReplying();
+            public final Anonymous.Admin.SiteSettings.DefaultOtherExternalLinksInNewTab defaultotherexternallinksinnewtab = new Anonymous.Admin.SiteSettings.DefaultOtherExternalLinksInNewTab();
+            public final Anonymous.Admin.SiteSettings.DefaultOtherEnableQuoting defaultotherenablequoting = new Anonymous.Admin.SiteSettings.DefaultOtherEnableQuoting();
+            public final Anonymous.Admin.SiteSettings.DefaultOtherDynamicFavicon defaultotherdynamicfavicon = new Anonymous.Admin.SiteSettings.DefaultOtherDynamicFavicon();
+            public final Anonymous.Admin.SiteSettings.DefaultOtherDisableJumpReply defaultotherdisablejumpreply = new Anonymous.Admin.SiteSettings.DefaultOtherDisableJumpReply();
+            public final Anonymous.Admin.SiteSettings.DefaultOtherLikeNotificationFrequency defaultotherlikenotificationfrequency = new Anonymous.Admin.SiteSettings.DefaultOtherLikeNotificationFrequency();
+            public final Anonymous.Admin.SiteSettings.DefaultTopicsAutomaticUnpin defaulttopicsautomaticunpin = new Anonymous.Admin.SiteSettings.DefaultTopicsAutomaticUnpin();
+            public final Anonymous.Admin.SiteSettings.DefaultCategoriesTracking defaultcategoriestracking = new Anonymous.Admin.SiteSettings.DefaultCategoriesTracking();
+            public final Anonymous.Admin.SiteSettings.DefaultCategoriesMuted defaultcategoriesmuted = new Anonymous.Admin.SiteSettings.DefaultCategoriesMuted();
+            public final Anonymous.Admin.SiteSettings.DefaultCategoriesWatchingFirstPost defaultcategorieswatchingfirstpost = new Anonymous.Admin.SiteSettings.DefaultCategoriesWatchingFirstPost();
+            public final Anonymous.Admin.SiteSettings.MaxUserApiReqsPerDay maxuserapireqsperday = new Anonymous.Admin.SiteSettings.MaxUserApiReqsPerDay();
+            public final Anonymous.Admin.SiteSettings.MaxUserApiReqsPerMinute maxuserapireqsperminute = new Anonymous.Admin.SiteSettings.MaxUserApiReqsPerMinute();
+            public final Anonymous.Admin.SiteSettings.AllowUserApiKeys allowuserapikeys = new Anonymous.Admin.SiteSettings.AllowUserApiKeys();
+            public final Anonymous.Admin.SiteSettings.AllowUserApiKeyScopes allowuserapikeyscopes = new Anonymous.Admin.SiteSettings.AllowUserApiKeyScopes();
+            public final Anonymous.Admin.SiteSettings.MaxApiKeysPerUser maxapikeysperuser = new Anonymous.Admin.SiteSettings.MaxApiKeysPerUser();
+            public final Anonymous.Admin.SiteSettings.MinTrustLevelForUserApiKey mintrustlevelforuserapikey = new Anonymous.Admin.SiteSettings.MinTrustLevelForUserApiKey();
+            public final Anonymous.Admin.SiteSettings.AllowedUserApiPushUrls alloweduserapipushurls = new Anonymous.Admin.SiteSettings.AllowedUserApiPushUrls();
+            public final Anonymous.Admin.SiteSettings.AllowedUserApiAuthRedirects alloweduserapiauthredirects = new Anonymous.Admin.SiteSettings.AllowedUserApiAuthRedirects();
+            public final Anonymous.Admin.SiteSettings.TaggingEnabled taggingenabled = new Anonymous.Admin.SiteSettings.TaggingEnabled();
+            public final Anonymous.Admin.SiteSettings.TagStyle tagstyle = new Anonymous.Admin.SiteSettings.TagStyle();
+            public final Anonymous.Admin.SiteSettings.MaxTagsPerTopic maxtagspertopic = new Anonymous.Admin.SiteSettings.MaxTagsPerTopic();
+            public final Anonymous.Admin.SiteSettings.MaxTagLength maxtaglength = new Anonymous.Admin.SiteSettings.MaxTagLength();
+            public final Anonymous.Admin.SiteSettings.MinTrustToCreateTag mintrusttocreatetag = new Anonymous.Admin.SiteSettings.MinTrustToCreateTag();
+            public final Anonymous.Admin.SiteSettings.MinTrustLevelToTagTopics mintrustleveltotagtopics = new Anonymous.Admin.SiteSettings.MinTrustLevelToTagTopics();
+            public final Anonymous.Admin.SiteSettings.MaxTagSearchResults maxtagsearchresults = new Anonymous.Admin.SiteSettings.MaxTagSearchResults();
+            public final Anonymous.Admin.SiteSettings.ShowFilterByTag showfilterbytag = new Anonymous.Admin.SiteSettings.ShowFilterByTag();
+            public final Anonymous.Admin.SiteSettings.MaxTagsInFilterList maxtagsinfilterlist = new Anonymous.Admin.SiteSettings.MaxTagsInFilterList();
+            public final Anonymous.Admin.SiteSettings.TagsSortAlphabetically tagssortalphabetically = new Anonymous.Admin.SiteSettings.TagsSortAlphabetically();
+            public final Anonymous.Admin.SiteSettings.StaffTags stafftags = new Anonymous.Admin.SiteSettings.StaffTags();
+            public final Anonymous.Admin.SiteSettings.SuppressOverlappingTagsInList suppressoverlappingtagsinlist = new Anonymous.Admin.SiteSettings.SuppressOverlappingTagsInList();
+            public final Anonymous.Admin.SiteSettings.RemoveMutedTagsFromLatest removemutedtagsfromlatest = new Anonymous.Admin.SiteSettings.RemoveMutedTagsFromLatest();
+            public final Anonymous.Admin.SiteSettings.DetailsEnabled detailsenabled = new Anonymous.Admin.SiteSettings.DetailsEnabled();
+            public final Anonymous.Admin.SiteSettings.DailyPerformanceReport dailyperformancereport = new Anonymous.Admin.SiteSettings.DailyPerformanceReport();
+            public final Anonymous.Admin.SiteSettings.PollEnabled pollenabled = new Anonymous.Admin.SiteSettings.PollEnabled();
+            public final Anonymous.Admin.SiteSettings.PollMaximumOptions pollmaximumoptions = new Anonymous.Admin.SiteSettings.PollMaximumOptions();
+            public final Anonymous.Admin.SiteSettings.PollEditWindowMins polleditwindowmins = new Anonymous.Admin.SiteSettings.PollEditWindowMins();
+            public final Anonymous.Admin.SiteSettings.DiscourseNarrativeBotEnabled discoursenarrativebotenabled = new Anonymous.Admin.SiteSettings.DiscourseNarrativeBotEnabled();
+            public final Anonymous.Admin.SiteSettings.DisableDiscourseNarrativeBotWelcomePost disablediscoursenarrativebotwelcomepost = new Anonymous.Admin.SiteSettings.DisableDiscourseNarrativeBotWelcomePost();
+            public final Anonymous.Admin.SiteSettings.DiscourseNarrativeBotDisablePublicReplies discoursenarrativebotdisablepublicreplies = new Anonymous.Admin.SiteSettings.DiscourseNarrativeBotDisablePublicReplies();
+            public final Anonymous.Admin.SiteSettings.DiscourseNarrativeBotIgnoredUsernames discoursenarrativebotignoredusernames = new Anonymous.Admin.SiteSettings.DiscourseNarrativeBotIgnoredUsernames();
+            public final Anonymous.Admin.SiteSettings.DiscourseNarrativeBotWelcomePostDelay discoursenarrativebotwelcomepostdelay = new Anonymous.Admin.SiteSettings.DiscourseNarrativeBotWelcomePostDelay();
+            public final Anonymous.Admin.SiteSettings.DiscourseNarrativeBotWelcomePostType discoursenarrativebotwelcomeposttype = new Anonymous.Admin.SiteSettings.DiscourseNarrativeBotWelcomePostType();
 
-            public class Activeuserratelimitsecs {
+            public class ActiveUserRateLimitSecs {
 
                 /**
                  * 
@@ -947,7 +947,7 @@ public class Anonymous
                 }
             }
 
-            public class Addrelnofollowtousercontent {
+            public class AddRelNofollowToUserContent {
 
                 /**
                  * 
@@ -967,7 +967,7 @@ public class Anonymous
                 }
             }
 
-            public class Alertadminsiferrorsperhour {
+            public class AlertAdminsIfErrorsPerHour {
 
                 /**
                  * 
@@ -987,7 +987,7 @@ public class Anonymous
                 }
             }
 
-            public class Alertadminsiferrorsperminute {
+            public class AlertAdminsIfErrorsPerMinute {
 
                 /**
                  * 
@@ -1007,7 +1007,7 @@ public class Anonymous
                 }
             }
 
-            public class Allowallattachmentsforgroupmessages {
+            public class AllowAllAttachmentsForGroupMessages {
 
                 /**
                  * 
@@ -1027,7 +1027,7 @@ public class Anonymous
                 }
             }
 
-            public class Allowanimatedavatars {
+            public class AllowAnimatedAvatars {
 
                 /**
                  * 
@@ -1047,7 +1047,7 @@ public class Anonymous
                 }
             }
 
-            public class Allowanimatedthumbnails {
+            public class AllowAnimatedThumbnails {
 
                 /**
                  * 
@@ -1067,7 +1067,7 @@ public class Anonymous
                 }
             }
 
-            public class Allowanonymousposting {
+            public class AllowAnonymousPosting {
 
                 /**
                  * 
@@ -1085,7 +1085,7 @@ public class Anonymous
                 }
             }
 
-            public class Allowduplicatetopictitles {
+            public class AllowDuplicateTopicTitles {
 
                 /**
                  * 
@@ -1103,7 +1103,7 @@ public class Anonymous
                 }
             }
 
-            public class Allowedhrefschemes {
+            public class AllowedHrefSchemes {
 
                 /**
                  * 
@@ -1121,7 +1121,7 @@ public class Anonymous
                 }
             }
 
-            public class Alloweduserapiauthredirects {
+            public class AllowedUserApiAuthRedirects {
 
                 /**
                  * 
@@ -1141,7 +1141,7 @@ public class Anonymous
                 }
             }
 
-            public class Alloweduserapipushurls {
+            public class AllowedUserApiPushUrls {
 
                 /**
                  * 
@@ -1161,7 +1161,7 @@ public class Anonymous
                 }
             }
 
-            public class Allowhtmltables {
+            public class AllowHtmlTables {
 
                 /**
                  * 
@@ -1179,7 +1179,7 @@ public class Anonymous
                 }
             }
 
-            public class Allowindexinrobotstxt {
+            public class AllowIndexInRobotsTxt {
 
                 /**
                  * 
@@ -1199,7 +1199,7 @@ public class Anonymous
                 }
             }
 
-            public class Allowmoderatorstocreatecategories {
+            public class AllowModeratorsToCreateCategories {
 
                 /**
                  * 
@@ -1219,7 +1219,7 @@ public class Anonymous
                 }
             }
 
-            public class Allownewregistrations {
+            public class AllowNewRegistrations {
 
                 /**
                  * 
@@ -1237,7 +1237,7 @@ public class Anonymous
                 }
             }
 
-            public class Allowprofilebackgrounds {
+            public class AllowProfileBackgrounds {
 
                 /**
                  * 
@@ -1257,7 +1257,7 @@ public class Anonymous
                 }
             }
 
-            public class Allowrestore {
+            public class AllowRestore {
 
                 /**
                  * 
@@ -1277,7 +1277,7 @@ public class Anonymous
                 }
             }
 
-            public class Allowuncategorizedtopics {
+            public class AllowUncategorizedTopics {
 
                 /**
                  * 
@@ -1295,7 +1295,7 @@ public class Anonymous
                 }
             }
 
-            public class Allowuploadedavatars {
+            public class AllowUploadedAvatars {
 
                 /**
                  * 
@@ -1315,7 +1315,7 @@ public class Anonymous
                 }
             }
 
-            public class Allowuppercaseposts {
+            public class AllowUppercasePosts {
 
                 /**
                  * 
@@ -1333,7 +1333,7 @@ public class Anonymous
                 }
             }
 
-            public class Allowuserapikeys {
+            public class AllowUserApiKeys {
 
                 /**
                  * 
@@ -1353,7 +1353,7 @@ public class Anonymous
                 }
             }
 
-            public class Allowuserapikeyscopes {
+            public class AllowUserApiKeyScopes {
 
                 /**
                  * 
@@ -1373,7 +1373,7 @@ public class Anonymous
                 }
             }
 
-            public class Allowuserlocale {
+            public class AllowUserLocale {
 
                 /**
                  * 
@@ -1391,7 +1391,7 @@ public class Anonymous
                 }
             }
 
-            public class Alternativereplybyemailaddresses {
+            public class AlternativeReplyByEmailAddresses {
 
                 /**
                  * 
@@ -1410,7 +1410,7 @@ public class Anonymous
                 }
             }
 
-            public class Alwaysshowtrimmedcontent {
+            public class AlwaysShowTrimmedContent {
 
                 /**
                  * 
@@ -1429,7 +1429,7 @@ public class Anonymous
                 }
             }
 
-            public class Anonpollinginterval {
+            public class AnonPollingInterval {
 
                 /**
                  * 
@@ -1449,7 +1449,7 @@ public class Anonymous
                 }
             }
 
-            public class Anonymousaccountdurationminutes {
+            public class AnonymousAccountDurationMinutes {
 
                 /**
                  * 
@@ -1467,7 +1467,7 @@ public class Anonymous
                 }
             }
 
-            public class Anonymouspostingmintrustlevel {
+            public class AnonymousPostingMinTrustLevel {
 
                 /**
                  * 
@@ -1485,7 +1485,7 @@ public class Anonymous
                 }
             }
 
-            public class Appletouchiconurl {
+            public class AppleTouchIconUrl {
 
                 /**
                  * 
@@ -1503,7 +1503,7 @@ public class Anonymous
                 }
             }
 
-            public class Approvenewtopicsunlesstrustlevel {
+            public class ApproveNewTopicsUnlessTrustLevel {
 
                 /**
                  * 
@@ -1521,7 +1521,7 @@ public class Anonymous
                 }
             }
 
-            public class Approvepostcount {
+            public class ApprovePostCount {
 
                 /**
                  * 
@@ -1539,7 +1539,7 @@ public class Anonymous
                 }
             }
 
-            public class Approveunlesstrustlevel {
+            public class ApproveUnlessTrustLevel {
 
                 /**
                  * 
@@ -1557,7 +1557,7 @@ public class Anonymous
                 }
             }
 
-            public class Attachmentcontenttypeblacklist {
+            public class AttachmentContentTypeBlacklist {
 
                 /**
                  * 
@@ -1576,7 +1576,7 @@ public class Anonymous
                 }
             }
 
-            public class Attachmentfilenameblacklist {
+            public class AttachmentFilenameBlacklist {
 
                 /**
                  * 
@@ -1595,7 +1595,7 @@ public class Anonymous
                 }
             }
 
-            public class Authorizedextensions {
+            public class AuthorizedExtensions {
 
                 /**
                  * 
@@ -1614,7 +1614,7 @@ public class Anonymous
                 }
             }
 
-            public class Autoblockfasttypersmaxtrustlevel {
+            public class AutoBlockFastTypersMaxTrustLevel {
 
                 /**
                  * 
@@ -1634,7 +1634,7 @@ public class Anonymous
                 }
             }
 
-            public class Autoblockfasttypersonfirstpost {
+            public class AutoBlockFastTypersOnFirstPost {
 
                 /**
                  * 
@@ -1654,7 +1654,7 @@ public class Anonymous
                 }
             }
 
-            public class Autoblockfirstpostregex {
+            public class AutoBlockFirstPostRegex {
 
                 /**
                  * 
@@ -1674,7 +1674,7 @@ public class Anonymous
                 }
             }
 
-            public class Autoclosemessagespostcount {
+            public class AutoCloseMessagesPostCount {
 
                 /**
                  * 
@@ -1692,7 +1692,7 @@ public class Anonymous
                 }
             }
 
-            public class Autoclosetopicspostcount {
+            public class AutoCloseTopicsPostCount {
 
                 /**
                  * 
@@ -1710,7 +1710,7 @@ public class Anonymous
                 }
             }
 
-            public class Autogeneratedwhitelist {
+            public class AutoGeneratedWhitelist {
 
                 /**
                  * 
@@ -1729,7 +1729,7 @@ public class Anonymous
                 }
             }
 
-            public class Autohighlightallcode {
+            public class AutohighlightAllCode {
 
                 /**
                  * 
@@ -1747,7 +1747,7 @@ public class Anonymous
                 }
             }
 
-            public class Automaticallydownloadgravatars {
+            public class AutomaticallyDownloadGravatars {
 
                 /**
                  * 
@@ -1767,7 +1767,7 @@ public class Anonymous
                 }
             }
 
-            public class Automaticallyunpintopics {
+            public class AutomaticallyUnpinTopics {
 
                 /**
                  * 
@@ -1787,7 +1787,7 @@ public class Anonymous
                 }
             }
 
-            public class Automaticbackupsenabled {
+            public class AutomaticBackupsEnabled {
 
                 /**
                  * 
@@ -1807,7 +1807,7 @@ public class Anonymous
                 }
             }
 
-            public class Autorespondtoflagactions {
+            public class AutoRespondToFlagActions {
 
                 /**
                  * 
@@ -1827,7 +1827,7 @@ public class Anonymous
                 }
             }
 
-            public class Avatarsizes {
+            public class AvatarSizes {
 
                 /**
                  * 
@@ -1847,7 +1847,7 @@ public class Anonymous
                 }
             }
 
-            public class Backgroundpollinginterval {
+            public class BackgroundPollingInterval {
 
                 /**
                  * 
@@ -1867,7 +1867,7 @@ public class Anonymous
                 }
             }
 
-            public class Backupfrequency {
+            public class BackupFrequency {
 
                 /**
                  * 
@@ -1887,7 +1887,7 @@ public class Anonymous
                 }
             }
 
-            public class Backuptimeofday {
+            public class BackupTimeOfDay {
 
                 /**
                  * 
@@ -1907,7 +1907,7 @@ public class Anonymous
                 }
             }
 
-            public class Backupwithuploads {
+            public class BackupWithUploads {
 
                 /**
                  * 
@@ -1927,7 +1927,7 @@ public class Anonymous
                 }
             }
 
-            public class Blockautogeneratedemails {
+            public class BlockAutoGeneratedEmails {
 
                 /**
                  * 
@@ -1946,7 +1946,7 @@ public class Anonymous
                 }
             }
 
-            public class Blockcommonpasswords {
+            public class BlockCommonPasswords {
 
                 /**
                  * 
@@ -1964,7 +1964,7 @@ public class Anonymous
                 }
             }
 
-            public class Bodyminentropy {
+            public class BodyMinEntropy {
 
                 /**
                  * 
@@ -1982,7 +1982,7 @@ public class Anonymous
                 }
             }
 
-            public class Bootstrapmodeminusers {
+            public class BootstrapModeMinUsers {
 
                 /**
                  * 
@@ -2002,7 +2002,7 @@ public class Anonymous
                 }
             }
 
-            public class Bouncescorethreshold {
+            public class BounceScoreThreshold {
 
                 /**
                  * 
@@ -2021,7 +2021,7 @@ public class Anonymous
                 }
             }
 
-            public class Bouncescorethresholddeactivate {
+            public class BounceScoreThresholdDeactivate {
 
                 /**
                  * 
@@ -2040,7 +2040,7 @@ public class Anonymous
                 }
             }
 
-            public class Categoriestopics {
+            public class CategoriesTopics {
 
                 /**
                  * 
@@ -2058,7 +2058,7 @@ public class Anonymous
                 }
             }
 
-            public class Categorycolors {
+            public class CategoryColors {
 
                 /**
                  * 
@@ -2077,7 +2077,7 @@ public class Anonymous
                 }
             }
 
-            public class Categorystyle {
+            public class CategoryStyle {
 
                 /**
                  * 
@@ -2095,7 +2095,7 @@ public class Anonymous
                 }
             }
 
-            public class Censoredpattern {
+            public class CensoredPattern {
 
                 /**
                  * 
@@ -2113,7 +2113,7 @@ public class Anonymous
                 }
             }
 
-            public class Censoredwords {
+            public class CensoredWords {
 
                 /**
                  * 
@@ -2131,7 +2131,7 @@ public class Anonymous
                 }
             }
 
-            public class Cleanorphanuploadsgraceperiodhours {
+            public class CleanOrphanUploadsGracePeriodHours {
 
                 /**
                  * 
@@ -2151,7 +2151,7 @@ public class Anonymous
                 }
             }
 
-            public class Cleanupuploads {
+            public class CleanUpUploads {
 
                 /**
                  * 
@@ -2171,7 +2171,7 @@ public class Anonymous
                 }
             }
 
-            public class Codeformattingstyle {
+            public class CodeFormattingStyle {
 
                 /**
                  * 
@@ -2189,7 +2189,7 @@ public class Anonymous
                 }
             }
 
-            public class Coldagedayshigh {
+            public class ColdAgeDaysHigh {
 
                 /**
                  * 
@@ -2209,7 +2209,7 @@ public class Anonymous
                 }
             }
 
-            public class Coldagedayslow {
+            public class ColdAgeDaysLow {
 
                 /**
                  * 
@@ -2229,7 +2229,7 @@ public class Anonymous
                 }
             }
 
-            public class Coldagedaysmedium {
+            public class ColdAgeDaysMedium {
 
                 /**
                  * 
@@ -2249,7 +2249,7 @@ public class Anonymous
                 }
             }
 
-            public class Companydomain {
+            public class CompanyDomain {
 
                 /**
                  * 
@@ -2267,7 +2267,7 @@ public class Anonymous
                 }
             }
 
-            public class Companyfullname {
+            public class CompanyFullName {
 
                 /**
                  * 
@@ -2285,7 +2285,7 @@ public class Anonymous
                 }
             }
 
-            public class Companyshortname {
+            public class CompanyShortName {
 
                 /**
                  * 
@@ -2303,7 +2303,7 @@ public class Anonymous
                 }
             }
 
-            public class Contactemail {
+            public class ContactEmail {
 
                 /**
                  * 
@@ -2321,7 +2321,7 @@ public class Anonymous
                 }
             }
 
-            public class Contacturl {
+            public class ContactUrl {
 
                 /**
                  * 
@@ -2339,7 +2339,7 @@ public class Anonymous
                 }
             }
 
-            public class Convertpastedimagesquality {
+            public class ConvertPastedImagesQuality {
 
                 /**
                  * 
@@ -2359,7 +2359,7 @@ public class Anonymous
                 }
             }
 
-            public class Convertpastedimagestohqjpg {
+            public class ConvertPastedImagesToHqJpg {
 
                 /**
                  * 
@@ -2379,7 +2379,7 @@ public class Anonymous
                 }
             }
 
-            public class Cooldownminutesafterhidingposts {
+            public class CooldownMinutesAfterHidingPosts {
 
                 /**
                  * 
@@ -2399,7 +2399,7 @@ public class Anonymous
                 }
             }
 
-            public class Corsorigins {
+            public class CorsOrigins {
 
                 /**
                  * 
@@ -2419,7 +2419,7 @@ public class Anonymous
                 }
             }
 
-            public class Crawlimages {
+            public class CrawlImages {
 
                 /**
                  * 
@@ -2438,7 +2438,7 @@ public class Anonymous
                 }
             }
 
-            public class Createthumbnails {
+            public class CreateThumbnails {
 
                 /**
                  * 
@@ -2458,7 +2458,7 @@ public class Anonymous
                 }
             }
 
-            public class Dailyperformancereport {
+            public class DailyPerformanceReport {
 
                 /**
                  * 
@@ -2478,7 +2478,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaultavatars {
+            public class DefaultAvatars {
 
                 /**
                  * 
@@ -2498,7 +2498,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaultcategoriesmuted {
+            public class DefaultCategoriesMuted {
 
                 /**
                  * 
@@ -2518,7 +2518,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaultcategoriestracking {
+            public class DefaultCategoriesTracking {
 
                 /**
                  * 
@@ -2538,7 +2538,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaultcategorieswatchingfirstpost {
+            public class DefaultCategoriesWatchingFirstPost {
 
                 /**
                  * 
@@ -2558,7 +2558,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaultcodelang {
+            public class DefaultCodeLang {
 
                 /**
                  * 
@@ -2576,7 +2576,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaultemailalways {
+            public class DefaultEmailAlways {
 
                 /**
                  * 
@@ -2596,7 +2596,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaultemaildigestfrequency {
+            public class DefaultEmailDigestFrequency {
 
                 /**
                  * 
@@ -2616,7 +2616,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaultemaildirect {
+            public class DefaultEmailDirect {
 
                 /**
                  * 
@@ -2636,7 +2636,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaultemailinreplyto {
+            public class DefaultEmailInReplyTo {
 
                 /**
                  * 
@@ -2656,7 +2656,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaultemailmailinglistmode {
+            public class DefaultEmailMailingListMode {
 
                 /**
                  * 
@@ -2676,7 +2676,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaultemailmailinglistmodefrequency {
+            public class DefaultEmailMailingListModeFrequency {
 
                 /**
                  * 
@@ -2696,7 +2696,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaultemailpreviousreplies {
+            public class DefaultEmailPreviousReplies {
 
                 /**
                  * 
@@ -2716,7 +2716,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaultemailprivatemessages {
+            public class DefaultEmailPrivateMessages {
 
                 /**
                  * 
@@ -2736,7 +2736,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaultincludetl0indigests {
+            public class DefaultIncludeTl0InDigests {
 
                 /**
                  * 
@@ -2756,7 +2756,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaultinviteetrustlevel {
+            public class DefaultInviteeTrustLevel {
 
                 /**
                  * 
@@ -2776,7 +2776,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaultlocale {
+            public class DefaultLocale {
 
                 /**
                  * 
@@ -2794,7 +2794,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaultopengraphimageurl {
+            public class DefaultOpengraphImageUrl {
 
                 /**
                  * 
@@ -2812,7 +2812,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaultotherautotracktopicaftermsecs {
+            public class DefaultOtherAutoTrackTopicAfterMsecs {
 
                 /**
                  * 
@@ -2832,7 +2832,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaultotherdisablejumpreply {
+            public class DefaultOtherDisableJumpReply {
 
                 /**
                  * 
@@ -2852,7 +2852,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaultotherdynamicfavicon {
+            public class DefaultOtherDynamicFavicon {
 
                 /**
                  * 
@@ -2872,7 +2872,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaultotherenablequoting {
+            public class DefaultOtherEnableQuoting {
 
                 /**
                  * 
@@ -2892,7 +2892,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaultotherexternallinksinnewtab {
+            public class DefaultOtherExternalLinksInNewTab {
 
                 /**
                  * 
@@ -2912,7 +2912,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaultotherlikenotificationfrequency {
+            public class DefaultOtherLikeNotificationFrequency {
 
                 /**
                  * 
@@ -2932,7 +2932,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaultothernewtopicdurationminutes {
+            public class DefaultOtherNewTopicDurationMinutes {
 
                 /**
                  * 
@@ -2952,7 +2952,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaultothernotificationlevelwhenreplying {
+            public class DefaultOtherNotificationLevelWhenReplying {
 
                 /**
                  * 
@@ -2972,7 +2972,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaulttopicsautomaticunpin {
+            public class DefaultTopicsAutomaticUnpin {
 
                 /**
                  * 
@@ -2992,7 +2992,7 @@ public class Anonymous
                 }
             }
 
-            public class Defaulttrustlevel {
+            public class DefaultTrustLevel {
 
                 /**
                  * 
@@ -3012,7 +3012,7 @@ public class Anonymous
                 }
             }
 
-            public class Deleteallpostsmax {
+            public class DeleteAllPostsMax {
 
                 /**
                  * 
@@ -3030,7 +3030,7 @@ public class Anonymous
                 }
             }
 
-            public class Deletedigestemailafterdays {
+            public class DeleteDigestEmailAfterDays {
 
                 /**
                  * 
@@ -3048,7 +3048,7 @@ public class Anonymous
                 }
             }
 
-            public class Deletedraftsolderthanndays {
+            public class DeleteDraftsOlderThanNDays {
 
                 /**
                  * 
@@ -3068,7 +3068,7 @@ public class Anonymous
                 }
             }
 
-            public class Deleteemaillogsafterdays {
+            public class DeleteEmailLogsAfterDays {
 
                 /**
                  * 
@@ -3088,7 +3088,7 @@ public class Anonymous
                 }
             }
 
-            public class Deleteoldhiddenposts {
+            public class DeleteOldHiddenPosts {
 
                 /**
                  * 
@@ -3106,7 +3106,7 @@ public class Anonymous
                 }
             }
 
-            public class Deleteremovedpostsafter {
+            public class DeleteRemovedPostsAfter {
 
                 /**
                  * 
@@ -3124,7 +3124,7 @@ public class Anonymous
                 }
             }
 
-            public class Deleteusermaxpostage {
+            public class DeleteUserMaxPostAge {
 
                 /**
                  * 
@@ -3142,7 +3142,7 @@ public class Anonymous
                 }
             }
 
-            public class Desktopcategorypagestyle {
+            public class DesktopCategoryPageStyle {
 
                 /**
                  * 
@@ -3160,7 +3160,7 @@ public class Anonymous
                 }
             }
 
-            public class Detailsenabled {
+            public class DetailsEnabled {
 
                 /**
                  * 
@@ -3180,7 +3180,7 @@ public class Anonymous
                 }
             }
 
-            public class Digestlogourl {
+            public class DigestLogoUrl {
 
                 /**
                  * 
@@ -3198,7 +3198,7 @@ public class Anonymous
                 }
             }
 
-            public class Digestminexcerptlength {
+            public class DigestMinExcerptLength {
 
                 /**
                  * 
@@ -3216,7 +3216,7 @@ public class Anonymous
                 }
             }
 
-            public class Digestothertopics {
+            public class DigestOtherTopics {
 
                 /**
                  * 
@@ -3234,7 +3234,7 @@ public class Anonymous
                 }
             }
 
-            public class Digestposts {
+            public class DigestPosts {
 
                 /**
                  * 
@@ -3252,7 +3252,7 @@ public class Anonymous
                 }
             }
 
-            public class Digestsuppresscategories {
+            public class DigestSuppressCategories {
 
                 /**
                  * 
@@ -3271,7 +3271,7 @@ public class Anonymous
                 }
             }
 
-            public class Digesttopics {
+            public class DigestTopics {
 
                 /**
                  * 
@@ -3289,7 +3289,7 @@ public class Anonymous
                 }
             }
 
-            public class Disableavatareducationmessage {
+            public class DisableAvatarEducationMessage {
 
                 /**
                  * 
@@ -3309,7 +3309,7 @@ public class Anonymous
                 }
             }
 
-            public class Disabledigestemails {
+            public class DisableDigestEmails {
 
                 /**
                  * 
@@ -3327,7 +3327,7 @@ public class Anonymous
                 }
             }
 
-            public class Disabledimagedownloaddomains {
+            public class DisabledImageDownloadDomains {
 
                 /**
                  * 
@@ -3346,7 +3346,7 @@ public class Anonymous
                 }
             }
 
-            public class Disablediscoursenarrativebotwelcomepost {
+            public class DisableDiscourseNarrativeBotWelcomePost {
 
                 /**
                  * 
@@ -3366,7 +3366,7 @@ public class Anonymous
                 }
             }
 
-            public class Disableeditnotifications {
+            public class DisableEditNotifications {
 
                 /**
                  * 
@@ -3386,7 +3386,7 @@ public class Anonymous
                 }
             }
 
-            public class Disableemails {
+            public class DisableEmails {
 
                 /**
                  * 
@@ -3406,7 +3406,7 @@ public class Anonymous
                 }
             }
 
-            public class Disablemailinglistmode {
+            public class DisableMailingListMode {
 
                 /**
                  * 
@@ -3426,7 +3426,7 @@ public class Anonymous
                 }
             }
 
-            public class Discoursenarrativebotdisablepublicreplies {
+            public class DiscourseNarrativeBotDisablePublicReplies {
 
                 /**
                  * 
@@ -3446,7 +3446,7 @@ public class Anonymous
                 }
             }
 
-            public class Discoursenarrativebotenabled {
+            public class DiscourseNarrativeBotEnabled {
 
                 /**
                  * 
@@ -3466,7 +3466,7 @@ public class Anonymous
                 }
             }
 
-            public class Discoursenarrativebotignoredusernames {
+            public class DiscourseNarrativeBotIgnoredUsernames {
 
                 /**
                  * 
@@ -3486,7 +3486,7 @@ public class Anonymous
                 }
             }
 
-            public class Discoursenarrativebotwelcomepostdelay {
+            public class DiscourseNarrativeBotWelcomePostDelay {
 
                 /**
                  * 
@@ -3506,7 +3506,7 @@ public class Anonymous
                 }
             }
 
-            public class Discoursenarrativebotwelcomeposttype {
+            public class DiscourseNarrativeBotWelcomePostType {
 
                 /**
                  * 
@@ -3526,7 +3526,7 @@ public class Anonymous
                 }
             }
 
-            public class Displaynameonemailfrom {
+            public class DisplayNameOnEmailFrom {
 
                 /**
                  * 
@@ -3546,7 +3546,7 @@ public class Anonymous
                 }
             }
 
-            public class Displaynameonposts {
+            public class DisplayNameOnPosts {
 
                 /**
                  * 
@@ -3564,7 +3564,7 @@ public class Anonymous
                 }
             }
 
-            public class Dominatingtopicminimumpercent {
+            public class DominatingTopicMinimumPercent {
 
                 /**
                  * 
@@ -3584,7 +3584,7 @@ public class Anonymous
                 }
             }
 
-            public class Downloadremoteimagesmaxdaysold {
+            public class DownloadRemoteImagesMaxDaysOld {
 
                 /**
                  * 
@@ -3604,7 +3604,7 @@ public class Anonymous
                 }
             }
 
-            public class Downloadremoteimagesthreshold {
+            public class DownloadRemoteImagesThreshold {
 
                 /**
                  * 
@@ -3624,7 +3624,7 @@ public class Anonymous
                 }
             }
 
-            public class Downloadremoteimagestolocal {
+            public class DownloadRemoteImagesToLocal {
 
                 /**
                  * 
@@ -3643,7 +3643,7 @@ public class Anonymous
                 }
             }
 
-            public class Edithistoryvisibletopublic {
+            public class EditHistoryVisibleToPublic {
 
                 /**
                  * 
@@ -3661,7 +3661,7 @@ public class Anonymous
                 }
             }
 
-            public class Editinggraceperiod {
+            public class EditingGracePeriod {
 
                 /**
                  * 
@@ -3679,7 +3679,7 @@ public class Anonymous
                 }
             }
 
-            public class Educateuntilposts {
+            public class EducateUntilPosts {
 
                 /**
                  * 
@@ -3699,7 +3699,7 @@ public class Anonymous
                 }
             }
 
-            public class Emailaccentbgcolor {
+            public class EmailAccentBgColor {
 
                 /**
                  * 
@@ -3719,7 +3719,7 @@ public class Anonymous
                 }
             }
 
-            public class Emailaccentfgcolor {
+            public class EmailAccentFgColor {
 
                 /**
                  * 
@@ -3739,7 +3739,7 @@ public class Anonymous
                 }
             }
 
-            public class Emailcustomheaders {
+            public class EmailCustomHeaders {
 
                 /**
                  * 
@@ -3758,7 +3758,7 @@ public class Anonymous
                 }
             }
 
-            public class Emaildomainsblacklist {
+            public class EmailDomainsBlacklist {
 
                 /**
                  * 
@@ -3778,7 +3778,7 @@ public class Anonymous
                 }
             }
 
-            public class Emaildomainswhitelist {
+            public class EmailDomainsWhitelist {
 
                 /**
                  * 
@@ -3798,7 +3798,7 @@ public class Anonymous
                 }
             }
 
-            public class Emaileditable {
+            public class EmailEditable {
 
                 /**
                  * 
@@ -3816,7 +3816,7 @@ public class Anonymous
                 }
             }
 
-            public class Emailin {
+            public class EmailIn {
 
                 /**
                  * 
@@ -3836,7 +3836,7 @@ public class Anonymous
                 }
             }
 
-            public class Emailinmintrust {
+            public class EmailInMinTrust {
 
                 /**
                  * 
@@ -3856,7 +3856,7 @@ public class Anonymous
                 }
             }
 
-            public class Emaillinkcolor {
+            public class EmailLinkColor {
 
                 /**
                  * 
@@ -3876,7 +3876,7 @@ public class Anonymous
                 }
             }
 
-            public class Emailpostscontext {
+            public class EmailPostsContext {
 
                 /**
                  * 
@@ -3894,7 +3894,7 @@ public class Anonymous
                 }
             }
 
-            public class Emailprefix {
+            public class EmailPrefix {
 
                 /**
                  * 
@@ -3914,7 +3914,7 @@ public class Anonymous
                 }
             }
 
-            public class Emailsitetitle {
+            public class EmailSiteTitle {
 
                 /**
                  * 
@@ -3934,7 +3934,7 @@ public class Anonymous
                 }
             }
 
-            public class Emailsubject {
+            public class EmailSubject {
 
                 /**
                  * 
@@ -3953,7 +3953,7 @@ public class Anonymous
                 }
             }
 
-            public class Emailtimewindowmins {
+            public class EmailTimeWindowMins {
 
                 /**
                  * 
@@ -3971,7 +3971,7 @@ public class Anonymous
                 }
             }
 
-            public class Emailtokenvalidhours {
+            public class EmailTokenValidHours {
 
                 /**
                  * 
@@ -3989,7 +3989,7 @@ public class Anonymous
                 }
             }
 
-            public class Embedtruncate {
+            public class EmbedTruncate {
 
                 /**
                  * 
@@ -4007,7 +4007,7 @@ public class Anonymous
                 }
             }
 
-            public class Emojiset {
+            public class EmojiSet {
 
                 /**
                  * 
@@ -4025,7 +4025,7 @@ public class Anonymous
                 }
             }
 
-            public class Enablebadges {
+            public class EnableBadges {
 
                 /**
                  * 
@@ -4043,7 +4043,7 @@ public class Anonymous
                 }
             }
 
-            public class Enableemoji {
+            public class EnableEmoji {
 
                 /**
                  * 
@@ -4061,7 +4061,7 @@ public class Anonymous
                 }
             }
 
-            public class Enableescapedfragments {
+            public class EnableEscapedFragments {
 
                 /**
                  * 
@@ -4081,7 +4081,7 @@ public class Anonymous
                 }
             }
 
-            public class Enablefacebooklogins {
+            public class EnableFacebookLogins {
 
                 /**
                  * 
@@ -4099,7 +4099,7 @@ public class Anonymous
                 }
             }
 
-            public class Enableflashvideoonebox {
+            public class EnableFlashVideoOnebox {
 
                 /**
                  * 
@@ -4119,7 +4119,7 @@ public class Anonymous
                 }
             }
 
-            public class Enableforwardedemails {
+            public class EnableForwardedEmails {
 
                 /**
                  * 
@@ -4138,7 +4138,7 @@ public class Anonymous
                 }
             }
 
-            public class Enablegithublogins {
+            public class EnableGithubLogins {
 
                 /**
                  * 
@@ -4156,7 +4156,7 @@ public class Anonymous
                 }
             }
 
-            public class Enablegoogleoauth2logins {
+            public class EnableGoogleOauth2Logins {
 
                 /**
                  * 
@@ -4174,7 +4174,7 @@ public class Anonymous
                 }
             }
 
-            public class Enableinstagramlogins {
+            public class EnableInstagramLogins {
 
                 /**
                  * 
@@ -4192,7 +4192,7 @@ public class Anonymous
                 }
             }
 
-            public class Enablelocallogins {
+            public class EnableLocalLogins {
 
                 /**
                  * 
@@ -4210,7 +4210,7 @@ public class Anonymous
                 }
             }
 
-            public class Enablelongpolling {
+            public class EnableLongPolling {
 
                 /**
                  * 
@@ -4230,7 +4230,7 @@ public class Anonymous
                 }
             }
 
-            public class Enablemobiletheme {
+            public class EnableMobileTheme {
 
                 /**
                  * 
@@ -4248,7 +4248,7 @@ public class Anonymous
                 }
             }
 
-            public class Enablenames {
+            public class EnableNames {
 
                 /**
                  * 
@@ -4266,7 +4266,7 @@ public class Anonymous
                 }
             }
 
-            public class Enablenoscriptsupport {
+            public class EnableNoscriptSupport {
 
                 /**
                  * 
@@ -4286,7 +4286,7 @@ public class Anonymous
                 }
             }
 
-            public class Enableprivatemessages {
+            public class EnablePrivateMessages {
 
                 /**
                  * 
@@ -4304,7 +4304,7 @@ public class Anonymous
                 }
             }
 
-            public class Enables3backups {
+            public class EnableS3Backups {
 
                 /**
                  * 
@@ -4324,7 +4324,7 @@ public class Anonymous
                 }
             }
 
-            public class Enables3uploads {
+            public class EnableS3Uploads {
 
                 /**
                  * 
@@ -4344,7 +4344,7 @@ public class Anonymous
                 }
             }
 
-            public class Enablesignupcta {
+            public class EnableSignupCta {
 
                 /**
                  * 
@@ -4362,7 +4362,7 @@ public class Anonymous
                 }
             }
 
-            public class Enablesso {
+            public class EnableSso {
 
                 /**
                  * 
@@ -4380,7 +4380,7 @@ public class Anonymous
                 }
             }
 
-            public class Enablessoprovider {
+            public class EnableSsoProvider {
 
                 /**
                  * 
@@ -4398,7 +4398,7 @@ public class Anonymous
                 }
             }
 
-            public class Enablestagedusers {
+            public class EnableStagedUsers {
 
                 /**
                  * 
@@ -4417,7 +4417,7 @@ public class Anonymous
                 }
             }
 
-            public class Enabletwitterlogins {
+            public class EnableTwitterLogins {
 
                 /**
                  * 
@@ -4435,7 +4435,7 @@ public class Anonymous
                 }
             }
 
-            public class Enableuserdirectory {
+            public class EnableUserDirectory {
 
                 /**
                  * 
@@ -4453,7 +4453,7 @@ public class Anonymous
                 }
             }
 
-            public class Enablewhispers {
+            public class EnableWhispers {
 
                 /**
                  * 
@@ -4471,7 +4471,7 @@ public class Anonymous
                 }
             }
 
-            public class Enableyahoologins {
+            public class EnableYahooLogins {
 
                 /**
                  * 
@@ -4489,7 +4489,7 @@ public class Anonymous
                 }
             }
 
-            public class Enforcesquareemoji {
+            public class EnforceSquareEmoji {
 
                 /**
                  * 
@@ -4507,7 +4507,7 @@ public class Anonymous
                 }
             }
 
-            public class Excluderelnofollowdomains {
+            public class ExcludeRelNofollowDomains {
 
                 /**
                  * 
@@ -4527,7 +4527,7 @@ public class Anonymous
                 }
             }
 
-            public class Externalsystemavatarsenabled {
+            public class ExternalSystemAvatarsEnabled {
 
                 /**
                  * 
@@ -4547,7 +4547,7 @@ public class Anonymous
                 }
             }
 
-            public class Externalsystemavatarsurl {
+            public class ExternalSystemAvatarsUrl {
 
                 /**
                  * 
@@ -4567,7 +4567,7 @@ public class Anonymous
                 }
             }
 
-            public class Facebookappid {
+            public class FacebookAppId {
 
                 /**
                  * 
@@ -4585,7 +4585,7 @@ public class Anonymous
                 }
             }
 
-            public class Facebookappsecret {
+            public class FacebookAppSecret {
 
                 /**
                  * 
@@ -4603,7 +4603,7 @@ public class Anonymous
                 }
             }
 
-            public class Facebookrequestextraprofiledetails {
+            public class FacebookRequestExtraProfileDetails {
 
                 /**
                  * 
@@ -4621,7 +4621,7 @@ public class Anonymous
                 }
             }
 
-            public class Fagurl {
+            public class FagUrl {
 
                 /**
                  * 
@@ -4641,7 +4641,7 @@ public class Anonymous
                 }
             }
 
-            public class Faviconurl {
+            public class FaviconUrl {
 
                 /**
                  * 
@@ -4659,7 +4659,7 @@ public class Anonymous
                 }
             }
 
-            public class Fixedcategorypositions {
+            public class FixedCategoryPositions {
 
                 /**
                  * 
@@ -4677,7 +4677,7 @@ public class Anonymous
                 }
             }
 
-            public class Fixedcategorypositionsoncreate {
+            public class FixedCategoryPositionsOnCreate {
 
                 /**
                  * 
@@ -4695,7 +4695,7 @@ public class Anonymous
                 }
             }
 
-            public class Flagsockpuppets {
+            public class FlagSockpuppets {
 
                 /**
                  * 
@@ -4715,7 +4715,7 @@ public class Anonymous
                 }
             }
 
-            public class Flagsrequiredtohidepost {
+            public class FlagsRequiredToHidePost {
 
                 /**
                  * 
@@ -4735,7 +4735,7 @@ public class Anonymous
                 }
             }
 
-            public class Flushtimingssecs {
+            public class FlushTimingsSecs {
 
                 /**
                  * 
@@ -4755,7 +4755,7 @@ public class Anonymous
                 }
             }
 
-            public class Forcehostname {
+            public class ForceHostname {
 
                 /**
                  * 
@@ -4775,7 +4775,7 @@ public class Anonymous
                 }
             }
 
-            public class Forcehttps {
+            public class ForceHttps {
 
                 /**
                  * 
@@ -4795,7 +4795,7 @@ public class Anonymous
                 }
             }
 
-            public class Forgotpasswordstrict {
+            public class ForgotPasswordStrict {
 
                 /**
                  * 
@@ -4813,7 +4813,7 @@ public class Anonymous
                 }
             }
 
-            public class Fullnamerequired {
+            public class FullNameRequired {
 
                 /**
                  * 
@@ -4831,7 +4831,7 @@ public class Anonymous
                 }
             }
 
-            public class Gadomainname {
+            public class GaDomainName {
 
                 /**
                  * 
@@ -4849,7 +4849,7 @@ public class Anonymous
                 }
             }
 
-            public class Gatrackingcode {
+            public class GaTrackingCode {
 
                 /**
                  * 
@@ -4867,7 +4867,7 @@ public class Anonymous
                 }
             }
 
-            public class Gauniversaldomainname {
+            public class GaUniversalDomainName {
 
                 /**
                  * 
@@ -4885,7 +4885,7 @@ public class Anonymous
                 }
             }
 
-            public class Gauniversaltrackingcode {
+            public class GaUniversalTrackingCode {
 
                 /**
                  * 
@@ -4903,7 +4903,7 @@ public class Anonymous
                 }
             }
 
-            public class Githubclientid {
+            public class GithubClientId {
 
                 /**
                  * 
@@ -4921,7 +4921,7 @@ public class Anonymous
                 }
             }
 
-            public class Githubclientsecret {
+            public class GithubClientSecret {
 
                 /**
                  * 
@@ -4939,7 +4939,7 @@ public class Anonymous
                 }
             }
 
-            public class Globalnotice {
+            public class GlobalNotice {
 
                 /**
                  * 
@@ -4959,7 +4959,7 @@ public class Anonymous
                 }
             }
 
-            public class Googleoath2clientid {
+            public class GoogleOath2ClientId {
 
                 /**
                  * 
@@ -4977,7 +4977,7 @@ public class Anonymous
                 }
             }
 
-            public class Googleoath2clientsecret {
+            public class GoogleOath2ClientSecret {
 
                 /**
                  * 
@@ -4995,7 +4995,7 @@ public class Anonymous
                 }
             }
 
-            public class Gtmcontainerid {
+            public class GtmContainerId {
 
                 /**
                  * 
@@ -5013,7 +5013,7 @@ public class Anonymous
                 }
             }
 
-            public class Hardbouncescore {
+            public class HardBounceScore {
 
                 /**
                  * 
@@ -5032,7 +5032,7 @@ public class Anonymous
                 }
             }
 
-            public class Hideuserprofilesfrompublic {
+            public class HideUserProfilesFromPublic {
 
                 /**
                  * 
@@ -5050,7 +5050,7 @@ public class Anonymous
                 }
             }
 
-            public class Highlightedlanguages {
+            public class HighlightedLanguages {
 
                 /**
                  * 
@@ -5068,7 +5068,7 @@ public class Anonymous
                 }
             }
 
-            public class Historyhourshigh {
+            public class HistoryHoursHigh {
 
                 /**
                  * 
@@ -5088,7 +5088,7 @@ public class Anonymous
                 }
             }
 
-            public class Historyhourslow {
+            public class HistoryHoursLow {
 
                 /**
                  * 
@@ -5108,7 +5108,7 @@ public class Anonymous
                 }
             }
 
-            public class Historyhoursmedium {
+            public class HistoryHoursMedium {
 
                 /**
                  * 
@@ -5128,7 +5128,7 @@ public class Anonymous
                 }
             }
 
-            public class Ignorebytitle {
+            public class IgnoreByTitle {
 
                 /**
                  * 
@@ -5147,7 +5147,7 @@ public class Anonymous
                 }
             }
 
-            public class Incomingemailpreferhtml {
+            public class IncomingEmailPreferHtml {
 
                 /**
                  * 
@@ -5167,7 +5167,7 @@ public class Anonymous
                 }
             }
 
-            public class Instagramconsumerkey {
+            public class InstagramConsumerKey {
 
                 /**
                  * 
@@ -5185,7 +5185,7 @@ public class Anonymous
                 }
             }
 
-            public class Instagramconsumersecret {
+            public class InstagramConsumerSecret {
 
                 /**
                  * 
@@ -5203,7 +5203,7 @@ public class Anonymous
                 }
             }
 
-            public class Inviteexpirydays {
+            public class InviteExpiryDays {
 
                 /**
                  * 
@@ -5221,7 +5221,7 @@ public class Anonymous
                 }
             }
 
-            public class Inviteonly {
+            public class InviteOnly {
 
                 /**
                  * 
@@ -5239,7 +5239,7 @@ public class Anonymous
                 }
             }
 
-            public class Invitepassthroughhours {
+            public class InvitePassthroughHours {
 
                 /**
                  * 
@@ -5257,7 +5257,7 @@ public class Anonymous
                 }
             }
 
-            public class Invitesperpage {
+            public class InvitesPerPage {
 
                 /**
                  * 
@@ -5275,7 +5275,7 @@ public class Anonymous
                 }
             }
 
-            public class Levenshteindistancespammeremails {
+            public class LevenshteinDistanceSpammerEmails {
 
                 /**
                  * 
@@ -5295,7 +5295,7 @@ public class Anonymous
                 }
             }
 
-            public class Limitsuggestedtocategory {
+            public class LimitSuggestedToCategory {
 
                 /**
                  * 
@@ -5313,7 +5313,7 @@ public class Anonymous
                 }
             }
 
-            public class Loginrequired {
+            public class LoginRequired {
 
                 /**
                  * 
@@ -5331,7 +5331,7 @@ public class Anonymous
                 }
             }
 
-            public class Logmailprocessingfailures {
+            public class LogMailProcessingFailures {
 
                 /**
                  * 
@@ -5350,7 +5350,7 @@ public class Anonymous
                 }
             }
 
-            public class Logosmallurl {
+            public class LogoSmallUrl {
 
                 /**
                  * 
@@ -5368,7 +5368,7 @@ public class Anonymous
                 }
             }
 
-            public class Logourl {
+            public class LogoUrl {
 
                 /**
                  * 
@@ -5386,7 +5386,7 @@ public class Anonymous
                 }
             }
 
-            public class Logoutredirect {
+            public class LogoutRedirect {
 
                 /**
                  * 
@@ -5404,7 +5404,7 @@ public class Anonymous
                 }
             }
 
-            public class Logoutstrict {
+            public class LogOutStrict {
 
                 /**
                  * 
@@ -5422,7 +5422,7 @@ public class Anonymous
                 }
             }
 
-            public class Longpollingbaseurl {
+            public class LongPollingBaseUrl {
 
                 /**
                  * 
@@ -5442,7 +5442,7 @@ public class Anonymous
                 }
             }
 
-            public class Longpollinginterval {
+            public class LongPollingInterval {
 
                 /**
                  * 
@@ -5462,7 +5462,7 @@ public class Anonymous
                 }
             }
 
-            public class Mailgunapikey {
+            public class MailgunApiKey {
 
                 /**
                  * 
@@ -5481,7 +5481,7 @@ public class Anonymous
                 }
             }
 
-            public class Manualpollingenabled {
+            public class ManualPollingEnabled {
 
                 /**
                  * 
@@ -5499,7 +5499,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxageunmatchedemails {
+            public class MaxAgeUnmatchedEmails {
 
                 /**
                  * 
@@ -5519,7 +5519,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxageunmatchedips {
+            public class MaxAgeUnmatchedIps {
 
                 /**
                  * 
@@ -5539,7 +5539,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxapikeysperuser {
+            public class MaxApiKeysPerUser {
 
                 /**
                  * 
@@ -5559,7 +5559,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxattachmentsizekb {
+            public class MaxAttachmentSizeKb {
 
                 /**
                  * 
@@ -5578,7 +5578,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxbookmarksperday {
+            public class MaxBookmarksPerDay {
 
                 /**
                  * 
@@ -5598,7 +5598,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxeditsperday {
+            public class MaxEditsPerDay {
 
                 /**
                  * 
@@ -5618,7 +5618,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxemailsperdayperuser {
+            public class MaxEmailsPerDayPerUser {
 
                 /**
                  * 
@@ -5637,7 +5637,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxflagsperday {
+            public class MaxFlagsPerDay {
 
                 /**
                  * 
@@ -5657,7 +5657,7 @@ public class Anonymous
                 }
             }
 
-            public class Maximageheight {
+            public class MaxImageHeight {
 
                 /**
                  * 
@@ -5676,7 +5676,7 @@ public class Anonymous
                 }
             }
 
-            public class Maximagemegapixels {
+            public class MaxImageMegapixels {
 
                 /**
                  * 
@@ -5695,7 +5695,7 @@ public class Anonymous
                 }
             }
 
-            public class Maximagesizekb {
+            public class MaxImageSizeKb {
 
                 /**
                  * 
@@ -5714,7 +5714,7 @@ public class Anonymous
                 }
             }
 
-            public class Maximagewidth {
+            public class MaxImageWidth {
 
                 /**
                  * 
@@ -5733,7 +5733,7 @@ public class Anonymous
                 }
             }
 
-            public class Maximumbackups {
+            public class MaximumBackups {
 
                 /**
                  * 
@@ -5753,7 +5753,7 @@ public class Anonymous
                 }
             }
 
-            public class Maximumsessionage {
+            public class MaximumSessionAge {
 
                 /**
                  * 
@@ -5771,7 +5771,7 @@ public class Anonymous
                 }
             }
 
-            public class Maximumstagedusersperemail {
+            public class MaximumStagedUsersPerEmail {
 
                 /**
                  * 
@@ -5790,7 +5790,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxinvitesperday {
+            public class MaxInvitesPerDay {
 
                 /**
                  * 
@@ -5810,7 +5810,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxlikesperday {
+            public class MaxLikesPerDay {
 
                 /**
                  * 
@@ -5830,7 +5830,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxmentionsperpost {
+            public class MaxMentionsPerPost {
 
                 /**
                  * 
@@ -5848,7 +5848,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxnewaccountsperregistrationip {
+            public class MaxNewAccountsPerRegistrationIp {
 
                 /**
                  * 
@@ -5868,7 +5868,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxoneboxesperpost {
+            public class MaxOneboxesPerPost {
 
                 /**
                  * 
@@ -5888,7 +5888,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxpostlength {
+            public class MaxPostLength {
 
                 /**
                  * 
@@ -5906,7 +5906,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxprintsperhourperuser {
+            public class MaxPrintsPerHourPerUser {
 
                 /**
                  * 
@@ -5926,7 +5926,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxprivatemessagesperday {
+            public class MaxPrivateMessagesPerDay {
 
                 /**
                  * 
@@ -5946,7 +5946,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxrepliesinfirstday {
+            public class MaxRepliesInFirstDay {
 
                 /**
                  * 
@@ -5966,7 +5966,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxreplyhistory {
+            public class MaxReplyHistory {
 
                 /**
                  * 
@@ -5984,7 +5984,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxsimilarresults {
+            public class MaxSimilarResults {
 
                 /**
                  * 
@@ -6004,7 +6004,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxtaglength {
+            public class MaxTagLength {
 
                 /**
                  * 
@@ -6024,7 +6024,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxtagsearchresults {
+            public class MaxTagSearchResults {
 
                 /**
                  * 
@@ -6044,7 +6044,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxtagsinfilterlist {
+            public class MaxTagsInFilterList {
 
                 /**
                  * 
@@ -6064,7 +6064,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxtagspertopic {
+            public class MaxTagsPerTopic {
 
                 /**
                  * 
@@ -6084,7 +6084,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxtopicinvitationsperday {
+            public class MaxTopicInvitationsPerDay {
 
                 /**
                  * 
@@ -6104,7 +6104,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxtopicsinfirstday {
+            public class MaxTopicsInFirstDay {
 
                 /**
                  * 
@@ -6124,7 +6124,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxtopicsperday {
+            public class MaxTopicsPerDay {
 
                 /**
                  * 
@@ -6144,7 +6144,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxtopictitlelength {
+            public class MaxTopicTitleLength {
 
                 /**
                  * 
@@ -6162,7 +6162,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxuserapireqsperday {
+            public class MaxUserApiReqsPerDay {
 
                 /**
                  * 
@@ -6182,7 +6182,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxuserapireqsperminute {
+            public class MaxUserApiReqsPerMinute {
 
                 /**
                  * 
@@ -6202,7 +6202,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxusernamelength {
+            public class MaxUsernameLength {
 
                 /**
                  * 
@@ -6220,7 +6220,7 @@ public class Anonymous
                 }
             }
 
-            public class Maxusersnotifiedpergroupmention {
+            public class MaxUsersNotifiedPerGroupMention {
 
                 /**
                  * 
@@ -6238,7 +6238,7 @@ public class Anonymous
                 }
             }
 
-            public class Minadminpasswordlength {
+            public class MinAdminPasswordLength {
 
                 /**
                  * 
@@ -6256,7 +6256,7 @@ public class Anonymous
                 }
             }
 
-            public class Minbanentriesforrollup {
+            public class MinBanEntriesForRollUp {
 
                 /**
                  * 
@@ -6276,7 +6276,7 @@ public class Anonymous
                 }
             }
 
-            public class Minbodytitlelength {
+            public class MinBodyTitleLength {
 
                 /**
                  * 
@@ -6294,7 +6294,7 @@ public class Anonymous
                 }
             }
 
-            public class Minfirstpostlength {
+            public class MinFirstPostLength {
 
                 /**
                  * 
@@ -6312,7 +6312,7 @@ public class Anonymous
                 }
             }
 
-            public class Minfirstposttypingtime {
+            public class MinFirstPostTypingTime {
 
                 /**
                  * 
@@ -6332,7 +6332,7 @@ public class Anonymous
                 }
             }
 
-            public class Minimumtopicssimilar {
+            public class MinimumTopicsSimilar {
 
                 /**
                  * 
@@ -6352,7 +6352,7 @@ public class Anonymous
                 }
             }
 
-            public class Minpasswordlength {
+            public class MinPasswordLength {
 
                 /**
                  * 
@@ -6370,7 +6370,7 @@ public class Anonymous
                 }
             }
 
-            public class Minpostlength {
+            public class MinPostLength {
 
                 /**
                  * 
@@ -6388,7 +6388,7 @@ public class Anonymous
                 }
             }
 
-            public class Minprivatemessagepostlength {
+            public class MinPrivateMessagePostLength {
 
                 /**
                  * 
@@ -6406,7 +6406,7 @@ public class Anonymous
                 }
             }
 
-            public class Minprivatemessagetitlelength {
+            public class MinPrivateMessageTitleLength {
 
                 /**
                  * 
@@ -6424,7 +6424,7 @@ public class Anonymous
                 }
             }
 
-            public class Minsearchtermlength {
+            public class MinSearchTermLength {
 
                 /**
                  * 
@@ -6444,7 +6444,7 @@ public class Anonymous
                 }
             }
 
-            public class Mintitlesimilarlength {
+            public class MinTitleSimilarLength {
 
                 /**
                  * 
@@ -6462,7 +6462,7 @@ public class Anonymous
                 }
             }
 
-            public class Mintopictitlelength {
+            public class MinTopicTitleLength {
 
                 /**
                  * 
@@ -6480,7 +6480,7 @@ public class Anonymous
                 }
             }
 
-            public class Mintrustlevelforuserapikey {
+            public class MinTrustLevelForUserApiKey {
 
                 /**
                  * 
@@ -6500,7 +6500,7 @@ public class Anonymous
                 }
             }
 
-            public class Mintrustleveltotagtopics {
+            public class MinTrustLevelToTagTopics {
 
                 /**
                  * 
@@ -6520,7 +6520,7 @@ public class Anonymous
                 }
             }
 
-            public class Mintrusttoallowselfwiki {
+            public class MinTrustToAllowSelfWiki {
 
                 /**
                  * 
@@ -6540,7 +6540,7 @@ public class Anonymous
                 }
             }
 
-            public class Mintrusttocreatetag {
+            public class MinTrustToCreateTag {
 
                 /**
                  * 
@@ -6560,7 +6560,7 @@ public class Anonymous
                 }
             }
 
-            public class Mintrusttocreatetopic {
+            public class MinTrustToCreateTopic {
 
                 /**
                  * 
@@ -6580,7 +6580,7 @@ public class Anonymous
                 }
             }
 
-            public class Mintrusttoeditpost {
+            public class MinTrustToEditPost {
 
                 /**
                  * 
@@ -6600,7 +6600,7 @@ public class Anonymous
                 }
             }
 
-            public class Mintrusttoeditwikipost {
+            public class MinTrustToEditWikiPost {
 
                 /**
                  * 
@@ -6620,7 +6620,7 @@ public class Anonymous
                 }
             }
 
-            public class Mintrusttosendmessages {
+            public class MinTrustToSendMessages {
 
                 /**
                  * 
@@ -6640,7 +6640,7 @@ public class Anonymous
                 }
             }
 
-            public class Minusernamelength {
+            public class MinUsernameLength {
 
                 /**
                  * 
@@ -6658,7 +6658,7 @@ public class Anonymous
                 }
             }
 
-            public class Mobilelogourl {
+            public class MobileLogoUrl {
 
                 /**
                  * 
@@ -6676,7 +6676,7 @@ public class Anonymous
                 }
             }
 
-            public class Mustapproveusers {
+            public class MustApproveUsers {
 
                 /**
                  * 
@@ -6694,7 +6694,7 @@ public class Anonymous
                 }
             }
 
-            public class Nativeappinstallbanner {
+            public class NativeAppInstallBanner {
 
                 /**
                  * 
@@ -6714,7 +6714,7 @@ public class Anonymous
                 }
             }
 
-            public class Newusermaxattachments {
+            public class NewuserMaxAttachments {
 
                 /**
                  * 
@@ -6732,7 +6732,7 @@ public class Anonymous
                 }
             }
 
-            public class Newusermaximages {
+            public class NewuserMaxImages {
 
                 /**
                  * 
@@ -6750,7 +6750,7 @@ public class Anonymous
                 }
             }
 
-            public class Newusermaxlinks {
+            public class NewuserMaxLinks {
 
                 /**
                  * 
@@ -6768,7 +6768,7 @@ public class Anonymous
                 }
             }
 
-            public class Newusermaxmentionsperpost {
+            public class NewuserMaxMentionsPerPost {
 
                 /**
                  * 
@@ -6786,7 +6786,7 @@ public class Anonymous
                 }
             }
 
-            public class Newusermaxrepliespertopic {
+            public class NewuserMaxRepliesPerTopic {
 
                 /**
                  * 
@@ -6804,7 +6804,7 @@ public class Anonymous
                 }
             }
 
-            public class Newuserspamhostthreshold {
+            public class NewuserSpamHostThreshold {
 
                 /**
                  * 
@@ -6824,7 +6824,7 @@ public class Anonymous
                 }
             }
 
-            public class Newversionemails {
+            public class NewVersionEmails {
 
                 /**
                  * 
@@ -6844,7 +6844,7 @@ public class Anonymous
                 }
             }
 
-            public class Notificationemail {
+            public class NotificationEmail {
 
                 /**
                  * 
@@ -6862,7 +6862,7 @@ public class Anonymous
                 }
             }
 
-            public class Notifyaboutflagsafter {
+            public class NotifyAboutFlagsAfter {
 
                 /**
                  * 
@@ -6882,7 +6882,7 @@ public class Anonymous
                 }
             }
 
-            public class Notifyaboutqueuedpostsafter {
+            public class NotifyAboutQueuedPostsAfter {
 
                 /**
                  * 
@@ -6900,7 +6900,7 @@ public class Anonymous
                 }
             }
 
-            public class Notifymodswhenuserblocked {
+            public class NotifyModsWhenUserBlocked {
 
                 /**
                  * 
@@ -6920,7 +6920,7 @@ public class Anonymous
                 }
             }
 
-            public class Numflaggerstoclosetopic {
+            public class NumFlaggersToCloseTopic {
 
                 /**
                  * 
@@ -6940,7 +6940,7 @@ public class Anonymous
                 }
             }
 
-            public class Numflagstoclosetopic {
+            public class NumFlagsToCloseTopic {
 
                 /**
                  * 
@@ -6960,7 +6960,7 @@ public class Anonymous
                 }
             }
 
-            public class Numspamflagstoblocknewuser {
+            public class NumSpamFlagsToBlockNewUser {
 
                 /**
                  * 
@@ -6980,7 +6980,7 @@ public class Anonymous
                 }
             }
 
-            public class Numtl3flagstoblocknewuser {
+            public class NumTl3FlagsToBlockNewUser {
 
                 /**
                  * 
@@ -7000,7 +7000,7 @@ public class Anonymous
                 }
             }
 
-            public class Numtl3userstoblocknewuser {
+            public class NumTl3UsersToBlockNewUser {
 
                 /**
                  * 
@@ -7020,7 +7020,7 @@ public class Anonymous
                 }
             }
 
-            public class Numuserstoblocknewuser {
+            public class NumUsersToBlockNewUser {
 
                 /**
                  * 
@@ -7040,7 +7040,7 @@ public class Anonymous
                 }
             }
 
-            public class Oneboxdomainsblacklist {
+            public class OneboxDomainsBlacklist {
 
                 /**
                  * 
@@ -7060,7 +7060,7 @@ public class Anonymous
                 }
             }
 
-            public class Pendingusersreminderdelay {
+            public class PendingUsersReminderDelay {
 
                 /**
                  * 
@@ -7078,7 +7078,7 @@ public class Anonymous
                 }
             }
 
-            public class Permalinknormalizations {
+            public class PermalinkNormalizations {
 
                 /**
                  * 
@@ -7098,7 +7098,7 @@ public class Anonymous
                 }
             }
 
-            public class Polleditwindowmins {
+            public class PollEditWindowMins {
 
                 /**
                  * 
@@ -7118,7 +7118,7 @@ public class Anonymous
                 }
             }
 
-            public class Pollenabled {
+            public class PollEnabled {
 
                 /**
                  * 
@@ -7138,7 +7138,7 @@ public class Anonymous
                 }
             }
 
-            public class Pollinginterval {
+            public class PollingInterval {
 
                 /**
                  * 
@@ -7158,7 +7158,7 @@ public class Anonymous
                 }
             }
 
-            public class Pollmaximumoptions {
+            public class PollMaximumOptions {
 
                 /**
                  * 
@@ -7178,7 +7178,7 @@ public class Anonymous
                 }
             }
 
-            public class Pop3pollingenabled {
+            public class Pop3PollingEnabled {
 
                 /**
                  * 
@@ -7197,7 +7197,7 @@ public class Anonymous
                 }
             }
 
-            public class Pop3pollinghost {
+            public class Pop3PollingHost {
 
                 /**
                  * 
@@ -7216,7 +7216,7 @@ public class Anonymous
                 }
             }
 
-            public class Pop3pollingopensslverify {
+            public class Pop3PollingOpensslVerify {
 
                 /**
                  * 
@@ -7235,7 +7235,7 @@ public class Anonymous
                 }
             }
 
-            public class Pop3pollingpassword {
+            public class Pop3PollingPassword {
 
                 /**
                  * 
@@ -7254,7 +7254,7 @@ public class Anonymous
                 }
             }
 
-            public class Pop3pollingperiodmins {
+            public class Pop3PollingPeriodMins {
 
                 /**
                  * 
@@ -7274,7 +7274,7 @@ public class Anonymous
                 }
             }
 
-            public class Pop3pollingport {
+            public class Pop3PollingPort {
 
                 /**
                  * 
@@ -7293,7 +7293,7 @@ public class Anonymous
                 }
             }
 
-            public class Pop3pollingssl {
+            public class Pop3PollingSsl {
 
                 /**
                  * 
@@ -7312,7 +7312,7 @@ public class Anonymous
                 }
             }
 
-            public class Pop3pollingusername {
+            public class Pop3PollingUsername {
 
                 /**
                  * 
@@ -7351,7 +7351,7 @@ public class Anonymous
                 }
             }
 
-            public class Postedittimelimit {
+            public class PostEditTimeLimit {
 
                 /**
                  * 
@@ -7369,7 +7369,7 @@ public class Anonymous
                 }
             }
 
-            public class Postexcerptmaxlength {
+            public class PostExcerptMaxlength {
 
                 /**
                  * 
@@ -7387,7 +7387,7 @@ public class Anonymous
                 }
             }
 
-            public class Postmenu {
+            public class PostMenu {
 
                 /**
                  * 
@@ -7406,7 +7406,7 @@ public class Anonymous
                 }
             }
 
-            public class Postmenuhiddenitems {
+            public class PostMenuHiddenItems {
 
                 /**
                  * 
@@ -7425,7 +7425,7 @@ public class Anonymous
                 }
             }
 
-            public class Postoneboxmaxlength {
+            public class PostOneboxMaxlength {
 
                 /**
                  * 
@@ -7445,7 +7445,7 @@ public class Anonymous
                 }
             }
 
-            public class Postundoactionwindowmins {
+            public class PostUndoActionWindowMins {
 
                 /**
                  * 
@@ -7463,7 +7463,7 @@ public class Anonymous
                 }
             }
 
-            public class Preventanonsfromdownloadingfiles {
+            public class PreventAnonsFromDownloadingFiles {
 
                 /**
                  * 
@@ -7483,7 +7483,7 @@ public class Anonymous
                 }
             }
 
-            public class Previousvisittimeouthours {
+            public class PreviousVisitTimeoutHours {
 
                 /**
                  * 
@@ -7503,7 +7503,7 @@ public class Anonymous
                 }
             }
 
-            public class Prioritizeusernameinux {
+            public class PrioritizeUsernameInUx {
 
                 /**
                  * 
@@ -7521,7 +7521,7 @@ public class Anonymous
                 }
             }
 
-            public class Privacypolicyurl {
+            public class PrivacyPolicyUrl {
 
                 /**
                  * 
@@ -7541,7 +7541,7 @@ public class Anonymous
                 }
             }
 
-            public class Privateemailtimewindowseconds {
+            public class PrivateEmailTimeWindowSeconds {
 
                 /**
                  * 
@@ -7559,7 +7559,7 @@ public class Anonymous
                 }
             }
 
-            public class Publicusercustomfields {
+            public class PublicUserCustomFields {
 
                 /**
                  * 
@@ -7577,7 +7577,7 @@ public class Anonymous
                 }
             }
 
-            public class Purgedeleteduploadsgraceperioddays {
+            public class PurgeDeletedUploadsGracePeriodDays {
 
                 /**
                  * 
@@ -7597,7 +7597,7 @@ public class Anonymous
                 }
             }
 
-            public class Purgeunactivatedusersgraceperioddays {
+            public class PurgeUnactivatedUsersGracePeriodDays {
 
                 /**
                  * 
@@ -7615,7 +7615,7 @@ public class Anonymous
                 }
             }
 
-            public class Queuejobs {
+            public class QueueJobs {
 
                 /**
                  * 
@@ -7635,7 +7635,7 @@ public class Anonymous
                 }
             }
 
-            public class Ratelimitcreatepost {
+            public class RateLimitCreatePost {
 
                 /**
                  * 
@@ -7655,7 +7655,7 @@ public class Anonymous
                 }
             }
 
-            public class Ratelimitcreatetopic {
+            public class RateLimitCreateTopic {
 
                 /**
                  * 
@@ -7675,7 +7675,7 @@ public class Anonymous
                 }
             }
 
-            public class Ratelimitnewusercreatepost {
+            public class RateLimitNewUserCreatePost {
 
                 /**
                  * 
@@ -7695,7 +7695,7 @@ public class Anonymous
                 }
             }
 
-            public class Ratelimitnewusercreatetopic {
+            public class RateLimitNewUserCreateTopic {
 
                 /**
                  * 
@@ -7715,7 +7715,7 @@ public class Anonymous
                 }
             }
 
-            public class Readonlymodeduringbackup {
+            public class ReadonlyModeDuringBackup {
 
                 /**
                  * 
@@ -7735,7 +7735,7 @@ public class Anonymous
                 }
             }
 
-            public class Readtimewordcount {
+            public class ReadTimeWordCount {
 
                 /**
                  * 
@@ -7755,7 +7755,7 @@ public class Anonymous
                 }
             }
 
-            public class Rebakeoldpostscount {
+            public class RebakeOldPostsCount {
 
                 /**
                  * 
@@ -7775,7 +7775,7 @@ public class Anonymous
                 }
             }
 
-            public class Redirectuserstotoppage {
+            public class RedirectUsersToTopPage {
 
                 /**
                  * 
@@ -7793,7 +7793,7 @@ public class Anonymous
                 }
             }
 
-            public class Relativedateduration {
+            public class RelativeDateDuration {
 
                 /**
                  * 
@@ -7811,7 +7811,7 @@ public class Anonymous
                 }
             }
 
-            public class Removemutedtagsfromlatest {
+            public class RemoveMutedTagsFromLatest {
 
                 /**
                  * 
@@ -7831,7 +7831,7 @@ public class Anonymous
                 }
             }
 
-            public class Replybyemailaddress {
+            public class ReplyByEmailAddress {
 
                 /**
                  * 
@@ -7850,7 +7850,7 @@ public class Anonymous
                 }
             }
 
-            public class Replybyemailenabled {
+            public class ReplyByEmailEnabled {
 
                 /**
                  * 
@@ -7869,7 +7869,7 @@ public class Anonymous
                 }
             }
 
-            public class Reservedusernames {
+            public class ReservedUsernames {
 
                 /**
                  * 
@@ -7889,7 +7889,7 @@ public class Anonymous
                 }
             }
 
-            public class Resetbouncescoreafterdays {
+            public class ResetBounceScoreAfterDays {
 
                 /**
                  * 
@@ -7908,7 +7908,7 @@ public class Anonymous
                 }
             }
 
-            public class S3accesskeyid {
+            public class S3AccessKeyId {
 
                 /**
                  * 
@@ -7928,7 +7928,7 @@ public class Anonymous
                 }
             }
 
-            public class S3backupbucket {
+            public class S3BackupBucket {
 
                 /**
                  * 
@@ -7948,7 +7948,7 @@ public class Anonymous
                 }
             }
 
-            public class S3cdnurl {
+            public class S3CdnUrl {
 
                 /**
                  * 
@@ -7968,7 +7968,7 @@ public class Anonymous
                 }
             }
 
-            public class S3disablecleanup {
+            public class S3DisableCleanup {
 
                 /**
                  * 
@@ -7988,7 +7988,7 @@ public class Anonymous
                 }
             }
 
-            public class S3region {
+            public class S3Region {
 
                 /**
                  * 
@@ -8008,7 +8008,7 @@ public class Anonymous
                 }
             }
 
-            public class S3secretaccesskey {
+            public class S3SecretAccessKey {
 
                 /**
                  * 
@@ -8028,7 +8028,7 @@ public class Anonymous
                 }
             }
 
-            public class S3uploadbucket {
+            public class S3UploadBucket {
 
                 /**
                  * 
@@ -8048,7 +8048,7 @@ public class Anonymous
                 }
             }
 
-            public class S3useiamprofile {
+            public class S3UseIamProfile {
 
                 /**
                  * 
@@ -8068,7 +8068,7 @@ public class Anonymous
                 }
             }
 
-            public class Searchpreferrecentposts {
+            public class SearchPreferRecentPosts {
 
                 /**
                  * 
@@ -8088,7 +8088,7 @@ public class Anonymous
                 }
             }
 
-            public class Searchrecentpostssize {
+            public class SearchRecentPostsSize {
 
                 /**
                  * 
@@ -8108,7 +8108,7 @@ public class Anonymous
                 }
             }
 
-            public class Searchtokenizechinesejapanesekorean {
+            public class SearchTokenizeChineseJapaneseKorean {
 
                 /**
                  * 
@@ -8128,7 +8128,7 @@ public class Anonymous
                 }
             }
 
-            public class Sendwelcomemessage {
+            public class SendWelcomeMessage {
 
                 /**
                  * 
@@ -8148,7 +8148,7 @@ public class Anonymous
                 }
             }
 
-            public class Sequentialrepliesthreshold {
+            public class SequentialRepliesThreshold {
 
                 /**
                  * 
@@ -8168,7 +8168,7 @@ public class Anonymous
                 }
             }
 
-            public class Setlocalefromacceptlanguageheader {
+            public class SetLocaleFromAcceptLanguageHeader {
 
                 /**
                  * 
@@ -8186,7 +8186,7 @@ public class Anonymous
                 }
             }
 
-            public class Shortemaillength {
+            public class ShortEmailLength {
 
                 /**
                  * 
@@ -8205,7 +8205,7 @@ public class Anonymous
                 }
             }
 
-            public class Shortprogresstextthreshold {
+            public class ShortProgressTextThreshold {
 
                 /**
                  * 
@@ -8223,7 +8223,7 @@ public class Anonymous
                 }
             }
 
-            public class Showcreatetopicsnotice {
+            public class ShowCreateTopicsNotice {
 
                 /**
                  * 
@@ -8243,7 +8243,7 @@ public class Anonymous
                 }
             }
 
-            public class Showemailonprofile {
+            public class ShowEmailOnProfile {
 
                 /**
                  * 
@@ -8261,7 +8261,7 @@ public class Anonymous
                 }
             }
 
-            public class Showfilterbytag {
+            public class ShowFilterByTag {
 
                 /**
                  * 
@@ -8281,7 +8281,7 @@ public class Anonymous
                 }
             }
 
-            public class Showpinnedexcerptdesktop {
+            public class ShowPinnedExcerptDesktop {
 
                 /**
                  * 
@@ -8299,7 +8299,7 @@ public class Anonymous
                 }
             }
 
-            public class Showpinnedexcerptmobile {
+            public class ShowPinnedExcerptMobile {
 
                 /**
                  * 
@@ -8317,7 +8317,7 @@ public class Anonymous
                 }
             }
 
-            public class Showsubcategorylist {
+            public class ShowSubcategoryList {
 
                 /**
                  * 
@@ -8335,7 +8335,7 @@ public class Anonymous
                 }
             }
 
-            public class Showtimegapdays {
+            public class ShowTimeGapDays {
 
                 /**
                  * 
@@ -8353,7 +8353,7 @@ public class Anonymous
                 }
             }
 
-            public class Showtopicfeaturedlinkindigest {
+            public class ShowTopicFeaturedLinkInDigest {
 
                 /**
                  * 
@@ -8371,7 +8371,7 @@ public class Anonymous
                 }
             }
 
-            public class Sitecontactusername {
+            public class SiteContactUsername {
 
                 /**
                  * 
@@ -8389,7 +8389,7 @@ public class Anonymous
                 }
             }
 
-            public class Sitedescription {
+            public class SiteDescription {
 
                 /**
                  * 
@@ -8407,7 +8407,7 @@ public class Anonymous
                 }
             }
 
-            public class Sluggenerationmethod {
+            public class SlugGenerationMethod {
 
                 /**
                  * 
@@ -8427,7 +8427,7 @@ public class Anonymous
                 }
             }
 
-            public class Softbouncescore {
+            public class SoftBounceScore {
 
                 /**
                  * 
@@ -8446,7 +8446,7 @@ public class Anonymous
                 }
             }
 
-            public class Ssoallowsallreturnpaths {
+            public class SsoAllowsAllReturnPaths {
 
                 /**
                  * 
@@ -8464,7 +8464,7 @@ public class Anonymous
                 }
             }
 
-            public class Ssonotapprovedurl {
+            public class SsoNotApprovedUrl {
 
                 /**
                  * 
@@ -8482,7 +8482,7 @@ public class Anonymous
                 }
             }
 
-            public class Ssooverridesavatar {
+            public class SsoOverridesAvatar {
 
                 /**
                  * 
@@ -8500,7 +8500,7 @@ public class Anonymous
                 }
             }
 
-            public class Ssooverridesbio {
+            public class SsoOverridesBio {
 
                 /**
                  * 
@@ -8518,7 +8518,7 @@ public class Anonymous
                 }
             }
 
-            public class Ssooverridesemail {
+            public class SsoOverridesEmail {
 
                 /**
                  * 
@@ -8536,7 +8536,7 @@ public class Anonymous
                 }
             }
 
-            public class Ssooverridesname {
+            public class SsoOverridesName {
 
                 /**
                  * 
@@ -8554,7 +8554,7 @@ public class Anonymous
                 }
             }
 
-            public class Ssooverridesusername {
+            public class SsoOverridesUsername {
 
                 /**
                  * 
@@ -8572,7 +8572,7 @@ public class Anonymous
                 }
             }
 
-            public class Ssosecret {
+            public class SsoSecret {
 
                 /**
                  * 
@@ -8590,7 +8590,7 @@ public class Anonymous
                 }
             }
 
-            public class Ssourl {
+            public class SsoUrl {
 
                 /**
                  * 
@@ -8608,7 +8608,7 @@ public class Anonymous
                 }
             }
 
-            public class Stafflikeweight {
+            public class StaffLikeWeight {
 
                 /**
                  * 
@@ -8628,7 +8628,7 @@ public class Anonymous
                 }
             }
 
-            public class Stafftags {
+            public class StaffTags {
 
                 /**
                  * 
@@ -8648,7 +8648,7 @@ public class Anonymous
                 }
             }
 
-            public class Staffuserscustomfields {
+            public class StaffUsersCustomFields {
 
                 /**
                  * 
@@ -8666,7 +8666,7 @@ public class Anonymous
                 }
             }
 
-            public class Stripimagesfromshortemails {
+            public class StripImagesFromShortEmails {
 
                 /**
                  * 
@@ -8685,7 +8685,7 @@ public class Anonymous
                 }
             }
 
-            public class Suggestedtopics {
+            public class SuggestedTopics {
 
                 /**
                  * 
@@ -8703,7 +8703,7 @@ public class Anonymous
                 }
             }
 
-            public class Suggestedtopicsmaxdaysold {
+            public class SuggestedTopicsMaxDaysOld {
 
                 /**
                  * 
@@ -8721,7 +8721,7 @@ public class Anonymous
                 }
             }
 
-            public class Summarylikesrequired {
+            public class SummaryLikesRequired {
 
                 /**
                  * 
@@ -8741,7 +8741,7 @@ public class Anonymous
                 }
             }
 
-            public class Summarymaxresults {
+            public class SummaryMaxResults {
 
                 /**
                  * 
@@ -8761,7 +8761,7 @@ public class Anonymous
                 }
             }
 
-            public class Summarypercentfilter {
+            public class SummaryPercentFilter {
 
                 /**
                  * 
@@ -8781,7 +8781,7 @@ public class Anonymous
                 }
             }
 
-            public class Summarypostsrequired {
+            public class SummaryPostsRequired {
 
                 /**
                  * 
@@ -8801,7 +8801,7 @@ public class Anonymous
                 }
             }
 
-            public class Summaryscorethreshold {
+            public class SummaryScoreThreshold {
 
                 /**
                  * 
@@ -8821,7 +8821,7 @@ public class Anonymous
                 }
             }
 
-            public class Suppressoverlappingtagsinlist {
+            public class SuppressOverlappingTagsInList {
 
                 /**
                  * 
@@ -8841,7 +8841,7 @@ public class Anonymous
                 }
             }
 
-            public class Suppressreplydirectlyabove {
+            public class SuppressReplyDirectlyAbove {
 
                 /**
                  * 
@@ -8859,7 +8859,7 @@ public class Anonymous
                 }
             }
 
-            public class Suppressreplydirectlybelow {
+            public class SuppressReplyDirectlyBelow {
 
                 /**
                  * 
@@ -8877,7 +8877,7 @@ public class Anonymous
                 }
             }
 
-            public class Suppressreplywhenquoting {
+            public class SuppressReplyWhenQuoting {
 
                 /**
                  * 
@@ -8895,7 +8895,7 @@ public class Anonymous
                 }
             }
 
-            public class Suppressuncategorizedbadge {
+            public class SuppressUncategorizedBadge {
 
                 /**
                  * 
@@ -8915,7 +8915,7 @@ public class Anonymous
                 }
             }
 
-            public class Taggingenabled {
+            public class TaggingEnabled {
 
                 /**
                  * 
@@ -8935,7 +8935,7 @@ public class Anonymous
                 }
             }
 
-            public class Tagssortalphabetically {
+            public class TagsSortAlphabetically {
 
                 /**
                  * 
@@ -8955,7 +8955,7 @@ public class Anonymous
                 }
             }
 
-            public class Tagstyle {
+            public class TagStyle {
 
                 /**
                  * 
@@ -8993,7 +8993,7 @@ public class Anonymous
                 }
             }
 
-            public class Titlefancyentities {
+            public class TitleFancyEntities {
 
                 /**
                  * 
@@ -9011,7 +9011,7 @@ public class Anonymous
                 }
             }
 
-            public class Titlemaxwordlength {
+            public class TitleMaxWordLength {
 
                 /**
                  * 
@@ -9029,7 +9029,7 @@ public class Anonymous
                 }
             }
 
-            public class Titleminentropy {
+            public class TitleMinEntropy {
 
                 /**
                  * 
@@ -9047,7 +9047,7 @@ public class Anonymous
                 }
             }
 
-            public class Titleprettify {
+            public class TitlePrettify {
 
                 /**
                  * 
@@ -9065,7 +9065,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl1requiresreadposts {
+            public class Tl1RequiresReadPosts {
 
                 /**
                  * 
@@ -9085,7 +9085,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl1requirestimespentmins {
+            public class Tl1RequiresTimeSpentMins {
 
                 /**
                  * 
@@ -9105,7 +9105,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl1requirestopicsentered {
+            public class Tl1RequiresTopicsEntered {
 
                 /**
                  * 
@@ -9125,7 +9125,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl2additionallikesperdaymultiplier {
+            public class Tl2AdditionalLikesPerDayMultiplier {
 
                 /**
                  * 
@@ -9139,7 +9139,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl2requiresdaysvisited {
+            public class Tl2RequiresDaysVisited {
 
                 /**
                  * 
@@ -9159,7 +9159,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl2requireslikesgiven {
+            public class Tl2RequiresLikesGiven {
 
                 /**
                  * 
@@ -9179,7 +9179,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl2requireslikesreceived {
+            public class Tl2RequiresLikesReceived {
 
                 /**
                  * 
@@ -9199,7 +9199,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl2requiresreadposts {
+            public class Tl2RequiresReadPosts {
 
                 /**
                  * 
@@ -9219,7 +9219,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl2requirestimespentmins {
+            public class Tl2RequiresTimeSpentMins {
 
                 /**
                  * 
@@ -9239,7 +9239,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl2requirestopicreplycount {
+            public class Tl2RequiresTopicReplyCount {
 
                 /**
                  * 
@@ -9259,7 +9259,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl2requirestopicsentered {
+            public class Tl2RequiresTopicsEntered {
 
                 /**
                  * 
@@ -9279,7 +9279,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl3additionallikesperdaymultiplier {
+            public class Tl3AdditionalLikesPerDayMultiplier {
 
                 /**
                  * 
@@ -9293,7 +9293,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl3linksnofollow {
+            public class Tl3LinksNoFollow {
 
                 /**
                  * 
@@ -9313,7 +9313,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl3promotionminduration {
+            public class Tl3PromotionMinDuration {
 
                 /**
                  * 
@@ -9333,7 +9333,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl3requiresdaysvisited {
+            public class Tl3RequiresDaysVisited {
 
                 /**
                  * 
@@ -9353,7 +9353,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl3requireslikesgiven {
+            public class Tl3RequiresLikesGiven {
 
                 /**
                  * 
@@ -9373,7 +9373,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl3requireslikesreceived {
+            public class Tl3RequiresLikesReceived {
 
                 /**
                  * 
@@ -9393,7 +9393,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl3requiresmaxflagged {
+            public class Tl3RequiresMaxFlagged {
 
                 /**
                  * 
@@ -9413,7 +9413,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl3requirespostsread {
+            public class Tl3RequiresPostsRead {
 
                 /**
                  * 
@@ -9433,7 +9433,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl3requirespostsreadalltime {
+            public class Tl3RequiresPostsReadAllTime {
 
                 /**
                  * 
@@ -9453,7 +9453,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl3requirespostsreadcap {
+            public class Tl3RequiresPostsReadCap {
 
                 /**
                  * 
@@ -9473,7 +9473,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl3requirestopicsrepliedto {
+            public class Tl3RequiresTopicsRepliedTo {
 
                 /**
                  * 
@@ -9493,7 +9493,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl3requirestopicsviewed {
+            public class Tl3RequiresTopicsViewed {
 
                 /**
                  * 
@@ -9513,7 +9513,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl3requirestopicsviewedalltime {
+            public class Tl3RequiresTopicsViewedAllTime {
 
                 /**
                  * 
@@ -9533,7 +9533,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl3requirestopicsviewedcap {
+            public class Tl3RequiresTopicsViewedCap {
 
                 /**
                  * 
@@ -9553,7 +9553,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl3timeperiod {
+            public class Tl3TimePeriod {
 
                 /**
                  * 
@@ -9573,7 +9573,7 @@ public class Anonymous
                 }
             }
 
-            public class Tl4additionallikesperdaymultiplier {
+            public class Tl4AdditionalLikesPerDayMultiplier {
 
                 /**
                  * 
@@ -9587,7 +9587,7 @@ public class Anonymous
                 }
             }
 
-            public class Topicfeaturedlinkenabled {
+            public class TopicFeaturedLinkEnabled {
 
                 /**
                  * 
@@ -9605,7 +9605,7 @@ public class Anonymous
                 }
             }
 
-            public class Topicpagetitleincludescategory {
+            public class TopicPageTitleIncludesCategory {
 
                 /**
                  * 
@@ -9625,7 +9625,7 @@ public class Anonymous
                 }
             }
 
-            public class Topicpostlikeheathigh {
+            public class TopicPostLikeHeatHigh {
 
                 /**
                  * 
@@ -9639,7 +9639,7 @@ public class Anonymous
                 }
             }
 
-            public class Topicpostlikeheatlow {
+            public class TopicPostLikeHeatLow {
 
                 /**
                  * 
@@ -9653,7 +9653,7 @@ public class Anonymous
                 }
             }
 
-            public class Topicpostlikeheatmedium {
+            public class TopicPostLikeHeatMedium {
 
                 /**
                  * 
@@ -9667,7 +9667,7 @@ public class Anonymous
                 }
             }
 
-            public class Topicviewdurationhours {
+            public class TopicViewDurationHours {
 
                 /**
                  * 
@@ -9687,7 +9687,7 @@ public class Anonymous
                 }
             }
 
-            public class Topicviewsheathigh {
+            public class TopicViewsHeatHigh {
 
                 /**
                  * 
@@ -9707,7 +9707,7 @@ public class Anonymous
                 }
             }
 
-            public class Topicviewsheatlow {
+            public class TopicViewsHeatLow {
 
                 /**
                  * 
@@ -9727,7 +9727,7 @@ public class Anonymous
                 }
             }
 
-            public class Topicviewsheatmedium {
+            public class TopicViewsHeatMedium {
 
                 /**
                  * 
@@ -9747,7 +9747,7 @@ public class Anonymous
                 }
             }
 
-            public class Topmenu {
+            public class TopMenu {
 
                 /**
                  * 
@@ -9766,7 +9766,7 @@ public class Anonymous
                 }
             }
 
-            public class Toptopicsformulafirstpostlikesmultiplier {
+            public class TopTopicsFormulaFirstPostLikesMultiplier {
 
                 /**
                  * 
@@ -9780,7 +9780,7 @@ public class Anonymous
                 }
             }
 
-            public class Toptopicsformulalogviewsmultiplier {
+            public class TopTopicsFormulaLogViewsMultiplier {
 
                 /**
                  * 
@@ -9794,7 +9794,7 @@ public class Anonymous
                 }
             }
 
-            public class Tosurl {
+            public class TosUrl {
 
                 /**
                  * 
@@ -9814,7 +9814,7 @@ public class Anonymous
                 }
             }
 
-            public class Trackexternalrightclicks {
+            public class TrackExternalRightClicks {
 
                 /**
                  * 
@@ -9832,7 +9832,7 @@ public class Anonymous
                 }
             }
 
-            public class Traditionalmarkdownlinebreaks {
+            public class TraditionalMarkdownLinebreaks {
 
                 /**
                  * 
@@ -9850,7 +9850,7 @@ public class Anonymous
                 }
             }
 
-            public class Twitterconsumerkey {
+            public class TwitterConsumerKey {
 
                 /**
                  * 
@@ -9868,7 +9868,7 @@ public class Anonymous
                 }
             }
 
-            public class Twitterconsumersecret {
+            public class TwitterConsumerSecret {
 
                 /**
                  * 
@@ -9886,7 +9886,7 @@ public class Anonymous
                 }
             }
 
-            public class Twittersummarylargeimageurl {
+            public class TwitterSummaryLargeImageUrl {
 
                 /**
                  * 
@@ -9904,7 +9904,7 @@ public class Anonymous
                 }
             }
 
-            public class Uniquepostsmin {
+            public class UniquePostsMin {
 
                 /**
                  * 
@@ -9924,7 +9924,7 @@ public class Anonymous
                 }
             }
 
-            public class Unsubscribeviaemail {
+            public class UnsubscribeViaEmail {
 
                 /**
                  * 
@@ -9944,7 +9944,7 @@ public class Anonymous
                 }
             }
 
-            public class Unsubscribeviaemailfooter {
+            public class UnsubscribeViaEmailFooter {
 
                 /**
                  * 
@@ -9963,7 +9963,7 @@ public class Anonymous
                 }
             }
 
-            public class Useadminipwhitelist {
+            public class UseAdminIpWhitelist {
 
                 /**
                  * 
@@ -9983,7 +9983,7 @@ public class Anonymous
                 }
             }
 
-            public class Usernamechangeperiod {
+            public class UsernameChangePeriod {
 
                 /**
                  * 
@@ -10001,7 +10001,7 @@ public class Anonymous
                 }
             }
 
-            public class Userprofileviewdurationhours {
+            public class UserProfileViewDurationHours {
 
                 /**
                  * 
@@ -10021,7 +10021,7 @@ public class Anonymous
                 }
             }
 
-            public class Vacuumdbdays {
+            public class VacuumDbDays {
 
                 /**
                  * 
@@ -10041,7 +10041,7 @@ public class Anonymous
                 }
             }
 
-            public class Verboselocalization {
+            public class VerboseLocalization {
 
                 /**
                  * 
@@ -10061,7 +10061,7 @@ public class Anonymous
                 }
             }
 
-            public class Verbosessologging {
+            public class VerboseSsoLogging {
 
                 /**
                  * 
@@ -10079,7 +10079,7 @@ public class Anonymous
                 }
             }
 
-            public class Versionchecks {
+            public class VersionChecks {
 
                 /**
                  * 
@@ -10099,7 +10099,7 @@ public class Anonymous
                 }
             }
 
-            public class Warnrevivingoldtopicage {
+            public class WarnRevivingOldTopicAge {
 
                 /**
                  * 
@@ -10117,7 +10117,7 @@ public class Anonymous
                 }
             }
 
-            public class Whitelistedspamhostdomains {
+            public class WhiteListedSpamHostDomains {
 
                 /**
                  * 
@@ -10138,7 +10138,7 @@ public class Anonymous
             }
         }
 
-        public class Sitesettingsjson {
+        public class SiteSettingsJson {
 
             /**
              * 
@@ -10159,10 +10159,10 @@ public class Anonymous
             public final Anonymous.Admin.Users.Unsilence unsilence = new Anonymous.Admin.Users.Unsilence();
             public final Anonymous.Admin.Users.Activate activate = new Anonymous.Admin.Users.Activate();
             public final Anonymous.Admin.Users.Anonymize anonymize = new Anonymous.Admin.Users.Anonymize();
-            public final Anonymous.Admin.Users.Generateapikey generateapikey = new Anonymous.Admin.Users.Generateapikey();
+            public final Anonymous.Admin.Users.GenerateApiKey generateapikey = new Anonymous.Admin.Users.GenerateApiKey();
             public final Anonymous.Admin.Users.Groups groups = new Anonymous.Admin.Users.Groups();
             public final Anonymous.Admin.Users.List list = new Anonymous.Admin.Users.List();
-            public final Anonymous.Admin.Users.Logout logout = new Anonymous.Admin.Users.Logout();
+            public final Anonymous.Admin.Users.LogOut logout = new Anonymous.Admin.Users.LogOut();
 
             /**
              * 
@@ -10172,7 +10172,7 @@ public class Anonymous
              * 
              * @param id
              */
-            public Requested<Object> getByIdjson(long id) {
+            public Requested<Object> getByIdJson(long id) {
                 String url = ("https://discourse.example.com//admin/users/{id}.json".replace("{id}", ""+id));
                 return requestGet(url, null, Object.class);
             }
@@ -10189,7 +10189,7 @@ public class Anonymous
              * @param block_urls
              * @param block_ip
              */
-            public Requested<Object> deleteByIdjson(long id,
+            public Requested<Object> deleteByIdJson(long id,
                 boolean delete_posts,
                 boolean block_email,
                 boolean block_urls,
@@ -10230,7 +10230,7 @@ public class Anonymous
                 }
             }
 
-            public class Generateapikey {
+            public class GenerateApiKey {
 
                 /**
                  * 
@@ -10273,7 +10273,7 @@ public class Anonymous
                  * @param id
                  * @param group_id
                  */
-                public void deleteByIdGroupid(long id, long group_id) {
+                public void deleteByIdGroupId(long id, long group_id) {
                     String url = ("https://discourse.example.com//admin/users/{id}/groups/{group_id}".replace("{id}", ""+id).replace("{group_id}", ""+group_id));
                     requestDel(url, null, Void.class);
                 }
@@ -10295,7 +10295,7 @@ public class Anonymous
                  * @param page
                  * @param show_emails
                  */
-                public Requested<Object[]> getByFlagjson(discourse.example.com.structures.flag flag,
+                public Requested<Object[]> getByFlagJson(discourse.example.com.structures.flag flag,
                     discourse.example.com.structures.order order,
                     Boolean ascending,
                     Long page,
@@ -10305,7 +10305,7 @@ public class Anonymous
                 }
             }
 
-            public class Logout {
+            public class LogOut {
 
                 /**
                  * 
@@ -10416,7 +10416,7 @@ public class Anonymous
          * @param id
          * @param page
          */
-        public Requested<Object> getByIdjson(long id, Long page) {
+        public Requested<Object> getByIdJson(long id, Long page) {
             String url = ("https://discourse.example.com//c/{id}.json".replace("{id}", ""+id)+"?"+(page==null?"":"&page="+flatten(page)));
             return requestGet(url, null, Object.class);
         }
@@ -10444,7 +10444,7 @@ public class Anonymous
         }
     }
 
-    public class Categoriesjson {
+    public class CategoriesJson {
 
         /**
          * Get a list of categories
@@ -10479,7 +10479,7 @@ public class Anonymous
         }
     }
 
-    public class Directoryitemsjson {
+    public class DirectoryItemsJson {
 
         /**
          * 
@@ -10501,10 +10501,10 @@ public class Anonymous
         }
     }
 
-    public class Exportcsv {
-        public final Anonymous.Exportcsv.Exportentityjson exportentity_json = new Anonymous.Exportcsv.Exportentityjson();
+    public class ExportCsv {
+        public final Anonymous.ExportCsv.ExportEntityJson exportentity_json = new Anonymous.ExportCsv.ExportEntityJson();
 
-        public class Exportentityjson {
+        public class ExportEntityJson {
 
             /**
              * 
@@ -10536,7 +10536,7 @@ public class Anonymous
     }
 
     public class Groups {
-        public final Anonymous.Groups.Membersjson members_json = new Anonymous.Groups.Membersjson();
+        public final Anonymous.Groups.MembersJson members_json = new Anonymous.Groups.MembersJson();
 
         /**
          * 
@@ -10544,7 +10544,7 @@ public class Anonymous
          * Get a specific group
          * </p>
          */
-        public Requested<Object> getByNamejson() {
+        public Requested<Object> getByNameJson() {
             String url = ("https://discourse.example.com//groups/{name}.json");
             return requestGet(url, null, Object.class);
         }
@@ -10555,12 +10555,12 @@ public class Anonymous
          * Update a group
          * </p>
          */
-        public Requested<Object> putByNamejson() {
+        public Requested<Object> putByNameJson() {
             String url = ("https://discourse.example.com//groups/{name}.json");
             return requestPut(url, null, null, Object.class);
         }
 
-        public class Membersjson {
+        public class MembersJson {
 
             /**
              * 
@@ -10568,7 +10568,7 @@ public class Anonymous
              * Get some group members
              * </p>
              */
-            public Requested<Object> getByGroupname() {
+            public Requested<Object> getByGroupName() {
                 String url = ("https://discourse.example.com//groups/{group_name}/members.json");
                 return requestGet(url, null, Object.class);
             }
@@ -10582,7 +10582,7 @@ public class Anonymous
              * 
              * @param usernames
              */
-            public Requested<Object> putByGroupid(String usernames) {
+            public Requested<Object> putByGroupId(String usernames) {
                 String url = ("https://discourse.example.com//groups/{group_id}/members.json");
                 Map<String, Object> content = new HashMap<>();
                 content.put("usernames", usernames);
@@ -10603,7 +10603,7 @@ public class Anonymous
              * @param user_email
              * @param user_emails
              */
-            public Requested<Object> deleteByGroupid(long user_id,
+            public Requested<Object> deleteByGroupId(long user_id,
                 String user_ids,
                 String username,
                 String usernames,
@@ -10615,7 +10615,7 @@ public class Anonymous
         }
     }
 
-    public class Groupsjson {
+    public class GroupsJson {
 
         /**
          * 
@@ -10674,7 +10674,7 @@ public class Anonymous
         }
     }
 
-    public class Latestjson {
+    public class LatestJson {
 
         /**
          * 
@@ -10693,9 +10693,9 @@ public class Anonymous
     }
 
     public class Notifications {
-        public final Anonymous.Notifications.Markreadjson markread_json = new Anonymous.Notifications.Markreadjson();
+        public final Anonymous.Notifications.MarkReadJson markread_json = new Anonymous.Notifications.MarkReadJson();
 
-        public class Markreadjson {
+        public class MarkReadJson {
 
             /**
              * 
@@ -10716,7 +10716,7 @@ public class Anonymous
         }
     }
 
-    public class Notificationsjson {
+    public class NotificationsJson {
 
         /**
          * 
@@ -10732,7 +10732,7 @@ public class Anonymous
         }
     }
 
-    public class Pageviewtotalreqs {
+    public class PageViewTotalReqs {
 
         /**
          * 
@@ -10780,7 +10780,7 @@ public class Anonymous
         }
     }
 
-    public class Postactions {
+    public class PostActions {
 
         /**
          * 
@@ -10827,7 +10827,7 @@ public class Anonymous
          * 
          * @param id
          */
-        public Requested<Object> getByIdjson(long id) {
+        public Requested<Object> getByIdJson(long id) {
             String url = ("https://discourse.example.com//posts/{id}.json".replace("{id}", ""+id));
             return requestGet(url, null, Object.class);
         }
@@ -10844,7 +10844,7 @@ public class Anonymous
          * @param post_edit_reason_
          * @param post_cooked_
          */
-        public Requested<Object> putByIdjson(long id,
+        public Requested<Object> putByIdJson(long id,
             String post_raw_,
             String post_raw_old_,
             String post_edit_reason_,
@@ -10880,7 +10880,7 @@ public class Anonymous
         }
     }
 
-    public class Postsjson {
+    public class PostsJson {
 
         /**
          * 
@@ -10963,9 +10963,9 @@ public class Anonymous
     }
 
     public class Session {
-        public final Anonymous.Session.Forgotpassword forgotpassword = new Anonymous.Session.Forgotpassword();
+        public final Anonymous.Session.ForgotPassword forgotpassword = new Anonymous.Session.ForgotPassword();
 
-        public class Forgotpassword {
+        public class ForgotPassword {
 
             /**
              * 
@@ -10985,12 +10985,12 @@ public class Anonymous
     }
 
     public class T {
-        public final Anonymous.T.Postsjson posts_json = new Anonymous.T.Postsjson();
+        public final Anonymous.T.PostsJson posts_json = new Anonymous.T.PostsJson();
         public final Anonymous.T.Invite invite = new Anonymous.T.Invite();
         public final Anonymous.T.Bookmark bookmark = new Anonymous.T.Bookmark();
         public final Anonymous.T.Status status = new Anonymous.T.Status();
         public final Anonymous.T.Timer timer = new Anonymous.T.Timer();
-        public final Anonymous.T.Changetimestamp changetimestamp = new Anonymous.T.Changetimestamp();
+        public final Anonymous.T.ChangeTimestamp changetimestamp = new Anonymous.T.ChangeTimestamp();
         public final Anonymous.T.Notifications notifications = new Anonymous.T.Notifications();
 
         /**
@@ -11003,7 +11003,7 @@ public class Anonymous
          * @param print
          *     Will return up to 1000 posts in a topic
          */
-        public Requested<Object> getByIdjson(long id, Boolean print) {
+        public Requested<Object> getByIdJson(long id, Boolean print) {
             String url = ("https://discourse.example.com//t/{id}.json".replace("{id}", ""+id)+"?"+(print==null?"":"&print="+flatten(print)));
             return requestGet(url, null, Object.class);
         }
@@ -11016,7 +11016,7 @@ public class Anonymous
          * 
          * @param id
          */
-        public void deleteByIdjson(long id) {
+        public void deleteByIdJson(long id) {
             String url = ("https://discourse.example.com//t/{id}.json".replace("{id}", ""+id));
             requestDel(url, null, Void.class);
         }
@@ -11033,7 +11033,7 @@ public class Anonymous
          * @param title
          * @param category_id
          */
-        public Requested<Object> putBySlugIdjson(String slug,
+        public Requested<Object> putBySlugIdJson(String slug,
             long id,
             String title,
             long category_id) {
@@ -11060,7 +11060,7 @@ public class Anonymous
             }
         }
 
-        public class Changetimestamp {
+        public class ChangeTimestamp {
 
             /**
              * 
@@ -11115,7 +11115,7 @@ public class Anonymous
             }
         }
 
-        public class Postsjson {
+        public class PostsJson {
 
             /**
              * 
@@ -11192,7 +11192,7 @@ public class Anonymous
         }
     }
 
-    public class Taggroups {
+    public class TagGroups {
 
         /**
          * 
@@ -11202,7 +11202,7 @@ public class Anonymous
          * 
          * @param id
          */
-        public Requested<Object> getByIdjson(long id) {
+        public Requested<Object> getByIdJson(long id) {
             String url = ("https://discourse.example.com//tag_groups/{id}.json".replace("{id}", ""+id));
             return requestGet(url, null, Object.class);
         }
@@ -11217,7 +11217,7 @@ public class Anonymous
          * @param name
          * @param tag_names
          */
-        public Requested<Object> putByIdjson(long id, String name, String[] tag_names) {
+        public Requested<Object> putByIdJson(long id, String name, String[] tag_names) {
             String url = ("https://discourse.example.com//tag_groups/{id}.json".replace("{id}", ""+id));
             Map<String, Object> content = new HashMap<>();
             content.put("name", name);
@@ -11226,7 +11226,7 @@ public class Anonymous
         }
     }
 
-    public class Taggroupsjson {
+    public class TagGroupsJson {
 
         /**
          * 
@@ -11294,17 +11294,17 @@ public class Anonymous
          * 
          * @param flag
          */
-        public void getByFlagjson(discourse.example.com.structures.flag flag) {
+        public void getByFlagJson(discourse.example.com.structures.flag flag) {
             String url = ("https://discourse.example.com//top/{flag}.json".replace("{flag}", ""+flag));
             requestGet(url, null, Void.class);
         }
     }
 
     public class Topics {
-        public final Anonymous.Topics.Privatemessages privatemessages = new Anonymous.Topics.Privatemessages();
-        public final Anonymous.Topics.Privatemessagessent privatemessagessent = new Anonymous.Topics.Privatemessagessent();
+        public final Anonymous.Topics.PrivateMessages privatemessages = new Anonymous.Topics.PrivateMessages();
+        public final Anonymous.Topics.PrivateMessagesSent privatemessagessent = new Anonymous.Topics.PrivateMessagesSent();
 
-        public class Privatemessages {
+        public class PrivateMessages {
 
             /**
              * 
@@ -11312,13 +11312,13 @@ public class Anonymous
              * Get a list of private messages for a user
              * </p>
              */
-            public Requested<Object> getByUsernamejson() {
+            public Requested<Object> getByUsernameJson() {
                 String url = ("https://discourse.example.com//topics/private-messages/{username}.json");
                 return requestGet(url, null, Object.class);
             }
         }
 
-        public class Privatemessagessent {
+        public class PrivateMessagesSent {
 
             /**
              * 
@@ -11326,14 +11326,14 @@ public class Anonymous
              * Get a list of private messages sent
              * </p>
              */
-            public Requested<Object> getByUsernamejson() {
+            public Requested<Object> getByUsernameJson() {
                 String url = ("https://discourse.example.com//topics/private-messages-sent/{username}.json");
                 return requestGet(url, null, Object.class);
             }
         }
     }
 
-    public class Topjson {
+    public class TopJson {
 
         /**
          * 
@@ -11348,9 +11348,9 @@ public class Anonymous
     }
 
     public class U {
-        public final Anonymous.U.Byexternal byexternal = new Anonymous.U.Byexternal();
+        public final Anonymous.U.ByExternal byexternal = new Anonymous.U.ByExternal();
 
-        public class Byexternal {
+        public class ByExternal {
 
             /**
              * 
@@ -11360,14 +11360,14 @@ public class Anonymous
              * 
              * @param external_id
              */
-            public Requested<Object> getByExternalidjson(long external_id) {
+            public Requested<Object> getByExternalIdJson(long external_id) {
                 String url = ("https://discourse.example.com//u/by-external/{external_id}.json".replace("{external_id}", ""+external_id));
                 return requestGet(url, null, Object.class);
             }
         }
     }
 
-    public class Uploadsjson {
+    public class UploadsJson {
 
         /**
          * 
@@ -11393,7 +11393,7 @@ public class Anonymous
         }
     }
 
-    public class Useractionsjson {
+    public class UserActionsJson {
 
         /**
          * 
@@ -11411,10 +11411,10 @@ public class Anonymous
         }
     }
 
-    public class Useravatar {
-        public final Anonymous.Useravatar.Refreshgravatarjson refreshgravatar_json = new Anonymous.Useravatar.Refreshgravatarjson();
+    public class UserAvatar {
+        public final Anonymous.UserAvatar.RefreshGravatarJson refreshgravatar_json = new Anonymous.UserAvatar.RefreshGravatarJson();
 
-        public class Refreshgravatarjson {
+        public class RefreshGravatarJson {
 
             /**
              * 
@@ -11431,7 +11431,7 @@ public class Anonymous
         }
     }
 
-    public class Userbadges {
+    public class UserBadges {
 
         /**
          * 
@@ -11439,7 +11439,7 @@ public class Anonymous
          * get a list of badges assigned to a user
          * </p>
          */
-        public Requested<Object> getByUsernamejson() {
+        public Requested<Object> getByUsernameJson() {
             String url = ("https://discourse.example.com//user-badges/{username}.json");
             return requestGet(url, null, Object.class);
         }
@@ -11458,7 +11458,7 @@ public class Anonymous
         }
     }
 
-    public class Userbadgesjson {
+    public class UserBadgesJson {
 
         /**
          * 
@@ -11482,7 +11482,7 @@ public class Anonymous
 
     public class Users {
         public final Anonymous.Users.Preferences preferences = new Anonymous.Users.Preferences();
-        public final Anonymous.Users.Passwordreset passwordreset = new Anonymous.Users.Passwordreset();
+        public final Anonymous.Users.PasswordReset passwordreset = new Anonymous.Users.PasswordReset();
 
         /**
          * 
@@ -11492,7 +11492,7 @@ public class Anonymous
          * 
          * @param username
          */
-        public Requested<Object> getByUsernamejson(String username) {
+        public Requested<Object> getByUsernameJson(String username) {
             String url = ("https://discourse.example.com//users/{username}.json".replace("{username}", ""+username));
             return requestGet(url, null, Object.class);
         }
@@ -11530,7 +11530,7 @@ public class Anonymous
             return requestPost(url, null, content, Object.class);
         }
 
-        public class Passwordreset {
+        public class PasswordReset {
 
             /**
              * 

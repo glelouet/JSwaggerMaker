@@ -13,10 +13,10 @@ import fr.lelouet.jswaggermaker.client.common.interfaces.Requested;
 public class Anonymous
     extends Disconnected
 {
-    public final Anonymous.Listjson list_json = new Anonymous.Listjson();
-    public final Anonymous.Metricsjson metrics_json = new Anonymous.Metricsjson();
+    public final Anonymous.ListJson list_json = new Anonymous.ListJson();
+    public final Anonymous.MetricsJson metrics_json = new Anonymous.MetricsJson();
 
-    public class Listjson {
+    public class ListJson {
 
         /**
          * List all APIs
@@ -35,7 +35,7 @@ public class Anonymous
         }
     }
 
-    public class Metricsjson {
+    public class MetricsJson {
 
         /**
          * Get basic metrics

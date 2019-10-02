@@ -32,7 +32,7 @@ public class ApiKey
          * @param petId
          *     ID of pet to return
          */
-        public Requested<petstore.swagger.io.definitions.Pet> getByPetid(long petId) {
+        public Requested<petstore.swagger.io.definitions.Pet> getByPetId(long petId) {
             String url = ("https://petstore.swagger.io/v2/pet/{petId}".replace("{petId}", ""+petId));
             return requestGet(url, null, petstore.swagger.io.definitions.Pet.class);
         }

@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 public class ClassBridgeTest {
 
 	@Test
-	public void testNormalizeClass() {
+	public void testMakeJavaTypeIdentifier() {
 		Assert.assertEquals(ClassBridge.makeJavaTypeIdentifier("api_key"), "ApiKey");
 		Assert.assertEquals(ClassBridge.makeJavaTypeIdentifier("api-key"), "ApiKey");
 		Assert.assertEquals(ClassBridge.makeJavaTypeIdentifier("api--_key"), "ApiKey");
@@ -14,9 +14,17 @@ public class ClassBridgeTest {
 	}
 
 	@Test
-	public void testSanitize() {
+	public void testMakeJavaIdentifier() {
 		Assert.assertEquals(ClassBridge.makeJavaIdentifier("bla-a"), "bla_a");
 		Assert.assertEquals(ClassBridge.makeJavaIdentifier("{player_id}"), "_player_id_");
+	}
+
+	@Test
+	public void testMakeJavaPackage() {
+		Assert.assertEquals(ClassBridge.makeJavaPackage("my.1337.pck"), "my._1337.pck");
+		Assert.assertEquals(ClassBridge.makeJavaPackage("my.Pck"), "my.pck");
+		Assert.assertEquals(ClassBridge.makeJavaPackage("my.package.var.double"), "my.package_.var.double_");
+		Assert.assertEquals(ClassBridge.makeJavaPackage("final"), "final_");
 	}
 
 	@Test

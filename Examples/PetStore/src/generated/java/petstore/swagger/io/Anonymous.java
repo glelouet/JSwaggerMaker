@@ -46,7 +46,7 @@ public class Anonymous
              * @param orderId
              *     ID of pet that needs to be fetched
              */
-            public Requested<petstore.swagger.io.definitions.Order> getByOrderid(long orderId) {
+            public Requested<petstore.swagger.io.definitions.Order> getByOrderId(long orderId) {
                 String url = ("https://petstore.swagger.io/v2/store/order/{orderId}".replace("{orderId}", ""+orderId));
                 return requestGet(url, null, petstore.swagger.io.definitions.Order.class);
             }
@@ -61,7 +61,7 @@ public class Anonymous
              * @param orderId
              *     ID of the order that needs to be deleted
              */
-            public void deleteByOrderid(long orderId) {
+            public void deleteByOrderId(long orderId) {
                 String url = ("https://petstore.swagger.io/v2/store/order/{orderId}".replace("{orderId}", ""+orderId));
                 requestDel(url, null, Void.class);
             }

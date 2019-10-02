@@ -110,7 +110,7 @@ public class Anonymous
                  * @param languageCode
                  *     Display results in this language
                  */
-                public Requested<PopulatedPlaceResponse> getByDivisionid(String divisionId, Boolean asciiMode, String languageCode) {
+                public Requested<PopulatedPlaceResponse> getByDivisionId(String divisionId, Boolean asciiMode, String languageCode) {
                     String url = ("https://wft-geo-db.p.mashape.com//v1/geo/adminDivisions/{divisionId}".replace("{divisionId}", ""+divisionId)+"?"+(asciiMode==null?"":"&asciiMode="+flatten(asciiMode))+(languageCode==null?"":"&languageCode="+flatten(languageCode)));
                     return requestGet(url, null, PopulatedPlaceResponse.class);
                 }
@@ -157,7 +157,7 @@ public class Anonymous
                      * @param includeDeleted
                      *     Whether to include any cities marked deleted: ALL | SINCE_YESTERDAY | SINCE_LAST_WEEK | NONE
                      */
-                    public Requested<PopulatedPlacesResponse> getByDivisionid(String divisionId,
+                    public Requested<PopulatedPlacesResponse> getByDivisionId(String divisionId,
                         Integer radius,
                         String distanceUnit,
                         String countryIds,
@@ -218,7 +218,7 @@ public class Anonymous
                      * @param includeDeleted
                      *     Whether to include any divisions marked deleted: ALL | SINCE_YESTERDAY | SINCE_LAST_WEEK | NONE
                      */
-                    public Requested<PopulatedPlacesResponse> getByDivisionid(String divisionId,
+                    public Requested<PopulatedPlacesResponse> getByDivisionId(String divisionId,
                         Integer radius,
                         String distanceUnit,
                         String countryIds,
@@ -319,7 +319,7 @@ public class Anonymous
                  * @param languageCode
                  *     Display results in this language
                  */
-                public Requested<PopulatedPlaceResponse> getByCityid(String cityId, Boolean asciiMode, String languageCode) {
+                public Requested<PopulatedPlaceResponse> getByCityId(String cityId, Boolean asciiMode, String languageCode) {
                     String url = ("https://wft-geo-db.p.mashape.com//v1/geo/cities/{cityId}".replace("{cityId}", ""+cityId)+"?"+(asciiMode==null?"":"&asciiMode="+flatten(asciiMode))+(languageCode==null?"":"&languageCode="+flatten(languageCode)));
                     return requestGet(url, null, PopulatedPlaceResponse.class);
                 }
@@ -336,7 +336,7 @@ public class Anonymous
                      * @param cityId
                      *     The city id (either native 'id' or 'wikiDataId')
                      */
-                    public Requested<DateTimeResponse> getByCityid(String cityId) {
+                    public Requested<DateTimeResponse> getByCityId(String cityId) {
                         String url = ("https://wft-geo-db.p.mashape.com//v1/geo/cities/{cityId}/dateTime".replace("{cityId}", ""+cityId));
                         return requestGet(url, null, DateTimeResponse.class);
                     }
@@ -358,7 +358,7 @@ public class Anonymous
                      * @param distanceUnit
                      *     The unit of distance: MI | KM
                      */
-                    public Requested<DistanceResponse> getByCityid(String cityId, String fromCityId, String distanceUnit) {
+                    public Requested<DistanceResponse> getByCityId(String cityId, String fromCityId, String distanceUnit) {
                         String url = ("https://wft-geo-db.p.mashape.com//v1/geo/cities/{cityId}/distance".replace("{cityId}", ""+cityId)+"?"+(fromCityId==null?"":"&fromCityId="+flatten(fromCityId))+(distanceUnit==null?"":"&distanceUnit="+flatten(distanceUnit)));
                         return requestGet(url, null, DistanceResponse.class);
                     }
@@ -406,7 +406,7 @@ public class Anonymous
                      * @param includeDeleted
                      *     Whether to include any cities marked deleted: ALL | SINCE_YESTERDAY | SINCE_LAST_WEEK | NONE
                      */
-                    public Requested<PopulatedPlacesResponse> getByCityid(Integer radius,
+                    public Requested<PopulatedPlacesResponse> getByCityId(Integer radius,
                         String distanceUnit,
                         String cityId,
                         String countryIds,
@@ -439,7 +439,7 @@ public class Anonymous
                      * @param cityId
                      *     The city id (either native 'id' or 'wikiDataId')
                      */
-                    public Requested<TimeResponse> getByCityid(String cityId) {
+                    public Requested<TimeResponse> getByCityId(String cityId) {
                         String url = ("https://wft-geo-db.p.mashape.com//v1/geo/cities/{cityId}/time".replace("{cityId}", ""+cityId));
                         return requestGet(url, null, TimeResponse.class);
                     }
@@ -496,7 +496,7 @@ public class Anonymous
                  * @param languageCode
                  *     Display results in this language
                  */
-                public Requested<CountryResponse> getByCountryid(String countryId, Boolean asciiMode, String languageCode) {
+                public Requested<CountryResponse> getByCountryId(String countryId, Boolean asciiMode, String languageCode) {
                     String url = ("https://wft-geo-db.p.mashape.com//v1/geo/countries/{countryId}".replace("{countryId}", ""+countryId)+"?"+(asciiMode==null?"":"&asciiMode="+flatten(asciiMode))+(languageCode==null?"":"&languageCode="+flatten(languageCode)));
                     return requestGet(url, null, CountryResponse.class);
                 }
@@ -527,7 +527,7 @@ public class Anonymous
                      * @param offset
                      *     The zero-ary offset index into the results
                      */
-                    public Requested<RegionsResponse> getByCountryid(String countryId,
+                    public Requested<RegionsResponse> getByCountryId(String countryId,
                         String namePrefix,
                         Boolean asciiMode,
                         Boolean hateoasMode,
@@ -554,7 +554,7 @@ public class Anonymous
                      * @param languageCode
                      *     Display results in this language
                      */
-                    public Requested<RegionResponse> getByCountryidRegioncode(String countryId,
+                    public Requested<RegionResponse> getByCountryIdRegionCode(String countryId,
                         String regionCode,
                         Boolean asciiMode,
                         String languageCode) {
@@ -596,7 +596,7 @@ public class Anonymous
                          * @param includeDeleted
                          *     Whether to include any divisions marked deleted: ALL | SINCE_YESTERDAY | SINCE_LAST_WEEK | NONE
                          */
-                        public Requested<PopulatedPlacesResponse> getByCountryidRegioncode(String countryId,
+                        public Requested<PopulatedPlacesResponse> getByCountryIdRegionCode(String countryId,
                             String regionCode,
                             Integer minPopulation,
                             String namePrefix,
@@ -649,7 +649,7 @@ public class Anonymous
                          * @param includeDeleted
                          *     Whether to include any cities marked deleted: ALL | SINCE_YESTERDAY | SINCE_LAST_WEEK | NONE
                          */
-                        public Requested<PopulatedPlacesResponse> getByCountryidRegioncode(String countryId,
+                        public Requested<PopulatedPlacesResponse> getByCountryIdRegionCode(String countryId,
                             String regionCode,
                             Integer minPopulation,
                             String namePrefix,
@@ -715,7 +715,7 @@ public class Anonymous
                      * @param includeDeleted
                      *     Whether to include any cities marked deleted: ALL | SINCE_YESTERDAY | SINCE_LAST_WEEK | NONE
                      */
-                    public Requested<PopulatedPlacesResponse> getByLocationid(String locationId,
+                    public Requested<PopulatedPlacesResponse> getByLocationId(String locationId,
                         Integer radius,
                         String distanceUnit,
                         String countryIds,
@@ -776,7 +776,7 @@ public class Anonymous
                      * @param includeDeleted
                      *     Whether to include any divisions marked deleted: ALL | SINCE_YESTERDAY | SINCE_LAST_WEEK | NONE
                      */
-                    public Requested<PopulatedPlacesResponse> getByLocationid(String locationId,
+                    public Requested<PopulatedPlacesResponse> getByLocationId(String locationId,
                         Integer radius,
                         String distanceUnit,
                         String countryIds,
@@ -910,7 +910,7 @@ public class Anonymous
                      * @param zoneId
                      *     The time-zone id
                      */
-                    public Requested<DateTimeResponse> getByZoneid(String zoneId) {
+                    public Requested<DateTimeResponse> getByZoneId(String zoneId) {
                         String url = ("https://wft-geo-db.p.mashape.com//v1/locale/timezones/{zoneId}/dateTime".replace("{zoneId}", ""+zoneId));
                         return requestGet(url, null, DateTimeResponse.class);
                     }
@@ -928,7 +928,7 @@ public class Anonymous
                      * @param zoneId
                      *     The time-zone id
                      */
-                    public Requested<TimeResponse> getByZoneid(String zoneId) {
+                    public Requested<TimeResponse> getByZoneId(String zoneId) {
                         String url = ("https://wft-geo-db.p.mashape.com//v1/locale/timezones/{zoneId}/time".replace("{zoneId}", ""+zoneId));
                         return requestGet(url, null, TimeResponse.class);
                     }

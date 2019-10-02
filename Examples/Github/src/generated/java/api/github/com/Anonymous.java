@@ -52,7 +52,6 @@ import api.github.com.definitions.PullsComment;
 import api.github.com.definitions.PullsCommentPost;
 import api.github.com.definitions.PullsPost;
 import api.github.com.definitions.PutSubscription;
-import api.github.com.definitions.RateLimit;
 import api.github.com.definitions.Ref;
 import api.github.com.definitions.RefStatus;
 import api.github.com.definitions.RefsBody;
@@ -102,7 +101,7 @@ public class Anonymous
     public final Anonymous.Networks networks = new Anonymous.Networks();
     public final Anonymous.Notifications notifications = new Anonymous.Notifications();
     public final Anonymous.Orgs orgs = new Anonymous.Orgs();
-    public final Anonymous.Ratelimit ratelimit = new Anonymous.Ratelimit();
+    public final Anonymous.RateLimit ratelimit = new Anonymous.RateLimit();
     public final Anonymous.Repos repos = new Anonymous.Repos();
     public final Anonymous.Repositories repositories = new Anonymous.Repositories();
     public final Anonymous.Search search = new Anonymous.Search();
@@ -324,7 +323,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public Requested<Comment> getByIdCommentid(long id, long commentId, String Accept) {
+            public Requested<Comment> getByIdCommentId(long id, long commentId, String Accept) {
                 String url = ("https://api.github.com//gists/{id}/comments/{commentId}".replace("{id}", ""+id).replace("{commentId}", ""+commentId));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (Accept!= null) {
@@ -346,7 +345,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public void deleteByIdCommentid(long id, long commentId, String Accept) {
+            public void deleteByIdCommentId(long id, long commentId, String Accept) {
                 String url = ("https://api.github.com//gists/{id}/comments/{commentId}".replace("{id}", ""+id).replace("{commentId}", ""+commentId));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (Accept!= null) {
@@ -972,7 +971,7 @@ public class Anonymous
         public final Anonymous.Orgs.Events events = new Anonymous.Orgs.Events();
         public final Anonymous.Orgs.Issues issues = new Anonymous.Orgs.Issues();
         public final Anonymous.Orgs.Members members = new Anonymous.Orgs.Members();
-        public final Anonymous.Orgs.Publicmembers publicmembers = new Anonymous.Orgs.Publicmembers();
+        public final Anonymous.Orgs.PublicMembers publicmembers = new Anonymous.Orgs.PublicMembers();
         public final Anonymous.Orgs.Repos repos = new Anonymous.Orgs.Repos();
         public final Anonymous.Orgs.Teams teams = new Anonymous.Orgs.Teams();
 
@@ -1137,7 +1136,7 @@ public class Anonymous
             }
         }
 
-        public class Publicmembers {
+        public class PublicMembers {
 
             /**
              * 
@@ -1324,7 +1323,7 @@ public class Anonymous
         }
     }
 
-    public class Ratelimit {
+    public class RateLimit {
 
         /**
          * 
@@ -1336,13 +1335,13 @@ public class Anonymous
          * @param Accept
          *     Is used to set specified media type.
          */
-        public Requested<RateLimit> get(String Accept) {
+        public Requested<api.github.com.definitions.RateLimit> get(String Accept) {
             String url = ("https://api.github.com//rate_limit");
             HashMap<String, String> headerProperties = new HashMap<String, String>();
             if (Accept!= null) {
                 headerProperties.put("Accept", (""+ Accept));
             }
-            return requestGet(url, headerProperties, RateLimit.class);
+            return requestGet(url, headerProperties, api.github.com.definitions.RateLimit.class);
         }
     }
 
@@ -1447,7 +1446,7 @@ public class Anonymous
          * @param Accept
          *     Is used to set specified media type.
          */
-        public void getByOwnerRepoArchiveformatPath(String owner,
+        public void getByOwnerRepoArchiveFormatPath(String owner,
             String repo,
             api.github.com.structures.archive_format archive_format,
             String path,
@@ -1717,7 +1716,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public Requested<CommitComment> getByOwnerRepoCommentid(String owner,
+            public Requested<CommitComment> getByOwnerRepoCommentId(String owner,
                 String repo,
                 long commentId,
                 String Accept) {
@@ -1744,7 +1743,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public void deleteByOwnerRepoCommentid(String owner,
+            public void deleteByOwnerRepoCommentId(String owner,
                 String repo,
                 long commentId,
                 String Accept) {
@@ -1817,7 +1816,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public Requested<Commit> getByOwnerRepoShacode(String owner,
+            public Requested<Commit> getByOwnerRepoShaCode(String owner,
                 String repo,
                 String shaCode,
                 String Accept) {
@@ -1846,7 +1845,7 @@ public class Anonymous
                  * @param Accept
                  *     Is used to set specified media type.
                  */
-                public Requested<RepoComments[]> getByOwnerRepoShacode(String owner,
+                public Requested<RepoComments[]> getByOwnerRepoShaCode(String owner,
                     String repo,
                     String shaCode,
                     String Accept) {
@@ -1874,7 +1873,7 @@ public class Anonymous
                  *     Is used to set specified media type.
                  * @param body
                  */
-                public Requested<CommitComment> postByOwnerRepoShacode(String owner,
+                public Requested<CommitComment> postByOwnerRepoShaCode(String owner,
                     String repo,
                     String shaCode,
                     String Accept,
@@ -1940,7 +1939,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public Requested<CompareCommits> getByOwnerRepoBaseidheadid(String owner,
+            public Requested<CompareCommits> getByOwnerRepoBaseIdHeadId(String owner,
                 String repo,
                 String baseId,
                 String headId,
@@ -2238,7 +2237,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public Requested<Download> getByOwnerRepoDownloadid(String owner,
+            public Requested<Download> getByOwnerRepoDownloadId(String owner,
                 String repo,
                 long downloadId,
                 String Accept) {
@@ -2265,7 +2264,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public void deleteByOwnerRepoDownloadid(String owner,
+            public void deleteByOwnerRepoDownloadId(String owner,
                 String repo,
                 long downloadId,
                 String Accept) {
@@ -2419,7 +2418,7 @@ public class Anonymous
                  * @param Accept
                  *     Is used to set specified media type.
                  */
-                public Requested<Blob> getByOwnerRepoShacode(String owner,
+                public Requested<Blob> getByOwnerRepoShaCode(String owner,
                     String repo,
                     String shaCode,
                     String Accept) {
@@ -2477,7 +2476,7 @@ public class Anonymous
                  * @param Accept
                  *     Is used to set specified media type.
                  */
-                public Requested<RepoCommit> getByOwnerRepoShacode(String owner,
+                public Requested<RepoCommit> getByOwnerRepoShaCode(String owner,
                     String repo,
                     String shaCode,
                     String Accept) {
@@ -2646,7 +2645,7 @@ public class Anonymous
                  * @param Accept
                  *     Is used to set specified media type.
                  */
-                public Requested<Tag> getByOwnerRepoShacode(String owner,
+                public Requested<Tag> getByOwnerRepoShaCode(String owner,
                     String repo,
                     String shaCode,
                     String Accept) {
@@ -2709,7 +2708,7 @@ public class Anonymous
                  * @param Accept
                  *     Is used to set specified media type.
                  */
-                public Requested<Tree> getByOwnerRepoShacode(String owner,
+                public Requested<Tree> getByOwnerRepoShaCode(String owner,
                     String repo,
                     String shaCode,
                     Long recursive,
@@ -2792,7 +2791,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public Requested<Hook[]> getByOwnerRepoHookid(String owner,
+            public Requested<Hook[]> getByOwnerRepoHookId(String owner,
                 String repo,
                 long hookId,
                 String Accept) {
@@ -2819,7 +2818,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public void deleteByOwnerRepoHookid(String owner,
+            public void deleteByOwnerRepoHookId(String owner,
                 String repo,
                 long hookId,
                 String Accept) {
@@ -2853,7 +2852,7 @@ public class Anonymous
                  * @param Accept
                  *     Is used to set specified media type.
                  */
-                public void postByOwnerRepoHookid(String owner,
+                public void postByOwnerRepoHookId(String owner,
                     String repo,
                     long hookId,
                     String Accept) {
@@ -3023,7 +3022,7 @@ public class Anonymous
                  * @param Accept
                  *     Is used to set specified media type.
                  */
-                public Requested<IssuesComment> getByOwnerRepoCommentid(String owner,
+                public Requested<IssuesComment> getByOwnerRepoCommentId(String owner,
                     String repo,
                     long commentId,
                     String Accept) {
@@ -3050,7 +3049,7 @@ public class Anonymous
                  * @param Accept
                  *     Is used to set specified media type.
                  */
-                public void deleteByOwnerRepoCommentid(String owner,
+                public void deleteByOwnerRepoCommentId(String owner,
                     String repo,
                     long commentId,
                     String Accept) {
@@ -3160,7 +3159,7 @@ public class Anonymous
                  * @param Accept
                  *     Is used to set specified media type.
                  */
-                public Requested<IssueEvent> getByOwnerRepoEventid(String owner,
+                public Requested<IssueEvent> getByOwnerRepoEventId(String owner,
                     String repo,
                     long eventId,
                     String Accept) {
@@ -3418,7 +3417,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public Requested<UserKeysKeyId> getByOwnerRepoKeyid(String owner,
+            public Requested<UserKeysKeyId> getByOwnerRepoKeyId(String owner,
                 String repo,
                 long keyId,
                 String Accept) {
@@ -3445,7 +3444,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public void deleteByOwnerRepoKeyid(String owner,
+            public void deleteByOwnerRepoKeyId(String owner,
                 String repo,
                 long keyId,
                 String Accept) {
@@ -3992,7 +3991,7 @@ public class Anonymous
                  * @param Accept
                  *     Is used to set specified media type.
                  */
-                public Requested<PullsComment> getByOwnerRepoCommentid(String owner,
+                public Requested<PullsComment> getByOwnerRepoCommentId(String owner,
                     String repo,
                     long commentId,
                     String Accept) {
@@ -4019,7 +4018,7 @@ public class Anonymous
                  * @param Accept
                  *     Is used to set specified media type.
                  */
-                public void deleteByOwnerRepoCommentid(String owner,
+                public void deleteByOwnerRepoCommentId(String owner,
                     String repo,
                     long commentId,
                     String Accept) {
@@ -4466,13 +4465,13 @@ public class Anonymous
         }
 
         public class Stats {
-            public final Anonymous.Repos.Stats.Codefrequency codefrequency = new Anonymous.Repos.Stats.Codefrequency();
-            public final Anonymous.Repos.Stats.Commitactivity commitactivity = new Anonymous.Repos.Stats.Commitactivity();
+            public final Anonymous.Repos.Stats.CodeFrequency codefrequency = new Anonymous.Repos.Stats.CodeFrequency();
+            public final Anonymous.Repos.Stats.CommitActivity commitactivity = new Anonymous.Repos.Stats.CommitActivity();
             public final Anonymous.Repos.Stats.Contributors contributors = new Anonymous.Repos.Stats.Contributors();
             public final Anonymous.Repos.Stats.Participation participation = new Anonymous.Repos.Stats.Participation();
-            public final Anonymous.Repos.Stats.Punchcard punchcard = new Anonymous.Repos.Stats.Punchcard();
+            public final Anonymous.Repos.Stats.PunchCard punchcard = new Anonymous.Repos.Stats.PunchCard();
 
-            public class Codefrequency {
+            public class CodeFrequency {
 
                 /**
                  * 
@@ -4499,7 +4498,7 @@ public class Anonymous
                 }
             }
 
-            public class Commitactivity {
+            public class CommitActivity {
 
                 /**
                  * 
@@ -4576,7 +4575,7 @@ public class Anonymous
                 }
             }
 
-            public class Punchcard {
+            public class PunchCard {
 
                 /**
                  * 
@@ -5061,7 +5060,7 @@ public class Anonymous
          * @param Accept
          *     Is used to set specified media type.
          */
-        public Requested<Team> getByTeamid(long teamId, String Accept) {
+        public Requested<Team> getByTeamId(long teamId, String Accept) {
             String url = ("https://api.github.com//teams/{teamId}".replace("{teamId}", ""+teamId));
             HashMap<String, String> headerProperties = new HashMap<String, String>();
             if (Accept!= null) {
@@ -5083,7 +5082,7 @@ public class Anonymous
          * @param Accept
          *     Is used to set specified media type.
          */
-        public void deleteByTeamid(long teamId, String Accept) {
+        public void deleteByTeamId(long teamId, String Accept) {
             String url = ("https://api.github.com//teams/{teamId}".replace("{teamId}", ""+teamId));
             HashMap<String, String> headerProperties = new HashMap<String, String>();
             if (Accept!= null) {
@@ -5107,7 +5106,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public Requested<api.github.com.definitions.User[]> getByTeamid(long teamId, String Accept) {
+            public Requested<api.github.com.definitions.User[]> getByTeamId(long teamId, String Accept) {
                 String url = ("https://api.github.com//teams/{teamId}/members".replace("{teamId}", ""+teamId));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (Accept!= null) {
@@ -5132,7 +5131,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public void getByTeamidUsername(long teamId, String username, String Accept) {
+            public void getByTeamIdUsername(long teamId, String username, String Accept) {
                 String url = ("https://api.github.com//teams/{teamId}/members/{username}".replace("{teamId}", ""+teamId).replace("{username}", ""+username));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (Accept!= null) {
@@ -5158,7 +5157,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public void putByTeamidUsername(long teamId, String username, String Accept) {
+            public void putByTeamIdUsername(long teamId, String username, String Accept) {
                 String url = ("https://api.github.com//teams/{teamId}/members/{username}".replace("{teamId}", ""+teamId).replace("{username}", ""+username));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (Accept!= null) {
@@ -5185,7 +5184,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public void deleteByTeamidUsername(long teamId, String username, String Accept) {
+            public void deleteByTeamIdUsername(long teamId, String username, String Accept) {
                 String url = ("https://api.github.com//teams/{teamId}/members/{username}".replace("{teamId}", ""+teamId).replace("{username}", ""+username));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (Accept!= null) {
@@ -5211,7 +5210,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public Requested<TeamMembership> getByTeamidUsername(long teamId, String username, String Accept) {
+            public Requested<TeamMembership> getByTeamIdUsername(long teamId, String username, String Accept) {
                 String url = ("https://api.github.com//teams/{teamId}/memberships/{username}".replace("{teamId}", ""+teamId).replace("{username}", ""+username));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (Accept!= null) {
@@ -5236,7 +5235,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public Requested<TeamMembership> putByTeamidUsername(long teamId, String username, String Accept) {
+            public Requested<TeamMembership> putByTeamIdUsername(long teamId, String username, String Accept) {
                 String url = ("https://api.github.com//teams/{teamId}/memberships/{username}".replace("{teamId}", ""+teamId).replace("{username}", ""+username));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (Accept!= null) {
@@ -5259,7 +5258,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public void deleteByTeamidUsername(long teamId, String username, String Accept) {
+            public void deleteByTeamIdUsername(long teamId, String username, String Accept) {
                 String url = ("https://api.github.com//teams/{teamId}/memberships/{username}".replace("{teamId}", ""+teamId).replace("{username}", ""+username));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (Accept!= null) {
@@ -5282,7 +5281,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public Requested<Repo[]> getByTeamid(long teamId, String Accept) {
+            public Requested<Repo[]> getByTeamId(long teamId, String Accept) {
                 String url = ("https://api.github.com//teams/{teamId}/repos".replace("{teamId}", ""+teamId));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (Accept!= null) {
@@ -5306,7 +5305,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public void getByTeamidOwnerRepo(long teamId,
+            public void getByTeamIdOwnerRepo(long teamId,
                 String owner,
                 String repo,
                 String Accept) {
@@ -5333,7 +5332,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public void putByTeamidOwnerRepo(long teamId,
+            public void putByTeamIdOwnerRepo(long teamId,
                 String owner,
                 String repo,
                 String Accept) {
@@ -5360,7 +5359,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public void deleteByTeamidOwnerRepo(long teamId,
+            public void deleteByTeamIdOwnerRepo(long teamId,
                 String owner,
                 String repo,
                 String Accept) {
@@ -5674,7 +5673,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public Requested<UserKeysKeyId> getByKeyid(long keyId, String Accept) {
+            public Requested<UserKeysKeyId> getByKeyId(long keyId, String Accept) {
                 String url = ("https://api.github.com//user/keys/{keyId}".replace("{keyId}", ""+keyId));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (Accept!= null) {
@@ -5694,7 +5693,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public void deleteByKeyid(long keyId, String Accept) {
+            public void deleteByKeyId(long keyId, String Accept) {
                 String url = ("https://api.github.com//user/keys/{keyId}".replace("{keyId}", ""+keyId));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (Accept!= null) {
@@ -5978,7 +5977,7 @@ public class Anonymous
         public final Anonymous.Users.Gists gists = new Anonymous.Users.Gists();
         public final Anonymous.Users.Keys keys = new Anonymous.Users.Keys();
         public final Anonymous.Users.Orgs orgs = new Anonymous.Users.Orgs();
-        public final Anonymous.Users.Receivedevents receivedevents = new Anonymous.Users.Receivedevents();
+        public final Anonymous.Users.ReceivedEvents receivedevents = new Anonymous.Users.ReceivedEvents();
         public final Anonymous.Users.Repos repos = new Anonymous.Users.Repos();
         public final Anonymous.Users.Starred starred = new Anonymous.Users.Starred();
         public final Anonymous.Users.Subscriptions subscriptions = new Anonymous.Users.Subscriptions();
@@ -6112,7 +6111,7 @@ public class Anonymous
              * @param Accept
              *     Is used to set specified media type.
              */
-            public void getByUsernameTargetuser(String username, String targetUser, String Accept) {
+            public void getByUsernameTargetUser(String username, String targetUser, String Accept) {
                 String url = ("https://api.github.com//users/{username}/following/{targetUser}".replace("{username}", ""+username).replace("{targetUser}", ""+targetUser));
                 HashMap<String, String> headerProperties = new HashMap<String, String>();
                 if (Accept!= null) {
@@ -6196,8 +6195,8 @@ public class Anonymous
             }
         }
 
-        public class Receivedevents {
-            public final Anonymous.Users.Receivedevents.Public public_ = new Anonymous.Users.Receivedevents.Public();
+        public class ReceivedEvents {
+            public final Anonymous.Users.ReceivedEvents.Public public_ = new Anonymous.Users.ReceivedEvents.Public();
 
             /**
              * 

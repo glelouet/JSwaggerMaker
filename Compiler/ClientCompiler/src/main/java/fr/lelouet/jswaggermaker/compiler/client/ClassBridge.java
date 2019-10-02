@@ -564,7 +564,7 @@ public class ClassBridge {
 	 *          or simply 123.
 	 * @return the name of the package, ensured to be correct for java class.
 	 */
-	public static String makePackageName(String name) {
+	public static String makeJavaPackage(String name) {
 		if (name == null) {
 			return name;
 		}
@@ -582,7 +582,7 @@ public class ClassBridge {
 		if (token.length() < 2) {
 			return token.toUpperCase();
 		}
-		return token.substring(0, 1).toUpperCase() + token.substring(1, token.length()).toLowerCase();
+		return token.substring(0, 1).toUpperCase() + token.substring(1, token.length());
 	}
 
 	/**
@@ -594,7 +594,7 @@ public class ClassBridge {
 	 * @return a correct java package.
 	 */
 	public JPackage pckg(String packageName) {
-		return cm._package(makePackageName(packageName));
+		return cm._package(makeJavaPackage(packageName));
 	}
 
 	/**
@@ -608,7 +608,7 @@ public class ClassBridge {
 	 * @return a correct java subpackage, in this case "in.your._1337.brain_"
 	 */
 	public JPackage subPckg(JPackage root, String packageName) {
-		return root.subPackage(makePackageName(packageName));
+		return root.subPackage(makeJavaPackage(packageName));
 	}
 
 	public AbstractJType getExistingClass(QueryParameter pp) {

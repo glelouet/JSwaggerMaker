@@ -66,7 +66,7 @@ public class PetstoreAuth
          * @param petId
          *     ID of pet that needs to be updated
          */
-        public void postByPetid(long petId) {
+        public void postByPetId(long petId) {
             String url = ("https://petstore.swagger.io/v2/pet/{petId}".replace("{petId}", ""+petId));
             requestPost(url, null, null, Void.class);
         }
@@ -81,7 +81,7 @@ public class PetstoreAuth
          * @param petId
          *     Pet id to delete
          */
-        public void deleteByPetid(String api_key, long petId) {
+        public void deleteByPetId(String api_key, long petId) {
             String url = ("https://petstore.swagger.io/v2/pet/{petId}".replace("{petId}", ""+petId));
             HashMap<String, String> headerProperties = new HashMap<String, String>();
             if (api_key!= null) {
@@ -137,7 +137,7 @@ public class PetstoreAuth
              * @param petId
              *     ID of pet to update
              */
-            public Requested<ApiResponse> postByPetid(long petId) {
+            public Requested<ApiResponse> postByPetId(long petId) {
                 String url = ("https://petstore.swagger.io/v2/pet/{petId}/uploadImage".replace("{petId}", ""+petId));
                 return requestPost(url, null, null, ApiResponse.class);
             }
