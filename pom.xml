@@ -62,9 +62,9 @@
 		<url>https://github.com/glelouet/JSwaggerMaker</url>
 		<connection>scm:git:git@github.com:glelouet/JSwaggerMaker</connection>
 		<developerConnection>scm:git:git@github.com:glelouet/JSwaggerMaker</developerConnection>
-		<tag>JSwaggerMaker-0.0.3</tag>
+		<tag>HEAD</tag>
 	</scm>
-	<version>0.0.3</version>
+	<version>0.0.4-SNAPSHOT</version>
 	<modules>
 		<module>Compiler</module>
 		<module>Examples</module>
