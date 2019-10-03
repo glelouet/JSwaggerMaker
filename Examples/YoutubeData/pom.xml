@@ -3,7 +3,7 @@
   <parent>
     <groupId>fr.lelouet.jswaggermaker</groupId>
     <artifactId>Examples</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>0.0.3</version>
   </parent>
   <groupId>fr.lelouet.jswaggermaker.examples</groupId>
   <artifactId>YoutubeData</artifactId>
