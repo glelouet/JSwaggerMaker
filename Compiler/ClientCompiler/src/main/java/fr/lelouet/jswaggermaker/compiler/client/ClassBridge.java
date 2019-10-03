@@ -37,6 +37,7 @@ import com.helger.jcodemodel.JPackage;
 import com.helger.jcodemodel.JVar;
 
 import fr.lelouet.jswaggermaker.client.common.impl.ATransfer;
+import fr.lelouet.jswaggermaker.client.common.impl.DelegateTransfer;
 import fr.lelouet.jswaggermaker.client.common.impl.securities.APIKey;
 import fr.lelouet.jswaggermaker.client.common.impl.securities.Disconnected;
 import fr.lelouet.jswaggermaker.client.common.impl.securities.Oauth2;
@@ -130,39 +131,57 @@ public class ClassBridge {
 	 */
 	public JDefinedClass getFetcherClass(String securityName, List<String> subPaths) {
 		logger.trace("getting fetcher for security " + securityName + " for subpaths " + subPaths);
-		JDefinedClass theclass = getFetcherClass(securityName);
+		JDefinedClass fetcherclass = getFetcherClass(securityName);
+		JDefinedClass theclass = fetcherclass;
 		for (String subPath : subPaths) {
-			theclass = subClass(theclass, makeJavaTypeIdentifier(subPath));
+			String fieldAccess = makeJavaIdentifier(subPath);
+			JFieldVar subField = theclass.fields().get(fieldAccess);
+			if (subField == null) {
+				JPackage subpck = subPckg(theclass._package(), theclass.name());
+				JDefinedClass subclass = createDelegateTransfer(subpck, subPath, fetcherclass);
+				JFieldVar thefield = theclass.field(JMod.PUBLIC | JMod.FINAL, subclass, fieldAccess);
+				if (fetcherclass == theclass) {
+					// we are in a security class : init the field with the security as
+					// delegate
+					thefield.init(subclass._new().arg(JExpr._this()));
+				} else {
+					// we are in a sub class field : init the field in the constructor.
+					JMethod constructor = theclass.constructors().next();
+					constructor.body().add(JExpr.assign(thefield, subclass._new().arg(JExpr.direct("delegate"))));
+				}
+				theclass = subclass;
+			} else {
+				theclass = (JDefinedClass) subField.type();
+			}
 		}
 		return theclass;
 	}
 
-	protected JDefinedClass subClass(JDefinedClass theclass, String subPath) {
-		logger.trace("creating class for path=" + subPath + " in " + theclass);
-		String fieldName = makeJavaIdentifier(subPath.toLowerCase());
-		JFieldVar field = theclass.fields().get(fieldName);
-		if (field != null) {
-			if (field.type() instanceof JDefinedClass) {
-				return (JDefinedClass) field.type();
-			} else {
-				throw new UnsupportedOperationException("can't cast " + field.type() + " as a jdefinedclas");
-			}
-		} else {
-			// we need to create it
-			JDefinedClass subclass = createSubClass(theclass, subPath);
-			theclass.field(JMod.PUBLIC | JMod.FINAL, subclass, fieldName).init(subclass._new());
-			return subclass;
-		}
-	}
-
-	/** create a subclass in a class */
-	private JDefinedClass createSubClass(JDefinedClass theclass, String subPath) {
-		String newname = camelcase(makeJavaTypeIdentifier(subPath));
-		logger.trace("creating class " + newname + " in " + theclass);
+	/**
+	 * create a new {@link DelegateTransfer} class in given package with given
+	 * name. create a constructor that takes a specific "transfer" class as
+	 * parameter and call super with that transfer. This transfer class will be
+	 * delegated the global parameters and the http requests.
+	 *
+	 * @param pck
+	 *          package in which we crate the class.
+	 * @param name
+	 *          name of the class
+	 * @param transfer
+	 *          the root delegate that this class delegates calls to.
+	 * @return an existing class, if exists, or a newly created one.
+	 */
+	protected JDefinedClass createDelegateTransfer(JPackage pck, String name, JDefinedClass transfer) {
+		String className = makeJavaTypeIdentifier(name);
 		try {
-			return theclass._class(newname);
+			JDefinedClass subclass = pck._class(JMod.PUBLIC, className);
+			subclass._extends(cm.ref(DelegateTransfer.class).narrow(transfer));
+			JMethod construct = subclass.constructor(JMod.PUBLIC);
+			JVar delegate = construct.param(transfer, "delegate");
+			construct.body().add(JExpr.invokeSuper().arg(delegate));
+			return subclass;
 		} catch (JClassAlreadyExistsException e) {
-			throw new UnsupportedOperationException("while creating class " + newname + " in " + theclass, e);
+			return pck.classes().stream().filter(cl -> cl.name().equals(className)).findFirst().get();
 		}
 	}
 
@@ -453,12 +472,12 @@ public class ClassBridge {
 	 * java reserved keywords we can't use as a name
 	 * https://docs.oracle.com/javase/specs/jls/se12/html/jls-3.html#jls-Identifier
 	 */
-	public static final Set<String> RESERVED_JAVA_KEYWORDS = Collections.unmodifiableSet(new HashSet<>(
-			Arrays.asList("abstract", "assert", "boolean", "break", "byte", "case", "catch", "char", "class", "const",
-					"continue", "default", "do", "double", "else", "extends", "final", "finally", "float", "for", "goto", "if",
-					"implements", "import", "instanceof", "int", "interface", "long", "native", "new", "package",
-					"private", "protected", "public", "return", "short", "static", "strictfp", "super", "switch", "synchronized",
-					"this", "throw", "throws", "transient", "try", "void", "volatile", "while", "_")));
+	public static final Set<String> RESERVED_JAVA_KEYWORDS = Collections
+			.unmodifiableSet(new HashSet<>(Arrays.asList("abstract", "assert", "boolean", "break", "byte", "case", "catch",
+					"char", "class", "const", "continue", "default", "do", "double", "else", "extends", "final", "finally",
+					"float", "for", "goto", "if", "implements", "import", "instanceof", "int", "interface", "long", "native",
+					"new", "package", "private", "protected", "public", "return", "short", "static", "strictfp", "super",
+					"switch", "synchronized", "this", "throw", "throws", "transient", "try", "void", "volatile", "while", "_")));
 
 	/**
 	 * java literals we can't use as an identifier
@@ -546,10 +565,10 @@ public class ClassBridge {
 		if (s == null) {
 			return s;
 		}
-		String ret = Stream.of(s.split("[ _-]")).filter(str -> str.length() > 0)
-				.map(str -> camelcase(str)).collect(Collectors.joining());
+		String ret = Stream.of(s.split("[ _-]")).filter(str -> str.length() > 0).map(str -> camelcase(str))
+				.collect(Collectors.joining());
 		if (FORBIDDEN_CLASS_NAMES.contains(ret) || isJavaLangClass(ret)) {
-			ret=ret+"_";
+			ret = ret + "_";
 		}
 		return makeJavaIdentifier(ret);
 	}

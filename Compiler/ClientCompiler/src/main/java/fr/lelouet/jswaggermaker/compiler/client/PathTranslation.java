@@ -176,7 +176,7 @@ public class PathTranslation {
 			if (!alternateRoute.contains(pathToken)) {
 				if (pathToken.length() > 0) {
 					// some token can have several params, eg {itemid}of{charid}
-					if (pathToken.startsWith("{")) {
+					if (pathToken.contains("{")) {
 						for (String subtoken : pathToken.split("\\{")) {
 							if (subtoken.length() > 0) {
 								pathsParams.add(subtoken.split("\\}")[0]);
@@ -218,7 +218,7 @@ public class PathTranslation {
 						"content");
 				content.init(JExpr._new(cm.ref(HashMap.class).narrowEmpty()));
 				for (JVar p : bodyparameters) {
-					fetchMeth.body().directStatement("content.put(\"" + p.name() + "\", " + p.name() + ");");
+					fetchMeth.body().directStatement("content.put(\"" + p.name() + "\", " + varAccess(p) + ");");
 				}
 			}
 			if (resourceStructure == RETURNTYPE.MAP) {
@@ -236,7 +236,7 @@ public class PathTranslation {
 						"content");
 				content.init(JExpr._new(cm.ref(HashMap.class).narrowEmpty()));
 				for (JVar p : bodyparameters) {
-					fetchMeth.body().add(content.invoke("put").arg(p.name()).arg(p));
+					fetchMeth.body().add(content.invoke("put").arg(p.name()).arg(JExpr.direct(varAccess(p))));
 				}
 			}
 			possibleRet = JExpr.invoke("requestPut").arg(url).arg(propsParam).arg(content == null ? JExpr._null() : content)
@@ -299,20 +299,33 @@ public class PathTranslation {
 
 		String urlAssign = "\"" + baseURL + path + "\"";
 		for (JVar jv : pathparameters) {
-			urlAssign += ".replace(\"{" + jv.name() + "}\", \"\"+" + jv.name() + ")";
+			urlAssign += ".replace(\"{" + jv.name() + "}\", \"\"+" + varAccess(jv) + ")";
 		}
 		if (queryparameters.size() > 0) {
 			urlAssign += "+\"?\"";
 		}
 		for (JVar qp : queryparameters) {
 			if (qp.type() instanceof JPrimitiveType) {
-				urlAssign += "+\"&" + qp.name() + "=\"+flatten(" + qp.name() + ")";
+				urlAssign += "+\"&" + qp.name() + "=\"+flatten(" + varAccess(qp) + ")";
 			} else {
-				urlAssign += "+(" + qp.name() + "==null?\"\":\"&" + qp.name() + "=\"+flatten(" + qp.name() + "))";
+				urlAssign += "+(" + varAccess(qp) + "==null?\"\":\"&" + qp.name() + "=\"+flatten(" + varAccess(qp) + "))";
 			}
 		}
 		url = fetchMeth.body().decl(cm.ref(String.class), "url");
 		url.init(JExpr.direct(urlAssign));
+	}
+
+	/**
+	 * make the resolution of a variable. If the variable is in the global param
+	 * list, use the delegate to access it, otherwise access it directly
+	 *
+	 * @param jv
+	 *          the variable
+	 * @return the access to the variable.
+	 */
+	protected String varAccess(JVar jv) {
+		return bridge.options.globals.contains(jv.name()) && rootHolderClass != fetcherClass ? "delegate." + jv.name()
+		: jv.name();
 	}
 
 	/**
@@ -389,27 +402,25 @@ public class PathTranslation {
 			String in = p.getIn();
 			boolean inField = bridge.options.globals.contains(p.getName());
 			String paramName = nameForParameter(p.getName());
-			AbstractJType pathType;
+			AbstractJType varType;
 			JVar param;
 			switch (in) {
 			case "path":
 				fetchMeth.javadoc().addParam(paramName).add(p.getDescription());
 				PathParameter pp = (PathParameter) p;
-				pathType = bridge.getExistingClass(pp.getType(), pp.getName(), pp.getFormat(), pp.getEnum());
-				if (!pp.getRequired() && pathType.isPrimitive()) {
-					pathType = pathType.boxify();
+				varType = bridge.getExistingClass(pp.getType(), pp.getName(), pp.getFormat(), pp.getEnum());
+				if (!pp.getRequired() && varType.isPrimitive()) {
+					varType = varType.boxify();
 				}
-				param = inField ? bridge.getField(rootHolderClass, paramName, pathType, p.getDescription())
-						: fetchMeth.param(pathType, paramName);
+				param = getParam(paramName, varType, p.getDescription(), inField);
 				pathparameters.add(param);
 				allParams.add(param);
 				break;
 			case "query":
 				fetchMeth.javadoc().addParam(paramName).add(p.getDescription());
 				QueryParameter qp = (QueryParameter) p;
-				pathType = bridge.getExistingClass(qp);
-				param = inField ? bridge.getField(rootHolderClass, paramName, pathType, p.getDescription())
-						: fetchMeth.param(pathType, paramName);
+				varType = bridge.getExistingClass(qp);
+				param = getParam(paramName, varType, p.getDescription(), inField);
 				queryparameters.add(param);
 				allParams.add(param);
 				break;
@@ -419,16 +430,14 @@ public class PathTranslation {
 				logger.trace("body parameter " + bp.getName() + " model " + schema);
 				if (schema instanceof ArrayModel) {
 					fetchMeth.javadoc().addParam(paramName).add(p.getDescription());
-					pathType = bridge.translateToClass(schema, bridge.structurePackage);
-					param = inField ? bridge.getField(rootHolderClass, paramName, pathType, p.getDescription())
-							: fetchMeth.param(pathType, paramName);
+					varType = bridge.translateToClass(schema, bridge.structurePackage);
+					param = getParam(paramName, varType, p.getDescription(), inField);
 					bodyparameters.add(param);
 					allParams.add(param);
 				} else if (schema instanceof RefModel) {
 					fetchMeth.javadoc().addParam(paramName).add(p.getDescription());
-					pathType = bridge.translateDefToClass(((RefModel) schema).getSimpleRef());
-					param = inField ? bridge.getField(rootHolderClass, paramName, pathType, p.getDescription())
-							: fetchMeth.param(pathType, paramName);
+					varType = bridge.translateDefToClass(((RefModel) schema).getSimpleRef());
+					param = getParam(paramName, varType, p.getDescription(), inField);
 					bodyparameters.add(param);
 					allParams.add(param);
 				} else {
@@ -450,10 +459,8 @@ public class PathTranslation {
 			case "header":
 				fetchMeth.javadoc().addParam(paramName).add(p.getDescription());
 				HeaderParameter hp = (HeaderParameter) p;
-				String className = ClassBridge.makeJavaIdentifier(hp.getName());
-				pathType = bridge.getExistingClass(hp);
-				param = inField ? bridge.getField(rootHolderClass, p.getName(), pathType, p.getDescription())
-						: fetchMeth.param(bridge.getExistingClass(hp), className);
+				varType = bridge.getExistingClass(hp);
+				param = getParam(paramName, varType, p.getDescription(), inField);
 				headerParameters.put(hp.getName(), param);
 				allParams.add(param);
 				break;
@@ -464,6 +471,20 @@ public class PathTranslation {
 		}
 	}
 
+	protected JVar getParam(String paramName, AbstractJType pathType, String description, boolean inField) {
+		JVar param;
+		if (inField) {
+			param = bridge.getField(rootHolderClass, paramName, pathType, description);
+			// if (rootHolderClass != fetcherClass) {
+			// param = fetchMeth.body().decl(pathType, paramName);
+			// param.init(JExpr.ref("delegate").ref(paramName));
+			// }
+		} else {
+			param = fetchMeth.param(pathType, paramName);
+		}
+		return param;
+	}
+
 	protected void addPathJavadoc() {
 		if (operation.getSummary() != null) {
 			fetchMeth.javadoc().append("" + operation.getSummary() + "\n");
@@ -471,7 +492,7 @@ public class PathTranslation {
 		fetchMeth.javadoc().add(("\n<p>\n" + ("" + operation.getDescription()).replaceAll("---", "<br />") + "\n</p>")
 				.replaceAll("\n\n", "\n").replaceAll("<br />\n<", "<").replaceAll("\n<br />\n", "<br />\n"));
 		if (!requiredRoles.isEmpty()) {
-			JFieldVar rolesfield = rootHolderClass.field(JMod.PUBLIC | JMod.STATIC | JMod.FINAL, cm.ref(String.class).array(),
+			JFieldVar rolesfield = fetcherClass.field(JMod.PUBLIC | JMod.STATIC | JMod.FINAL, cm.ref(String.class).array(),
 					(operation.getOperationId() + "_roles").toUpperCase());
 			JArray array = JExpr.newArray(cm.ref(String.class));
 			for (String role : requiredRoles) {
