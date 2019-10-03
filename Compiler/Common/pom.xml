@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>fr.lelouet.jswaggermaker</groupId>
 		<artifactId>Compiler</artifactId>
-		<version>0.0.2</version>
+		<version>0.0.3-SNAPSHOT</version>
 	</parent>
 	<groupId>fr.lelouet.jswaggermaker.compiler</groupId>
 	<artifactId>Common</artifactId>

@@ -66,7 +66,7 @@
 		<developerConnection>scm:git:git@github.com:glelouet/JSwaggerMaker</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
-	<version>0.0.2</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<modules>
 		<module>Compiler</module>
 		<module>Examples</module>
@@ -103,6 +103,16 @@
 		<jackson-version>2.9.10</jackson-version>
 	</properties>
 	<build>
+		<pluginManagement>
+<!-- 		bug in older versions, where pom groupid is missing instead of imported from parent -->
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>versions-maven-plugin</artifactId>
+					<version>2.7</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<artifactId>maven-source-plugin</artifactId>
